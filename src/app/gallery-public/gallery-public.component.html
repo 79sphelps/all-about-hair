@@ -1,0 +1,71 @@
+<!-- Start gallery Area -->
+
+<div id="galleryCnt" hidden>{{ photoList && photoList.length }}</div>
+
+<section id="gallery" style="text-align: center">
+  <div *ngFor="let photo of photoList" style="display: inline;">
+      <img style="border-radius: 5px; width: 16%;" [src]="photo.path" alt="">
+  </div>
+</section>
+
+<!-- 
+<section id="gallery" class="gallery-area">
+  <div class="container-fluid">
+    <div class="row no-padding">
+      <div class="active-gallery">
+        
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g1.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g2.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g3.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g4.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g5.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px;" src="assets/img/g6.jpg" alt="">
+            <div class="align-items-center justify-content-center d-flex">
+              <h4 class="text-white">Upper Cutting</h4>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!-- End gallery Area -->

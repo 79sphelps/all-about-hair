@@ -1,0 +1,82 @@
+<!-- src/app/pages/admin/admin.component.html -->
+
+<div class="container">
+  <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
+  <div>
+
+    <h1 class="text-center">{{ pageTitle }}</h1>
+
+    <app-loading *ngIf="loading"></app-loading>
+
+    <ng-template [ngIf]="utils.isLoaded(loading)">
+      <p class="lead">Welcome, {{ auth.userProfile?.name }}! You can create and administer photos below.</p>
+
+      <!-- 
+        <button class="btn btn-primary" style="margin-bottom: 10px;" type="button">New Event</button>
+      -->
+      <!--
+      <p>
+        <a class="btn btn-success btn-block" routerLink="/admin/gallery/new">+ Add New Photo</a>
+      </p>
+      -->
+
+      <!-- Events -->
+      <ng-template [ngIf]="photoList">
+        <ng-template [ngIf]="photoList.length">
+          <!-- Search events -->
+          <div class="form-group input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input id="search" type="text" class="form-control" [(ngModel)]="query" (keyup)="searchGallery()" />
+            <span class="input-group-addon">
+              <a (click)="resetQuery()">&times;</a>
+            </span>
+          </div>
+
+          <!-- No search results -->
+          <p *ngIf="fs.noSearchResults(filteredPhotos, query)" class="alert alert-warning">
+            No photos found for
+            <em class="text-danger">{{ query }}</em>, sorry!
+          </p>
+
+          <!-- Events listing -->
+          <section class="list-group" [@expandCollapse]>
+            <div *ngFor="let photo of fs.search(filteredPhotos)" class=" list-group-item list-group-item-action flex-column align-items-start ">
+
+              <div style="display: inline">
+
+                <div style="width: 75%; float: left;">
+                  <h5 [innerHTML]="photo.caption"></h5>
+                  <p [innerHTML]="photo.path"></p>
+
+                  <a class="btn btn-info btn-sm" [routerLink]="['/admin/gallery/update', photo._id]">Edit</a>
+                  <!-- <a class="btn btn-danger btn-sm" [routerLink]="['/admin/gallery/update', photo._id]" [queryParams]="{tab: 'delete'}">Delete</a> -->
+                </div>
+
+                <div style="width: 20%; float: right;">
+                  <img class="phone-only" style="border-radius: 5px;" [src]="photo.path" alt="" align="right" width="100" [attr.data-target]="photo.path" />
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+        </ng-template>
+
+        <!-- No events available -->
+        <p *ngIf="!photoList.length " class="alert alert-info ">
+          No photos have been created yet.
+        </p>
+      </ng-template>
+
+      <!-- Error loading events -->
+      <p *ngIf="error " class="alert alert-danger ">
+        <strong>Oops!</strong> There was an error retrieving photo data.
+      </p>
+
+    </ng-template>
+
+
+  </div>
+</div>

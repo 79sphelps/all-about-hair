@@ -1,0 +1,71 @@
+<!-- src/app/pages/admin/event-form/event-form.component.html -->
+<form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" class="form-control" formControlName="title" [maxlength]="ef.titleMax">
+      <div *ngIf="formErrors.title" class="small text-danger formErrors" [innerHTML]="formErrors.title">
+      </div>
+    </div>
+  
+    <!-- Location -->
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input id="image" type="text" class="form-control" formControlName="image" [maxlength]="ef.locMax">
+      <div *ngIf="formErrors.image" class="small text-danger formErrors" [innerHTML]="formErrors.image">
+      </div>
+    </div>
+  
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" class="form-control" rows="3" formControlName="description" [maxlength]="ef.descMax"></textarea>
+      <div *ngIf="formErrors.description" class="small text-danger formErrors" [innerHTML]="formErrors.description">
+      </div>
+    </div>
+  
+    <!-- Pricing -->
+    <!-- 
+    <div class="form-group" formArrayName="pricing" >
+      <label for="pricing">Pricing:</label>
+      <br>
+      <div *ngFor="let item of service.pricing; index as i" style="display: inline">
+        <input [attr.value]="item.type">
+        <input [attr.value]="item.price">
+        <input [attr.value]="item.description">
+        <hr>
+      </div>
+    </div>    
+    -->
+
+    <div formArrayName="pricing">
+      <div *ngFor="let item of serviceForm.controls.pricing.controls; index as i" style="display: inline">
+        <label>Service {{ i }}: </label>  
+        <div [formGroupName]="i">
+          <input type="text" formControlName="type" [attr.value]="item.type"> 
+          <input type="text" formControlName="price" [attr.value]="item.price">
+          <input type="text" formControlName="description" [attr.value]="item.description">
+          <button class="btn btn-primary" type="button" (click)="removeServiceItem(i)">Delete</button>
+          <hr>
+        </div>
+      </div>
+    </div>  
+
+
+    <!-- Submit -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [attr.disabled]="serviceForm.invalid || submitting ? true : null" [innerText]="submitBtnText"></button>
+      <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
+      <app-submitting *ngIf="submitting"></app-submitting>
+      <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
+  
+      <!-- API submission error -->
+      <p *ngIf="error" class="mt-3 alert alert-danger">
+        <strong>Error:</strong> There was a problem submitting the image. Please try again.
+      </p>
+    </div>
+
+  </form>
+
+  <button (click)="addServiceItem()">Add Service Item</button>
+  <button (click)="setPreset()">Set preset</button>

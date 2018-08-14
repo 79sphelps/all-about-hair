@@ -1,0 +1,27 @@
+<!-- src/app/pages/event/event-detail/event-detail.component.html -->
+
+<div class="card-body" style="padding: 10px;">
+  <h2 class="card-title text-center mb-0">Service Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>Service Title:</strong> {{ service.title }}
+  </li>
+
+  <li class="list-group-item">
+    <strong>Service Image:</strong> {{ service.image }}
+  </li>
+
+  <li class="list-group-item" *ngFor="let item of service.pricing; index as i">
+    <strong>Type {{ i }}:</strong> {{ item.type }} ... {{ item.price }}
+  </li>
+
+  <li class="list-group-item">
+    <strong>Description:</strong> {{ service.description }}
+  </li>
+</ul>
+
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/admin/services/update', service._id]">Edit</a>
+</div>

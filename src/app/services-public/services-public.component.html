@@ -1,0 +1,177 @@
+<!-- Start service Area -->
+<section class="service-area section-gap" id="service">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-70 col-lg-8">
+        <div class="title text-center">
+          <h1 class="mb-10">{{ homepage && homepage.servicesHeadline }}</h1>
+          <p>{{ homepage && homepage.servicesSubMsg }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let service of services" class="single-service col-lg-6 col-md-6 d-flex flex-row mb-30">
+        <div class="icon">
+          <img [src]="service.image" style="width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service.title }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+    <div class="row">
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row mb-30">
+        <div class="icon">
+          <img [src]="service_1_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_1 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_1_description }}
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row mb-30">
+        <div class="icon">
+          <img [src]="service_2_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_2 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_2_description }}
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img [src]="service_3_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_3 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_3_description }}
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img [src]="service_4_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_4 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_4_description }}
+          </p>
+        </div>
+      </div>
+
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img [src]="service_5_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_5 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_5_description }}
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img [src]="service_6_image" style="width: 100px;" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">{{ service_6 }}</a>
+          </h4>
+          <p class="mt-20">
+            {{ service_6_description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    -->
+
+
+
+    <!-- 
+    <div class="row">
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row mb-30">
+        <div class="icon">
+          <img src="assets/img/s1.png" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">Beard Trimming</a>
+          </h4>
+          <p class="mt-20">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam quis nostrud exercitation.
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row mb-30">
+        <div class="icon">
+          <img src="assets/img/s2.png" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">Quality Gel Shave</a>
+          </h4>
+          <p class="mt-20">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam quis nostrud exercitation.
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img src="assets/img/s3.png" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">Effective Body Massage</a>
+          </h4>
+          <p class="mt-20">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam quis nostrud exercitation.
+          </p>
+        </div>
+      </div>
+      <div class="single-service col-lg-6 col-md-6 d-flex flex-row">
+        <div class="icon">
+          <img src="assets/img/s4.png" alt="">
+        </div>
+        <div class="dec">
+          <h4>
+            <a href="#">Stylish Hair Cutting</a>
+          </h4>
+          <p class="mt-20">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam quis nostrud exercitation.
+          </p>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+<!-- End service Area -->

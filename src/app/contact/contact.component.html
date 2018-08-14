@@ -1,0 +1,86 @@
+<!-- start contact Area -->
+<section class="contact-area section-gap" id="contact">
+  <div class="container">
+    
+
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-10 col-lg-8">
+        <div class="title text-center">
+          <h1 class="mb-10">{{ homepage && homepage.contactHeadline }}</h1>
+          <p>{{ homepage && homepage.contactSubMsg }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 single-contact-info">
+        <h6 class="text-black">Visit Our Salon</h6>
+        <p style="margin-top: 10px;">
+          {{ contact && contact.location }}
+        </p>
+      </div>
+      <div class="col-lg-3 col-md-6 single-contact-info">
+        <h6 class="text-black">Call us</h6>
+        <p style="margin-top: 10px;">
+          {{ contact && contact.phone }}
+        </p>
+      </div>
+      <div class="col-lg-3 col-md-6 single-contact-info">
+        <h6 class="text-black">Email Us</h6>
+        <p style="margin-top: 10px;">
+          {{ contact && contact.email }}
+        </p>
+      </div>
+      <div class="col-lg-3 col-md-6 single-contact-info">
+        <h6 class="text-black">Salon Hours</h6>
+        <div *ngIf="contactInfoLoaded | async">
+        <ul style="margin-top: 10px;">
+          <li *ngFor="let hour of contact.hours">{{ hour }}</li>
+          <!-- 
+          <li>Mon: 10:30 am - 7:00 pm</li>
+          <li>Tue: Closed</li>
+          <li>Wed: 10:30 am - 7:00 pm</li>
+          <li>Thu: 10:30 am - 7:00 pm</li>
+          <li>Fri: 10:30 am - 7:00 pm</li>
+          <li>Sat: 10:30 am - 7:00 pm</li>
+          <li>Sun: 11:30 am - 5:00 pm</li>
+          -->
+        </ul>
+        </div>
+      </div>
+      <!--
+      <div class="col-lg-3 col-md-6 single-contact-info">
+        <h6 class="text-black">Customer Support</h6>
+        <p style="margin-top: 30px;">
+          support@colorlib.com emergencysupp@colorlib.com extremesupp@colorlib.com
+        </p>
+      </div>
+      -->
+    </div>
+
+    <form class="form-area mt-60" id="myForm" action="mail.php" method="post" class="contact-form text-right">
+      <div class="row">
+        <div class="col-lg-6 form-group">
+          <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
+            class="common-input mb-20 form-control" required="" type="text">
+
+          <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+
+          <input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'"
+            class="common-input mb-20 form-control" required="" type="text">
+        </div>
+        <div class="col-lg-6 form-group">
+          <textarea class="common-textarea mt-10 form-control" name="message" placeholder="Message" onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'Messege'" required=""></textarea>
+          <button class="primary-btn mt-20">Send Message
+            <span class="lnr lnr-arrow-right"></span>
+          </button>
+          <div class="alert-msg">
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</section>
+<!-- end contact Area -->

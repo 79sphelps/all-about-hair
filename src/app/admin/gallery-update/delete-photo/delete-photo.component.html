@@ -1,0 +1,25 @@
+<!-- src/app/pages/admin/update-event/delete-event.component/delete-event.component.html -->
+<p class="lead">
+  You are deleting the "
+  <strong [innerHTML]="photo.caption"></strong>" photo.
+</p>
+
+<p class="text-danger">
+  Deleting this photo will be permanent. Please proceed with caution!
+</p>
+
+<div class="form-group">
+  <label for="deletePhoto">Confirm photo caption:</label>
+  <input type="text" id="deletePhoto" class="form-control" [(ngModel)]="confirmDelete">
+</div>
+
+<!-- Delete button -->
+<p>
+  <button class="btn btn-danger" (click)="removePhoto()" [disabled]="confirmDelete !== photo.caption || submitting">Delete Photo</button>
+  <app-submitting *ngIf="submitting"></app-submitting>
+</p>
+
+<!-- Error deleting event -->
+<p *ngIf="error" class="alert alert-danger">
+  <strong>Oops!</strong> There was an error deleting this photo. Please try again.
+</p>

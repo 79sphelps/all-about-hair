@@ -1,0 +1,73 @@
+// Config
+const config = require("../config");
+
+const mongoose = require("mongoose");
+mongoose.connect(config.MONGO_URI);
+
+const Homepage = require("../models/Homepage");
+
+const _projection = "headline headlineSubMsg";
+
+module.exports.getHomepage = function(req, res, next) {
+  Homepage.find({}, (err, data) => {
+    let dataArr = [];
+    if (err) {
+      return res.status(500).send({ message: err.message });
+    }
+
+    if (data) {
+      data.forEach(item => {
+        dataArr.push(item);
+      });
+    }
+    res.send(dataArr);
+  });
+};
+
+module.exports.getHomepageById = function(req, res, next) {
+    Homepage.findById(req.params.id, (err, homepage) => {
+      if (err) {
+        return res.status(500).send({ message: err.message });
+      }
+      if (!homepage) {
+        return res.status(400).send({ message: "Homepage not found." });
+      }
+      res.send(homepage);
+    });
+}
+
+module.exports.update = (req, res, next) => {
+  Homepage.findById(req.params.id, (err, homepage) => {
+    if (err) {
+      return res.status(500).send({ message: err.message });
+    }
+    if (!homepage) {
+      return res.status(400).send({ message: "Homepage not found." });
+    }
+
+    console.log('... homepage controller update ...');
+
+    homepage.headline = req.body.headline;
+    homepage.headlineSubMsg = req.body.headlineSubMsg;
+    homepage.servicesHeadline = req.body.servicesHeadline;
+    homepage.servicesSubMsg = req.body.servicesSubMsg;
+    homepage.aboutHeadline = req.body.aboutHeadline;
+    homepage.aboutSubMsg = req.body.aboutSubMsg;
+    homepage.aboutImage = req.body.aboutImage;
+    homepage.aboutVideoLink = req.body.aboutVideoLink;
+    homepage.stylistsHeadline = req.body.stylistsHeadline;
+    homepage.stylistsSubMsg = req.body.stylistsSubMsg;
+    homepage.serviceDetailsHeadline = req.body.serviceDetailsHeadline;
+    homepage.serviceDetailsSubMsg = req.body.serviceDetailsSubMsg;
+    homepage.contactHeadline = req.body.contactHeadline;
+    homepage.contactSubMsg = req.body.contactSubMsg;
+
+    homepage.save(err => {
+      if (err) {
+        return res.status(500).send({ message: err.message });
+      }
+      res.send(homepage);
+    });
+  });
+};
+
