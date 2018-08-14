@@ -9,9 +9,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod  && mv dist/* ."
   },
-  "postinstall": "ng build --prod",
   "heroku-postbuild": "ng build --prod",
   "private": true,
   "dependencies": {
@@ -42,7 +42,8 @@
     "zone.js": "^0.8.19",
     "@angular/cli": "~1.7.4",
     "@angular/compiler-cli": "^5.2.0",
-    "typescript": "~2.5.3"
+    "typescript": "~2.5.3",
+    "enhanced-resolve": "^4.1.0"
   },
   "engines": {
     "node": "~8.9.4",
