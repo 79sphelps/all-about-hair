@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
-import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+// import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
 import { CallbackComponent } from './callback/callback.component';
 import { AuthGuard } from './auth/auth.guard';
@@ -23,8 +23,10 @@ import { GalleryComponent } from './admin/gallery/gallery.component';
 import { GalleryNewComponent } from './admin/gallery-new/gallery-new.component';
 import { GalleryUpdateComponent } from './admin/gallery-update/gallery-update.component';
 
-import { TeamComponent } from './team/team.component';
-
+import { TeamComponent } from './admin/team/team.component';
+import { TeamMemberComponent } from './admin/team-member/team-member.component';
+import { TeamNewComponent } from './admin/team-new/team-new.component';
+import { TeamUpdateComponent } from './admin/team-update/team-update.component';
 
 const routes: Routes = [
   {
@@ -86,6 +88,22 @@ const routes: Routes = [
       {
         path: 'gallery/:id',
         component: GalleryPhotoComponent
+      },
+      {
+        path: 'personel',
+        component: TeamComponent
+      },
+      {
+        path: 'personel/new',
+        component: TeamNewComponent
+      },
+      {
+        path: 'personel/update/:id',
+        component: TeamUpdateComponent
+      },
+      {
+        path: 'personel/:id',
+        component: TeamMemberComponent
       }
     ]
   }

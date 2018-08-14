@@ -1,5 +1,5 @@
 // src/app/core/filter-sort.service.ts
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 // import { DatePipe } from '@angular/common';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class FilterSortService {
     const check = !!(
       array.length &&
       item0 !== null &&
-      Object.prototype.toString.call(item0) === "[object Object]"
+      Object.prototype.toString.call(item0) === '[object Object]'
     );
     return check;
   }
@@ -40,7 +40,7 @@ export class FilterSortService {
             if (
               // Value is a string and NOT a UTC date
               // typeof thisVal === 'string' && !thisVal.match(isoDateRegex) && thisVal.toLowerCase().indexOf(lQuery) !== -1
-              typeof thisVal === "string" &&
+              typeof thisVal === 'string' &&
               thisVal.toLowerCase().indexOf(lQuery) !== -1
             ) {
               return true;

@@ -11,14 +11,6 @@ import { Homepage } from '../core/models/homepage';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit, OnDestroy {
-  /*
-  company = 'All About Hair';
-  bannerMsg = 'Hair Styling is a Must Try Fashion for All Occasions';
-  bannerSubTxt = `At ${
-    this.company
-  }, we provide custom salon care at an affordable price.`;
-  */
-
   pageTitle = 'Homepage';
 
   homepageSub: Subscription;

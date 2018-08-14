@@ -5,7 +5,7 @@ import { AuthService } from '../../auth/auth.service';
 import { ApiService } from '../../core/api.service';
 import { UtilsService } from '../../core/utils.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { Service } from '../../core/models/service';
 
 @Component({

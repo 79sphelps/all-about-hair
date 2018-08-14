@@ -100,15 +100,15 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
     const control = <FormArray>this.serviceForm.controls['pricing'];
     control.removeAt(i);
   }
-  
+
   populateServiceItems() {
     const control = <FormArray>this.serviceForm.controls['pricing'];
     for (let i = 0; i < this.service.pricing.length; i++) {
 
       control.push(
         this.initServiceItem(
-          this.service.pricing[i].type, 
-          this.service.pricing[i].price, 
+          this.service.pricing[i].type,
+          this.service.pricing[i].price,
           this.service.pricing[i].description
         )
       );
@@ -117,10 +117,10 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
     return control;
   }
 
+  get pricing(): FormArray { return this.serviceForm.get('pricing') as FormArray; }
 
   private _buildForm() {
-
-    let newFormArray = [];
+    const newFormArray = [];
     this.service.pricing.forEach(
       function(item) {
         newFormArray.push(new FormControl(item.type));
@@ -149,7 +149,6 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
         Validators.maxLength(this.ef.descMax)
       ],
       pricing: this.fb.array([
-        
       ])
       /*
       pricing: this.fb.array([
@@ -157,16 +156,13 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
       ])
       */
       /*
-      pricing: new FormArray(      
+      pricing: new FormArray(
         newFormArray
       )
       */
     });
 
-
     this.populateServiceItems();
-
-
 
     // Subscribe to form value changes
     this.formChangeSub = this.serviceForm.valueChanges.subscribe(data =>

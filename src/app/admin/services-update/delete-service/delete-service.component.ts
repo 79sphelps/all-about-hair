@@ -1,7 +1,7 @@
 // src/app/pages/admin/update-event/delete-event/delete-event.component.ts
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Service } from './../../../core/models/service';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../../core/api.service';
 import { Router } from '@angular/router';
 

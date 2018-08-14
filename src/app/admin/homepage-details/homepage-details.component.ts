@@ -1,18 +1,18 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { AuthService } from "../../auth/auth.service";
-import { ApiService } from "../../core/api.service";
-import { UtilsService } from "../../core/utils.service";
-import { Subscription } from "rxjs/Subscription";
-import { Homepage } from "../../core/models/homepage";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../auth/auth.service';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Homepage } from '../../core/models/homepage';
 
 @Component({
-  selector: "app-homepage-details",
-  templateUrl: "./homepage-details.component.html",
-  styleUrls: ["./homepage-details.component.scss"]
+  selector: 'app-homepage-details',
+  templateUrl: './homepage-details.component.html',
+  styleUrls: ['./homepage-details.component.scss']
 })
 export class HomepageDetailsComponent implements OnInit, OnDestroy {
-  pageTitle = "Homepage";
+  pageTitle = 'Homepage';
   homepageListSub: Subscription;
   homepage: Homepage;
   loading: boolean;

@@ -1,12 +1,12 @@
 // src/app/auth/auth.guard.ts
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot
-} from "@angular/router";
-import { Observable } from "rxjs";
-import { AuthService } from "./auth.service";
+} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.auth.loggedIn) {
-      localStorage.setItem("authRedirect", state.url);
+      localStorage.setItem('authRedirect', state.url);
     }
     if (!this.auth.tokenValid && !this.auth.loggedIn) {
       this.auth.login();

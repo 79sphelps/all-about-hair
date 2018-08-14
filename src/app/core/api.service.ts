@@ -11,8 +11,8 @@ import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 import { ENV } from './env.config';
 
-import { Testimonial } from './models/testimonials';
-import { Image } from './models/image';
+// import { Testimonial } from './models/testimonials';
+// import { Image } from './models/image';
 import { Homepage } from './models/homepage';
 import { Personel } from './models/personel';
 import { Service } from './models/service';
@@ -26,7 +26,6 @@ export class ApiService {
   private get _authHeader(): string {
     return `Bearer ${localStorage.getItem('access_token')}`;
   }
-
 
   private _handleError(err: HttpErrorResponse | any): Observable<any> {
     const errorMsg = err.message || 'Error: Unable to complete request.';
@@ -44,7 +43,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // GET an event by ID (login required)
+  // GET an homepage by ID (login required)
   getHomepageDetailsById$(id: string): Observable<Homepage> {
     return this.http
       .get(`${ENV.BASE_API}admin/homepage/${id}`, {
@@ -70,7 +69,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // GET an event by ID (login required)
+  // GET an contact by ID (login required)
   getContactInfoById$(id: string): Observable<Contact> {
     return this.http
       .get(`${ENV.BASE_API}admin/contact/${id}`, {
@@ -79,14 +78,14 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // PUT existing homepage (admin only)
+  // PUT existing contact (admin only)
   editContactInfo$(id: string, contact: Contact): Observable<Contact> {
     return this.http
       .put(`${ENV.BASE_API}admin/contact/update/${id}`, contact, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(catchError(error => this._handleError(error)));
-  }  
+  }
 
   // ---------------------------------------------------------------------
   // GET list of public service details
@@ -96,7 +95,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // GET an event by ID (login required)
+  // GET an service by ID (login required)
   getServiceDetailsById$(id: string): Observable<Service> {
     return this.http
       .get(`${ENV.BASE_API}admin/services/${id}`, {
@@ -105,7 +104,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // POST new event (admin only)
+  // POST new service (admin only)
   postService$(service: Service): Observable<Service> {
     delete service._id;
 
@@ -116,7 +115,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // PUT existing Services (admin only)
+  // PUT existing service (admin only)
   editService$(id: string, service: Service): Observable<Service> {
     return this.http
       .put(`${ENV.BASE_API}admin/services/update/${id}`, service, {
@@ -125,7 +124,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // DELETE existing event and all associated RSVPs (admin only)
+  // DELETE existing service (admin only)
   deleteService$(id: string): Observable<any> {
    return this.http
     .delete(`${ENV.BASE_API}admin/services/${id}`, {
@@ -143,7 +142,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // GET an event by ID (login required)
+  // GET an photo by ID (login required)
   getGalleryPhotoById$(id: string): Observable<Gallery> {
     return this.http
       .get(`${ENV.BASE_API}admin/gallery/${id}`, {
@@ -152,7 +151,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // POST new event (admin only)
+  // POST new gallery photo (admin only)
   postGalleryPhoto$(photo: Gallery): Observable<Gallery> {
     delete photo._id;
 
@@ -163,7 +162,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // PUT existing Services (admin only)
+  // PUT existing gallery photos (admin only)
   editGalleryPhoto$(id: string, photo: Gallery): Observable<Gallery> {
     return this.http
       .put(`${ENV.BASE_API}admin/gallery/update/${id}`, photo, {
@@ -172,7 +171,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // DELETE existing event and all associated RSVPs (admin only)
+  // DELETE existing gallery photo (admin only)
   deleteGalleryPhoto$(id: string): Observable<any> {
    return this.http
     .delete(`${ENV.BASE_API}admin/gallery/${id}`, {
@@ -180,8 +179,6 @@ export class ApiService {
     })
     .pipe(catchError(error => this._handleError(error)));
   }
-
-
 
   // ---------------------------------------------------------------------
   // GET list of personel
@@ -191,7 +188,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // GET an event by ID (login required)
+  // GET an personel by ID (login required)
   getPersonelById$(id: string): Observable<Personel> {
     return this.http
       .get(`${ENV.BASE_API}admin/personel/${id}`, {
@@ -200,7 +197,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // POST new event (admin only)
+  // POST new personel (admin only)
   postPersonel$(personel: Personel): Observable<Personel> {
     delete personel._id;
 
@@ -211,7 +208,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // PUT existing event (admin only)
+  // PUT existing personel (admin only)
   editPersonel$(id: string, personel: Personel): Observable<Personel> {
     return this.http
       .put(`${ENV.BASE_API}admin/personel/${id}`, personel, {
@@ -220,7 +217,7 @@ export class ApiService {
       .pipe(catchError(error => this._handleError(error)));
   }
 
-  // DELETE existing event and all associated RSVPs (admin only)
+  // DELETE existing personel (admin only)
   deletePersonel$(id: string): Observable<any> {
     return this.http
       .delete(`${ENV.BASE_API}admin/personel/${id}`, {
@@ -228,6 +225,4 @@ export class ApiService {
       })
       .pipe(catchError(error => this._handleError(error)));
   }
-
-
 }

@@ -4,7 +4,7 @@ import {
   style,
   animate,
   state
-} from "@angular/animations";
+} from '@angular/animations';
 /*
   Component declaration:
     @Component({
@@ -14,23 +14,23 @@ import {
       styleUrls: ['./anim.component.scss']
     })
   Template:
-    <div *ngIf="show" [@expandCollapse]>
+    <div *ngIf='show' [@expandCollapse]>
 */
-export const expandCollapse = trigger("expandCollapse", [
+export const expandCollapse = trigger('expandCollapse', [
   state(
-    "*",
+    '*',
     style({
-      "overflow-y": "hidden",
-      height: "*"
+      'overflow-y': 'hidden',
+      height: '*'
     })
   ),
   state(
-    "void",
+    'void',
     style({
-      height: "0",
-      "overflow-y": "hidden"
+      height: '0',
+      'overflow-y': 'hidden'
     })
   ),
-  transition("* => void", animate("500ms ease-out")),
-  transition("void => *", animate("500ms ease-in"))
+  transition('* => void', animate('500ms ease-out')),
+  transition('void => *', animate('500ms ease-in'))
 ]);

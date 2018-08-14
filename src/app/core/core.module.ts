@@ -1,18 +1,18 @@
-import { NgModule, ModuleWithProviders } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { DatePipe } from "@angular/common";
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
-import { ApiService } from "./api.service";
-import { UtilsService } from "./utils.service";
-import { FilterSortService } from "./filter-sort.service";
-import { LoadingComponent } from "./loading.component";
-import { HeaderComponent } from "../header/header.component";
-import { FooterComponent } from "../footer/footer.component";
-import { SubmittingComponent } from "./forms/submitting.component";
+import { ApiService } from './api.service';
+import { UtilsService } from './utils.service';
+import { FilterSortService } from './filter-sort.service';
+import { LoadingComponent } from './loading.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { SubmittingComponent } from './forms/submitting.component';
 
 @NgModule({
   imports: [

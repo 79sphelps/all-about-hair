@@ -48,7 +48,7 @@ export class GalleryFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formErrors = this.ef.formErrors;
     this.isEdit = !!this.gallery;
-    this.submitBtnText = this.isEdit ? 'Update Service' : 'Create Service';
+    this.submitBtnText = this.isEdit ? 'Update Gallery Photo' : 'Add Gallery Photo';
     // Set initial form data
     this.formGallery = this._setformGallery();
     // Use FormBuilder to construct the form

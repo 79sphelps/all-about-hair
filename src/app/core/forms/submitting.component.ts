@@ -1,10 +1,10 @@
 // src/app/core/forms/submitting.component.ts
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-submitting",
+  selector: 'app-submitting',
   template: `
-    <img src="/assets/images/loading.svg">
+    <img src='/assets/images/loading.svg'>
   `,
   styles: [
     `

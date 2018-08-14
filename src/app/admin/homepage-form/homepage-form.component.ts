@@ -7,7 +7,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from '../../core/api.service';
 import { Homepage } from '../../core/models/homepage';
 // import { DatePipe } from '@angular/common';
@@ -20,7 +20,7 @@ import {
 } from './../../../core/forms/formUtils.factory';
 */
 import { HomepageFormService } from './homepage-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+// import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-homepage-form',
@@ -33,6 +33,7 @@ export class HomepageFormComponent implements OnInit, OnDestroy {
   isEdit: boolean;
   // FormBuilder form
   homepageForm: FormGroup;
+
   // Model storing initial form values
   formHomepage: Homepage;
 
@@ -247,7 +248,7 @@ export class HomepageFormComponent implements OnInit, OnDestroy {
     this.submitting = false;
     // Redirect to event detail
     this.router.navigate(['/admin/homepage', res._id]);
-    //this.router.navigate(['/homepage']);
+    // this.router.navigate(['/homepage']);
   }
 
   private _handleSubmitError(err) {

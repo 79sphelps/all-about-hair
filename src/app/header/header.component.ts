@@ -1,13 +1,13 @@
 // src/app/header/header.component.ts
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { Router, NavigationStart } from "@angular/router";
-import { filter } from "rxjs/operators";
-import { AuthService } from "../auth/auth.service";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   @Output()
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleNav() {
-    console.log("...toggling nav...");
+    console.log('...toggling nav...');
     this.navOpen = !this.navOpen;
     this.navToggled.emit(this.navOpen);
   }

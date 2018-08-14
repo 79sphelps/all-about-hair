@@ -10,9 +10,14 @@
   </li>
 
   <li class="list-group-item">
-    <strong>Photo Image:</strong>{{ photo.image }}
+    <strong>Photo Image:</strong>{{ photo.path }}
+  </li>
+
+  <li class="list-group-item" style="margin: auto auto;">
+    <img [src]="photo.path" />
   </li>
 </ul>
+
 <!-- 
 <div class="card-body" *ngIf="service.description" style="padding: 10px;">
   <p class="card-text lead" [innerHTML]="service.description"></p>

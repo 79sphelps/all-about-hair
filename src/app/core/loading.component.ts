@@ -1,10 +1,10 @@
 // src/app/core/loading.component.ts
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-loading",
+  selector: 'app-loading',
   template: `
-    <img src="/assets/images/gif-loading-images-2.gif">
+    <img src='/assets/images/gif-loading-images-2.gif'>
   `,
   styles: [
     `

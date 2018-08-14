@@ -18,4 +18,4 @@ export class Homepage {
   ) {}
 }
 
-// "startDatetime": ISODate("2018-05-04T18:00:00.000-04:00"),
+// "startDatetime": ISODate("2018-05-04T18:00:00.000-04:00")

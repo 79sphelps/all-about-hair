@@ -39,7 +39,8 @@
     -->
 
     <div formArrayName="pricing">
-      <div *ngFor="let item of serviceForm.controls.pricing.controls; index as i" style="display: inline">
+      <!-- <div *ngFor="let item of serviceForm.controls.pricing.controls; index as i" style="display: inline"> -->
+      <div *ngFor="let item of pricing.controls; index as i" style="display: inline">  
         <label>Service {{ i }}: </label>  
         <div [formGroupName]="i">
           <input type="text" formControlName="type" [attr.value]="item.type"> 
@@ -50,7 +51,6 @@
         </div>
       </div>
     </div>  
-
 
     <!-- Submit -->
     <div class="form-group">
@@ -68,4 +68,4 @@
   </form>
 
   <button (click)="addServiceItem()">Add Service Item</button>
-  <button (click)="setPreset()">Set preset</button>
+  <!-- <button (click)="setPreset()">Set preset</button> -->

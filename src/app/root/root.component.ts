@@ -1,13 +1,13 @@
 // src/app/app.component.ts
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 // import { fromEvent } from 'rxjs';
-import { fromEvent } from "rxjs/observable/fromEvent";
-import { debounceTime } from "rxjs/operators";
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./root.component.html",
-  styleUrls: ["./root.component.scss"]
+  selector: 'app-root',
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.scss']
 })
 export class RootComponent implements OnInit {
   navOpen: boolean;
@@ -17,7 +17,7 @@ export class RootComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    fromEvent(window, "resize")
+    fromEvent(window, 'resize')
       .pipe(debounceTime(200))
       .subscribe(event => this._resizeFn(event));
 

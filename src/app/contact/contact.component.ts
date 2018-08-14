@@ -11,18 +11,18 @@ import { Contact } from '../core/models/contact';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   pageTitle = 'Contact Us';
 
   homepageSub: Subscription;
   homepage: Homepage;
   contactSub: Subscription;
   contact: Contact;
- 
+
   loading: boolean;
   error: boolean;
   query = '';
- 
+
   contactInfoLoaded: Promise<boolean>;
 
   constructor(
@@ -30,13 +30,13 @@ export class ContactComponent implements OnInit {
     public utils: UtilsService,
     private api: ApiService
   ) {}
- 
+
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getContactDetails();
   }
- 
+
   private _getHomepageDetails() {
     this.loading = true;
     // Get future, public events
@@ -52,7 +52,7 @@ export class ContactComponent implements OnInit {
       }
     );
   }
- 
+
   private _getContactDetails() {
    this.loading = true;
    // Get future, public events
@@ -69,7 +69,7 @@ export class ContactComponent implements OnInit {
      }
    );
  }
- 
+
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
     this.contactSub.unsubscribe();

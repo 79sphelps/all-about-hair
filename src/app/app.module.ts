@@ -11,7 +11,7 @@ import { ServicesPublicComponent } from './services-public/services-public.compo
 import { GalleryPublicComponent } from './gallery-public/gallery-public.component';
 import { FeatureComponent } from './feature/feature.component';
 import { AboutComponent } from './about/about.component';
-import { TeamComponent } from './team/team.component';
+import { TeamPublicComponent } from './team-public/team-public.component';
 import { PriceComponent } from './price/price.component';
 import { ContactComponent } from './contact/contact.component';
 import { BannerComponent } from './banner/banner.component';
@@ -33,6 +33,7 @@ import { CoreModule } from './core/core.module';
 
 // Auth Modules
 import { AuthModule } from './auth/auth.module';
+
 import { ServicesFormComponent } from './admin/services-form/services-form.component';
 import { ServicesUpdateComponent } from './admin/services-update/services-update.component';
 import { ServiceComponent } from './admin/service/service.component';
@@ -40,6 +41,7 @@ import { ServicesComponent } from './admin/services/services.component';
 import { ServicesNewComponent } from './admin/services-new/services-new.component';
 import { ServiceDetailComponent } from './admin/service/service-detail/service-detail.component';
 import { DeleteServiceComponent } from './admin/services-update/delete-service/delete-service.component';
+
 import { GalleryPhotoComponent } from './admin/gallery-photo/gallery-photo.component';
 import { PhotoDetailComponent } from './admin/gallery-photo/photo-detail/photo-detail.component';
 import { GalleryNewComponent } from './admin/gallery-new/gallery-new.component';
@@ -47,6 +49,14 @@ import { GalleryUpdateComponent } from './admin/gallery-update/gallery-update.co
 import { DeletePhotoComponent } from './admin/gallery-update/delete-photo/delete-photo.component';
 import { GalleryFormComponent } from './admin/gallery-form/gallery-form.component';
 import { GalleryComponent } from './admin/gallery/gallery.component';
+
+import { TeamNewComponent } from './admin/team-new/team-new.component';
+import { TeamMemberComponent } from './admin/team-member/team-member.component';
+import { MemberDetailComponent } from './admin/team-member/member-detail/member-detail.component';
+import { TeamUpdateComponent } from './admin/team-update/team-update.component';
+import { DeleteMemberComponent } from './admin/team-update/delete-member/delete-member.component';
+import { TeamFormComponent } from './admin/team-form/team-form.component';
+import { TeamComponent } from './admin/team/team.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +67,7 @@ import { GalleryComponent } from './admin/gallery/gallery.component';
     GalleryPublicComponent,
     FeatureComponent,
     AboutComponent,
-    TeamComponent,
+    TeamPublicComponent,
     PriceComponent,
     ContactComponent,
     BannerComponent,
@@ -81,7 +91,14 @@ import { GalleryComponent } from './admin/gallery/gallery.component';
     GalleryUpdateComponent,
     DeletePhotoComponent,
     GalleryFormComponent,
-    GalleryComponent
+    GalleryComponent,
+    TeamNewComponent,
+    TeamMemberComponent,
+    MemberDetailComponent,
+    TeamUpdateComponent,
+    DeleteMemberComponent,
+    TeamFormComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
