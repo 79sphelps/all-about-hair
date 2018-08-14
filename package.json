@@ -2,13 +2,15 @@
   "name": "all-about-hair",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -41,7 +43,6 @@
     "@angular/compiler-cli": "^5.2.0",
     "typescript": "~2.5.3"
   },
-  "postinstall": "ng build --aot --prod",
   "engines": {
     "node": "6.11.0",
     "npm": "3.10.10"

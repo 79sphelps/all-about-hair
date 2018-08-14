@@ -16,13 +16,6 @@ const cors = require("cors");
 // Config
 const config = require("./server/config");
 
-// server.js
-/*
- |--------------------------------------
- | Dependencies
- |--------------------------------------
- */
-
 mongoose.connect(config.MONGO_URI);
 const monDb = mongoose.connection;
 
