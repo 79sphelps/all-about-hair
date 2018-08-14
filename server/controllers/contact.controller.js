@@ -15,8 +15,6 @@ module.exports.getContactInfo = function(req, res, next) {
             return res.status(500).send({ message: err.message });
         }
 
-        console.log(data);
-
         if (data) {
             data.forEach(item => {
                 dataArr.push(item);
