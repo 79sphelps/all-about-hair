@@ -23,11 +23,12 @@
         <div class="container col-12 col-sm-12 col-md-6 col-lg-6">
           <!-- <img src="img_avatar.png" alt="Avatar" class="image"> -->
           <!-- <img class="image" src="assets/img/about-img.jpg" alt=""> -->
-          <img class="image" [src]="homepage.aboutImage" alt="">
+          <img *ngIf="homepage" class="image" [src]="homepage.aboutImage" alt=""
+            style="border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
           
            
           <div class="overlay" style="margin-left: -20px;">
-            <a [href]="homepage.aboutVideoLink" class="play-btn">
+            <a *ngIf="homepage" [href]="homepage.aboutVideoLink" class="play-btn">
               <img class="play" src="assets/img/play.png" alt="" style="margin-left: -20px;">
             </a>
             <!--
