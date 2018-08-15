@@ -130,8 +130,21 @@ $(document).ready(function(){
     });
 
     $(document).ready(function() {
+        // Smooth scroll from just the #bannerBtn
+        var $root = $('html, body');
+        $('#bannerBtn').click(function() {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+            
+            return false;
+        });
 
-        // Smooth scrolling from anchor tags
+        /*
+        // Smooth scrolling from all anchor tags
         var $root = $('html, body');
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');
@@ -143,7 +156,7 @@ $(document).ready(function(){
             
             return false;
         });
-
+        */
 
         $('#mc_embed_signup').find('form').ajaxChimp();
         

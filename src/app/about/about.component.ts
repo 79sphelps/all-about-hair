@@ -1,20 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ApiService } from '../core/api.service';
+import { UtilsService } from '../core/utils.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Homepage } from '../core/models/homepage';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
-  aboutMsg = `All About Hair is an Aveda Exclusive Salon with a mission
-              to provide an upscale experience with a friendly, neighborhood feeling.
-              Stylists have been chosen based on talent, passion, personality & commitment.
-              Ongoing training & support will assure each guest receives the utmost enjoyable
-              experience, along with a personally tailored look that fits their expectations.`;
+export class AboutComponent implements OnInit, OnDestroy {
+  pageTitle = 'About Us';
 
-  constructor() { }
+  homepageSub: Subscription;
+  homepage: Homepage;
+
+  loading: boolean;
+  error: boolean;
+  query: '';
+
+  constructor(
+    private title: Title,
+    public utils: UtilsService,
+    private api: ApiService) { }
 
   ngOnInit() {
+    this.title.setTitle(this.pageTitle);
+    this._getHomepageDetails();
+  }
+
+  private _getHomepageDetails() {
+    this.loading = true;
+    // Get future, public events
+    this.homepageSub = this.api.getHomepageDetails$().subscribe(
+      res => {
+        this.homepage = res[0];
+        this.loading = false;
+      },
+      err => {
+        console.error(err);
+        this.loading = false;
+        this.error = true;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.homepageSub.unsubscribe();
   }
 
 }
