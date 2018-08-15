@@ -6,7 +6,9 @@ const config = require(appRoot + "/server/config");
 const mongoose = require("mongoose");
 mongoose.connect(config.MONGO_URI);
 
-const Contact = require(appRoot + "/server/models/contact");
+const Contact = require(appRoot + "/server/models/Contact");
+
+
 
 const _projection = "headline headlineSubMsg";
 
