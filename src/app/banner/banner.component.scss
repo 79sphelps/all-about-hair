@@ -31,7 +31,7 @@
 */
 
 .phone-only {
-    @include for-phone-only { font-size: grey; }
+    @include for-phone-only { text-align: center; }
 }
   
 .tablet-portait-only {
