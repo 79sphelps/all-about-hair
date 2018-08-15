@@ -48,6 +48,8 @@ app.use(cors());
 const port = process.env.PORT || "8081";
 app.set("port", port);
 
+console.log("********* ", process.env.NODE_ENV);
+
 // Set static path to Angular app in dist
 // Don't run in dev
 if (process.env.NODE_ENV !== "dev") {
@@ -62,12 +64,13 @@ if (process.env.NODE_ENV !== "dev") {
  |--------------------------------------
  */
 
-require("./server/api")(app, config);
+// require("./server/api")(app, config);
+require(path.join(__dirname, "/server/api"))(app, config);
 
 // Pass routing to Angular app
 // Don't run in dev
 if (process.env.NODE_ENV !== "dev") {
-  app.get("*", function(req, res) {
+  app.get("/*", function(req, res) {
     //res.sendFile(path.join("/dist/all-about-hair/index.html"));
     res.sendFile(path.join(__dirname, "/dist/index.html"));
     //res.sendFile(path.join("/dist/event-planning-nw/index.html"));
