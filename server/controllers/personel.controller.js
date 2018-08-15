@@ -4,7 +4,7 @@ const config = require("../config");
 const mongoose = require("mongoose");
 mongoose.connect(config.MONGO_URI);
 
-const Personel = require("../models/personel");
+const Personel = require("../models/Personel");
 
 const _projection = "headline headlineSubMsg";
 

@@ -60,9 +60,6 @@ module.exports = function(app, config) {
     res.send("API Works");
   });
 
-  console.log("********* TT", process.env.NODE_ENV);
-  console.log("--------- ", appRoot + "/server/routes/contact.router" );
-
   require(appRoot + "/server/routes/contact.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/gallery.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/homepage.router")(app, jwtCheck, adminCheck);
