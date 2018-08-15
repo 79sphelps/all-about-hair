@@ -8,9 +8,6 @@
 const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 
-const Homepage = require("./models/Homepage");
-
-
 /*
 const Contact = require("./models/Contact");
 const Footer = require("./models/Footer");
@@ -63,12 +60,22 @@ module.exports = function(app, config) {
     res.send("API Works");
   });
 
+  console.log("********* TT", process.env.NODE_ENV);
+  console.log("--------- ", appRoot + "/server/routes/contact.router" );
+
+  require(appRoot + "/server/routes/contact.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/gallery.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/homepage.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/personel.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/services.router")(app, jwtCheck, adminCheck);
+
+  /*
   require("./routes/contact.router")(app, jwtCheck, adminCheck);
   require("./routes/gallery.router")(app, jwtCheck, adminCheck);
   require("./routes/homepage.router")(app, jwtCheck, adminCheck);
   require("./routes/personel.router")(app, jwtCheck, adminCheck);
   require("./routes/services.router")(app, jwtCheck, adminCheck);
-
+  */
   
  
   //require("./routes/homepage.router")(app)

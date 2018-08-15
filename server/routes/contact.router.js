@@ -1,4 +1,4 @@
-const ctrlContact = require('../controllers/contact.controller');
+const ctrlContact = require(appRoot + "/server/controllers/contact.controller");
 
 
 module.exports = function(app, jwtCheck, adminCheck) {
