@@ -1,4 +1,22 @@
-$(document).ready(function() {
+/*
+let anchorlinks = document.querySelectorAll('a[href^="#"]')
+    
+for (let item of anchorlinks) { // relitere 
+    item.addEventListener('click', (e)=> {
+        let hashval = item.getAttribute('href')
+        let target = document.querySelector(hashval)
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+        history.pushState(null, null, hashval)
+        e.preventDefault()
+    })
+}
+*/
+
+$(document).ready(function($) {
+
   $("nav div ul li a").on("click", function(evt) {
     evt.preventDefault();
     var offset = $(this.hash).offset();
@@ -43,4 +61,5 @@ $(document).ready(function() {
         $(current_page).show();
       });
   });
+
 });

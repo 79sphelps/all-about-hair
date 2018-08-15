@@ -39,3 +39,10 @@
     }
   }
 }
+
+.hide-before-animated {
+  visibility: hidden;
+}
+.hide-before-animated.animated {
+  visibility: visible;
+}
