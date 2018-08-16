@@ -160,6 +160,11 @@ $(document).ready(function(){
 
         $('#mc_embed_signup').find('form').ajaxChimp();
         
+
+        $('.nav-item a').click(function(){
+            var match = $(this).attr('href').match(/#\S+/);
+            ga('send', 'pageview', location.pathname + match[0]);
+          });
     });   
 
  });
