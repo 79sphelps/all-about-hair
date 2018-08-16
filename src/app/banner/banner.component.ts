@@ -47,6 +47,15 @@ export class BannerComponent implements OnInit, OnDestroy {
     );
   }
 
+  public sendEvent() {
+    (<any>window).ga('send', 'event', {
+      eventCategory: 'eventCategory',
+      eventLabel: 'eventLabel',
+      eventAction: 'eventAction',
+      eventValue: 10
+    });
+  }
+
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
   }

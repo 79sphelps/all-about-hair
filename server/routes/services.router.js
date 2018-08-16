@@ -2,7 +2,6 @@ const ctrlServices = require('../controllers/services.controller');
 
 
 module.exports = function(app, jwtCheck, adminCheck) {
-    console.log('... routing ...');
     app.get('/api/admin/services', ctrlServices.getServices);
     app.get('/api/admin/services/:id', jwtCheck, ctrlServices.getServiceById);
     app.post('/api/admin/services', jwtCheck, adminCheck, ctrlServices.create);

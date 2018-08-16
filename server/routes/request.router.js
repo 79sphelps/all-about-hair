@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const ctrlRequest = require('../controllers/request.controller');
+const ctrlRequests = require('../controllers/request.controller');
 
-router.get('/requests', ctrlRequest.getRequests);
-router.post('/requests', ctrlRequest.create);
-router.put('/requests/:id', ctrlRequest.update);
-router.delete('/requests/:id', ctrlRequest.delete);
 
-module.exports = router;
+module.exports = function(app, jwtCheck, adminCheck) {
+    app.get('/api/admin/requests', ctrlRequests.getRequests);
+    app.get('/api/admin/requests/:id', jwtCheck, ctrlRequests.getRequestById);
+    app.post('/api/requests/new', ctrlRequests.create);
+    app.put('/api/admin/requests/update/:id', jwtCheck, adminCheck, ctrlRequests.update);
+    app.delete('/api/admin/requests/:id', jwtCheck, adminCheck, ctrlRequests.delete);
+};

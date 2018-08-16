@@ -25,8 +25,18 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleNav() {
-    console.log('...toggling nav...');
     this.navOpen = !this.navOpen;
     this.navToggled.emit(this.navOpen);
   }
+
+  /*
+  sendEvent() {
+    (<any>window).ga('send', 'event', {
+      eventCategory: 'eventCategory',
+      eventLabel: 'eventLabel',
+      eventAction: 'eventAction',
+      eventValue: 10
+    });
+  }
+  */
 }

@@ -90,13 +90,17 @@
     </form>
     -->
 
-    <form class="form-area mt-30" id="myForm" action="mail.php" method="post">
+    <app-request-form></app-request-form>
+
+    <!-- 
+    <form class="form-area mt-30" id="myForm" (ngSubmit)="onSubmit()">
       <div class="form-group input-group">
         <span class="input-group-addon">
           <i class="fa fa-user prefix grey-text"></i>
         </span>
         <input type="text" class="form-control" placeholder="Your name">
       </div>
+
       <div class="form-group input-group has-danger">
         <span class="input-group-addon">
           <i class="fa fa-envelope prefix grey-text"></i>
@@ -108,15 +112,10 @@
         <span class="input-group-addon">
           <i class="fa fa-tag prefix grey-text"></i>
         </span>
-        <input type="text" class="form-control" placeholder="Subject">
+        <input type="text" class="form-control" placeholder="Category">
       </div>
 
       <div class="form-group">
-        <!--
-        <span class="input-group-addon">
-          <i class="fa fa-pencil prefix grey-text"></i>
-        </span>
-        -->
         <label for="name">Your message</label>
         <textarea class="form-control" rows="5" id="message"></textarea>
       </div>
@@ -128,6 +127,7 @@
         </button>
       </div>
     </form>
+    -->
 
   </div>
 </section>

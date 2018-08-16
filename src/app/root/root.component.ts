@@ -4,6 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { debounceTime } from 'rxjs/operators';
 
+import {Router, NavigationEnd} from '@angular/router';
+import { GoogleAnalyticsEventsService } from '../google-analytics-events.service';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
@@ -14,7 +18,15 @@ export class RootComponent implements OnInit {
   minHeight: string;
   private _initWinHeight = 0;
 
-  constructor() {}
+
+  constructor(public router: Router, public googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
+      }
+    });
+  }
 
   ngOnInit() {
     fromEvent(window, 'resize')

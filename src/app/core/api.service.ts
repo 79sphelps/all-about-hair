@@ -18,6 +18,7 @@ import { Personel } from './models/personel';
 import { Service } from './models/service';
 import { Gallery } from './models/gallery';
 import { Contact } from './models/contact';
+import { Request } from './models/request';
 
 @Injectable()
 export class ApiService {
@@ -136,7 +137,6 @@ export class ApiService {
   // ---------------------------------------------------------------------
   // GET list of public gallery details
   getGallery$(): Observable<Gallery[]> {
-    console.log('... api service ... getGallery ...');
     return this.http
       .get(`${ENV.BASE_API}admin/gallery`)
       .pipe(catchError(error => this._handleError(error)));
@@ -221,6 +221,52 @@ export class ApiService {
   deletePersonel$(id: string): Observable<any> {
     return this.http
       .delete(`${ENV.BASE_API}admin/personel/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // ---------------------------------------------------------------------
+  // GET list of requests
+  getRequests$(): Observable<Request[]> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/requests`)
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // GET an personel by ID (login required)
+  getRequestById$(id: string): Observable<Request> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/requests/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // POST new personel (admin only)
+  postRequest$(request: Request): Observable<Request> {
+    delete request._id;
+
+    return this.http
+      .post(`${ENV.BASE_API}requests/new`, request, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // PUT existing personel (admin only)
+  editRequest$(id: string, request: Request): Observable<Request> {
+    return this.http
+      .put(`${ENV.BASE_API}admin/requests/update/${id}`, request, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // DELETE existing personel (admin only)
+  deleteRequest$(id: string): Observable<any> {
+    return this.http
+      .delete(`${ENV.BASE_API}admin/requests/${id}`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(catchError(error => this._handleError(error)));

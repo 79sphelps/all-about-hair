@@ -46,5 +46,6 @@ module.exports = function(app, config) {
   require(appRoot + "/server/routes/homepage.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/personel.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/services.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/request.router")(app, jwtCheck, adminCheck);
   
 };

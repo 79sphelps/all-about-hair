@@ -28,6 +28,13 @@ import { TeamMemberComponent } from './admin/team-member/team-member.component';
 import { TeamNewComponent } from './admin/team-new/team-new.component';
 import { TeamUpdateComponent } from './admin/team-update/team-update.component';
 
+import { RequestsComponent } from './admin/requests/requests.component';
+import { RequestComponent } from './admin/request/request.component';
+import { RequestNewComponent } from './admin/request-new/request-new.component';
+import { RequestUpdateComponent } from './admin/request-update/request-update.component';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -36,6 +43,10 @@ const routes: Routes = [
   {
     path: 'callback',
     component: CallbackComponent
+  },
+  {
+    path: 'requests/new',
+    component: RequestNewComponent
   },
   {
     path: 'admin',
@@ -104,6 +115,18 @@ const routes: Routes = [
       {
         path: 'personel/:id',
         component: TeamMemberComponent
+      },
+      {
+        path: 'requests',
+        component: RequestsComponent
+      },
+      {
+        path: 'requests/update/:id',
+        component: RequestUpdateComponent
+      },
+      {
+        path: 'requests/:id',
+        component: RequestComponent
       }
     ]
   }

@@ -17,7 +17,7 @@
             <span class="divider">|</span>
             <a (click)="auth.logout()">Log Out</a>
           </span>
-        </ng-template>
+        </ng-template>s
       </div>
       -->
 
@@ -127,6 +127,11 @@
             <a href="/admin/contact" data-target=".navbar-collapse.show">Contact
             </a>
           </li>          
+
+          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+            <a href="/admin/requests" data-target=".navbar-collapse.show">User Requests
+            </a>
+          </li>     
 
           <!-- Dropdown -->
           <!--

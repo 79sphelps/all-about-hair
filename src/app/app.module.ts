@@ -57,6 +57,15 @@ import { TeamUpdateComponent } from './admin/team-update/team-update.component';
 import { DeleteMemberComponent } from './admin/team-update/delete-member/delete-member.component';
 import { TeamFormComponent } from './admin/team-form/team-form.component';
 import { TeamComponent } from './admin/team/team.component';
+import { RequestsComponent } from './admin/requests/requests.component';
+import { RequestComponent } from './admin/request/request.component';
+import { RequestDetailComponent } from './admin/request/request-detail/request-detail.component';
+import { RequestNewComponent } from './admin/request-new/request-new.component';
+import { RequestUpdateComponent } from './admin/request-update/request-update.component';
+import { DeleteRequestComponent } from './admin/request-update/delete-request/delete-request.component';
+import { RequestFormComponent } from './admin/request-form/request-form.component';
+
+import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
 
 @NgModule({
   declarations: [
@@ -98,7 +107,14 @@ import { TeamComponent } from './admin/team/team.component';
     TeamUpdateComponent,
     DeleteMemberComponent,
     TeamFormComponent,
-    TeamComponent
+    TeamComponent,
+    RequestsComponent,
+    RequestComponent,
+    RequestDetailComponent,
+    RequestNewComponent,
+    RequestUpdateComponent,
+    DeleteRequestComponent,
+    RequestFormComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +126,7 @@ import { TeamComponent } from './admin/team/team.component';
     CoreModule.forRoot(),
     AuthModule.forRoot()
   ],
-  providers: [Title],
+  providers: [Title, GoogleAnalyticsEventsService],
   bootstrap: [RootComponent]
 })
 export class AppModule {}

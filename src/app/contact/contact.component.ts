@@ -70,6 +70,7 @@ export class ContactComponent implements OnInit, OnDestroy {
    );
  }
 
+
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
     this.contactSub.unsubscribe();
