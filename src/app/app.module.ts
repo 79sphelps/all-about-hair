@@ -19,7 +19,7 @@ import { BannerComponent } from './banner/banner.component';
 // Routing Module
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppointmentComponent } from './appointment/appointment.component';
+
 import { SpecialsComponent } from './specials/specials.component';
 
 import { CallbackComponent } from './callback/callback.component';
@@ -67,7 +67,14 @@ import { RequestFormComponent } from './admin/request-form/request-form.componen
 
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
 import { CalendarComponent } from './calendar/calendar.component';
+
+import { AppointmentComponent } from './admin/appointment/appointment.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
+import { AppointmentsComponent } from './admin/appointments/appointments.component';
+import { AppointmentsUpdateComponent } from './admin/appointments-update/appointments-update.component';
+import { DeleteAppointmentComponent } from './admin/appointments-update/delete-appointment/delete-appointment.component';
+import { AppointmentsNewComponent } from './admin/appointments-new/appointments-new.component';
+import { AppointmentDetailComponent } from './admin/appointment/appointment-detail/appointment-detail.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +89,6 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
     PriceComponent,
     ContactComponent,
     BannerComponent,
-    AppointmentComponent,
     SpecialsComponent,
     CallbackComponent,
     HomepageDetailsComponent,
@@ -118,7 +124,14 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
     DeleteRequestComponent,
     RequestFormComponent,
     CalendarComponent,
-    AppointmentFormComponent
+
+    AppointmentComponent,
+    AppointmentFormComponent,
+    AppointmentsComponent,
+    AppointmentsUpdateComponent,
+    DeleteAppointmentComponent,
+    AppointmentsNewComponent,
+    AppointmentDetailComponent
   ],
   imports: [
     BrowserModule,

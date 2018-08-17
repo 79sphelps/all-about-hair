@@ -33,6 +33,11 @@ import { RequestComponent } from './admin/request/request.component';
 import { RequestNewComponent } from './admin/request-new/request-new.component';
 import { RequestUpdateComponent } from './admin/request-update/request-update.component';
 
+import { AppointmentsComponent } from './admin/appointments/appointments.component';
+import { AppointmentComponent } from './admin/appointment/appointment.component';
+import { AppointmentsNewComponent } from './admin/appointments-new/appointments-new.component';
+import { AppointmentsUpdateComponent } from './admin/appointments-update/appointments-update.component';
+
 import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
@@ -47,6 +52,10 @@ const routes: Routes = [
   {
     path: 'requests/new',
     component: RequestNewComponent
+  },
+  {
+    path: 'appointments/new',
+    component: AppointmentsNewComponent
   },
   {
     path: 'calendar',
@@ -131,6 +140,18 @@ const routes: Routes = [
       {
         path: 'requests/:id',
         component: RequestComponent
+      },
+      {
+        path: 'appointments',
+        component: AppointmentsComponent
+      },
+      {
+        path: 'appointments/update/:id',
+        component: AppointmentsUpdateComponent
+      },
+      {
+        path: 'appointments/:id',
+        component: AppointmentComponent
       }
     ]
   }

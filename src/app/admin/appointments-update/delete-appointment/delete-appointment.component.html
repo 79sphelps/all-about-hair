@@ -1,0 +1,25 @@
+<!-- src/app/pages/admin/update-event/delete-event.component/delete-event.component.html -->
+<p class="lead">
+    You are deleting the "
+    <strong [innerHTML]="appointment.name"></strong>" appointment.
+  </p>
+  
+  <p class="text-danger">
+    Deleting this appointment will be permanent. Please proceed with caution!
+  </p>
+  
+  <div class="form-group">
+    <label for="deleteAppointment">Confirm appointment name:</label>
+    <input type="text" id="deleteAppointment" class="form-control" [(ngModel)]="confirmDelete">
+  </div>
+  
+  <!-- Delete button -->
+  <p>
+    <button class="btn btn-danger" (click)="removeAppointment()" [disabled]="confirmDelete !== appointment.name || submitting">Delete Appointment</button>
+    <app-submitting *ngIf="submitting"></app-submitting>
+  </p>
+  
+  <!-- Error deleting event -->
+  <p *ngIf="error" class="alert alert-danger">
+    <strong>Oops!</strong> There was an error deleting this appointment. Please try again.
+  </p>

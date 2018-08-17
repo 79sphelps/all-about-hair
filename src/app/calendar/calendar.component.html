@@ -4,15 +4,15 @@
 
     <app-loading *ngIf="loading"></app-loading>
 
-    <div class="responsiveCal" style="display: block; margin: 0 auto; text-align: center;">
+    <div class="responsiveCal" style="display: block; margin: 0 auto; text-align: center; width: 100%;">
 
       <iframe src="https://calendar.google.com/calendar/embed?src=j4okpbp2lcn3fdaph05gll6sto%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
       
     </div>
 
     
-    <app-appointment-form></app-appointment-form>
-    
+    <app-appointment-form *ngIf="!auth.loggedIn && !auth.isAdmin"></app-appointment-form>
+    <app-appointments *ngIf="auth.loggedIn && auth.isAdmin"></app-appointments>
 
   </div>
 </div>

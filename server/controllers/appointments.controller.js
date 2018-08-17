@@ -9,7 +9,7 @@ const Appointments = require("../models/Appointments");
 const _projection = "headline headlineSubMsg";
 
 module.exports.getAppointments = function(req, res, next) {
-    Request.find({}, (err, data) => {
+    Appointments.find({}, (err, data) => {
         let dataArr = [];
         if (err) {
             return res.status(500).send({ message: err.message });

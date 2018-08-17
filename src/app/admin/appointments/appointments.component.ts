@@ -1,0 +1,69 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { AuthService } from './../../auth/auth.service';
+import { ApiService } from './../../core/api.service';
+import { UtilsService } from './../../core/utils.service';
+import { FilterSortService } from './../../core/filter-sort.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Appointment } from './../../core/models/appointment';
+import { expandCollapse } from './../../core/expand-collapse.animation';
+
+@Component({
+  selector: 'app-appointments',
+  templateUrl: './appointments.component.html',
+  styleUrls: ['./appointments.component.scss'],
+  animations: [expandCollapse]
+})
+export class AppointmentsComponent implements OnInit, OnDestroy {
+  pageTitle = 'User Appointments';
+  appointmentsSub: Subscription;
+  appointmentList: Appointment[];
+  filteredRequests: Appointment[];
+  loading: boolean;
+  error: boolean;
+  query = '';
+
+  constructor(
+    private title: Title,
+    public auth: AuthService,
+    private api: ApiService,
+    public utils: UtilsService,
+    public fs: FilterSortService
+  ) {}
+
+  ngOnInit() {
+    this.title.setTitle(this.pageTitle);
+    this._getAppointmentsList();
+  }
+
+  private _getAppointmentsList() {
+    this.loading = true;
+
+    // Get all (admin) events
+    this.appointmentsSub = this.api.getAppointments$().subscribe(
+      res => {
+        this.appointmentList = res;
+        this.filteredRequests = res;
+        this.loading = false;
+      },
+      err => {
+        console.error(err);
+        this.loading = false;
+        this.error = true;
+      }
+    );
+  }
+
+  searchAppointments() {
+    this.filteredRequests = this.fs.search(this.appointmentList, this.query, '_id');
+  }
+
+  resetQuery() {
+    this.query = '';
+    this.filteredRequests = this.appointmentList;
+  }
+
+  ngOnDestroy() {
+    this.appointmentsSub.unsubscribe();
+  }
+}
