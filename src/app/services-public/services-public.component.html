@@ -6,6 +6,7 @@
         <div class="title text-center">
           <h1 class="mb-10">{{ homepage && homepage.servicesHeadline }}</h1>
           <p>{{ homepage && homepage.servicesSubMsg }}</p>
+          <p><a class="pricingDetails" href="#price">Pricing Details</a></p>
         </div>
       </div>
     </div>
@@ -18,8 +19,8 @@
         <div class="dec">
           <h4>
             <!-- <a href="#">{{ service.title }}</a> -->
-            <a id="serviceItem" href="#price">{{ service.title }}
-              </a>
+            <!-- <a class="serviceItem" href="#price">{{ service.title }}</a> -->
+            {{ service.title }}
           </h4>
           <p class="mt-20">
             {{ service.description }}

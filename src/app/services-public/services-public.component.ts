@@ -5,6 +5,7 @@ import { UtilsService } from '../core/utils.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Homepage } from '../core/models/homepage';
 import { Service } from '../core/models/service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-services-public',
@@ -27,7 +28,8 @@ export class ServicesPublicComponent implements OnInit, OnDestroy {
    private title: Title,
    public utils: UtilsService,
    private api: ApiService
- ) {}
+ ) {
+ }
 
  ngOnInit() {
    this.title.setTitle(this.pageTitle);

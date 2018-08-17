@@ -12,11 +12,11 @@ $(document).ready(function(){
 	$(".fullscreen").css("height", window_height)
 	$(".fitscreen").css("height", fitscreen);
 
-  //-------- Active Sticky Js ----------//
-  $(".default-header").sticky({topSpacing:0});
+    //-------- Active Sticky Js ----------//
+    $(".default-header").sticky({topSpacing:0});
 
 
-     if(document.getElementById("default-select")){
+    if(document.getElementById("default-select")){
           $('select').niceSelect();
     };
 
@@ -27,11 +27,9 @@ $(document).ready(function(){
         }
     });
 
-
-
-  // $('.navbar-nav>li>a').on('click', function(){
-  //     $('.navbar-collapse').collapse('hide');
-  // });
+    // $('.navbar-nav>li>a').on('click', function(){
+    //     $('.navbar-collapse').collapse('hide');
+    // });
 
     $('.play-btn').magnificPopup({
         type: 'iframe',
@@ -40,7 +38,6 @@ $(document).ready(function(){
         preloader: false,
         fixedContentPos: false
     });
-
 
     $('.active-works-carousel').owlCarousel({
         items:1,
@@ -60,8 +57,6 @@ $(document).ready(function(){
             }
         }
     });
-
-
 
     $('.active-gallery').owlCarousel({
         items: 6,
@@ -87,9 +82,6 @@ $(document).ready(function(){
 
         }
     });
-
-
-
 
 
     // Select all links with hashes
@@ -129,10 +121,50 @@ $(document).ready(function(){
     }
     });
 
+
+    // Smooth scroll from just the #bannerBtn
+    var $root = $('html, body');
+    $('#bannerBtn').click(function() {
+        var href = $.attr(this, 'href');
+        $root.animate({
+            scrollTop: $(href).offset().top
+        }, 1500, function () {
+            //window.location.hash = href;
+        });
+        
+        return false;
+    });
+
+    $('.pricingDetails').click(function() {
+        var href = $.attr(this, 'href');
+        $root.animate({
+            scrollTop: $(href).offset().top
+        }, 1500, function () {
+            //window.location.hash = href;
+        });
+        
+        return false;
+    });
+
+
+    $('.nav-item a').click(function(){
+        if ('href' === '#home' || 'href' === '#service' || 'href' === '#gallery' || 'href' === '#team' || 'href' === '#price' || 'href' === '#contact') {
+        var match = $(this).attr('href').match(/#\S+/);
+        ga('send', 'pageview', location.pathname + match[0]);
+        }
+    });
+
+
+
+    /*
     $(document).ready(function() {
         // Smooth scroll from just the #bannerBtn
         var $root = $('html, body');
+
         $('#bannerBtn').click(function() {
+
+            console.log('...bannerBtn...');
+
             var href = $.attr(this, 'href');
             $root.animate({
                 scrollTop: $(href).offset().top
@@ -142,36 +174,9 @@ $(document).ready(function(){
             
             return false;
         });
-
-        $('#serviceItem').click(function() {
-            var href = $.attr(this, 'href');
-            $root.animate({
-                scrollTop: $(href).offset().top
-            }, 1500, function () {
-                window.location.hash = href;
-            });
-            
-            return false;
-        });
-
-        /*
-        // Smooth scrolling from all anchor tags
-        var $root = $('html, body');
-        $('a[href^="#"]').click(function() {
-            var href = $.attr(this, 'href');
-            $root.animate({
-                scrollTop: $(href).offset().top
-            }, 500, function () {
-                window.location.hash = href;
-            });
-            
-            return false;
-        });
-        */
 
         $('#mc_embed_signup').find('form').ajaxChimp();
         
-
         $('.nav-item a').click(function(){
             if ('href' === '#home' || 'href' === '#service' || 'href' === '#gallery' || 'href' === '#team' || 'href' === '#price' || 'href' === '#contact') {
             var match = $(this).attr('href').match(/#\S+/);
@@ -179,5 +184,23 @@ $(document).ready(function(){
             }
           });
     });   
+    */
+
 
  });
+
+
+/*
+// Smooth scrolling from all anchor tags
+var $root = $('html, body');
+$('a[href^="#"]').click(function() {
+    var href = $.attr(this, 'href');
+    $root.animate({
+        scrollTop: $(href).offset().top
+    }, 500, function () {
+        window.location.hash = href;
+    });
+    
+    return false;
+});
+*/

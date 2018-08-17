@@ -67,7 +67,7 @@
           </li>
           -->
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#home" data-toggle="collapse" data-target=".navbar-collapse.show">Home
               <span class="sr-only">(current)</span>
             </a>
@@ -79,7 +79,7 @@
           </li>
 
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#service" data-toggle="collapse" data-target=".navbar-collapse.show">Services
             </a>
           </li>
@@ -89,7 +89,7 @@
             </a>
           </li>          
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#gallery" data-toggle="collapse" data-target=".navbar-collapse.show">Gallery
             </a>
           </li>
@@ -99,7 +99,7 @@
             </a>
           </li>
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#team" data-toggle="collapse" data-target=".navbar-collapse.show">Team
             </a>
           </li>
@@ -110,7 +110,7 @@
           </li>
 
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#price" data-toggle="collapse" data-target=".navbar-collapse.show">Prices
             </a>
           </li>
@@ -122,7 +122,7 @@
           </li>
           -->
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url == '/'" class="nav-item active">
+          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
             <a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.show">Contact
             </a>
           </li>
