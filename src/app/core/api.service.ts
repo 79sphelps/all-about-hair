@@ -19,6 +19,7 @@ import { Service } from './models/service';
 import { Gallery } from './models/gallery';
 import { Contact } from './models/contact';
 import { Request } from './models/request';
+import { Appointment } from './models/appointment';
 
 @Injectable()
 export class ApiService {
@@ -267,6 +268,52 @@ export class ApiService {
   deleteRequest$(id: string): Observable<any> {
     return this.http
       .delete(`${ENV.BASE_API}admin/requests/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+// ---------------------------------------------------------------------
+  // GET list of requests
+  getAppointments$(): Observable<Appointment[]> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/appointments`)
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // GET an personel by ID (login required)
+  getAppointmentById$(id: string): Observable<Appointment> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/appointments/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // POST new personel (admin only)
+  postAppointment$(appt: Appointment): Observable<Appointment> {
+    delete appt._id;
+
+    return this.http
+      .post(`${ENV.BASE_API}appointments/new`, appt, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // PUT existing personel (admin only)
+  editAppointment$(id: string, appt: Appointment): Observable<Appointment> {
+    return this.http
+      .put(`${ENV.BASE_API}admin/appointments/update/${id}`, appt, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // DELETE existing personel (admin only)
+  deleteAppointment$(id: string): Observable<any> {
+    return this.http
+      .delete(`${ENV.BASE_API}admin/appointments/${id}`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(catchError(error => this._handleError(error)));

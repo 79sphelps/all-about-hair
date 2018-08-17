@@ -143,6 +143,17 @@ $(document).ready(function(){
             return false;
         });
 
+        $('#serviceItem').click(function() {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 1500, function () {
+                window.location.hash = href;
+            });
+            
+            return false;
+        });
+
         /*
         // Smooth scrolling from all anchor tags
         var $root = $('html, body');
@@ -162,8 +173,10 @@ $(document).ready(function(){
         
 
         $('.nav-item a').click(function(){
+            if ('href' === '#home' || 'href' === '#service' || 'href' === '#gallery' || 'href' === '#team' || 'href' === '#price' || 'href' === '#contact') {
             var match = $(this).attr('href').match(/#\S+/);
             ga('send', 'pageview', location.pathname + match[0]);
+            }
           });
     });   
 

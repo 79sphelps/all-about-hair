@@ -66,6 +66,8 @@ import { DeleteRequestComponent } from './admin/request-update/delete-request/de
 import { RequestFormComponent } from './admin/request-form/request-form.component';
 
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
+import { CalendarComponent } from './calendar/calendar.component';
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 
 @NgModule({
   declarations: [
@@ -114,7 +116,9 @@ import { GoogleAnalyticsEventsService } from './google-analytics-events.service'
     RequestNewComponent,
     RequestUpdateComponent,
     DeleteRequestComponent,
-    RequestFormComponent
+    RequestFormComponent,
+    CalendarComponent,
+    AppointmentFormComponent
   ],
   imports: [
     BrowserModule,

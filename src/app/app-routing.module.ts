@@ -33,7 +33,7 @@ import { RequestComponent } from './admin/request/request.component';
 import { RequestNewComponent } from './admin/request-new/request-new.component';
 import { RequestUpdateComponent } from './admin/request-update/request-update.component';
 
-
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'requests/new',
     component: RequestNewComponent
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent
   },
   {
     path: 'admin',
