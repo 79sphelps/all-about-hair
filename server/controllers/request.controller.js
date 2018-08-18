@@ -68,6 +68,8 @@ module.exports.create = function(req, res, next) {
 };
 
 module.exports.update = (req, res, next) => {
+    console.log('... controller request ...');
+
     Request.findById(req.params.id, (err, request) => {
         if (err) {
             return res.status(500).send({ message: err.message });
@@ -80,7 +82,8 @@ module.exports.update = (req, res, next) => {
         request.email = req.body.email;
         request.message = req.body.message;
         request.category = req.body.category;
-        request.date = req.body.date;
+        //request.date = req.body.date;
+        //request.date = new Date();
         
         request.save(err => {
             if (err) {

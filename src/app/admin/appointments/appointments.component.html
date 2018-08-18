@@ -44,52 +44,39 @@
             <!-- Events listing -->
             <section class="list-group" [@expandCollapse]>
 
-                <div *ngFor="let appointment of fs.search(filteredAppointments)" class=" list-group-item list-group-item-action flex-column align-items-start ">
-
-                  <div class="row" style="margin: 2px;">
-          
-                    <div class="col-3" >
-                        {{ appointment._id }}:
-                    </div>
-                    <div class="col-2" >
-                        {{ appointment.name }}
-                    </div>
-                    <div class="col-3" >
-                        <a class="btn btn-info btn-sm" [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
-                        <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a>
-                    </div>
-          
-                  </div>
-          
-                </div>
-
-              <!--  
               <div *ngFor="let appointment of fs.search(filteredAppointments)" class=" list-group-item list-group-item-action flex-column align-items-start ">
   
-                <div style="display: inline">
+                <div>
   
-                  <div style="width: 100%; float: left;">
-  
+                  <div style="display: inline; width: 100%; float: left;">
+                    
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">
-                          <h5 [innerHTML]="appointment.name"></h5>
+                        <h5>Name: </h5>
+                        {{ appointment.name }}
                       </li>
+
                       <li class="list-group-item">
-                          <p [innerHTML]="appointment.email"></p>
+                        <h5>Email:</h5>
+                        {{ appointment.email }}
                       </li>
+
                       <li class="list-group-item">
-                          <p [innerHTML]="appointment.message"></p>
+                        <h5>Category: </h5>
+                        {{ appointment.category }}
                       </li>
   
                       <li class="list-group-item">
-                          <p [innerHTML]="appointment.category"></p>
+                        <h5>Date: </h5>
+                        {{ appointment.date }}
                       </li>
-  
+
                       <li class="list-group-item">
-                        <p [innerHTML]="appointment.date"></p>
-                    </li>
+                        <h5>Message: </h5>
+                        {{ appointment.message }}
+                      </li>
                     </ul>
-  
+
                     <a class="btn btn-info btn-sm" [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
                     <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a>
                   </div>
@@ -97,7 +84,7 @@
                 </div>
   
               </div>
-              -->
+              
 
             </section>
           </ng-template>

@@ -9,8 +9,6 @@ const Appointments = require("../models/Appointments");
 const _projection = "headline headlineSubMsg";
 
 module.exports.getAppointments = function(req, res, next) {
-    console.log('... retrieving appointments via controller ...');
-
     Appointments.find({}, (err, data) => {
         let dataArr = [];
         if (err) {
@@ -39,8 +37,6 @@ module.exports.getAppointmentById = function(req, res, next) {
 }
 
 module.exports.create = function(req, res, next) {
-    console.log('... posting new appointment via controller ...');
-
     Appointments.findOne(
         { name: req.body.name },
         (err, existingAppointment) => {
@@ -72,6 +68,8 @@ module.exports.create = function(req, res, next) {
 };
 
 module.exports.update = (req, res, next) => {
+    console.log('... controller update ...');
+
     Appointments.findById(req.params.id, (err, appt) => {
         if (err) {
             return res.status(500).send({ message: err.message });

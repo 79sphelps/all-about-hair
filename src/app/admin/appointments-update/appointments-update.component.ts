@@ -39,7 +39,7 @@ export class AppointmentsUpdateComponent implements OnInit, OnDestroy {
     // Set event ID from route params and subscribe
     this.routeSub = this.route.params.subscribe(params => {
       this._id = params['id'];
-      this._getPhoto();
+      this._getAppointment();
     });
 
     // Subscribe to query params to watch for tab changes
@@ -48,7 +48,7 @@ export class AppointmentsUpdateComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _getPhoto() {
+  private _getAppointment() {
     this.loading = true;
     // GET event by ID
     this.appointmentSub = this.api.getAppointmentById$(this._id).subscribe(

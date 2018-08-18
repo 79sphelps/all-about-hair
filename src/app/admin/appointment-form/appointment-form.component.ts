@@ -188,6 +188,9 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         );
         this.router.navigate(['/calendar']);
     } else {
+
+      console.log(this.submitAppointmentObj);
+
       this.submitAppointmentSub = this.api
         .editAppointment$(this.appointment._id, this.submitAppointmentObj)
         .subscribe(
