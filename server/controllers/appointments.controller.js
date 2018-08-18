@@ -9,6 +9,8 @@ const Appointments = require("../models/Appointments");
 const _projection = "headline headlineSubMsg";
 
 module.exports.getAppointments = function(req, res, next) {
+    console.log('... retrieving appointments via controller ...');
+
     Appointments.find({}, (err, data) => {
         let dataArr = [];
         if (err) {
@@ -37,6 +39,8 @@ module.exports.getAppointmentById = function(req, res, next) {
 }
 
 module.exports.create = function(req, res, next) {
+    console.log('... posting new appointment via controller ...');
+
     Appointments.findOne(
         { name: req.body.name },
         (err, existingAppointment) => {
@@ -49,7 +53,7 @@ module.exports.create = function(req, res, next) {
                 .send({ message: "This appointment is already listed in your database." });
             }
 
-            const appt = new Request({
+            const appt = new Appointments({
                 name: req.body.name,
                 email: req.body.email,
                 message: req.body.message,

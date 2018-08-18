@@ -292,7 +292,12 @@ export class ApiService {
 
   // POST new personel (admin only)
   postAppointment$(appt: Appointment): Observable<Appointment> {
+
+    console.log('... api service ...');
+    console.log(appt);
+
     delete appt._id;
+    delete appt.date;
 
     return this.http
       .post(`${ENV.BASE_API}appointments/new`, appt, {

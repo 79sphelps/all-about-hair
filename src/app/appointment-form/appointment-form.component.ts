@@ -37,8 +37,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   formChangeSub: Subscription;
 
   // Form submission
-  submitRequestObj: Appointment;
-  submitRequestSub: Subscription;
+  submitAppointmentObj: Appointment;
+  submitAppointmentSub: Subscription;
   error: boolean;
   submitting: boolean;
   submitBtnText: string;
@@ -177,19 +177,19 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitting = true;
-    this.submitRequestObj = this._getSubmitObj();
+    this.submitAppointmentObj = this._getSubmitObj();
 
     if (!this.isEdit) {
-      this.submitRequestSub = this.api
-        .postAppointment$(this.submitRequestObj)
+      this.submitAppointmentSub = this.api
+        .postAppointment$(this.submitAppointmentObj)
         .subscribe(
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
         this.router.navigate(['/']);
     } else {
-      this.submitRequestSub = this.api
-        .editAppointment$(this.appointment._id, this.submitRequestObj)
+      this.submitAppointmentSub = this.api
+        .editAppointment$(this.appointment._id, this.submitAppointmentObj)
         .subscribe(
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
@@ -216,8 +216,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.submitRequestSub) {
-      this.submitRequestSub.unsubscribe();
+    if (this.submitAppointmentSub) {
+      this.submitAppointmentSub.unsubscribe();
     }
     this.formChangeSub.unsubscribe();
   }

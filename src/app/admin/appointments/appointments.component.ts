@@ -18,7 +18,7 @@ export class AppointmentsComponent implements OnInit, OnDestroy {
   pageTitle = 'User Appointments';
   appointmentsSub: Subscription;
   appointmentList: Appointment[];
-  filteredRequests: Appointment[];
+  filteredAppointments: Appointment[];
   loading: boolean;
   error: boolean;
   query = '';
@@ -43,7 +43,8 @@ export class AppointmentsComponent implements OnInit, OnDestroy {
     this.appointmentsSub = this.api.getAppointments$().subscribe(
       res => {
         this.appointmentList = res;
-        this.filteredRequests = res;
+        console.log(this.appointmentList);
+        this.filteredAppointments = res;
         this.loading = false;
       },
       err => {
@@ -55,12 +56,12 @@ export class AppointmentsComponent implements OnInit, OnDestroy {
   }
 
   searchAppointments() {
-    this.filteredRequests = this.fs.search(this.appointmentList, this.query, '_id');
+    this.filteredAppointments = this.fs.search(this.appointmentList, this.query, '_id');
   }
 
   resetQuery() {
     this.query = '';
-    this.filteredRequests = this.appointmentList;
+    this.filteredAppointments = this.appointmentList;
   }
 
   ngOnDestroy() {
