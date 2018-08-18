@@ -69,7 +69,7 @@ import { GoogleAnalyticsEventsService } from './google-analytics-events.service'
 import { CalendarComponent } from './calendar/calendar.component';
 
 import { AppointmentComponent } from './admin/appointment/appointment.component';
-import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
+import { AppointmentFormComponent } from './admin/appointment-form/appointment-form.component';
 import { AppointmentsComponent } from './admin/appointments/appointments.component';
 import { AppointmentsUpdateComponent } from './admin/appointments-update/appointments-update.component';
 import { DeleteAppointmentComponent } from './admin/appointments-update/delete-appointment/delete-appointment.component';

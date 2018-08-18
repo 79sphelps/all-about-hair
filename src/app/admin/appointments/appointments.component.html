@@ -43,6 +43,27 @@
   
             <!-- Events listing -->
             <section class="list-group" [@expandCollapse]>
+
+                <div *ngFor="let appointment of fs.search(filteredAppointments)" class=" list-group-item list-group-item-action flex-column align-items-start ">
+
+                  <div class="row" style="margin: 2px;">
+          
+                    <div class="col-3" >
+                        {{ appointment._id }}:
+                    </div>
+                    <div class="col-2" >
+                        {{ appointment.name }}
+                    </div>
+                    <div class="col-3" >
+                        <a class="btn btn-info btn-sm" [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
+                        <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a>
+                    </div>
+          
+                  </div>
+          
+                </div>
+
+              <!--  
               <div *ngFor="let appointment of fs.search(filteredAppointments)" class=" list-group-item list-group-item-action flex-column align-items-start ">
   
                 <div style="display: inline">
@@ -70,16 +91,14 @@
                     </ul>
   
                     <a class="btn btn-info btn-sm" [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
-                    <!-- <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a> -->
+                    <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a>
                   </div>
-                  <!-- 
-                  <div style="width: 20%; float: right;">
-                    <img class="phone-only" style="border-radius: 5px;" [src]="request.path" alt="" align="right" width="100" [attr.data-target]="request.path" />
-                  </div>
-                  -->
+
                 </div>
   
               </div>
+              -->
+
             </section>
           </ng-template>
   

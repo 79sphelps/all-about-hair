@@ -10,12 +10,12 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { ApiService } from './../core/api.service';
+import { ApiService } from './../../core/api.service';
 
-import { Appointment } from './../core/models/appointment';
+import { Appointment } from './../../core/models/appointment';
 
 import { AppointmentFormService } from './appointment-form.service';
-import { SubmittingComponent } from '../core/forms/submitting.component';
+import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-appointment-form',
@@ -186,7 +186,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
-        this.router.navigate(['/']);
+        this.router.navigate(['/calendar']);
     } else {
       this.submitAppointmentSub = this.api
         .editAppointment$(this.appointment._id, this.submitAppointmentObj)
@@ -202,7 +202,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     this.error = false;
     this.submitting = false;
     // Redirect to event detail
-    this.router.navigate(['/']);
+    this.router.navigate(['/calendar']);
   }
 
   private _handleSubmitError(err) {

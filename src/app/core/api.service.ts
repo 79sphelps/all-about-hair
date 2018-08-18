@@ -297,7 +297,6 @@ export class ApiService {
     console.log(appt);
 
     delete appt._id;
-    delete appt.date;
 
     return this.http
       .post(`${ENV.BASE_API}appointments/new`, appt, {
