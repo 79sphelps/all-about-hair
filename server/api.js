@@ -36,6 +36,11 @@ module.exports = function(app, config) {
     }
   };
 
+  const testCheck = (req, res, next) => {
+    console.log('... test check ...');
+    next();
+  }
+
   // GET API root
   app.get("/api/", (req, res) => {
     res.send("API Works");
@@ -47,6 +52,6 @@ module.exports = function(app, config) {
   require(appRoot + "/server/routes/personel.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/services.router")(app, jwtCheck, adminCheck);
   require(appRoot + "/server/routes/request.router")(app, jwtCheck, adminCheck);
-  require(appRoot + "/server/routes/appointment.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/appointment.router")(app, testCheck, jwtCheck, adminCheck);
 
 };

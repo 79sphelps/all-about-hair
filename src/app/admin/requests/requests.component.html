@@ -53,20 +53,25 @@
                     <li class="list-group-item">
                         <h5 [innerHTML]="request.name"></h5>
                     </li>
+
                     <li class="list-group-item">
                         <p [innerHTML]="request.email"></p>
                     </li>
-                    <li class="list-group-item">
-                        <p [innerHTML]="request.message"></p>
-                    </li>
+
 
                     <li class="list-group-item">
                         <p [innerHTML]="request.category"></p>
                     </li>
 
+                    <!-- 
                     <li class="list-group-item">
                       <p [innerHTML]="request.date"></p>
-                  </li>
+                    </li>
+                    -->
+
+                    <li class="list-group-item">
+                      <p [innerHTML]="request.message"></p>
+                    </li>
                   </ul>
 
                   <a class="btn btn-info btn-sm" [routerLink]="['/admin/requests/update', request._id]">Edit</a>

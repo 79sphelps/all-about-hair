@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppointmentsNewComponent implements OnInit {
 
-  pageTitle = 'Add New Appointment';
+  pageTitle = 'Request New Appointment';
 
   constructor(private title: Title) {}
 

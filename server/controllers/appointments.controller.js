@@ -52,9 +52,8 @@ module.exports.create = function(req, res, next) {
             const appt = new Appointments({
                 name: req.body.name,
                 email: req.body.email,
-                message: req.body.message,
                 category: req.body.category,
-                date: new Date()
+                message: req.body.message
             });
 
             appt.save(err => {
@@ -68,8 +67,6 @@ module.exports.create = function(req, res, next) {
 };
 
 module.exports.update = (req, res, next) => {
-    console.log('... controller update ...');
-
     Appointments.findById(req.params.id, (err, appt) => {
         if (err) {
             return res.status(500).send({ message: err.message });
@@ -80,10 +77,9 @@ module.exports.update = (req, res, next) => {
 
         appt.name = req.body.name;
         appt.email = req.body.email;
-        appt.message = req.body.message;
         appt.category = req.body.category;
-        appt.date = req.body.date;
-        
+        appt.message = req.body.message;
+
         appt.save(err => {
             if (err) {
                 return res.status(500).send({ message: err.message });

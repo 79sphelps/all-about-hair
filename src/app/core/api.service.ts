@@ -257,9 +257,6 @@ export class ApiService {
 
   // PUT existing personel (admin only)
   editRequest$(id: string, request: Request): Observable<Request> {
-
-    console.log('... edit request api ...');
-
     return this.http
       .put(`${ENV.BASE_API}admin/requests/update/${id}`, request, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
@@ -306,8 +303,6 @@ export class ApiService {
 
   // PUT existing personel (admin only)
   editAppointment$(id: string, appt: Appointment): Observable<Appointment> {
-    console.log('... api service ...');
-    console.log('appt: ', appt);
     return this.http
       .put(`${ENV.BASE_API}admin/appointments/update/${id}`, appt, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)

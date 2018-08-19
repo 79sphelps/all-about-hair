@@ -8,17 +8,13 @@ const AppointmentSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  message: {
-    type: String,
-    required: true
-  },
   category: {
     type: String,
     required: true
   },
-  date: {
-    type: Date,
-    required: false
+  message: {
+    type: String,
+    required: true
   }
 });
 

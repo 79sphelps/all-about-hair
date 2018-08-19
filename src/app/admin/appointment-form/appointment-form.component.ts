@@ -1,8 +1,6 @@
 // src/app/pages/admin/event-form/event-form.component.ts
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
-  FormArray,
-  FormControl,
   FormGroup,
   FormBuilder,
   Validators,
@@ -11,9 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../core/api.service';
-
 import { Appointment } from './../../core/models/appointment';
-
 import { AppointmentFormService } from './appointment-form.service';
 import { SubmittingComponent } from '../../core/forms/submitting.component';
 
@@ -24,21 +20,20 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
   providers: [AppointmentFormService]
 })
 export class AppointmentFormComponent implements OnInit, OnDestroy {
-
   @Input() appointment: Appointment;
   isEdit: boolean;
   // FormBuilder form
   appointmentForm: FormGroup;
   // Model storing initial form values
-  formAppointment: Appointment;
+  formRequest: Appointment;
 
   // Form validation and disabled logic
   formErrors: any;
   formChangeSub: Subscription;
 
   // Form submission
-  submitAppointmentObj: Appointment;
-  submitAppointmentSub: Subscription;
+  submitRequestObj: Appointment;
+  submitRequestSub: Subscription;
   error: boolean;
   submitting: boolean;
   submitBtnText: string;
@@ -53,14 +48,14 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formErrors = this.ef.formErrors;
     this.isEdit = !!this.appointment;
-    this.submitBtnText = this.isEdit ? 'Update Appointment' : 'Create Appointment';
+    this.submitBtnText = this.isEdit ? 'Update Appointment' : 'Request Appointment';
     // Set initial form data
-    this.formAppointment = this._setFormAppointment();
+    this.formRequest = this._setformRequest();
     // Use FormBuilder to construct the form
     this._buildForm();
   }
 
-  private _setFormAppointment() {
+  private _setformRequest() {
     if (!this.isEdit) {
       // If creating a new event, create new
       // FormEventModel with default null data
@@ -72,8 +67,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       return new Appointment(
         this.appointment.name,
         this.appointment.email,
-        this.appointment.message,
-        this.appointment.category
+        this.appointment.category,
+        this.appointment.message
       );
     }
   }
@@ -81,7 +76,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   private _buildForm() {
     this.appointmentForm = this.fb.group({
       name: [
-        this.formAppointment.name,
+        this.formRequest.name,
         [
           Validators.required,
           Validators.minLength(this.ef.textMin),
@@ -89,7 +84,15 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         ]
       ],
       email: [
-        this.formAppointment.email,
+        this.formRequest.email,
+        [
+          Validators.required,
+          Validators.minLength(this.ef.textMin),
+          Validators.maxLength(this.ef.locMax)
+        ]
+      ],
+      category: [
+        this.formRequest.category,
         [
           Validators.required,
           Validators.minLength(this.ef.textMin),
@@ -97,19 +100,14 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         ]
       ],
       message: [
-        this.formAppointment.message,
+        this.formRequest.message,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin)
-        ]
-      ],
-      category: [
-        this.formAppointment.category,
-        [
-          Validators.required,
-          Validators.minLength(this.ef.textMin)
+          Validators.minLength(this.ef.textMin),
+          Validators.maxLength(this.ef.locMax)
         ]
       ]
+
     });
 
     // Subscribe to form value changes
@@ -167,45 +165,55 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   private _getSubmitObj() {
     // Convert form startDate/startTime and endDate/endTime
     // to JS dates and populate a new EventModel for submission
+
+    // this.galleryForm ? this.Service._id : null,
     return new Appointment(
       this.appointmentForm.get('name').value,
       this.appointmentForm.get('email').value,
-      this.appointmentForm.get('message').value,
-      this.appointmentForm.get('category').value
+      this.appointmentForm.get('category').value,
+      this.appointmentForm.get('message').value
     );
   }
 
   onSubmit() {
     this.submitting = true;
-    this.submitAppointmentObj = this._getSubmitObj();
+    this.submitRequestObj = this._getSubmitObj();
 
     if (!this.isEdit) {
-      this.submitAppointmentSub = this.api
-        .postAppointment$(this.submitAppointmentObj)
+      this.submitRequestSub = this.api
+        .postAppointment$(this.submitRequestObj)
         .subscribe(
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
+
         this.router.navigate(['/calendar']);
+
+        this.resetForm();
     } else {
-
-      console.log(this.submitAppointmentObj);
-
-      this.submitAppointmentSub = this.api
-        .editAppointment$(this.appointment._id, this.submitAppointmentObj)
+      this.submitRequestSub = this.api
+        .editAppointment$(this.appointment._id, this.submitRequestObj)
         .subscribe(
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
-      this.router.navigate(['/calendar']);
+
+        // Re-route only AFTER a few seconds! There are issues, otherwise!
+        setTimeout(function() {
+          // Redirect to calendar details
+          this.router.navigate(['/admin/appointments']);
+        }.bind(this), 2000);
+
     }
   }
 
   private _handleSubmitSuccess(res) {
     this.error = false;
-    this.submitting = false;
-    // Redirect to event detail
-    this.router.navigate(['/calendar']);
+    // this.submitting = false;
+
+    setTimeout(function() {
+      this.submitting = false;
+    }.bind(this), 3000);
   }
 
   private _handleSubmitError(err) {
@@ -219,10 +227,9 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.submitAppointmentSub) {
-      this.submitAppointmentSub.unsubscribe();
+    if (this.submitRequestSub) {
+      this.submitRequestSub.unsubscribe();
     }
     this.formChangeSub.unsubscribe();
   }
-
 }

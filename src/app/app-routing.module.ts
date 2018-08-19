@@ -150,6 +150,10 @@ const routes: Routes = [
         component: AppointmentsUpdateComponent
       },
       {
+        path: 'appointments/delete/:id',
+        component: AppointmentsUpdateComponent
+      },
+      {
         path: 'appointments/:id',
         component: AppointmentComponent
       }

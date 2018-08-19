@@ -9,7 +9,7 @@
       style="border: 0" width="800" height="600" frameborder="0" scrolling="yes"></iframe>
     </div>
 
-    <app-appointment-form *ngIf="!auth.loggedIn && !auth.isAdmin"></app-appointment-form>
+    <app-appointments-new *ngIf="!auth.loggedIn && !auth.isAdmin"></app-appointments-new>
     <app-appointments *ngIf="auth.loggedIn && auth.isAdmin"></app-appointments>
 
   </div>

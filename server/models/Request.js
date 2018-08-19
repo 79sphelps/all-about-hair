@@ -15,10 +15,6 @@ const RequestSchema = mongoose.Schema({
   category: {
     type: String,
     required: true
-  },
-  date: {
-    type: Date,
-    required: false
   }
 });
 

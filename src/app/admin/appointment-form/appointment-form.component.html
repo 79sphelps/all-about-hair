@@ -1,57 +1,51 @@
-<h3 class="mt-30">Request Appointment:</h3>
+<!-- src/app/pages/admin/event-form/event-form.component.html -->
 
-<form [formGroup]="appointmentForm" class="form-area mt-30" id="myForm" (ngSubmit)="onSubmit()">
-  <div class="form-group input-group">
-    <span class="input-group-addon">
-      <i class="fa fa-user prefix grey-text"></i>
-    </span>
-    <input id="name" type="text" class="form-control" formControlName="name" [maxlength]="ef.titleMax" placeholder="Your name">
+<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+ 
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="form-control" formControlName="name" [maxlength]="ef.titleMax">
     <div *ngIf="formErrors.name" class="small text-danger formErrors" [innerHTML]="formErrors.name">
     </div>
   </div>
 
-  <div class="form-group input-group has-danger">
-    <span class="input-group-addon">
-      <i class="fa fa-envelope prefix grey-text"></i>
-    </span>
-    <input id="email" type="text" class="form-control" formControlName="email" [maxlength]="ef.locMax" placeholder="Your email address">
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="text" class="form-control" formControlName="email" [maxlength]="ef.locMax">
     <div *ngIf="formErrors.email" class="small text-danger formErrors" [innerHTML]="formErrors.email">
     </div>
   </div>
 
-  <div class="form-group input-group has-danger">
-    <span class="input-group-addon">
-      <i class="fa fa-tag prefix grey-text"></i>
-    </span>
-    <input id="category" type="text" class="form-control" formControlName="category" [maxlength]="ef.locMax" placeholder="Subject or category">
+  <div class="form-group">
+    <label for="category">Category</label>
+    <input id="category" type="text" class="form-control" formControlName="category" [maxlength]="ef.locMax">
     <div *ngIf="formErrors.category" class="small text-danger formErrors" [innerHTML]="formErrors.category">
     </div>
   </div>
 
   <div class="form-group">
-    <label for="message">Your message</label>
-    <textarea class="form-control" rows="5" id="message" formControlName="message" [maxlength]="ef.locMax"></textarea>
+    <label for="message">Message</label>
+    <input id="message" type="text" class="form-control" formControlName="message" [maxlength]="ef.locMax">
     <div *ngIf="formErrors.message" class="small text-danger formErrors" [innerHTML]="formErrors.message">
     </div>
-  </div>
+  </div>  
 
-  <!-- 
+  <!-- Submit -->
   <div class="form-group">
-    <button class="btn btn-success">
-      <i class="fa fa-send-o"></i>
-      Send
-    </button>
+    <button type="submit" class="btn btn-primary" [attr.disabled]="appointmentForm.invalid || submitting ? true : null" [innerText]="submitBtnText"></button>
+    <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
+    <app-submitting *ngIf="submitting"></app-submitting>
+    <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
+
+    <!-- API submission error -->
+    <p *ngIf="error" class="mt-3 alert alert-danger">
+      <strong>Error:</strong> There was a problem submitting the request. Please try again.
+    </p>
+
+    
+    <p *ngIf="submitting" class="mt-3 alert alert-success">
+      <strong>Success: </strong> Your request was submitted successfully.
+    </p>    
   </div>
-  -->
-  <div class="form-group">
-      <button type="submit" class="btn btn-success" [attr.disabled]="appointmentForm.invalid || submitting ? true : null" [innerText]="submitBtnText">
-          <i class="fa fa-send-o"></i>
-      </button>
-      <app-submitting *ngIf="submitting"></app-submitting>
-      <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
-  
-      <p *ngIf="error" class="mt-3 alert alert-danger">
-        <strong>Error:</strong> There was a problem submitting the appointment request. Please try again.
-      </p>
-    </div>    
 </form>

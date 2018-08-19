@@ -43,7 +43,6 @@ export class AppointmentsComponent implements OnInit, OnDestroy {
     this.appointmentsSub = this.api.getAppointments$().subscribe(
       res => {
         this.appointmentList = res;
-        console.log(this.appointmentList);
         this.filteredAppointments = res;
         this.loading = false;
       },

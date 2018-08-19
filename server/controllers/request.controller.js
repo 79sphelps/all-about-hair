@@ -53,8 +53,7 @@ module.exports.create = function(req, res, next) {
                 name: req.body.name,
                 email: req.body.email,
                 message: req.body.message,
-                category: req.body.category,
-                date: new Date()
+                category: req.body.category
             });
 
             request.save(err => {
@@ -68,8 +67,6 @@ module.exports.create = function(req, res, next) {
 };
 
 module.exports.update = (req, res, next) => {
-    console.log('... controller request ...');
-
     Request.findById(req.params.id, (err, request) => {
         if (err) {
             return res.status(500).send({ message: err.message });

@@ -1,8 +1,6 @@
 // src/app/pages/admin/event-form/event-form.component.ts
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
-  FormArray,
-  FormControl,
   FormGroup,
   FormBuilder,
   Validators,
@@ -22,7 +20,6 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
   providers: [RequestFormService]
 })
 export class RequestFormComponent implements OnInit, OnDestroy {
-
   @Input() request: Request;
   isEdit: boolean;
   // FormBuilder form
@@ -51,14 +48,14 @@ export class RequestFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formErrors = this.ef.formErrors;
     this.isEdit = !!this.request;
-    this.submitBtnText = this.isEdit ? 'Update Request' : 'Create Request';
+    this.submitBtnText = this.isEdit ? 'Update Request' : 'Send';
     // Set initial form data
-    this.formRequest = this._setFormRequest();
+    this.formRequest = this._setformRequest();
     // Use FormBuilder to construct the form
     this._buildForm();
   }
 
-  private _setFormRequest() {
+  private _setformRequest() {
     if (!this.isEdit) {
       // If creating a new event, create new
       // FormEventModel with default null data
@@ -70,8 +67,8 @@ export class RequestFormComponent implements OnInit, OnDestroy {
       return new Request(
         this.request.name,
         this.request.email,
-        this.request.message,
-        this.request.category
+        this.request.category,
+        this.request.message
       );
     }
   }
@@ -94,20 +91,23 @@ export class RequestFormComponent implements OnInit, OnDestroy {
           Validators.maxLength(this.ef.locMax)
         ]
       ],
-      message: [
-        this.formRequest.message,
-        [
-          Validators.required,
-          Validators.minLength(this.ef.textMin)
-        ]
-      ],
       category: [
         this.formRequest.category,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin)
+          Validators.minLength(this.ef.textMin),
+          Validators.maxLength(this.ef.locMax)
+        ]
+      ],
+      message: [
+        this.formRequest.message,
+        [
+          Validators.required,
+          Validators.minLength(this.ef.textMin),
+          Validators.maxLength(this.ef.locMax)
         ]
       ]
+
     });
 
     // Subscribe to form value changes
@@ -165,11 +165,13 @@ export class RequestFormComponent implements OnInit, OnDestroy {
   private _getSubmitObj() {
     // Convert form startDate/startTime and endDate/endTime
     // to JS dates and populate a new EventModel for submission
+
+    // this.galleryForm ? this.Service._id : null,
     return new Request(
       this.requestForm.get('name').value,
       this.requestForm.get('email').value,
-      this.requestForm.get('message').value,
-      this.requestForm.get('category').value
+      this.requestForm.get('category').value,
+      this.requestForm.get('message').value
     );
   }
 
@@ -184,7 +186,6 @@ export class RequestFormComponent implements OnInit, OnDestroy {
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
-        this.router.navigate(['/']);
     } else {
       this.submitRequestSub = this.api
         .editRequest$(this.request._id, this.submitRequestObj)
@@ -192,15 +193,19 @@ export class RequestFormComponent implements OnInit, OnDestroy {
           data => this._handleSubmitSuccess(data),
           err => this._handleSubmitError(err)
         );
-      this.router.navigate(['/admin/requests']);
     }
   }
 
   private _handleSubmitSuccess(res) {
     this.error = false;
-    this.submitting = false;
+    // this.submitting = false;
+
+    setTimeout(function() {
+      this.submitting = false;
+    }.bind(this), 3000);
+
     // Redirect to event detail
-    this.router.navigate(['/']);
+    this.router.navigate(['/admin/requests', res._id]);
   }
 
   private _handleSubmitError(err) {
@@ -219,5 +224,4 @@ export class RequestFormComponent implements OnInit, OnDestroy {
     }
     this.formChangeSub.unsubscribe();
   }
-
 }

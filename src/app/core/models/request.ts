@@ -4,7 +4,6 @@ export class Request {
     public email = '',
     public message = '',
     public category = '',
-    public date = Date,
     public _id?: string
   ) {}
 }
