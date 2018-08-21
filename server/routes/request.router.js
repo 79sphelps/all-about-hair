@@ -1,7 +1,7 @@
 const ctrlRequests = require('../controllers/request.controller');
 
 
-module.exports = function(app, jwtCheck, adminCheck) {
+module.exports = (app, jwtCheck, adminCheck) => {
     app.get('/api/admin/requests', ctrlRequests.getRequests);
     app.get('/api/admin/requests/:id', jwtCheck, ctrlRequests.getRequestById);
     app.post('/api/requests/new', ctrlRequests.create);

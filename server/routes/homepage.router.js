@@ -1,7 +1,7 @@
 const ctrlHomepage = require("../controllers/homepage.controller");
 
 
-module.exports = function(app, jwtCheck, adminCheck) {
+module.exports = (app, jwtCheck, adminCheck) => {
     app.get('/api/admin/homepage', ctrlHomepage.getHomepage);
     app.get('/api/admin/homepage/:id', jwtCheck, ctrlHomepage.getHomepageById);
     //app.post("/homepage", jwtCheck, adminCheck, ctrlHomepage.create);

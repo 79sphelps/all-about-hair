@@ -1,7 +1,7 @@
 const ctrlGallery = require('../controllers/gallery.controller');
 
 
-module.exports = function(app, jwtCheck, adminCheck) {
+module.exports = (app, jwtCheck, adminCheck) => {
     app.get('/api/admin/gallery', ctrlGallery.getGallery);
     app.get('/api/admin/gallery/:id', jwtCheck, ctrlGallery.getGalleryPhotoById);
     app.post('/api/admin/gallery', jwtCheck, adminCheck, ctrlGallery.create);

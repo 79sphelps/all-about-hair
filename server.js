@@ -16,19 +16,18 @@ const cors = require("cors");
 // Config
 const config = require("./server/config");
 
+// MongoDB
 mongoose.connect(config.MONGO_URI);
 const monDb = mongoose.connection;
 
-monDb.on("error", function() {
+monDb.on("error", () => {
   console.log(
-    "MongoDB Connection Error. Please make sure that",
-    config.MONGO_URI,
-    "is running"
+    `MongoDB Connection Error. Please make sure that ${config.MONGO_URI} is running.`
   );
 });
 
-monDb.once("open", function callback() {
-  console.info("Connected to MongoDB:", config.MONGO_URI);
+monDb.once("open", () => {
+  console.info(`Connected to MongoDB: ${config.MONGO_URI}.`);
 });
 
 /*
@@ -48,11 +47,6 @@ app.use(cors());
 const port = process.env.PORT || "8081";
 app.set("port", port);
 
-
-
-
-
-
 // Set static path to Angular app in dist
 // Don't run in dev
 if (process.env.NODE_ENV !== "dev") {
@@ -68,8 +62,6 @@ if (process.env.NODE_ENV !== "dev") {
  */
 
 global.appRoot = path.resolve(__dirname);
-
-
 
 // require("./server/api")(app, config);
 require(path.join(appRoot, "/server/api"))(app, config);

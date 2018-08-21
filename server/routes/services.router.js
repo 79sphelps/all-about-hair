@@ -1,7 +1,7 @@
 const ctrlServices = require('../controllers/services.controller');
 
 
-module.exports = function(app, jwtCheck, adminCheck) {
+module.exports = (app, jwtCheck, adminCheck) => {
     app.get('/api/admin/services', ctrlServices.getServices);
     app.get('/api/admin/services/:id', jwtCheck, ctrlServices.getServiceById);
     app.post('/api/admin/services', jwtCheck, adminCheck, ctrlServices.create);

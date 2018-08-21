@@ -6,7 +6,7 @@ mongoose.connect(config.MONGO_URI);
 
 const Appointments = require("../models/Appointments");
 
-const _projection = "headline headlineSubMsg";
+//const _projection = "headline headlineSubMsg";
 
 module.exports.getAppointments = function(req, res, next) {
     Appointments.find({}, (err, data) => {
@@ -89,7 +89,7 @@ module.exports.update = (req, res, next) => {
     });
 };
 
-module.exports.delete = (req, res, next) => {
+module.exports.destroy = (req, res, next) => {
     Appointments.findById(req.params.id, (err, appt) => {
         if (err) {
         return res.status(500).send({ message: err.message });
