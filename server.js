@@ -1,4 +1,5 @@
-// server.js
+"use strict";
+
 /*
  |--------------------------------------
  | Dependencies
@@ -22,7 +23,9 @@ const monDb = mongoose.connection;
 
 monDb.on("error", () => {
   console.log(
-    `MongoDB Connection Error. Please make sure that ${config.MONGO_URI} is running.`
+    `MongoDB Connection Error. Please make sure that ${
+      config.MONGO_URI
+    } is running.`
   );
 });
 
@@ -52,7 +55,6 @@ app.set("port", port);
 if (process.env.NODE_ENV !== "dev") {
   //app.use("/", express.static(path.join("/dist/all-about-hair")));
   app.use("/", express.static(path.join(__dirname, "/dist")));
-  //app.use("/", express.static(path.join("/dist/event-planning-nw")));
 }
 
 /*
@@ -72,7 +74,6 @@ if (process.env.NODE_ENV !== "dev") {
   app.get("/*", function(req, res) {
     //res.sendFile(path.join("/dist/all-about-hair/index.html"));
     res.sendFile(path.join(__dirname, "/dist/index.html"));
-    //res.sendFile(path.join("/dist/event-planning-nw/index.html"));
   });
 }
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const mongoose = require("mongoose");
 const RequestSchema = mongoose.Schema({
   name: {

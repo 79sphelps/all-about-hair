@@ -1,12 +1,9 @@
-// Config
-const config = require("../config");
+"use strict";
 
+const config = require("../config");
 const mongoose = require("mongoose");
 mongoose.connect(config.MONGO_URI);
-
 const Services = require("../models/Service");
-
-const _projection = "headline headlineSubMsg";
 
 module.exports.getServices = function(req, res, next) {
   Services.find({}, (err, data) => {
@@ -25,43 +22,42 @@ module.exports.getServices = function(req, res, next) {
 };
 
 module.exports.getServiceById = function(req, res, next) {
-    Services.findById(req.params.id, (err, service) => {
-      if (err) {
-        return res.status(500).send({ message: err.message });
-      }
-      if (!service) {
-        return res.status(400).send({ message: "Service not found." });
-      }
-      res.send(service);
-    });
-}
+  Services.findById(req.params.id, (err, service) => {
+    if (err) {
+      return res.status(500).send({ message: err.message });
+    }
+    if (!service) {
+      return res.status(400).send({ message: "Service not found." });
+    }
+    res.send(service);
+  });
+};
 
 module.exports.create = function(req, res, next) {
   Services.findOne({ title: req.body.title }, (err, existingService) => {
+    if (err) {
+      return res.status(500).send({ message: err.message });
+    }
+    if (existingService) {
+      return res
+        .status(409)
+        .send({ message: "You already have this service." });
+    }
+
+    const service = new Services({
+      title: req.body.title,
+      description: req.body.description,
+      image: req.body.image,
+      pricing: req.body.pricing
+    });
+
+    service.save(err => {
       if (err) {
         return res.status(500).send({ message: err.message });
       }
-      if (existingService) {
-        return res
-          .status(409)
-          .send({ message: "You already have this service." });
-      }
-
-      const service = new Services({
-        title: req.body.title,
-        description: req.body.description,
-        image: req.body.image,
-        pricing: req.body.pricing
-      });
-
-      service.save(err => {
-        if (err) {
-          return res.status(500).send({ message: err.message });
-        }
-        res.send(service);
-      });
-    }
-  );
+      res.send(service);
+    });
+  });
 };
 
 module.exports.update = (req, res, next) => {

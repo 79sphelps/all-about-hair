@@ -1,12 +1,9 @@
-// Config
-const config = require("../config");
+"use strict";
 
+const config = require("../config");
 const mongoose = require("mongoose");
 mongoose.connect(config.MONGO_URI);
-
 const Homepage = require("../models/Homepage");
-
-const _projection = "headline headlineSubMsg";
 
 module.exports.getHomepage = function(req, res, next) {
   Homepage.find({}, (err, data) => {
@@ -25,16 +22,16 @@ module.exports.getHomepage = function(req, res, next) {
 };
 
 module.exports.getHomepageById = function(req, res, next) {
-    Homepage.findById(req.params.id, (err, homepage) => {
-      if (err) {
-        return res.status(500).send({ message: err.message });
-      }
-      if (!homepage) {
-        return res.status(400).send({ message: "Homepage not found." });
-      }
-      res.send(homepage);
-    });
-}
+  Homepage.findById(req.params.id, (err, homepage) => {
+    if (err) {
+      return res.status(500).send({ message: err.message });
+    }
+    if (!homepage) {
+      return res.status(400).send({ message: "Homepage not found." });
+    }
+    res.send(homepage);
+  });
+};
 
 module.exports.update = (req, res, next) => {
   Homepage.findById(req.params.id, (err, homepage) => {
@@ -45,7 +42,7 @@ module.exports.update = (req, res, next) => {
       return res.status(400).send({ message: "Homepage not found." });
     }
 
-    console.log('... homepage controller update ...');
+    console.log("... homepage controller update ...");
 
     homepage.headline = req.body.headline;
     homepage.headlineSubMsg = req.body.headlineSubMsg;
@@ -70,4 +67,3 @@ module.exports.update = (req, res, next) => {
     });
   });
 };
-
