@@ -75,6 +75,7 @@ import { AppointmentsUpdateComponent } from './admin/appointments-update/appoint
 import { DeleteAppointmentComponent } from './admin/appointments-update/delete-appointment/delete-appointment.component';
 import { AppointmentsNewComponent } from './admin/appointments-new/appointments-new.component';
 import { AppointmentDetailComponent } from './admin/appointment/appointment-detail/appointment-detail.component';
+import { ServiceCarouselComponent } from './service-carousel/service-carousel.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { AppointmentDetailComponent } from './admin/appointment/appointment-deta
     AppointmentsUpdateComponent,
     DeleteAppointmentComponent,
     AppointmentsNewComponent,
-    AppointmentDetailComponent
+    AppointmentDetailComponent,
+    ServiceCarouselComponent
   ],
   imports: [
     BrowserModule,

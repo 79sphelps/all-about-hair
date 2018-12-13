@@ -22,12 +22,14 @@
         "styles.scss",
         "./assets/scss/bootstrap.lightbox.scss",
         "./assets/scss/alert.scss",
-        "./assets/scss/carousel.scss"
+        "./assets/scss/carousel.scss",
+        "../node_modules/swiper/dist/css/swiper.min.css"
       ],
       "scripts": [
         "./assets/js/bootstrap.lightbox.js",
         "./assets/js/alert.js",
-        "./assets/js/carousel.js"
+        "./assets/js/carousel.js",
+        "../node_modules/swiper/dist/js/swiper.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
