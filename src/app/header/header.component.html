@@ -2,12 +2,21 @@
 <header class="default-header">
   <nav class="navbar navbar-expand-lg  navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="index.html" onClick="window.location.reload()">
+      <a
+        class="navbar-brand"
+        href="index.html"
+        onClick="window.location.reload()"
+      >
         <!-- <img src="assets/img/logo.png" alt=""> -->
         All About Hair
       </a>
 
-      <a class="navbar-brand" style="color: #fff;" href="/calendar" routerLink="/calendar">
+      <a
+        class="navbar-brand"
+        style="color: #fff;"
+        href="/calendar"
+        routerLink="/calendar"
+      >
         Calendar
       </a>
 
@@ -25,21 +34,47 @@
       </div>
       -->
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNav()">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        (click)="toggleNav()"
+      >
         <span class="text-white lnr lnr-menu"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+      <div
+        class="collapse navbar-collapse justify-content-end align-items-center"
+        id="navbarSupportedContent"
+      >
         <ul class="navbar-nav">
           <li class="nav-item active">
             <span *ngIf="auth.loggingIn">Logging in...</span>
             <ng-template [ngIf]="!auth.loggingIn">
-              <a *ngIf="!auth.loggedIn" (click)="auth.login()" style="color: #fff;" data-toggle="collapse" data-target=".navbar-collapse.show">Log In</a>
-              <span *ngIf="auth.loggedIn && auth.userProfile" style="color: #fff;">
-                {{ auth.userProfile.name }}
-                <span class="divider">|</span>
-                <a (click)="auth.logout()" style="color: #fff;" data-toggle="collapse" data-target=".navbar-collapse.show">Log Out</a>
+              <a
+                *ngIf="!auth.loggedIn"
+                (click)="auth.login()"
+                style="color: #fff;"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+                >Log In</a
+              >
+              <span
+                *ngIf="auth.loggedIn && auth.userProfile"
+                style="color: #fff;"
+              >
+                {{ auth.userProfile.name }} <span class="divider">|</span>
+                <a
+                  (click)="auth.logout()"
+                  style="color: #fff;"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse.show"
+                  >Log Out</a
+                >
               </span>
             </ng-template>
           </li>
@@ -67,51 +102,97 @@
           </li>
           -->
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#home" data-toggle="collapse" data-target=".navbar-collapse.show">Home
-              <span class="sr-only">(current)</span>
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#home"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Home <span class="sr-only">(current)</span>
             </a>
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/homepage" data-target=".navbar-collapse.show">Home
+            <a href="/admin/homepage" data-target=".navbar-collapse.show"
+              >Home
             </a>
           </li>
 
-
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#service" data-toggle="collapse" data-target=".navbar-collapse.show">Services
-            </a>
-          </li>
-
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/services" data-target=".navbar-collapse.show">Services
-            </a>
-          </li>          
-
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#gallery" data-toggle="collapse" data-target=".navbar-collapse.show">Gallery
-            </a>
-          </li>
-
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/gallery" data-target=".navbar-collapse.show">Gallery
-            </a>
-          </li>
-
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#team" data-toggle="collapse" data-target=".navbar-collapse.show">Team
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#service"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Services
             </a>
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/personel" data-target=".navbar-collapse.show">Team
+            <a href="/admin/services" data-target=".navbar-collapse.show"
+              >Services
             </a>
           </li>
 
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#gallery"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Gallery
+            </a>
+          </li>
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#price" data-toggle="collapse" data-target=".navbar-collapse.show">Prices
+          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+            <a href="/admin/gallery" data-target=".navbar-collapse.show"
+              >Gallery
+            </a>
+          </li>
+
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#team"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Team
+            </a>
+          </li>
+
+          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+            <a href="/admin/personel" data-target=".navbar-collapse.show"
+              >Team
+            </a>
+          </li>
+
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#price"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Prices
             </a>
           </li>
 
@@ -122,22 +203,31 @@
           </li>
           -->
 
-          <li *ngIf="!auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'" class="nav-item active">
-            <a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.show">Contact
+          <li
+            *ngIf="
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+            "
+            class="nav-item active"
+          >
+            <a
+              href="#contact"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              >Contact
             </a>
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/contact" data-target=".navbar-collapse.show">Contact
+            <a href="/admin/contact" data-target=".navbar-collapse.show"
+              >Contact
             </a>
-          </li>          
+          </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/requests" data-target=".navbar-collapse.show">User Requests
+            <a href="/admin/requests" data-target=".navbar-collapse.show"
+              >User Requests
             </a>
-          </li>     
-
-
+          </li>
 
           <!-- Dropdown -->
           <!--

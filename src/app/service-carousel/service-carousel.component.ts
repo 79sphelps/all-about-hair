@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 
 // Don't forget to declare Global variable related to Swiper.
-//declare var swiper: any;
+// declare var swiper: any;
 
 @Component({
   selector: 'app-service-carousel',
@@ -21,7 +21,7 @@ export class ServiceCarouselComponent implements AfterViewInit {
    * - Because you store Swiper instance as attribute, you will be able to control Swiper by javascript.
   **/
   this.swiper = new Swiper(this.elementRef.nativeElement.querySelector('.swiper-container'), {
-    //Here you can provide Swiper config
+    // Here you can provide Swiper config
   });
 }
 

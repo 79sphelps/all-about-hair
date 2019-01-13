@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "ng": "ng",
+    "start2": "ng serve",
     "start": "cross-env NODE_ENV=production node server.js",
     "build": "ng build --prod",
     "test": "ng test",

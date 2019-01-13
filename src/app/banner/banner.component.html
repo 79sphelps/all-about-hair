@@ -1,7 +1,7 @@
 <!-- start banner Area -->
 <section class="banner-area " id="home">
   <!-- Start Header Area -->
-  
+
   <!-- <app-header></app-header> -->
 
   <!-- End Header Area -->
@@ -12,6 +12,7 @@
         <h1 class="text-white phone-only">
           {{ homepage && homepage.headline }}
         </h1>
+
         <p class="mx-auto text-white mt-20 mb-40 phone-only">
           {{ homepage && homepage.headlineSubMsg }}
         </p>
@@ -20,15 +21,21 @@
         </a>
         -->
         <div class="phone-only" style="margin: auto auto;">
-          <a id="bannerBtn" href="#price" class="text-uppercase header-btn" (click)= 'sendEvent()'>View Custom Services
+          <a
+            id="bannerBtn"
+            href="#price"
+            class="text-uppercase header-btn"
+            (click)="sendEvent()"
+            >View Custom Services
           </a>
         </div>
       </div>
-      
+
       <!-- <div class="col-lg-6 col-md-6 no-padding banner-right"> -->
+
       <div class="col-lg-6 col-md-6 col-sm-12 phone-only">
-        <img class="img-fluid" src="assets/img/header-img.png" alt="">
-        <!-- <img src="assets/img/big_image_1.jpg" alt="" class="img-fluid"> -->
+        <img class="img-fluid" src="assets/img/header-img.png" alt="" />
+        <!-- <div class="outer-div"><div class="inner-div"></div></div> -->
       </div>
     </div>
   </div>

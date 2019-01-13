@@ -12,10 +12,13 @@ export class CalendarComponent implements OnInit {
   pageTitle = 'Calendar';
   loading: boolean;
 
-  constructor(private title: Title, public utils: UtilsService, public auth: AuthService) { }
+  constructor(
+    private title: Title,
+    public utils: UtilsService,
+    public auth: AuthService
+  ) {}
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
   }
-
 }

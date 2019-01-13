@@ -1,8 +1,6 @@
 <!-- start contact Area -->
 <section class="contact-area section-gap" id="contact">
   <div class="container">
-    
-
     <div class="row d-flex justify-content-center">
       <div class="menu-content pb-10 col-lg-8">
         <div class="title text-center">
@@ -14,28 +12,22 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 single-contact-info">
         <h6 class="text-black">Visit Our Salon</h6>
-        <p style="margin-top: 10px;">
-          {{ contact && contact.location }}
-        </p>
+        <p style="margin-top: 10px;">{{ contact && contact.location }}</p>
       </div>
       <div class="col-lg-3 col-md-6 single-contact-info">
         <h6 class="text-black">Call us</h6>
-        <p style="margin-top: 10px;">
-          {{ contact && contact.phone }}
-        </p>
+        <p style="margin-top: 10px;">{{ contact && contact.phone }}</p>
       </div>
       <div class="col-lg-3 col-md-6 single-contact-info">
         <h6 class="text-black">Email Us</h6>
-        <p style="margin-top: 10px;">
-          {{ contact && contact.email }}
-        </p>
+        <p style="margin-top: 10px;">{{ contact && contact.email }}</p>
       </div>
       <div class="col-lg-3 col-md-6 single-contact-info">
         <h6 class="text-black">Salon Hours</h6>
-        <div *ngIf="contactInfoLoaded | async">
-        <ul style="margin-top: 10px;">
-          <li *ngFor="let hour of contact.hours">{{ hour }}</li>
-          <!-- 
+        <div *ngIf="(contactInfoLoaded | async)">
+          <ul style="margin-top: 10px;">
+            <li *ngFor="let hour of contact.hours">{{ hour }}</li>
+            <!-- 
           <li>Mon: 10:30 am - 7:00 pm</li>
           <li>Tue: Closed</li>
           <li>Wed: 10:30 am - 7:00 pm</li>
@@ -43,8 +35,7 @@
           <li>Fri: 10:30 am - 7:00 pm</li>
           <li>Sat: 10:30 am - 7:00 pm</li>
           <li>Sun: 11:30 am - 5:00 pm</li>
-          -->
-        </ul>
+          --></ul>
         </div>
       </div>
       <!--
@@ -128,7 +119,6 @@
       </div>
     </form>
     -->
-
   </div>
 </section>
 <!-- end contact Area -->

@@ -31,20 +31,26 @@
 </section>
 -->
 
- 
 <section id="gallery" class="gallery-area">
   <div class="container-fluid">
     <div class="row no-padding">
-      <div *ngFor="let photo of photoList" class="active-gallery" style="margin: auto auto; width: 16% !important;">
-        
-          <div  class="item single-gallery" >
-            <div class="thumb">
-              <img style="border-radius: 5px; " [src]="photo.path" alt="">
-              <div class="align-items-center justify-content-center d-flex">
-                <h4 class="text-white phone-only tablet-portait-only tablet-landscape-up">{{ photo.caption }}</h4>
-              </div>
+      <div
+        *ngFor="let photo of photoList"
+        class="active-gallery"
+        style="margin: auto auto; width: 16% !important;"
+      >
+        <div class="item single-gallery">
+          <div class="thumb">
+            <img style="border-radius: 5px; " [src]="photo.path" alt="" />
+            <div class="align-items-center justify-content-center d-flex">
+              <h4
+                class="text-white phone-only tablet-portait-only tablet-landscape-up"
+              >
+                {{ photo.caption }}
+              </h4>
             </div>
           </div>
+        </div>
 
         <!-- 
         <div class="item single-gallery">
@@ -101,7 +107,6 @@
           </div>
         </div>
         -->
-
       </div>
     </div>
   </div>

@@ -20,6 +20,8 @@ export class BannerComponent implements OnInit, OnDestroy {
   error: boolean;
   query = '';
 
+  words: String[];
+
   constructor(
     private title: Title,
     public utils: UtilsService,
@@ -37,6 +39,7 @@ export class BannerComponent implements OnInit, OnDestroy {
     this.homepageSub = this.api.getHomepageDetails$().subscribe(
       res => {
         this.homepage = res[0];
+        this.words = this.homepage.headline.split(' ');
         this.loading = false;
       },
       err => {

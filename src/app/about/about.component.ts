@@ -23,7 +23,8 @@ export class AboutComponent implements OnInit, OnDestroy {
   constructor(
     private title: Title,
     public utils: UtilsService,
-    private api: ApiService) { }
+    private api: ApiService
+  ) {}
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
@@ -49,5 +50,4 @@ export class AboutComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
   }
-
 }

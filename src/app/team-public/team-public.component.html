@@ -1,33 +1,37 @@
-<div class="modal fade carousel-modal" id="carousel-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title"></h4>
+<div
+  class="modal fade carousel-modal"
+  id="carousel-modal"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title"></h4>
 
-                <a href="#">
-                  <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-            </div>
-            <label class="ml-10 mr-10" style="font-weight: bold;"><strong>Role:</strong></label>
-            <div class="modal-role ml-15 mb-10">
-            </div>
-            <label class="ml-10 mr-10" style="font-weight: bold;"><strong>Bio:</strong></label>
-            <div class="modal-bio ml-15">
-            </div>
-            <div class="modal-body">
-                <img>
-            </div>
-        </div>
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a href="#"> <i class="fa fa-linkedin"></i> </a>
+      </div>
+      <label class="ml-10 mr-10" style="font-weight: bold;"
+        ><strong>Role:</strong></label
+      >
+      <div class="modal-role ml-15 mb-10"></div>
+      <label class="ml-10 mr-10" style="font-weight: bold;"
+        ><strong>Bio:</strong></label
+      >
+      <div class="modal-bio ml-15"></div>
+      <div class="modal-body"><img /></div>
     </div>
+  </div>
 </div>
 
 <!-- Start team Area -->
@@ -44,45 +48,48 @@
     </div>
 
     <div class="row justify-content-center d-flex align-items-center">
-      
-      <div *ngFor="let person of personelList | slice:1; let i = index" 
-          class="col-lg-3 col-md-6 col-sm-6 col-6 single-team">
+      <div
+        *ngFor="let person of (personelList | slice: 1); let i = index"
+        class="col-lg-3 col-md-6 col-sm-6 col-6 single-team"
+      >
         <div class="thumb">
-          <img class="img-fluid" data-modal-picture="#carousel-modal"
-            style="border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" 
+          <img
+            class="img-fluid"
+            data-modal-picture="#carousel-modal"
+            style="border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
             [src]="person.photo"
-            [alt]="person.name" 
+            [alt]="person.name"
             [attr.data-bio]="person.bio"
-            [attr.data-role]="person.role">
-          
-          
+            [attr.data-role]="person.role"
+          />
+
           <!-- <div class="align-items-center justify-content-center d-flex"> -->
-          <div class="align-items-center justify-content-center d-flex" data-modal-picture="#carousel-modal"
-            [attr.data-src]="person.photo" [attr.data-alt]="person.name" [attr.data-bio]="person.bio" [attr.data-role]="person.role">  
-            
-            <a href="#">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-linkedin"></i>
-            </a>
-          
+          <div
+            class="align-items-center justify-content-center d-flex"
+            data-modal-picture="#carousel-modal"
+            [attr.data-src]="person.photo"
+            [attr.data-alt]="person.name"
+            [attr.data-bio]="person.bio"
+            [attr.data-role]="person.role"
+          >
+            <a href="#"> <i class="fa fa-facebook"></i> </a>
+            <a href="#"> <i class="fa fa-twitter"></i> </a>
+            <a href="#"> <i class="fa fa-linkedin"></i> </a>
           </div>
-          
         </div>
         <div class="meta-text mt-35 text-center">
-          <h4 class="carousel-caption" [id]="i" style="color: black !important;">{{ person.name }}</h4>
-          
+          <h4
+            class="carousel-caption"
+            [id]="i"
+            style="color: black !important;"
+          >
+            {{ person.name }}
+          </h4>
         </div>
         <div class="text-center">Local Stylist</div>
       </div>
-    
     </div>
   </div>
-  
 </section>
 
 <!-- End team Area -->

@@ -14,6 +14,16 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const cors = require("cors");
 
+/* for HTTP/2 --> currently not able to get content from client side?? need more digging
+const spdy = require('spdy')
+const fs = require('fs')
+
+const options = {
+  key: fs.readFileSync(__dirname + '/server/certs/server.key'),
+  cert:  fs.readFileSync(__dirname + '/server/certs/server.crt')
+}
+*/
+
 // Config
 const config = require("./server/config");
 
@@ -84,3 +94,16 @@ if (process.env.NODE_ENV !== "dev") {
  */
 
 app.listen(port, () => console.log(`Server running on localhost:${port}`));
+
+/* for HTTP/2
+spdy
+  .createServer(options, app)
+  .listen(port, (error) => {
+    if (error) {
+      console.error(error);
+      return process.exit(1);
+    } else {
+      console.log(`Listening on port: ${port}.`);
+    }
+  });
+*/
