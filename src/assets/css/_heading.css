@@ -1,0 +1,22 @@
+
+.heading-section .subheading {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .heading-section h2 {
+    font-size: 34px;
+    font-weight: 600;
+  }
+  @media (max-width: 767.98px) {
+    .heading-section h2 {
+      font-size: 28px;
+    }
+  }
+  
+  .heading-section.heading-section-white h2 {
+    color: #fff;
+  }

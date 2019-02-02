@@ -46,3 +46,15 @@
 .hide-before-animated.animated {
   visibility: visible;
 }
+
+@media (max-width: 313px) {
+  .calendar {
+    font-size: 10px; 
+  } 
+}
+
+@media (max-width: 313px) {
+  .navbar-brand {
+    font-size: 11px; 
+  } 
+}

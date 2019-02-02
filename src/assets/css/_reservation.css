@@ -1,0 +1,49 @@
+
+
+.ftco-section-reservation {
+    clear: both;
+  }
+  
+  .reservation {
+    background: #ffb400;
+  }
+  @media (min-width: 768px) {
+    .reservation {
+      margin-top: -145px;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .reservation {
+      padding-bottom: 3em;
+    }
+  }
+  
+  .makereservation .form-group label {
+    font-weight: 600;
+    color: #404044;
+  }
+  
+  .makereservation .form-group .icon {
+    position: absolute;
+    top: 50% !important;
+    right: 20px;
+    font-size: 14px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: rgba(64, 64, 68, 0.7);
+  }
+  @media (max-width: 767.98px) {
+    .makereservation .form-group .icon {
+      right: 10px;
+    }
+  }
+  
+  .makereservation .form-group .select-wrap {
+    position: relative;
+  }
+  .makereservation .form-group .select-wrap select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }

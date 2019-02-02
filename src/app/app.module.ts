@@ -76,6 +76,12 @@ import { AppointmentsNewComponent } from "./admin/appointments-new/appointments-
 import { AppointmentDetailComponent } from "./admin/appointment/appointment-detail/appointment-detail.component";
 import { ServiceCarouselComponent } from "./service-carousel/service-carousel.component";
 
+import { ServicesSliderComponent } from './_services-slider/services-slider.component';
+import { GallerySectionComponent } from './_gallery-section/gallery-section.component';
+import { ThreeColSection1Component } from './_three-col-section1/three-col-section1.component';
+
+import { ClickOutsideDirective } from './header/click-outside.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -131,7 +137,11 @@ import { ServiceCarouselComponent } from "./service-carousel/service-carousel.co
     DeleteAppointmentComponent,
     AppointmentsNewComponent,
     AppointmentDetailComponent,
-    ServiceCarouselComponent
+    ServiceCarouselComponent,
+    ServicesSliderComponent,
+    GallerySectionComponent,
+    ThreeColSection1Component,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

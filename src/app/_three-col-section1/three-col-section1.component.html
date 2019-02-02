@@ -1,0 +1,79 @@
+
+
+<div class="webapp-services webapp-bg-white" id="service">
+  <div class="container">
+
+    <div class="row d-flex justify-content-center">
+      <div class="menu-content pb-10 col-lg-8">
+        <div class="title text-center">
+          <h1 class="mb-10">{{ homepage && homepage.servicesHeadline }}</h1>
+          <p>{{ homepage && homepage.servicesSubMsg }}</p>
+          <p><a class="pricingDetails" href="#price">Pricing Details</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="horiz-data col-lg-4 col-md-6 col-sm-12 text-center" *ngFor="let service of services" >
+        
+        <div>
+          <div class="icon hover_effect text-center mb-20">
+            <img
+              [src]="service.image"
+              style="width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+              alt=""
+            />
+          </div>
+        
+          <div class="services">
+            <!-- <span class="icon"> <i class="icon-camera3"></i> </span> -->
+            <div class="desc">
+              <h3 style="text-align: center;">{{ service.title }}</h3>
+              <p>
+                  {{ service.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- 
+      <div class="col-md-4 text-center animate-box">
+        <div class="services">
+          <span class="icon"> <i class="icon-camera3"></i> </span>
+          <div class="desc">
+            <h3>Column 1 Headline</h3>
+            <p>
+                VoMor Hair Extensions not only add length, but also add volume & fullness. VoMor Extensions are made of high quality Remy hair, collected & manufactured in a humane manner, packaged according to environmental guidelines, and are tape-in & reusable. VoMor Extensions are safe & do not damage the hair.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center animate-box">
+        <div class="services">
+          <span class="icon"> <i class="icon-music2"></i> </span>
+          <div class="desc">
+            <h3>Column 2 Headline</h3>
+            <p>
+              Column 2 text...
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-center animate-box">
+        <div class="services">
+          <span class="icon"> <i class="icon-heart3"></i> </span>
+          <div class="desc">
+            <h3>Column 3 Headline</h3>
+            <p>
+              Column 3 text...
+            </p>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,69 @@
+.hover_effect:hover img {
+  opacity: 0.6; /* 0.6 */
+  cursor: pointer;
+}
+
+/*
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+}
+*/
+
+.horiz-data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col-data {
+  width: 40%;
+  height: 100px;
+  line-height: 100px;
+  background-color: grey;
+  margin: 10px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.webapp-services {
+  /* padding: 7em 0; */
+  padding: 3em 0;
+  clear: both;
+}
+
+.webapp-bg-white {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-left: none;
+  border-right: none;
+}
+
+.services {
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 0;
+  padding: 0 1em;
+}
+@media screen and (max-width: 768px) {
+  .services {
+    margin-bottom: 3em;
+  }
+}
+.services .icon {
+  position: relative;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+.services .icon i {
+  font-size: 50px;
+  color: #798eea;
+  z-index: 1;
+}
+.services .desc h3 {
+  font-size: 26px;
+  font-weight: 300;
+}

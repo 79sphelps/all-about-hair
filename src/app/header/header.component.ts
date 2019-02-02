@@ -1,8 +1,9 @@
 // src/app/header/header.component.ts
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { ClickOutsideDirective } from './click-outside.directive';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,10 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output()
-  navToggled = new EventEmitter();
+  @Output() navToggled = new EventEmitter();
+
+  @Input() clickOutside;
+
   navOpen = false;
 
   constructor(public router: Router, public auth: AuthService) {}

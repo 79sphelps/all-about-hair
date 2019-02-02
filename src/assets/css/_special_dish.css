@@ -1,0 +1,16 @@
+
+
+.special-dish {
+    margin-top: -200px;
+  }
+  .special-dish .container {
+    z-index: 2;
+    position: relative;
+    padding: 30px;
+  }
+  @media (min-width: 768px) {
+    .special-dish .container {
+      padding: 70px;
+    }
+  }
+  
