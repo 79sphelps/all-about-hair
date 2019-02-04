@@ -1,26 +1,24 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ApiService } from './../core/api.service';
-import { UtilsService } from './../core/utils.service';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Homepage } from '../core/models/homepage';
+import { Homepage } from '../../core/models/homepage';
 
 @Component({
-  selector: 'app-banner',
-  templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.scss']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
 })
-export class BannerComponent implements OnInit, OnDestroy {
-  pageTitle = 'Homepage';
+export class AboutComponent implements OnInit, OnDestroy {
+  pageTitle = 'About Us';
 
   homepageSub: Subscription;
   homepage: Homepage;
 
   loading: boolean;
   error: boolean;
-  query = '';
-
-  words: String[];
+  query: '';
 
   constructor(
     private title: Title,
@@ -39,7 +37,6 @@ export class BannerComponent implements OnInit, OnDestroy {
     this.homepageSub = this.api.getHomepageDetails$().subscribe(
       res => {
         this.homepage = res[0];
-        this.words = this.homepage.headline.split(' ');
         this.loading = false;
       },
       err => {
@@ -48,15 +45,6 @@ export class BannerComponent implements OnInit, OnDestroy {
         this.error = true;
       }
     );
-  }
-
-  public sendEvent() {
-    (<any>window).ga('send', 'event', {
-      eventCategory: 'eventCategory',
-      eventLabel: 'eventLabel',
-      eventAction: 'eventAction',
-      eventValue: 10
-    });
   }
 
   ngOnDestroy() {

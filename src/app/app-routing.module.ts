@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 
-import { CallbackComponent } from './callback/callback.component';
+import { CallbackComponent } from './pages/callback/callback.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
 import { AdminComponent } from './admin/admin.component';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { HomepageDetailsComponent } from './admin/homepage-details/homepage-details.component';
 import { HomepageUpdateComponent } from './admin/homepage-update/homepage-update.component';
 
@@ -38,7 +38,7 @@ import { AppointmentComponent } from './admin/appointment/appointment.component'
 import { AppointmentsNewComponent } from './admin/appointments-new/appointments-new.component';
 import { AppointmentsUpdateComponent } from './admin/appointments-update/appointments-update.component';
 
-import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 const routes: Routes = [
   {

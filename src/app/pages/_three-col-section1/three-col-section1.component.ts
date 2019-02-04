@@ -1,40 +1,40 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ApiService } from '../core/api.service';
-import { UtilsService } from '../core/utils.service';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Homepage } from '../core/models/homepage';
-import { Contact } from '../core/models/contact';
+import { Homepage } from '../../core/models/homepage';
+import { Service } from '../../core/models/service';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  selector: 'app-three-col-section1',
+  templateUrl: './three-col-section1.component.html',
+  styleUrls: ['./three-col-section1.component.css']
 })
-export class ContactComponent implements OnInit, OnDestroy {
-  pageTitle = 'Contact Us';
+export class ThreeColSection1Component implements OnInit, OnDestroy {
+
+  pageTitle = 'Services';
 
   homepageSub: Subscription;
   homepage: Homepage;
-  contactSub: Subscription;
-  contact: Contact;
+  servicesSub: Subscription;
+  services: Service[];
 
   loading: boolean;
   error: boolean;
   query = '';
 
-  contactInfoLoaded: Promise<boolean>;
-
   constructor(
     private title: Title,
     public utils: UtilsService,
     private api: ApiService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
-    this._getContactDetails();
+    this._getServicesDetails();
   }
 
   private _getHomepageDetails() {
@@ -53,14 +53,13 @@ export class ContactComponent implements OnInit, OnDestroy {
     );
   }
 
-  private _getContactDetails() {
+  private _getServicesDetails() {
    this.loading = true;
    // Get future, public events
-   this.contactSub = this.api.getContactInfo$().subscribe(
+   this.servicesSub = this.api.getServices$().subscribe(
      res => {
-       this.contact = res[0];
+       this.services = res;
        this.loading = false;
-       this.contactInfoLoaded = Promise.resolve(true);
      },
      err => {
        console.error(err);
@@ -70,10 +69,8 @@ export class ContactComponent implements OnInit, OnDestroy {
    );
  }
 
-
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
-    this.contactSub.unsubscribe();
+    this.servicesSub.unsubscribe();
   }
-
 }

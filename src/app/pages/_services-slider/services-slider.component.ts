@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ApiService } from '../core/api.service';
-import { UtilsService } from '../core/utils.service';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Homepage } from '../core/models/homepage';
-import { Service } from '../core/models/service';
+import { Homepage } from '../../core/models/homepage';
+import { Service } from '../../core/models/service';
 
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
@@ -37,8 +37,8 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getServicesDetails();
-    this.loadScript("../../assets/js/transferred/jquery.stellar.min.js");
-    this.loadScript("../../assets/js/transferred/main.js");
+    this.loadScript("../../../assets/js/transferred/jquery.stellar.min.js");
+    this.loadScript("../../../assets/js/transferred/main.js");
     //window.scrollTo({ top: -200, behavior: 'smooth' });
   }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ApiService } from '../core/api.service';
-import { UtilsService } from '../core/utils.service';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Homepage } from '../core/models/homepage';
-import { Service } from '../core/models/service';
+import { Homepage } from '../../core/models/homepage';
+import { Service } from '../../core/models/service';
 
 @Component({
   selector: 'app-price',
