@@ -1,3 +1,20 @@
+// UNUSED
+.banner-area2 {
+  background-image: url("../../assets/images/guilherme-petri-602659-unsplash.jpg") !important;
+  background-size: 100%;
+  /*background-color:rgba(0, 0, 0, 0.5); */
+  background-repeat: no-repeat;
+}
+// UNUSED
+.banner-area2::after {
+  opacity: 0.9;
+}
+// UNUSED
+.banner-text {
+  color: #006699;
+}
+
+
 @mixin for-phone-only {
   @media (max-width: 599px) {
     @content;

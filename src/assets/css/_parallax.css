@@ -4,8 +4,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    /* background-position: 50% 1px; */
     position: relative;
     padding: 10em 0 !important;
+
+
   }
   @media (max-width: 767.98px) {
     .parallax-img {
@@ -15,12 +18,13 @@
   }
   .parallax-img .overlay {
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+
     content: "";
     background: #404044;
     opacity: 0.4;
   }
-  

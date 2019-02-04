@@ -1,25 +1,58 @@
-<!-- start banner Area -->
-<section class="banner-area " id="home">
-  <!-- Start Header Area -->
+<!--
+<section
+  class="ftco-section parallax-img"
+  style="background-image: url('../../assets/images/guilherme-petri-602659-unsplash.jpg');"
+  data-stellar-background-ratio="0.5"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-5">
+      <div
+        class="col-md-7 text-center heading-section heading-section-white ftco-animate"
+      >
 
-  <!-- <app-header></app-header> -->
+      <h1 class="text-white phone-only">
+        {{ homepage && homepage.headline }}
+      </h1>
 
-  <!-- End Header Area -->
+      <p class="mx-auto text-white mt-20 mb-40 phone-only">
+        {{ homepage && homepage.headlineSubMsg }}
+      </p>
+
+      <div class="phone-only" style="margin: auto auto;">
+        <a
+          id="bannerBtn"
+          href="#price"
+          class="text-uppercase header-btn"
+          (click)="sendEvent()"
+          >View Custom Services
+        </a>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12 phone-only">
+        <img class="img-fluid" src="assets/img/header-img.png" alt="" />
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<section class="banner-area" id="home">
+
   <div class="container-fluid">
     <div class="row justify-content-end align-items-center">
-      <!-- <div class="col-lg-6 col-md-6 col-sm-12 banner-left"> -->
       <div class="col-lg-6 col-md-6 col-sm-12">
         <h1 class="text-white phone-only">
           {{ homepage && homepage.headline }}
         </h1>
 
+        <!-- <p class="mx-auto text-white mt-20 mb-40 phone-only"> -->
         <p class="mx-auto text-white mt-20 mb-40 phone-only">
           {{ homepage && homepage.headlineSubMsg }}
         </p>
-        <!--
-        <a id="bannerBtn" href="#price" class="text-uppercase header-btn phone-only">View Custom Services
-        </a>
-        -->
+
         <div class="phone-only" style="margin: auto auto;">
           <a
             id="bannerBtn"
@@ -31,13 +64,9 @@
         </div>
       </div>
 
-      <!-- <div class="col-lg-6 col-md-6 no-padding banner-right"> -->
-
       <div class="col-lg-6 col-md-6 col-sm-12 phone-only">
         <img class="img-fluid" src="assets/img/header-img.png" alt="" />
-        <!-- <div class="outer-div"><div class="inner-div"></div></div> -->
       </div>
     </div>
   </div>
 </section>
-<!-- End banner Area -->

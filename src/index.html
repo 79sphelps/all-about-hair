@@ -6,7 +6,7 @@
     <base href="/" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- 
+    <!--
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     -->
 
@@ -16,7 +16,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <!-- Favicon-->
-    <!-- 
+    <!--
     <link rel="shortcut icon" href="assets/img/fav.png">
     -->
 
@@ -43,7 +43,7 @@
     <meta name="twitter:card" content="" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- 
+    <!--
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124041535-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -89,21 +89,38 @@
 
     <!-- Icomoon Icon Fonts-->
     <!-- <link rel="stylesheet" href="assets/css/icomoon.css"> -->
-  
+
     <link rel="stylesheet" href="assets/css/_mfp.css" />
     <link rel="stylesheet" href="assets/css/_gallery.css" />
-    <link rel="stylesheet" href="assets/css/_parallax.css" /> 
+    <link rel="stylesheet" href="assets/css/_parallax.css" />
+
+    <!-- <link rel="stylesheet" href="assets/css/ionicons.min.css" /> -->
 
     <link rel="stylesheet" href="assets/css/linearicons.css" />
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/magnific-popup.css" />
     <link rel="stylesheet" href="assets/css/owl.carousel.css" />
+
     <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+      .spinner {
+        position: fixed;
+        z-index: 1031;
+        top: 50%;
+        left: 50%;
+        width: 150px;
+        height: 150px;
+        transform: translate(-50%, -50%);
+      }
+    </style>
   </head>
 
   <body>
-    <app-root></app-root>
+	<app-root>
+	    <img src="assets/images/gif-loading-images-2.gif" class="spinner" />
+	</app-root>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
