@@ -37,9 +37,9 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getServicesDetails();
-    this.loadScript("../../../assets/js/transferred/jquery.stellar.min.js");
-    this.loadScript("../../../assets/js/transferred/main.js");
-    //window.scrollTo({ top: -200, behavior: 'smooth' });
+    this.loadScript('../../../assets/js/transferred/jquery.stellar.min.js');
+    this.loadScript('../../../assets/js/transferred/main.js');
+    // window.scrollTo({ top: -200, behavior: 'smooth' });
   }
 
   getBackground(image) {
@@ -49,8 +49,8 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
 
   public loadScript(url: string) {
     const body = <HTMLDivElement>document.body;
-    const script = document.createElement("script");
-    script.innerHTML = "";
+    const script = document.createElement('script');
+    script.innerHTML = '';
     script.src = url;
     script.async = false;
     script.defer = true;

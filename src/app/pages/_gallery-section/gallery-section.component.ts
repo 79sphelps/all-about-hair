@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, AfterViewInit, EventEmitter } from '@angular/core';
-//import { FooterService } from '../../footer/footer.service';
+// import { FooterService } from '../../footer/footer.service';
 
 @Component({
   selector: 'app-gallery-section',
@@ -9,19 +9,19 @@ import { Component, OnInit, Output, AfterViewInit, EventEmitter } from '@angular
 export class GallerySectionComponent implements OnInit {
 
   constructor(
-    //private _footerService: FooterService
+    // private _footerService: FooterService
     ) { }
 
   ngOnInit() {
-    this.loadScript("../../../assets/js/transferred/jquery.stellar.min.js");
-    this.loadScript("../../../assets/js/transferred/main.js");
-    //this._footerService.setLoaded(true);
+    this.loadScript('../../../assets/js/transferred/jquery.stellar.min.js');
+    this.loadScript('../../../assets/js/transferred/main.js');
+    // this._footerService.setLoaded(true);
   }
 
   public loadScript(url: string) {
     const body = <HTMLDivElement>document.body;
-    const script = document.createElement("script");
-    script.innerHTML = "";
+    const script = document.createElement('script');
+    script.innerHTML = '';
     script.src = url;
     script.async = false;
     script.defer = true;
