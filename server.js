@@ -107,3 +107,5 @@ spdy
     }
   });
 */
+
+module.exports = app;   // Important for Mocha testing!

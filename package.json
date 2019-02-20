@@ -8,7 +8,7 @@
     "start2": "ng serve",
     "start": "cross-env NODE_ENV=production node server.js",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "mocha --timeout 10000 ./server/test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --prod"
@@ -61,6 +61,9 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/jquery": "^3.3.6",
     "@types/node": "~6.0.60",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "chai-spies": "^1.0.0",
     "codelyzer": "^4.0.1",
     "enhanced-resolve": "^4.1.0",
     "jasmine-core": "~2.8.0",
@@ -70,7 +73,9 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "mocha": "^6.0.0",
     "protractor": "^5.4.1",
+    "should": "^13.2.3",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"

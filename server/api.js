@@ -42,8 +42,16 @@ module.exports = (app, config) => {
     res.send("API Works");
   });
 
-  require(appRoot + "/server/routes/contact.router")(app, jwtCheck, adminCheck);
-  require(appRoot + "/server/routes/gallery.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/contact.router")(
+    app,
+    jwtCheck,
+    adminCheck
+  );
+  require(appRoot + "/server/routes/gallery.router")(
+    app,
+    jwtCheck,
+    adminCheck
+  );
   require(appRoot + "/server/routes/homepage.router")(
     app,
     jwtCheck,
@@ -59,7 +67,11 @@ module.exports = (app, config) => {
     jwtCheck,
     adminCheck
   );
-  require(appRoot + "/server/routes/request.router")(app, jwtCheck, adminCheck);
+  require(appRoot + "/server/routes/request.router")(
+    app,
+    jwtCheck,
+    adminCheck
+  );
   require(appRoot + "/server/routes/appointment.router")(
     app,
     jwtCheck,
