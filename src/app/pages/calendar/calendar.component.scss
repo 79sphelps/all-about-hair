@@ -1,3 +1,6 @@
+.calendar-title {
+    margin-top: 20px !important;
+}
 
 @mixin for-small-phone-only {
     @media (max-width: 390px) { @content; }
@@ -6,74 +9,74 @@
 @mixin for-phone-only {
     @media (max-width: 599px) { @content; }
 }
+
 @mixin for-tablet-portrait-up {
     @media (min-width: 600px) { @content; }
 }
+
 @mixin for-tablet-portait-only {
     @media (min-width: 600px) and (max-width: 899px) { @content; }
 }
+
 @mixin for-tablet-landscape-up {
     @media (min-width: 900px) { @content; }
 }
+
 @mixin for-tablet-landscape-only {
     @media (min-width: 900px) and (max-width: 1199px) { @content; }
 }
 
 
 .responsiveCal {
- 
-    position: relative; 
-    padding-bottom: 75%; 
-    height: 0; 
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
     overflow: hidden;
-    
 }
 
 .responsiveCal iframe {
-    
-    position: absolute; 
-    top:0; 
-    left: 0; 
-    width: 100%; 
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    
 }
 
 
 .phone-only {
-    @include for-small-phone-only { 
-        //text-align: center; 
-        //font-size: 10px; 
+    @include for-small-phone-only {
+        //text-align: center;
+        //font-size: 10px;
 
-        padding-bottom: 75%; 
-        height: 0; 
+        padding-bottom: 75%;
+        height: 0;
         overflow: hidden;
 
-        position: absolute; 
-        top:0; 
-        left: 0; 
-        width: 80%; 
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 80%;
     }
 }
-  
+
 .tablet-portait-only {
-    @include for-tablet-portait-only { 
-        text-align: center; 
-        font-size: 10px; 
+    @include for-tablet-portait-only {
+        text-align: center;
+        font-size: 10px;
     }
 }
-  
+
 .tablet-portrait-up {
-    @include for-tablet-portrait-up { 
-        text-align: center; 
-        font-size: 10px; 
+    @include for-tablet-portrait-up {
+        text-align: center;
+        font-size: 10px;
     }
 }
 
 .tablet-landscape-only {
     @include for-tablet-landscape-only { text-align: center; font-size: 14px; }
 }
-  
+
 .tablet-landscape-up {
     @include for-tablet-landscape-up { text-align: center; font-size: 14px; }
 }

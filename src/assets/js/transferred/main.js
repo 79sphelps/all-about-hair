@@ -61,7 +61,7 @@ AOS.init({
           nav: true
         }
       }
-    
+
     });
 
     $(".carousel").owlCarousel({

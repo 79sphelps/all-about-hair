@@ -19,17 +19,19 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "./assets/scss/bootstrap.lightbox.scss",
-        "./assets/scss/alert.scss",
-        "./assets/scss/carousel.scss",
-        "../node_modules/swiper/dist/css/swiper.min.css"
+        "./assets/css/icomoon.css",
+        "./assets/css/_mfp.css",
+        "./assets/css/ionicons.min.css",
+        "./assets/css/linearicons.css",
+        "./assets/css/font-awesome.min.css",
+        "./assets/css/bootstrap.css",
+        "./assets/css/magnific-popup.css",
+        "./assets/css/owl.carousel.min.css",
+        "./assets/css/owl.theme.default.min.css",
+        "./assets/css/_custom_owl_carousel_settings.css",
+        "./assets/css/main.css"
       ],
       "scripts": [
-        "./assets/js/bootstrap.lightbox.js",
-        "./assets/js/alert.js",
-        "./assets/js/carousel.js",
-        "../node_modules/swiper/dist/js/swiper.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

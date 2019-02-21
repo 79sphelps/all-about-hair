@@ -12,67 +12,65 @@
   -->
 
 
-<!-- <section class="ftco-section bg-light"> -->
-<section class="ftco-section">
-  <div class="container">
-    
-    <div class="row justify-content-center mb-5 pb-5">
-      <div class="col-md-7 text-center heading-section ftco-animate">
-        <h2 style="color: white;">{{ homepage && homepage.serviceDetailsHeadline }}</h2>
-        <span class="subheading" style="color: white;">{{ homepage && homepage.serviceDetailsSubMsg }}</span>
-      </div>
-    </div>
-    
-    <div class="row ftco-animate">
-      <div class="carousel1 owl-carousel ftco-owl">
-        
+  <!-- <section class="ftco-section bg-light"> -->
+  <section class="ftco-section">
+    <div class="container">
 
-        <div *ngFor="let product of services">
-          <div class="item card">
-            <div class="blog-entry" style="padding-top: 50px;">
-              <!-- <a href="/blog-single" routerLink="/blog-single" class="block-20" style="background-image: url('../../assets/images/photo-3.jpg');"> -->
-              <div class="icon hover_effect" style="text-align: center;">
-                <img
-                  [src]="product.image"
-                  style="margin: 0 auto; width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
-                  alt=""
-                />
-              </div>
-              <div class="text p-4">
-                <!--
-                <div class="meta">
-                  <div><a href="#">January 1st, 2019</a></div>
-                  <div><a href="#">{{ product.title }}</a></div>
-                </div>
-                -->
-                <h3 style="text-align: center;"><a href="#">{{ product.title }}</a></h3>
-                <br>
-                <div>{{ product.description }}</div>
-                <br>
-                <!--
-                <ul *ngFor="let feature of product.pricing">
-                  <li>
-                    <strong style="font-weight: bold;">{{ feature.type }}</strong>
-                    ... {{ feature.price }}
-                  </li>
-                </ul>
-                -->
-
-                <p class="clearfix">
-                  <a href="#" class="float-left read">Read more</a>
-                  <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> $</a>
-                </p>
-              </div>
-            </div>
-          </div>
+      <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <h2 style="color: white;">{{ homepage && homepage.serviceDetailsHeadline }}</h2>
+          <span class="subheading" style="color: white;">{{ homepage && homepage.serviceDetailsSubMsg }}</span>
         </div>
+      </div>
 
+      <div class="row ftco-animate">
+        <div class="carousel owl-carousel ftco-owl">
+
+
+            <div *ngFor="let product of services">
+                <div class="item card">
+                  <div class="blog-entry" style="padding-top: 50px;">
+                    <!-- <a href="/blog-single" routerLink="/blog-single" class="block-20" style="background-image: url('../../assets/images/photo-3.jpg');"> -->
+                    <div class="icon hover_effect" style="text-align: center;">
+                      <img
+                        [src]="product.image"
+                        style="margin: 0 auto; width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+                        alt=""
+                      />
+                    </div>
+                    <div class="text p-4">
+                      <!--
+                      <div class="meta">
+                        <div><a href="#">January 1st, 2019</a></div>
+                        <div><a href="#">{{ product.title }}</a></div>
+                      </div>
+                      -->
+                      <h3 style="text-align: center;"><a href="#">{{ product.title }}</a></h3>
+                      <br>
+                      <div>{{ product.description }}</div>
+                      <br>
+                      <!--
+                      <ul *ngFor="let feature of product.pricing">
+                        <li>
+                          <strong style="font-weight: bold;">{{ feature.type }}</strong>
+                          ... {{ feature.price }}
+                        </li>
+                      </ul>
+                      -->
+
+                      <p class="clearfix">
+                        <a href="#" class="float-left read">Read more</a>
+                        <a href="#" class="float-right meta-chat"><span class="icon-chat"></span> $</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
+  </section>
 
 </section>

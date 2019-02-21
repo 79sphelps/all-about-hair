@@ -4,14 +4,14 @@
   <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
   <div>
 
-    <h1 class="text-center">{{ pageTitle }}</h1>
+    <h1 class="text-center gallery-title">{{ pageTitle }}</h1>
 
     <app-loading *ngIf="loading"></app-loading>
 
     <ng-template [ngIf]="utils.isLoaded(loading)">
       <p class="lead">Welcome, {{ auth.userProfile?.name }}! You can create and administer photos below.</p>
 
-      <!-- 
+      <!--
         <button class="btn btn-primary" style="margin-bottom: 10px;" type="button">New Event</button>
       -->
       <!--

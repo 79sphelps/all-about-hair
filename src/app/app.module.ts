@@ -7,12 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RootComponent } from './root/root.component';
-import { ServicesPublicComponent } from './pages/services-public/services-public.component';
-import { GalleryPublicComponent } from './pages/gallery-public/gallery-public.component';
-import { FeatureComponent } from './pages/feature/feature.component';
+// import { ServicesPublicComponent } from './pages/services-public/services-public.component';
+// import { GalleryPublicComponent } from './pages/gallery-public/gallery-public.component';
+// import { FeatureComponent } from './pages/feature/feature.component';
 import { AboutComponent } from './pages/about/about.component';
 import { TeamPublicComponent } from './pages/team-public/team-public.component';
-import { PriceComponent } from './pages/price/price.component';
+// import { PriceComponent } from './pages/price/price.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BannerComponent } from './pages/banner/banner.component';
 
@@ -74,7 +74,7 @@ import { AppointmentsUpdateComponent } from './admin/appointments-update/appoint
 import { DeleteAppointmentComponent } from './admin/appointments-update/delete-appointment/delete-appointment.component';
 import { AppointmentsNewComponent } from './admin/appointments-new/appointments-new.component';
 import { AppointmentDetailComponent } from './admin/appointment/appointment-detail/appointment-detail.component';
-import { ServiceCarouselComponent } from './pages/service-carousel/service-carousel.component';
+// import { ServiceCarouselComponent } from './pages/service-carousel/service-carousel.component';
 
 import { ServicesSliderComponent } from './pages/_services-slider/services-slider.component';
 import { GallerySectionComponent } from './pages/_gallery-section/gallery-section.component';
@@ -87,12 +87,8 @@ import { ClickOutsideDirective } from './header/click-outside.directive';
     AppComponent,
     HomeComponent,
     RootComponent,
-    ServicesPublicComponent,
-    GalleryPublicComponent,
-    FeatureComponent,
     AboutComponent,
     TeamPublicComponent,
-    PriceComponent,
     ContactComponent,
     BannerComponent,
     SpecialsComponent,
@@ -137,7 +133,6 @@ import { ClickOutsideDirective } from './header/click-outside.directive';
     DeleteAppointmentComponent,
     AppointmentsNewComponent,
     AppointmentDetailComponent,
-    ServiceCarouselComponent,
     ServicesSliderComponent,
     GallerySectionComponent,
     ThreeColSection1Component,
