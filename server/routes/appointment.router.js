@@ -25,7 +25,6 @@ module.exports = (app, jwtCheck, adminCheck) => {
     ctrlAppointments.destroy
   );
 
-
   /*
   app.get(
     "/api/admin/appointments/:id",
