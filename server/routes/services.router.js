@@ -20,7 +20,6 @@ module.exports = (app, jwtCheck, adminCheck) => {
     ctrlServices.delete
   );
 
-
   /*
   app.get("/api/admin/services/:id", ctrlServices.getServiceById);
   app.post("/api/admin/services", ctrlServices.create);
