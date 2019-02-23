@@ -1,6 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import {
+  HttpClientModule,
+  HttpClient,
+  HttpRequest,
+  HttpParams
+} from '@angular/common/http';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ApiService } from './../../core/api.service';
+import { AppointmentFormService } from './appointment-form.service';
+import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 import { AppointmentFormComponent } from './appointment-form.component';
+
+import { AuthService } from '../../auth/auth.service';
 
 describe('AppointmentFormComponent', () => {
   let component: AppointmentFormComponent;
@@ -8,7 +27,14 @@ describe('AppointmentFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppointmentFormComponent ]
+      declarations: [ AppointmentFormComponent, SubmittingComponent],
+      imports: [// no more boilerplate code w/ custom providers needed :-)
+        HttpClientModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        FormsModule,
+        ReactiveFormsModule],
+      providers: [AppointmentFormService, ApiService, AuthService]
     })
     .compileComponents();
   }));

@@ -62,7 +62,6 @@ export class AuthService {
     // Update login status subject
     this.loggedIn$.next(value);
     this.loggedIn = value;
-
     this.loggingIn = false;
   }
 

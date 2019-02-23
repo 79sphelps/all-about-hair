@@ -4,8 +4,7 @@ import {Directive, ElementRef, Output, EventEmitter, HostListener, Input} from '
     selector: '[appClickOutside]'
 })
 export class ClickOutsideDirective {
-    constructor(private _elementRef: ElementRef) {
-    }
+    constructor(private _elementRef: ElementRef) {}
 
     @Input() navbarOpen;
     @Output()
