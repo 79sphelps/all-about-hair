@@ -1,10 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import {
-  HttpClientModule,
-  HttpClient,
-  HttpRequest,
-  HttpParams
+  HttpClientModule
 } from '@angular/common/http';
 import {
   HttpClientTestingModule,
@@ -14,12 +11,14 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ApiService } from './../../core/api.service';
-import { AppointmentFormService } from './appointment-form.service';
+
 import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 import { AppointmentFormComponent } from './appointment-form.component';
 
 import { AuthService } from '../../auth/auth.service';
+
+import { AppointmentFormService } from './appointment-form.service';
 
 describe('AppointmentFormComponent', () => {
   let component: AppointmentFormComponent;

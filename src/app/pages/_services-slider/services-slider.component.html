@@ -24,20 +24,22 @@
       </div>
 
       <div class="row ftco-animate">
-        <div class="carousel owl-carousel ftco-owl">
+        <div class="carousel1 owl-carousel ftco-owl">
 
 
             <div *ngFor="let product of services">
                 <div class="item card">
                   <div class="blog-entry" style="padding-top: 50px;">
-                    <!-- <a href="/blog-single" routerLink="/blog-single" class="block-20" style="background-image: url('../../assets/images/photo-3.jpg');"> -->
-                    <div class="icon hover_effect" style="text-align: center;">
+                    <!-- <a href="/blog-single" routerLink="/blog-single" class="block-20" style="background-image: url('../../assets/images/photo-3.jpg');"></a> -->
+
+                      <div class="icon hover_effect" style="text-align: center;">
                       <img
                         [src]="product.image"
                         style="margin: 0 auto; width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                         alt=""
                       />
                     </div>
+
                     <div class="text p-4">
                       <!--
                       <div class="meta">

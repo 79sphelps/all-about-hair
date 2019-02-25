@@ -7,40 +7,39 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { AppointmentsNewComponent } from './appointments-new.component';
-import { AppointmentFormComponent } from '../appointment-form/appointment-form.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 import { ApiService } from './../../core/api.service';
+
+import { SubmittingComponent } from '../../core/forms/submitting.component';
+
+import { HomepageFormService } from './homepage-form.service';
+
 import { AuthService } from '../../auth/auth.service';
 
+import { HomepageFormComponent } from './homepage-form.component';
 
-describe('AppointmentsNewComponent', () => {
-  let component: AppointmentsNewComponent;
-  let fixture: ComponentFixture<AppointmentsNewComponent>;
+describe('HomepageFormComponent', () => {
+  let component: HomepageFormComponent;
+  let fixture: ComponentFixture<HomepageFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppointmentsNewComponent,
-        AppointmentFormComponent,
-        SubmittingComponent
-      ],
-      imports: [
-        // no more boilerplate code w/ custom providers needed :-)
+      declarations: [ HomepageFormComponent, SubmittingComponent],
+      imports: [// no more boilerplate code w/ custom providers needed :-)
         HttpClientModule,
         HttpClientTestingModule,
         RouterTestingModule,
         FormsModule,
-        ReactiveFormsModule
-      ],
-      providers: [ApiService, AuthService]
-    }).compileComponents();
+        ReactiveFormsModule],
+      providers: [HomepageFormService, ApiService, AuthService]
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppointmentsNewComponent);
+    fixture = TestBed.createComponent(HomepageFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

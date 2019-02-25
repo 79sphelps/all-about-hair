@@ -775,6 +775,7 @@
 }
 .ion-ios-arrow-back:before {
   content: "\f3cf";
+  color: #fff;
 }
 .ion-ios-arrow-down:before {
   content: "\f3d0";
@@ -805,6 +806,7 @@
 }
 .ion-ios-arrow-forward:before {
   content: "\f3d1";
+  color: #fff;
 }
 .ion-ios-arrow-round-back:before {
   content: "\f117";

@@ -1,3 +1,13 @@
+.block-20 {
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 250px;
+  position: relative;
+  display: block;
+}
+
 .parallax-img {
     background-size: cover;
     background-repeat: no-repeat;
@@ -23,5 +33,6 @@
 
     content: "";
     background: #404044;
-    opacity: 0.4;
+    /* opacity: 0.4; */
+    opacity: 0.7;
   }

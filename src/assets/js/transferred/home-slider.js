@@ -58,6 +58,13 @@
       }
     });
 
+      /*
+      '<span><i class="fas fa-arrow-alt-circle-left"></i></span>',
+      '<span><i class="fas fa-arrow-alt-circle-right"></i></span>'
+
+      <ion-icon name="ionic" color="primary"></ion-icon>
+      */
+
     $(".carousel1").owlCarousel({
       loop: false,
       items: 1,
