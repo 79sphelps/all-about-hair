@@ -38,10 +38,12 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
     this._getHomepageDetails();
     this._getServicesDetails();
 
+    // this.loadScript('../../../assets/js/jquery.min.js');
+    // this.loadScript('../../../../node_modules/jquery/dist/jquery.js');
     this.loadScript('../../../assets/js/owl.carousel.min.js');
     this.loadScript('../../../assets/js/transferred/home-slider.js');
 
-    //this.loadScript('../../../assets/js/transferred/main.js');
+    // this.loadScript('../../../assets/js/transferred/main.js');
     // window.scrollTo({ top: -200, behavior: 'smooth' });
   }
 
@@ -82,7 +84,6 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
    this.servicesSub = this.api.getServices$().subscribe(
      res => {
        this.services = res;
-       console.log(this.services);
        this.loading = false;
      },
      err => {

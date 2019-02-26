@@ -16,7 +16,7 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 //const context = require.context('./app/admin', true, /\.spec\.ts$/);
-const context = require.context('./app/', true, /\.spec\.ts$/);
+const context = require.context('./app/pages/', true, /\.spec\.ts$/);
 
 // And load the modules.
 context.keys().map(context);

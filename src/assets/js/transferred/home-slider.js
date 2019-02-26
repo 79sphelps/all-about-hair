@@ -1,3 +1,5 @@
+//let jQuery = window.jQuery;
+
 (function($) {
   "use strict";
 
