@@ -113,7 +113,6 @@
       }
     });
   };
-  console.log('----- HERE -----');
   carousel();
 
 })(jQuery);

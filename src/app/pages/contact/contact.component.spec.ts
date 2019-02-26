@@ -23,7 +23,7 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 import { RequestFormComponent } from '../../admin/request-form/request-form.component';
 import { ContactComponent } from './contact.component';
 
-xdescribe('ContactComponent', () => {
+describe('ContactComponent', () => {
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
 

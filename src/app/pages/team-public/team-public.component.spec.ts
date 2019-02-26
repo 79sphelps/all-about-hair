@@ -23,7 +23,7 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 import { RequestFormComponent } from '../../admin/request-form/request-form.component';
 import { TeamPublicComponent } from './team-public.component';
 
-xdescribe('TeamPublicComponent', () => {
+describe('TeamPublicComponent', () => {
   let component: TeamPublicComponent;
   let fixture: ComponentFixture<TeamPublicComponent>;
 

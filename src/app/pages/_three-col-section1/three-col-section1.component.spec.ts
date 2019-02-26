@@ -16,7 +16,7 @@ import { AuthService } from '../../auth/auth.service';
 import { UtilsService } from '../../core/utils.service';
 import { ThreeColSection1Component } from './three-col-section1.component';
 
-xdescribe('ThreeColSection1Component', () => {
+describe('ThreeColSection1Component', () => {
   let component: ThreeColSection1Component;
   let fixture: ComponentFixture<ThreeColSection1Component>;
 

@@ -27,7 +27,7 @@ import { AppointmentsNewComponent } from '../../admin/appointments-new/appointme
 import { AppointmentFormComponent } from '../../admin/appointment-form/appointment-form.component';
 import { CalendarComponent } from './calendar.component';
 
-xdescribe('CalendarComponent', () => {
+describe('CalendarComponent', () => {
   let component: CalendarComponent;
   let fixture: ComponentFixture<CalendarComponent>;
 

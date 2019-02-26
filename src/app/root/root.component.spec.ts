@@ -7,7 +7,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { GoogleAnalyticsEventsService } from '../google-analytics-events.service';
 import { AuthService } from '../auth/auth.service';
 
-xdescribe('RootComponent', () => {
+describe('RootComponent', () => {
   let component: RootComponent;
   let fixture: ComponentFixture<RootComponent>;
 

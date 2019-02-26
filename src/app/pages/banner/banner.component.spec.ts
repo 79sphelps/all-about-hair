@@ -17,7 +17,7 @@ import { UtilsService } from './../../core/utils.service';
 import { BannerComponent } from './banner.component';
 
 
-xdescribe('BannerComponent', () => {
+describe('BannerComponent', () => {
   let component: BannerComponent;
   let fixture: ComponentFixture<BannerComponent>;
 

@@ -16,7 +16,7 @@ import { AuthService } from '../../auth/auth.service';
 import { UtilsService } from '../../core/utils.service';
 import { AboutComponent } from './about.component';
 
-xdescribe('AboutComponent', () => {
+describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
 

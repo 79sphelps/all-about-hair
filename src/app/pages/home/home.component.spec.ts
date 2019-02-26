@@ -33,7 +33,7 @@ import { RequestFormComponent } from '../../admin/request-form/request-form.comp
 
 import { HomeComponent } from './home.component';
 
-xdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 

@@ -4,7 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 
 import { CallbackComponent } from './callback.component';
 
-xdescribe('CallbackComponent', () => {
+describe('CallbackComponent', () => {
   let component: CallbackComponent;
   let fixture: ComponentFixture<CallbackComponent>;
 
