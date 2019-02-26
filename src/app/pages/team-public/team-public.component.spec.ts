@@ -13,6 +13,8 @@ import {
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// import {NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+
 import { ApiService } from '../../core/api.service';
 import { AuthService } from '../../auth/auth.service';
 import { UtilsService } from './../../core/utils.service';
@@ -46,10 +48,63 @@ describe('TeamPublicComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TeamPublicComponent);
     component = fixture.componentInstance;
+
+    component.homepage = {
+      headline: 'Homepage Headline',
+      headlineSubMsg: 'Homepage SubMsg',
+      servicesHeadline: 'Homepage Services Headline',
+      servicesSubMsg: 'Homepage Services SubMsg',
+      aboutHeadline: 'Homepage About Headline',
+      aboutSubMsg: 'Homepage About SubMsg',
+      aboutImage: '../../../assets/img/about-img.jpg',
+      aboutVideoLink: 'Homepage About Video Link',
+      stylistsHeadline: 'Homepage Stylists Headline',
+      stylistsSubMsg: 'Homepage Stylists SugMsg',
+      serviceDetailsHeadline: 'Homepage Service Details Headline',
+      serviceDetailsSubMsg: 'Homepage Service Details SubMsg',
+      contactHeadline: 'Homepage Contact Headline',
+      contactSubMsg: 'Homepage Contact SubMsg',
+      _id: '1'
+    };
+
+    component.personelList = [{
+      name: 'Test Personel Name',
+      role: 'Test Personel Role',
+      bio: 'Test Personel Bio',
+      photo: '../../../assets/img/person_4.jpg',
+      _id: '1'
+    }];
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display a team member section headline and a sub message', () => {
+    const element = fixture.nativeElement;
+
+    const headline = element.querySelector('h1');
+    expect(headline).not.toBeNull('You should have an `h1` element to display the team member section headline');
+    expect(headline.textContent).toContain('Homepage Stylists Headline');
+
+    const submessage = element.querySelector('p');
+    expect(submessage).not.toBeNull('You should have a `p` element to display the team member section submessage');
+    expect(submessage.textContent).toContain('Homepage Stylists SugMsg');
+  });
+
+
+  xit('should display team member section hover images', () => {
+    const element = fixture.nativeElement;
+
+    const image = element.querySelector('div[id="teamList"] > div.thumb > img.img-fluid');
+    console.log(image);
+    console.log(image.getAttribute('src'));
+
+    expect(image).not.toBeNull('You should have an img element for each team member');
+    expect(image.getAttribute('src')).toContain('../../../assets/img/person_4.jpg');
+  });
+
+
 });

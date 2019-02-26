@@ -11,8 +11,6 @@ import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 import { ENV } from './env.config';
 
-// import { Testimonial } from './models/testimonials';
-// import { Image } from './models/image';
 import { Homepage } from './models/homepage';
 import { Personel } from './models/personel';
 import { Service } from './models/service';

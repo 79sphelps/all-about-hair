@@ -1,28 +1,17 @@
 <!-- Start about Area -->
 <section class="about-area mt-30">
   <div class="container-fluid">
-    <!-- <div class="row no-padding justify-content-center d-flex align-items-center"> -->
     <div class="row">
-      <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6" style="text-align: center; width: 48%; margin: 1%;"> -->
       <div class="container col-12 col-sm-12 col-md-6 col-lg-6">
         <h1 class="phone-only">
-          <!-- Providing Custom Salon Care for Our Clients is What We Excel At -->
           {{ homepage && homepage.aboutHeadline }}
         </h1>
         <p style="text-align: justify; margin: 10px;">
           {{ homepage && homepage.aboutSubMsg }}
         </p>
-        <!--
-            <button class="primary-btn mt-20 text-uppercase">See Details
-              <span class="lnr lnr-arrow-right"></span>
-            </button>
-            -->
       </div>
 
-      <!-- <div class="col-lg-6 about-right no-padding"> -->
       <div class="container col-12 col-sm-12 col-md-6 col-lg-6">
-        <!-- <img src="img_avatar.png" alt="Avatar" class="image"> -->
-        <!-- <img class="image" src="assets/img/about-img.jpg" alt=""> -->
         <img
           *ngIf="homepage"
           class="image"
@@ -40,11 +29,6 @@
               style="margin-left: -20px;"
             />
           </a>
-          <!--
-            <a href="http://www.youtube.com/watch?v=0O2aH4XLbto" class="play-btn">
-              <img class="play" src="assets/img/play.png" alt="" style="margin-left: -20px;">
-            </a>
-            -->
         </div>
       </div>
     </div>

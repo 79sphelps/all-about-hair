@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { ClickOutsideDirective } from './click-outside.directive';
+// import { ClickOutsideDirective } from './click-outside.directive';
 
 @Component({
   selector: 'app-header',
@@ -42,5 +42,4 @@ export class HeaderComponent implements OnInit {
     });
   }
   */
-
 }

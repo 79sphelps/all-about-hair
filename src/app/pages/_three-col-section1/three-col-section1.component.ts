@@ -12,7 +12,6 @@ import { Service } from '../../core/models/service';
   styleUrls: ['./three-col-section1.component.css']
 })
 export class ThreeColSection1Component implements OnInit, OnDestroy {
-
   pageTitle = 'Services';
 
   homepageSub: Subscription;

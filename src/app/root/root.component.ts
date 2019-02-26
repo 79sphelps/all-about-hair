@@ -1,12 +1,8 @@
-// src/app/app.component.ts
 import { Component, OnInit } from '@angular/core';
-// import { fromEvent } from 'rxjs';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { debounceTime } from 'rxjs/operators';
-
-import {Router, NavigationEnd} from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { GoogleAnalyticsEventsService } from '../google-analytics-events.service';
-
 
 @Component({
   selector: 'app-root',
@@ -18,8 +14,10 @@ export class RootComponent implements OnInit {
   minHeight: string;
   private _initWinHeight = 0;
 
-
-  constructor(public router: Router, public googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
+  constructor(
+    public router: Router,
+    public googleAnalyticsEventsService: GoogleAnalyticsEventsService
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         (<any>window).ga('set', 'page', event.urlAfterRedirects);

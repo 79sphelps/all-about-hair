@@ -45,25 +45,37 @@ describe('BannerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /*
+
   it('display the title and quote', () => {
     // const fixture = TestBed.createComponent(BannerComponent);
     const element = fixture.nativeElement;
 
     const title = element.querySelector('h1');
     expect(title).not.toBeNull('You should have an `h1` element to display the title');
-    expect(title.textContent).toContain('Hair Styling is a Must Try Fashion for All Occasions');
-
-    //expect(title.textContent)
-    //  .toContain('Always a pleasure to bet on ponies', 'You should have the `small` element inside the `h1` element');
+    // expect(title.textContent).toContain('Hair Styling is a Must Try Fashion for All Occasions');
 
     const subtitle = element.querySelector('p');
     expect(subtitle).not.toBeNull('You should have a `p` element to display the subtitle');
-    expect(subtitle.textContent).toContain('At All About Hair, we provide custom salon care at an affordable price.');
-
-    //const subtitle = element.querySelector('small');
-    //expect(subtitle).not.toBeNull('You should have a `small` element to display the subtitle');
-    //expect(subtitle.textContent).toContain('Always a pleasure to bet on ponies');
+    // expect(subtitle.textContent).toContain('At All About Hair, we provide custom salon care at an affordable price.');
   });
-  */
+
+  it('should have a button that says View Custom Services', () => {
+    // const fixture = TestBed.createComponent(BannerComponent);
+    const element = fixture.nativeElement;
+
+    const button = element.querySelector('[id="bannerBtn"]');
+    expect(button).not.toBeNull('You should have an `View Custom Services` element that is a button');
+    expect(button.textContent).toContain('View Custom Services');
+    expect(button.getAttribute('href')).toBe('#price');
+  });
+
+  it('should have a background banner image', () => {
+    // const fixture = TestBed.createComponent(BannerComponent);
+    const element = fixture.nativeElement;
+
+    const image = element.querySelector('img');
+    expect(image).not.toBeNull('You should have a background banner image');
+    expect(image.getAttribute('src')).toBe('../../../assets/img/header-img.png', 'The `src` attribute of the image is not correct');
+  });
+
 });

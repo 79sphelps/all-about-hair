@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, AfterViewInit, EventEmitter } from '@angular/core';
-// import { FooterService } from '../../footer/footer.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-gallery-section',
@@ -8,14 +7,11 @@ import { Component, OnInit, Output, AfterViewInit, EventEmitter } from '@angular
 })
 export class GallerySectionComponent implements OnInit {
 
-  constructor(
-    // private _footerService: FooterService
-    ) { }
+  constructor() { }
 
   ngOnInit() {
     this.loadScript('../../../assets/js/transferred/jquery.stellar.min.js');
     this.loadScript('../../../assets/js/transferred/main.js');
-    // this._footerService.setLoaded(true);
   }
 
   public loadScript(url: string) {

@@ -24,7 +24,7 @@
       <label class="ml-10 mr-10" style="font-weight: bold;"
         ><strong>Role:</strong></label
       >
-      <div class="modal-role ml-15 mb-10" ></div>
+      <div class="modal-role ml-15 mb-10"></div>
       <label class="ml-10 mr-10" style="font-weight: bold;"
         ><strong>Bio:</strong></label
       >
@@ -49,6 +49,7 @@
 
     <div class="row justify-content-center d-flex align-items-center">
       <div
+        id="teamList"
         *ngFor="let person of (personelList | slice: 1); let i = index"
         class="col-lg-3 col-md-6 col-sm-6 col-6 single-team"
       >
@@ -63,7 +64,6 @@
             [attr.data-role]="person.role"
           />
 
-          <!-- <div class="align-items-center justify-content-center d-flex"> -->
           <div
             class="align-items-center justify-content-center d-flex"
             data-modal-picture="#carousel-modal"
@@ -78,18 +78,7 @@
           </div>
         </div>
         <div class="meta-text mt-35 text-center ">
-          <!--
-          <h4
-            class="carousel-caption stylist-name"
-            [id]="i"
-            style="color: black !important;"
-          >
-            {{ person.name }}
-          </h4>
-          -->
-          <h4
-            [id]="i"
-          >
+          <h4 [id]="i">
             {{ person.name }}
           </h4>
         </div>
@@ -98,5 +87,4 @@
     </div>
   </div>
 </section>
-
 <!-- End team Area -->

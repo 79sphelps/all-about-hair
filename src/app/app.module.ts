@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RootComponent } from './root/root.component';
 // import { ServicesPublicComponent } from './pages/services-public/services-public.component';
@@ -84,7 +83,6 @@ import { ClickOutsideDirective } from './header/click-outside.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
     HomeComponent,
     RootComponent,
     AboutComponent,

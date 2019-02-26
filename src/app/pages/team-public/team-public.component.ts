@@ -1,34 +1,34 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ApiService } from '../../core/api.service';
-import { UtilsService } from '../../core/utils.service';
-import { Subscription } from 'rxjs/Subscription';
-import { Homepage } from '../../core/models/homepage';
-import { Personel } from '../../core/models/personel';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { ApiService } from "../../core/api.service";
+import { UtilsService } from "../../core/utils.service";
+import { Subscription } from "rxjs/Subscription";
+import { Homepage } from "../../core/models/homepage";
+import { Personel } from "../../core/models/personel";
 
 @Component({
-  selector: 'app-team-public',
-  templateUrl: './team-public.component.html',
-  styleUrls: ['./team-public.component.scss']
+  selector: "app-team-public",
+  templateUrl: "./team-public.component.html",
+  styleUrls: ["./team-public.component.scss"]
 })
 export class TeamPublicComponent implements OnInit, OnDestroy {
-  pageTitle = 'Stylist Team';
+  pageTitle = "Stylist Team";
 
   homepageSub: Subscription;
   homepage: Homepage;
 
   personelListSub: Subscription;
   personelList: Personel[];
-  // imageList = ['assets/images/brazil.png', 'assets/images/datsun.png', 'assets/images/skydive.png'];
 
   loading: boolean;
   error: boolean;
-  query: '';
+  query: "";
 
   constructor(
     private title: Title,
     public utils: UtilsService,
-    private api: ApiService) { }
+    private api: ApiService
+  ) {}
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
@@ -55,24 +55,21 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
   private _getPersonelList() {
     this.loading = true;
     // Get future, public events
-    this.personelListSub = this.api
-      .getPersonel$()
-      .subscribe(
-        res => {
-          this.personelList = res;
-          this.loading = false;
-        },
-        err => {
-          console.error(err);
-          this.loading = false;
-          this.error = true;
-        }
-      );
+    this.personelListSub = this.api.getPersonel$().subscribe(
+      res => {
+        this.personelList = res;
+        this.loading = false;
+      },
+      err => {
+        console.error(err);
+        this.loading = false;
+        this.error = true;
+      }
+    );
   }
 
   ngOnDestroy() {
     this.homepageSub.unsubscribe();
     this.personelListSub.unsubscribe();
   }
-
 }

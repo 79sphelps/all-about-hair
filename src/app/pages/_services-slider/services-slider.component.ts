@@ -37,20 +37,13 @@ export class ServicesSliderComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getServicesDetails();
-
-    // this.loadScript('../../../assets/js/jquery.min.js');
-    // this.loadScript('../../../../node_modules/jquery/dist/jquery.js');
     this.loadScript('../../../assets/js/owl.carousel.min.js');
     this.loadScript('../../../assets/js/transferred/home-slider.js');
-
-    // this.loadScript('../../../assets/js/transferred/main.js');
-    // window.scrollTo({ top: -200, behavior: 'smooth' });
   }
 
   getBackground(image) {
     return this._sanitizer.bypassSecurityTrustStyle(`url(../../${image})`);
   }
-
 
   public loadScript(url: string) {
     const body = <HTMLDivElement>document.body;

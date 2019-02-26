@@ -1,14 +1,14 @@
 // src/app/auth/auth.service.ts
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AUTH_CONFIG } from './auth.config';
-import * as auth0 from 'auth0-js';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { mergeMap } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/timer';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { AUTH_CONFIG } from "./auth.config";
+import * as auth0 from "auth0-js";
+import { Subscription } from "rxjs/Subscription";
+import { Observable } from "rxjs/Observable";
+import { mergeMap } from "rxjs/operators";
+import "rxjs/add/observable/of";
+import "rxjs/add/observable/timer";
 
 // import { of, timer } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class AuthService {
   private _auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.CLIENT_ID,
     domain: AUTH_CONFIG.CLIENT_DOMAIN,
-    responseType: 'token',
+    responseType: "token",
     redirectUri: AUTH_CONFIG.REDIRECT,
     audience: AUTH_CONFIG.AUDIENCE,
     scope: AUTH_CONFIG.SCOPE
@@ -42,13 +42,13 @@ export class AuthService {
     // and update login status subject.
     // If not authenticated but there are still items
     // in localStorage, log out.
-    const lsProfile = localStorage.getItem('profile');
+    const lsProfile = localStorage.getItem("profile");
 
     if (this.tokenValid) {
       // this.userProfile = JSON.parse(lsProfile);
       // this.setLoggedIn(true);
-      this.userProfile = JSON.parse(localStorage.getItem('profile'));
-      this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+      this.userProfile = JSON.parse(localStorage.getItem("profile"));
+      this.isAdmin = localStorage.getItem("isAdmin") === "true";
       this.setLoggedIn(true);
       this.scheduleRenewal();
     } else if (!this.tokenValid && lsProfile) {
@@ -76,12 +76,12 @@ export class AuthService {
     // When Auth0 hash parsed, get profile
     this._auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
-        window.location.hash = '';
+        window.location.hash = "";
         this._getProfile(authResult);
       } else if (err) {
         console.error(`Error authenticating: ${err.error}`);
       }
-      this.router.navigate(['/']);
+      this.router.navigate(["/"]);
     });
   }
 
@@ -110,9 +110,9 @@ export class AuthService {
   private _redirect() {
     // Redirect with or without 'tab' query parameter
     // Note: does not support additional params besides 'tab'
-    const fullRedirect = decodeURI(localStorage.getItem('authRedirect'));
-    const redirectArr = fullRedirect.split('?tab=');
-    const navArr = [redirectArr[0] || '/'];
+    const fullRedirect = decodeURI(localStorage.getItem("authRedirect"));
+    const redirectArr = fullRedirect.split("?tab=");
+    const navArr = [redirectArr[0] || "/"];
     const tabObj = redirectArr[1]
       ? { queryParams: { tab: redirectArr[1] } }
       : null;
@@ -128,27 +128,27 @@ export class AuthService {
 
   private _clearRedirect() {
     // Remove redirect from localStorage
-    localStorage.removeItem('authRedirect');
+    localStorage.removeItem("authRedirect");
   }
 
   private _setSession(authResult, profile?) {
     // Save session data and update login status subject
     const expiresAt = JSON.stringify(authResult.expiresIn * 1000 + Date.now());
     // Set tokens and expiration in localStorage and props
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('profile', JSON.stringify(profile));
+    localStorage.setItem("access_token", authResult.accessToken);
+    localStorage.setItem("expires_at", expiresAt);
+    localStorage.setItem("profile", JSON.stringify(profile));
     this.userProfile = profile;
 
     this.isAdmin = this._checkAdmin(profile);
-    localStorage.setItem('isAdmin', this.isAdmin.toString());
+    localStorage.setItem("isAdmin", this.isAdmin.toString());
 
     // If initial login, set profile and admin information
     if (profile) {
-      localStorage.setItem('profile', JSON.stringify(profile));
+      localStorage.setItem("profile", JSON.stringify(profile));
       this.userProfile = profile;
       this.isAdmin = this._checkAdmin(profile);
-      localStorage.setItem('isAdmin', this.isAdmin.toString());
+      localStorage.setItem("isAdmin", this.isAdmin.toString());
     }
 
     // Update login status in loggedIn$ stream
@@ -161,17 +161,17 @@ export class AuthService {
   private _checkAdmin(profile) {
     // Check if the user has admin role
     const roles = profile[AUTH_CONFIG.NAMESPACE] || [];
-    return roles.indexOf('admin') > -1;
+    return roles.indexOf("admin") > -1;
   }
 
   logout(noRedirect?: boolean) {
     // Ensure all auth items removed from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('profile');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('authRedirect');
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("profile");
+    localStorage.removeItem("expires_at");
+    localStorage.removeItem("authRedirect");
 
-    localStorage.removeItem('isAdmin');
+    localStorage.removeItem("isAdmin");
     // Reset local properties, update loggedIn$ stream
     this.userProfile = undefined;
     this.isAdmin = undefined;
@@ -181,7 +181,7 @@ export class AuthService {
     this.unscheduleRenewal();
     // Return to homepage
     if (noRedirect !== true) {
-      this.router.navigate(['/']);
+      this.router.navigate(["/"]);
       window.location.reload();
     }
 
@@ -194,7 +194,7 @@ export class AuthService {
 
   get tokenValid(): boolean {
     // Check if current time is past access token's expiration
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(localStorage.getItem("expires_at"));
     return Date.now() < expiresAt;
   }
 
@@ -220,7 +220,7 @@ export class AuthService {
     // Unsubscribe from previous expiration observable
     this.unscheduleRenewal();
     // Create and subscribe to expiration observable
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(localStorage.getItem("expires_at"));
 
     const expiresIn$ = Observable.of(expiresAt).pipe(
       mergeMap(expires => {
