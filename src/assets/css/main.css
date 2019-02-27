@@ -3,6 +3,7 @@
 /* Tablet Layout: 768px */
 /* Mobile Layout: 320px */
 /* Wide Mobile Layout: 480px */
+
 /* =================================== */
 /*  Basic Style
 /* =================================== */
@@ -48,6 +49,9 @@
   color: #777777;
   font-weight: 300;
 }
+
+
+
 
 body {
   color: #777777;
@@ -1112,6 +1116,12 @@ h6 {
   border-left: 2px solid #f61daf;
 }
 
+
+
+
+
+
+
 .progress-table-wrap {
   overflow-x: scroll;
 }
@@ -1215,6 +1225,10 @@ h6 {
   background-color: #e66686;
 }
 
+
+
+
+
 .single-gallery-image {
   margin-top: 30px;
   background-repeat: no-repeat !important;
@@ -1222,6 +1236,10 @@ h6 {
   background-size: cover !important;
   height: 200px;
 }
+
+
+
+
 
 .list-style {
   width: 14px;
@@ -1287,6 +1305,10 @@ h6 {
   font-weight: 300;
   color: #777777;
 }
+
+
+
+
 
 .single-input {
   display: block;
@@ -1382,6 +1404,9 @@ h6 {
   outline: none;
   border: 1px solid #f09359;
 }
+
+
+
 
 .default-switch {
   width: 35px;
@@ -1570,6 +1595,11 @@ h6 {
   background: #4cd3e3;
 }
 
+
+
+
+
+
 .primary-checkbox {
   width: 16px;
   height: 16px;
@@ -1691,6 +1721,10 @@ h6 {
     center/cover;
   border: none;
 }
+
+
+
+
 
 .primary-radio {
   width: 16px;
@@ -1814,6 +1848,10 @@ h6 {
   border: none;
 }
 
+
+
+
+
 .default-select {
   height: 40px;
 }
@@ -1921,6 +1959,11 @@ h6 {
 .form-select .nice-select::after {
   right: 20px;
 }
+
+
+
+
+
 
 @media (max-width: 992px) {
   .navbar-nav {
@@ -2041,6 +2084,11 @@ h6 {
   -webkit-text-fill-color: transparent;
 }
 
+
+
+
+
+
 .primary-btn {
   line-height: 42px;
   padding-left: 30px;
@@ -2120,6 +2168,11 @@ h6 {
   padding-right: 30px;
 }
 
+
+
+
+
+
 .overlay {
   position: absolute;
   left: 0;
@@ -2135,6 +2188,10 @@ h6 {
 .sticky-wrapper {
   height: 48px !important;
 }
+
+
+
+
 
 .dropdown-item {
   font-size: 14px;
@@ -2187,6 +2244,11 @@ h6 {
   text-decoration: none;
   background-color: transparent;
 }
+
+
+
+
+
 
 .is-sticky .default-header {
   -webkit-transition: all 0.3s ease 0s;
@@ -2273,6 +2335,11 @@ h6 {
   }
 }
 
+
+
+
+
+
 .header-btn {
   background-color: #fff;
   padding: 8px 35px;
@@ -2289,6 +2356,10 @@ h6 {
   color: #fff;
 }
 
+
+
+
+
 .single-service .icon {
   margin-right: 40px;
 }
@@ -2296,6 +2367,10 @@ h6 {
 .single-service a {
   color: #000;
 }
+
+
+
+
 
 .gallery-area .owl-controls {
   position: absolute;
@@ -2326,6 +2401,10 @@ h6 {
   border: 1px solid #f5f5f5;
   display: inline-flex;
 }
+
+
+
+
 
 .single-gallery h4 {
   opacity: 1;
@@ -2393,6 +2472,10 @@ h6 {
   cursor: pointer;
 }
 
+
+
+
+
 .single-feature {
   background-color: #f9f9ff;
   padding: 30px 30px 15px 30px;
@@ -2422,6 +2505,10 @@ h6 {
   margin-right: 12px;
   font-size: 20px;
 }
+
+
+
+
 
 .about-left {
   left: 20%;
@@ -2463,6 +2550,10 @@ h6 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+
+
 
 .team-area .single-team {
   padding: 10px;
@@ -2525,6 +2616,10 @@ h6 {
   opacity: 1;
   cursor: pointer;
 }
+
+
+
+
 
 .price-area {
   background-color: #f9f9ff;
@@ -2604,6 +2699,10 @@ h6 {
   }
 }
 
+
+
+
+
 .single-contact-info {
   text-align: center;
 }
@@ -2617,6 +2716,10 @@ h6 {
     margin-bottom: 30px;
   }
 }
+
+
+
+
 
 .form-area input {
   padding: 15px;
@@ -2633,10 +2736,18 @@ h6 {
   margin-top: 0px;
 }
 
+
+
+
+
 .footer-area {
   padding-top: 30px;
   background-color: #222222;
 }
+
+
+
+
 
 h6 {
   color: #fff;
@@ -2841,6 +2952,10 @@ h6 {
   padding: 70px 0;
   border-top: 1px dotted #eee;
 }
+
+
+
+
 
 .switch-wrap {
   margin-bottom: 10px;

@@ -1,240 +1,202 @@
-'use strict';
+"use strict";
 
 //During the test the env variable is set to test
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
-const mongoose = require("mongoose");
-const Request = require('../models/Request');
+// const mongoose = require("mongoose");
+// const Appointment = require("../models/Appointments");
+// const server = require("../../server");
 
 //Require the dev-dependencies
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../server');
-const should = chai.should();
+const chai = require("chai");
+// const chaiHttp = require("chai-http");
+// const should = chai.should();
 
-chai.use(chaiHttp);
+const expect = require("chai").expect;
+const nock = require("nock");
 
-//Our parent block
-describe('Request', () => {
-    /*
-    beforeEach((done) => { //Before each test we empty the database
-        Image.remove({}, (err) => {
-            done();
-        });
-    });
-    */
+const getRequestsResponse = require("./requests-response");
+const getRequests = require("./requests-index").getRequests;
+const getRequestByID = require("./requests-index").getRequestByID;
+const createRequest = require("./requests-index").createRequest;
+const updateRequest = require("./requests-index").updateRequest;
+const deleteRequest = require("./requests-index").deleteRequest;
 
-    /*
-     * Test the /GET route
-     */
-    describe('/GET requests', () => {
-        it('it should GET all the requests', (done) => {
-            chai.request(server)
-                .get('/api/admin/requests')
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('array');
-                    //res.body.length.should.be.eql(0);
-                    res.body.length.should.be.not.eql(0);
-                    done();
-                });
-        });
+// chai.use(chaiHttp);
+
+// Parent Block
+describe("Request", () => {
+  describe("/GET requests", () => {
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get("/api/admin/requests")
+        .reply(200, getRequestsResponse);
     });
 
-    describe('/POST requests', () => {
-        it('it should not POST a requests without photo field', (done) => {
-            let request = {
-                name: "Test Request Name",
-                email: "Test Request Email",
-                message: "Test Request Message",
-            }
-            chai.request(server)
-                .post('/api/requests/new')
-                .send(request)
-                .end((err, res) => {
-                    res.should.have.status(500);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('message');
-                    //res.body.errors.should.have.property('path');
-                    //res.body.message.should.be.eql('gallery2 validation failed: path: Path `path` is required.');
-                    //res.body.errors.name.should.have.property('path').eql('required');
-                    done();
-                });
-        });
+    it("it should GET all requests", () => {
+      return getRequests().then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-        it('it should POST a requests', (done) => {
-            let request = {
-                name: "Test Request Name",
-                email: "Test Request Email",
-                message: "Test Request Message",
-                category: "Test Request Category"
-            }
-            chai.request(server)
-                .post('/api/requests/new')
-                .send(request)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('name').eql(request.name);
-                    res.body.should.have.property('email').eql(request.email);
-                    res.body.should.have.property('message').eql(request.message);
-                    res.body.should.have.property('category').eql(request.category);
+        //Test result of name, company and location for the response
+        expect(res.length).to.be.not.equal(0);
+        expect(res.length).to.be.equal(3);
+        expect(res[0].name).to.equal("Bill Nye");
+        expect(res[0].email).to.equal("bill@gmail.com");
+        expect(res[0].message).to.equal(
+          "Do you offer salon packages as gifts?"
+        );
+        expect(res[0].category).to.equal("gift packages");
+      });
+    });
+  });
 
-                    chai.request(server)
-                    .get('/api/admin/requests/' + res.body._id)
-                    .send(request)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name');
-                        res.body.should.have.property('email');
-                        res.body.should.have.property('message');
-                        res.body.should.have.property('category');
-                        res.body.should.have.property('_id').eql(res.body._id);
+  describe("/GET request", () => {
+    let id = 1;
+    let mockRequestResponse = {
+      name: "Test Request Name",
+      email: "Test Request Email",
+      message: "Test Request Message",
+      category: "Test Request Category",
+      _id: "1"
+    };
 
-                        chai.request(server)
-                        .delete('/api/admin/requests/' + res.body._id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Request successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-
-                });
-        });
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get(`/api/admin/requests/${id}`)
+        .reply(200, mockRequestResponse);
     });
 
+    it("it should GET a request", () => {
+      return getRequestByID(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Request Name");
+        expect(res.email).to.equal("Test Request Email");
+        expect(res.message).to.equal("Test Request Message");
+        expect(res.category).to.equal("Test Request Category");
+      });
+    });
+  });
 
-    describe('/GET/:id requests', () => {
-        it('it should GET a requests by the given id', (done) => {
-            let request = new Request({
-                name: "Test Request Name",
-                email: "Test Request Email",
-                message: "Test Request Message",
-                category: "Test Request Category"
-            });
-            request.save((err, request) => {
-                chai.request(server)
-                    .get('/api/admin/requests/' + request.id)
-                    .send(request)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(request.name);
-                        res.body.should.have.property('email').eql(request.email);
-                        res.body.should.have.property('message').eql(request.message);
-                        res.body.should.have.property('category').eql(request.category);
-                        res.body.should.have.property('_id').eql(request.id);
+  describe("/POST request", () => {
+    let mockRequestResponse = {
+      name: "Test Request Name",
+      email: "Test Request Email",
+      message: "Test Request Message",
+      category: "Test Request Category",
+      _id: "1"
+    };
 
-                        chai.request(server)
-                        .delete('/api/admin/requests/' + request.id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Request successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-            });
-
-        });
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .post("/api/requests/new")
+        .reply(201, mockRequestResponse);
     });
 
+    it("it should create a request", () => {
+      let mockRequest = {
+        name: "Test Request Name",
+        email: "Test Request Email",
+        message: "Test Request Message",
+        category: "Test Request Category",
+        _id: "1"
+      };
 
+      return createRequest(mockRequest).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-    describe('/PUT/:id requests', () => {
-        it('it should UPDATE a requests given the id', (done) => {
-            let request = new Request({
-                name: "Test Request Name",
-                email: "Test Request Email",
-                message: "Test Request Message",
-                category: "Test Request Category"
-            });
-            request.save((err, request) => {
-                chai.request(server)
-                    .put('/api/admin/requests/update/' + request.id)
-                    .send({
-                        name: "Test Request Name Updated",
-                        email: "Test Request Email",
-                        message: "Test Request Message",
-                        category: "Test Request Category"
-                    })
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(request.name + ' Updated');
-                        res.body.should.have.property('email').eql(request.email);
-                        res.body.should.have.property('message').eql(request.message);
-                        res.body.should.have.property('category').eql(request.category);
-                        //res.body.should.have.property('message').eql('Gallery image updated!');
-                        //res.body.user.should.have.property('rawData').eql("{ n: 1, nModified: 1, ok: 1 }");
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Request Name");
+        expect(res.email).to.equal("Test Request Email");
+        expect(res.message).to.equal("Test Request Message");
+        expect(res.category).to.equal("Test Request Category");
+      });
+    });
+  });
 
-                        chai.request(server)
-                            .get('/api/admin/requests/' + request.id)
-                            .end((err, res) => {
-                                res.should.have.status(200);
-                                res.body.should.be.a('object');
-                                res.body.should.have.property('name').eql(request.name + ' Updated');
-                                res.body.should.have.property('email').eql(request.email);
-                                res.body.should.have.property('message').eql(request.message);
-                                res.body.should.have.property('category').eql(request.category);
+  describe("/PUT request", () => {
+    let id = 1;
 
-                                chai.request(server)
-                                .delete('/api/admin/requests/' + request.id)
-                                .end((err, res) => {
-                                    res.should.have.status(200);
-                                    res.body.should.be.a('object');
-                                    res.body.should.have.property('message').eql('Request successfully deleted.');
-                                    //console.log(res.body);
-                                    //console.log(typeof res.body.rawData);
-                                    //res.body.result.should.have.property('ok').eql(1);
-                                    //res.body.result.should.have.property('n').eql(1);
-                                    //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                                    done();
-                                });
-                            });
-                    });
-            });
-        });
+    let mockRequest = {
+      name: "Test Request Name",
+      email: "Test Request Email",
+      message: "Test Request Message",
+      category: "Test Request Category",
+      _id: "1"
+    };
+
+    let mockRequestResponse = {
+      name: "Test Request Name",
+      email: "Test Request Email",
+      message: "Test Request Message",
+      category: "Test Request Category",
+      _id: "1"
+    };
+
+    let mockRequestUpdatedResponse = {
+      name: "Test Request Name Updated",
+      email: "Test Request Email Updated",
+      message: "Test Request Message Updated",
+      category: "Test Request Category Updated",
+      _id: "1"
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/requests/new", mockRequest)
+        .reply(201, mockRequestResponse)
+        .put("/api/admin/requests/update/" + id, mockRequestUpdatedResponse)
+        .reply(200, mockRequestUpdatedResponse);
     });
 
-    describe('/DELETE/:id requests', () => {
-        it('it should DELETE a requests given the id', (done) => {
-            let request = new Request({
-                name: "Test Request Name",
-                email: "Test Request Email",
-                message: "Test Request Message",
-                category: "Test Request Category"
-            });
-            request.save((err, request) => {
-                chai.request(server)
-                    .delete('/api/admin/requests/' + request.id)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('message').eql('Request successfully deleted.');
-                        //console.log(res.body);
-                        //console.log(typeof res.body.rawData);
-                        //res.body.result.should.have.property('ok').eql(1);
-                        //res.body.result.should.have.property('n').eql(1);
-                        //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                        done();
-                    });
-            });
-        });
+    it("it should update a request", () => {
+      return updateRequest(id, mockRequestUpdatedResponse).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Request Name Updated");
+        expect(res.email).to.equal("Test Request Email Updated");
+        expect(res.message).to.equal("Test Request Message Updated");
+        expect(res.category).to.equal("Test Request Category Updated");
+      });
+    });
+  });
+
+  describe("/DELETE request", () => {
+    let id = 1;
+    let mockRequestResponse = {
+      name: "Test Request Name",
+      email: "Test Request Email",
+      message: "Test Request Message",
+      category: "Test Request Category",
+      _id: "1"
+    };
+
+    let mockRequestDeleteResponse = {
+      message: "Request successfully deleted."
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/requests/new")
+        .reply(201, mockRequestResponse)
+        .delete(`/api/admin/requests/${id}`)
+        .reply(200, mockRequestDeleteResponse);
     });
 
+    it("it should delete a request", () => {
+      return deleteRequest(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+        expect(res.message).to.equal("Request successfully deleted.");
+      });
+    });
+  });
 });

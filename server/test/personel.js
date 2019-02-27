@@ -1,240 +1,204 @@
-'use strict';
+"use strict";
 
 //During the test the env variable is set to test
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
-const mongoose = require("mongoose");
-const Personel = require('../models/Personel');
+// const mongoose = require("mongoose");
+// const Appointment = require("../models/Appointments");
+// const server = require("../../server");
 
 //Require the dev-dependencies
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../server');
-const should = chai.should();
+const chai = require("chai");
+// const chaiHttp = require("chai-http");
+// const should = chai.should();
 
-chai.use(chaiHttp);
+const expect = require("chai").expect;
+const nock = require("nock");
 
-//Our parent block
-describe('Personel', () => {
-    /*
-    beforeEach((done) => { //Before each test we empty the database
-        Image.remove({}, (err) => {
-            done();
-        });
-    });
-    */
+const getPersonelResponse = require("./personel-response");
+const getPersonel = require("./personel-index").getPersonel;
+const getPersoneByID = require("./personel-index").getPersonelByID;
+const createPersonel = require("./personel-index").createPersonel;
+const updatePersonel = require("./personel-index").updatePersonel;
+const deletePersonel = require("./personel-index").deletePersonel;
 
-    /*
-     * Test the /GET route
-     */
-    describe('/GET personel', () => {
-        it('it should GET all the personels', (done) => {
-            chai.request(server)
-                .get('/api/admin/personel')
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('array');
-                    //res.body.length.should.be.eql(0);
-                    res.body.length.should.be.not.eql(0);
-                    done();
-                });
-        });
+// chai.use(chaiHttp);
+
+// Parent Block
+describe("Personel", () => {
+  describe("/GET personel", () => {
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get("/api/admin/personel")
+        .reply(200, getPersonelResponse);
     });
 
-    describe('/POST personel', () => {
-        it('it should not POST a personel without photo field', (done) => {
-            let person = {
-                name: "Test Personel",
-                role: "Test Personel Role",
-                bio: "Test Personel Bio",
-            }
-            chai.request(server)
-                .post('/api/admin/personel')
-                .send(person)
-                .end((err, res) => {
-                    res.should.have.status(500);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('message');
-                    //res.body.errors.should.have.property('path');
-                    //res.body.message.should.be.eql('gallery2 validation failed: path: Path `path` is required.');
-                    //res.body.errors.name.should.have.property('path').eql('required');
-                    done();
-                });
-        });
+    it("it should GET all personel", () => {
+      return getPersonel().then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-        it('it should POST a personel', (done) => {
-            let person = {
-                name: "Test Personel",
-                role: "Test Personel Role",
-                bio: "Test Personel Bio",
-                photo: "Test Personel Photo Path"
-            }
-            chai.request(server)
-                .post('/api/admin/personel')
-                .send(person)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('name').eql(person.name);
-                    res.body.should.have.property('role').eql(person.role);
-                    res.body.should.have.property('bio').eql(person.bio);
-                    res.body.should.have.property('photo').eql(person.photo);
+        //Test result of name, company and location for the response
+        expect(res.length).to.be.not.equal(0);
+        expect(res.length).to.be.equal(5);
+        expect(res[1].name).to.equal("Ethel Davis");
+        expect(res[1].role).to.equal(
+          "Senior Stylist/Xtreme Lash Stylist/Vomor Extension Certified Stylist"
+        );
+        expect(res[1].bio).to.equal(
+          "Ethel has been in the hair & beauty industry professionally since 2009 and has been and Aveda stylist since 2011. His range of ability is very wide, from needs of fine hair to the complexities of dense curly hair. He's passionate about continuing education & loves to create soft blended layers, short textured pixie cuts, multidimensional color, beautiful blondes, and hair painting techniques such as balayage."
+        );
+        expect(res[1].photo).to.equal("assets/img/img_5.jpg");
+      });
+    });
+  });
 
-                    chai.request(server)
-                    .get('/api/admin/personel/' + res.body._id)
-                    .send(person)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name');
-                        res.body.should.have.property('role');
-                        res.body.should.have.property('bio');
-                        res.body.should.have.property('photo');
-                        res.body.should.have.property('_id').eql(res.body._id);
+  describe("/GET personel", () => {
+    let id = 1;
+    let mockPersonelResponse = {
+      name: "Test Personel Name",
+      role: "Test Personel Role",
+      bio: "Test Personel Bio",
+      photo: "Test Personel Photo",
+      _id: "1"
+    };
 
-                        chai.request(server)
-                        .delete('/api/admin/personel/' + res.body._id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Personel successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-
-                });
-        });
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get(`/api/admin/personel/${id}`)
+        .reply(200, mockPersonelResponse);
     });
 
+    it("it should GET an personel", () => {
+      return getPersoneByID(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Personel Name");
+        expect(res.role).to.equal("Test Personel Role");
+        expect(res.bio).to.equal("Test Personel Bio");
+        expect(res.photo).to.equal("Test Personel Photo");
+      });
+    });
+  });
 
-    describe('/GET/:id personel', () => {
-        it('it should GET a personel by the given id', (done) => {
-            let person = new Personel({
-                name: "Test Personel",
-                role: "Test Personel Role",
-                bio: "Test Personel Bio",
-                photo: "Test Personel Photo Path"
-            });
-            person.save((err, person) => {
-                chai.request(server)
-                    .get('/api/admin/personel/' + person.id)
-                    .send(person)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(person.name);
-                        res.body.should.have.property('role').eql(person.role);
-                        res.body.should.have.property('bio').eql(person.bio);
-                        res.body.should.have.property('photo').eql(person.photo);
-                        res.body.should.have.property('_id').eql(person.id);
+  describe("/POST personel", () => {
+    let mockPersonelResponse = {
+      name: "Test Personel Name",
+      role: "Test Personel Role",
+      bio: "Test Personel Bio",
+      photo: "Test Personel Photo",
+      _id: "1"
+    };
 
-                        chai.request(server)
-                        .delete('/api/admin/personel/' + person.id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Personel successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-            });
-
-        });
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .post("/api/admin/personel/new")
+        .reply(201, mockPersonelResponse);
     });
 
+    it("it should create an personel", () => {
+      let mockPersonel = {
+        name: "Test Personel Name",
+        role: "Test Personel Role",
+        bio: "Test Personel Bio",
+        photo: "Test Personel Photo",
+        _id: "1"
+      };
 
+      return createPersonel(mockPersonel).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-    describe('/PUT/:id personel', () => {
-        it('it should UPDATE a personel given the id', (done) => {
-            let person = new Personel({
-                name: "Test Personel",
-                role: "Test Personel Role",
-                bio: "Test Personel Bio",
-                photo: "Test Personel Photo Path"
-            });
-            person.save((err, person) => {
-                chai.request(server)
-                    .put('/api/admin/personel/update/' + person.id)
-                    .send({
-                        name: "Test Personel Updated",
-                        role: "Test Personel Role",
-                        bio: "Test Personel Bio",
-                        photo: "Test Personel Photo Path"
-                    })
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(person.name + ' Updated');
-                        res.body.should.have.property('role').eql(person.role);
-                        res.body.should.have.property('bio').eql(person.bio);
-                        res.body.should.have.property('photo').eql(person.photo);
-                        //res.body.should.have.property('message').eql('Gallery image updated!');
-                        //res.body.user.should.have.property('rawData').eql("{ n: 1, nModified: 1, ok: 1 }");
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Personel Name");
+        expect(res.role).to.equal("Test Personel Role");
+        expect(res.bio).to.equal("Test Personel Bio");
+        expect(res.photo).to.equal("Test Personel Photo");
+      });
+    });
+  });
 
-                        chai.request(server)
-                            .get('/api/admin/personel/' + person.id)
-                            .end((err, res) => {
-                                res.should.have.status(200);
-                                res.body.should.be.a('object');
-                                res.body.should.have.property('name').eql(person.name + ' Updated');
-                                res.body.should.have.property('role').eql(person.role);
-                                res.body.should.have.property('bio').eql(person.bio);
-                                res.body.should.have.property('photo').eql(person.photo);
+  describe("/PUT personel", () => {
+    let id = 1;
 
-                                chai.request(server)
-                                .delete('/api/admin/personel/' + person.id)
-                                .end((err, res) => {
-                                    res.should.have.status(200);
-                                    res.body.should.be.a('object');
-                                    res.body.should.have.property('message').eql('Personel successfully deleted.');
-                                    //console.log(res.body);
-                                    //console.log(typeof res.body.rawData);
-                                    //res.body.result.should.have.property('ok').eql(1);
-                                    //res.body.result.should.have.property('n').eql(1);
-                                    //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                                    done();
-                                });
-                            });
-                    });
-            });
-        });
+    let mockPersonel = {
+      name: "Test Personel Name",
+      role: "Test Personel Role",
+      bio: "Test Personel Bio",
+      photo: "Test Personel Photo",
+      _id: "1"
+    };
+
+    let mockPersonelResponse = {
+      name: "Test Personel Name",
+      role: "Test Personel Role",
+      bio: "Test Personel Bio",
+      photo: "Test Personel Photo",
+      _id: "1"
+    };
+
+    let mockPersonelUpdatedResponse = {
+      name: "Test Personel Name Updated",
+      role: "Test Personel Role Updated",
+      bio: "Test Personel Bio Updated",
+      photo: "Test Personel Photo Updated",
+      _id: "1"
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/admin/personel/new", mockPersonel)
+        .reply(201, mockPersonelResponse)
+        .put("/api/admin/personel/update/" + id, mockPersonelUpdatedResponse)
+        .reply(200, mockPersonelUpdatedResponse);
     });
 
-    describe('/DELETE/:id personel', () => {
-        it('it should DELETE a personel given the id', (done) => {
-            let person = new Personel({
-                name: "Test Personel",
-                role: "Test Personel Role",
-                bio: "Test Personel Bio",
-                photo: "Test Personel Photo Path"
-            });
-            person.save((err, person) => {
-                chai.request(server)
-                    .delete('/api/admin/personel/' + person.id)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('message').eql('Personel successfully deleted.');
-                        //console.log(res.body);
-                        //console.log(typeof res.body.rawData);
-                        //res.body.result.should.have.property('ok').eql(1);
-                        //res.body.result.should.have.property('n').eql(1);
-                        //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                        done();
-                    });
-            });
-        });
+    it("it should update an personel", () => {
+      return updatePersonel(id, mockPersonelUpdatedResponse).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Personel Name Updated");
+        expect(res.role).to.equal("Test Personel Role Updated");
+        expect(res.bio).to.equal("Test Personel Bio Updated");
+        expect(res.photo).to.equal("Test Personel Photo Updated");
+      });
+    });
+  });
+
+  describe("/DELETE personel", () => {
+    let id = 1;
+    let mockPersonelResponse = {
+      name: "Test Personel Name",
+      role: "Test Personel Role",
+      bio: "Test Personel Bio",
+      photo: "Test Personel Photo",
+      _id: "1"
+    };
+
+    let mockPersonelDeleteResponse = {
+      message: "Personel successfully deleted."
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/admin/personel/new")
+        .reply(201, mockPersonelResponse)
+        .delete(`/api/admin/personel/${id}`)
+        .reply(200, mockPersonelDeleteResponse);
     });
 
+    it("it should delete an personel", () => {
+      return deletePersonel(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+        expect(res.message).to.equal("Personel successfully deleted.");
+      });
+    });
+  });
 });

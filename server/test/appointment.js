@@ -1,235 +1,209 @@
-'use strict';
+"use strict";
 
 //During the test the env variable is set to test
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
-const mongoose = require("mongoose");
-const Appointment = require('../models/Appointments');
+// const mongoose = require("mongoose");
+// const Appointment = require("../models/Appointments");
+// const server = require("../../server");
 
 //Require the dev-dependencies
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../server');
-const should = chai.should();
+const chai = require("chai");
+// const chaiHttp = require("chai-http");
+// const should = chai.should();
 
-chai.use(chaiHttp);
+const expect = require("chai").expect;
+const nock = require("nock");
 
-//Our parent block
-describe('Appointments', () => {
-    /*
-    beforeEach((done) => { //Before each test we empty the database
-        Image.remove({}, (err) => {
-            done();
-        });
-    });
-    */
+const getApptResponse = require("./appointments-response");
+const getAppointments = require("./appointments-index").getAppointments;
+const getAppointment = require("./appointments-index").getAppointment;
+const createAppointment = require("./appointments-index").createAppointment;
+const updateAppointment = require("./appointments-index").updateAppointment;
+const deleteAppointment = require("./appointments-index").deleteAppointment;
 
-    /*
-     * Test the /GET route
-     */
-    describe('/GET appointments', () => {
-        it('it should GET all the appointments', (done) => {
-            chai.request(server)
-                .get('/api/admin/appointments')
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('array');
-                    //res.body.length.should.be.eql(0);
-                    res.body.length.should.be.not.eql(0);
-                    done();
-                });
-        });
+// chai.use(chaiHttp);
+
+describe("First test", () => {
+  it("Should assert true to be true", () => {
+    expect(true).to.be.true;
+  });
+});
+
+// Parent Block
+describe("Appointments", () => {
+  describe("/GET appointments", () => {
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get("/api/admin/appointments")
+        .reply(200, getApptResponse);
     });
 
-    describe('/POST appointment', () => {
-        it('it should not POST a user without message field', (done) => {
-            let appt = {
-                name: "Test Appt Name",
-                email: "Test Appt Email",
-                category: "Test Appt Category",
-            }
-            chai.request(server)
-                .post('/api/appointments/new')
-                .send(appt)
-                .end((err, res) => {
-                    console.log(res.body);
-                    res.should.have.status(500);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('message');
-                    //res.body.errors.should.have.property('path');
-                    //res.body.message.should.be.eql('gallery2 validation failed: path: Path `path` is required.');
-                    //res.body.errors.name.should.have.property('path').eql('required');
-                    done();
-                });
-        });
+    it("it should GET all the appointments", () => {
+      return getAppointments().then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-        it('it should POST a appointment', (done) => {
-            let appt = {
-                name: "Test Appt Name",
-                email: "Test Appt Email",
-                category: "Test Appt Category",
-                message: "Test Appt Message"
-            }
-            chai.request(server)
-                .post('/api/appointments/new')
-                .send(appt)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('name').eql(appt.name);
-                    res.body.should.have.property('email').eql(appt.email);
-                    res.body.should.have.property('category').eql(appt.category);
-                    res.body.should.have.property('message').eql(appt.message);
+        //Test result of name, company and location for the response
+        expect(res.length).to.be.not.equal(0);
+        expect(res.length).to.be.equal(7);
+        expect(res[0].name).to.equal("Bill Nye");
+        expect(res[0].email).to.equal("bill@gmail.com");
+        expect(res[0].message).to.equal(
+          "Do you offer salon packages as gifts?"
+        );
+        expect(res[0].category).to.equal("gift packages");
+      });
+    });
+  });
 
-                    chai.request(server)
-                    .get('/api/admin/appointments/' + res.body._id)
-                    .send(appt)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(appt.name);
-                        res.body.should.have.property('email').eql(appt.email);
-                        res.body.should.have.property('category').eql(appt.category);
-                        res.body.should.have.property('message').eql(appt.message);
-                        res.body.should.have.property('_id').eql(res.body._id);
+  describe("/GET appointment", () => {
+    let id = 1;
+    let mockApptResponse = {
+      name: "Test Name",
+      email: "Test Email",
+      category: "Test Category",
+      message: "Test Message",
+      _id: "1"
+    };
 
-                        chai.request(server)
-                        .delete('/api/admin/appointments/' + res.body._id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Appointment successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-
-                });
-        });
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .get(`/api/admin/appointments/${id}`)
+        .reply(200, mockApptResponse);
     });
 
-    describe('/GET/:id appt', () => {
-        it('it should GET a appt by the given id', (done) => {
-            let appt = new Appointment({
-                name: "Test Appt Name",
-                email: "Test Appt Email",
-                category: "Test Appt Category",
-                message: "Test Appt Message"
-            });
-            appt.save((err, appt) => {
-                chai.request(server)
-                    .get('/api/admin/appointments/' + appt.id)
-                    .send(appt)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(appt.name);
-                        res.body.should.have.property('email').eql(appt.email);
-                        res.body.should.have.property('category').eql(appt.category);
-                        res.body.should.have.property('message').eql(appt.message);
-                        res.body.should.have.property('_id').eql(appt.id);
+    it("it should GET an appointment", () => {
+      return getAppointment(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
 
-                        chai.request(server)
-                        .delete('/api/admin/appointments/' + appt.id)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('message').eql('Appointment successfully deleted.');
-                            //console.log(res.body);
-                            //console.log(typeof res.body.rawData);
-                            //res.body.result.should.have.property('ok').eql(1);
-                            //res.body.result.should.have.property('n').eql(1);
-                            //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                            done();
-                        });
-                    });
-            });
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Name");
+        expect(res.email).to.equal("Test Email");
+        expect(res.message).to.equal("Test Message");
+        expect(res.category).to.equal("Test Category");
+      });
+    });
+  });
 
-        });
+  describe("/POST appointment", () => {
+    let mockApptResponse = {
+      name: "Test Name",
+      email: "Test Email",
+      category: "Test Category",
+      message: "Test Message",
+      _id: "1"
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .post("/api/appointments/new")
+        .reply(201, mockApptResponse);
     });
 
-    describe('/PUT/:id appt', () => {
-        it('it should UPDATE a appt given the id', (done) => {
-            let appt = new Appointment({
-                name: "Test Appt Name",
-                email: "Test Appt Email",
-                category: "Test Appt Category",
-                message: "Test Appt Message"
-            });
-            appt.save((err, appt) => {
-                chai.request(server)
-                    .put('/api/admin/appointments/update/' + appt.id)
-                    .send({
-                        name: "Test Appt Name Updated",
-                        email: "Test Appt Email",
-                        category: "Test Appt Category",
-                        message: "Test Appt Message"
-                    })
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('name').eql(appt.name + ' Updated');
-                        res.body.should.have.property('email').eql(appt.email);
-                        res.body.should.have.property('category').eql(appt.category);
-                        res.body.should.have.property('message').eql(appt.message);
-                        //res.body.user.should.have.property('rawData').eql("{ n: 1, nModified: 1, ok: 1 }");
-                        chai.request(server)
-                            .get('/api/admin/appointments/' + appt.id)
-                            .end((err, res) => {
-                                res.should.have.status(200);
-                                res.body.should.be.a('object');
-                                res.body.should.have.property('name').eql(appt.name + ' Updated');
-                                res.body.should.have.property('email').eql(appt.email);
-                                res.body.should.have.property('category').eql(appt.category);
-                                res.body.should.have.property('message').eql(appt.message);
+    it("it should create an appointment", () => {
+      let mockAppt = {
+        name: "Test Name",
+        email: "Test Email",
+        category: "Test Category",
+        message: "Test Message",
+        _id: "1"
+      };
 
-                                chai.request(server)
-                                .delete('/api/admin/appointments/' + appt.id)
-                                .end((err, res) => {
-                                    res.should.have.status(200);
-                                    res.body.should.be.a('object');
-                                    res.body.should.have.property('message').eql('Appointment successfully deleted.');
-                                    //console.log(res.body);
-                                    //console.log(typeof res.body.rawData);
-                                    //res.body.result.should.have.property('ok').eql(1);
-                                    //res.body.result.should.have.property('n').eql(1);
-                                    //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                                    done();
-                                });
-                            });
-                    });
-            });
-        });
+      return createAppointment(mockAppt).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Name");
+        expect(res.email).to.equal("Test Email");
+        expect(res.message).to.equal("Test Message");
+        expect(res.category).to.equal("Test Category");
+      });
+    });
+  });
+
+  describe("/PUT appointment", () => {
+    let id = 1;
+
+    let mockAppt = {
+      name: "Test Name",
+      email: "Test Email",
+      category: "Test Category",
+      message: "Test Message",
+      _id: "1"
+    };
+
+    let mockApptResponse = {
+      name: "Test Name",
+      email: "Test Email",
+      category: "Test Category",
+      message: "Test Message",
+      _id: "1"
+    };
+
+    let mockApptUpdatedResponse = {
+      name: "Test Name Updated",
+      email: "Test Email Updated",
+      category: "Test Category Updated",
+      message: "Test Message Updated",
+      _id: "1"
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/appointments/new", mockAppt)
+        .reply(201, mockApptResponse)
+        .put("/api/admin/appointments/update/" + id, mockApptUpdatedResponse)
+        .reply(200, mockApptUpdatedResponse);
     });
 
-    describe('/DELETE/:id appt', () => {
-        it('it should DELETE a appt given the id', (done) => {
-            let appt = new Appointment({
-                name: "Test Appt Name",
-                email: "Test Appt Email",
-                category: "Test Appt Category",
-                message: "Test Appt Message"
-            });
-            appt.save((err, appt) => {
-                chai.request(server)
-                    .delete('/api/admin/appointments/' + appt.id)
-                    .end((err, res) => {
-                        res.should.have.status(200);
-                        res.body.should.be.a('object');
-                        res.body.should.have.property('message').eql('Appointment successfully deleted.');
-                        //console.log(res.body);
-                        //console.log(typeof res.body.rawData);
-                        //res.body.result.should.have.property('ok').eql(1);
-                        //res.body.result.should.have.property('n').eql(1);
-                        //res.body.result.should.have.property('rawData').eql({ n: 1, ok: 1})
-                        done();
-                    });
-            });
-        });
+    it("it should update an appointment", () => {
+      return updateAppointment(id, mockApptUpdatedResponse).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+
+        //Test result of name, company and location for the response
+        expect(res.name).to.equal("Test Name Updated");
+        expect(res.email).to.equal("Test Email Updated");
+        expect(res.message).to.equal("Test Message Updated");
+        expect(res.category).to.equal("Test Category Updated");
+      });
+    });
+  });
+
+  describe("/DELETE appointment", () => {
+    let id = 1;
+
+    let mockApptResponse = {
+      name: "Test Name",
+      email: "Test Email",
+      category: "Test Category",
+      message: "Test Message",
+      _id: "1"
+    };
+
+    let mockApptDeleteResponse = {
+      message: "Appointment successfully deleted."
+    };
+
+    beforeEach(() => {
+      nock("http://localhost:80")
+        .persist()
+        .post("/api/appointments/new")
+        .reply(201, mockApptResponse)
+        .delete(`/api/admin/appointments/${id}`)
+        .reply(200, mockApptDeleteResponse);
     });
 
+    it("it should delete an appointment", () => {
+      return deleteAppointment(id).then(res => {
+        //expect an object back
+        expect(typeof res).to.equal("object");
+        expect(res.message).to.equal("Appointment successfully deleted.");
+      });
+    });
+  });
 });
