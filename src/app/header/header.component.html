@@ -104,7 +104,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -124,7 +124,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -136,7 +136,7 @@
             </a>
           </li>
 
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+          <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
             <a href="/admin/services" data-target=".navbar-collapse.show"
               >Services
             </a>
@@ -144,7 +144,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -156,7 +156,7 @@
             </a>
           </li>
 
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+          <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
             <a href="/admin/gallery" data-target=".navbar-collapse.show"
               >Gallery
             </a>
@@ -164,7 +164,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -176,7 +176,7 @@
             </a>
           </li>
 
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+          <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
             <a href="/admin/personel" data-target=".navbar-collapse.show"
               >Team
             </a>
@@ -184,7 +184,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -205,7 +205,7 @@
 
           <li
             *ngIf="
-              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar'
+              !auth.loggedIn && !auth.isAdmin && router.url !== '/calendar' && !router.url.includes('/consumer-services')
             "
             class="nav-item active"
           >
@@ -217,13 +217,13 @@
             </a>
           </li>
 
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+          <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
             <a href="/admin/contact" data-target=".navbar-collapse.show"
               >Contact
             </a>
           </li>
 
-          <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
+          <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
             <a href="/admin/requests" data-target=".navbar-collapse.show"
               >Requests
             </a>
