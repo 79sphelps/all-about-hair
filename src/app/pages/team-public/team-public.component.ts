@@ -1,18 +1,18 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { ApiService } from "../../core/api.service";
-import { UtilsService } from "../../core/utils.service";
-import { Subscription } from "rxjs/Subscription";
-import { Homepage } from "../../core/models/homepage";
-import { Personel } from "../../core/models/personel";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ApiService } from '../../core/api.service';
+import { UtilsService } from '../../core/utils.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Homepage } from '../../core/models/homepage';
+import { Personel } from '../../core/models/personel';
 
 @Component({
-  selector: "app-team-public",
-  templateUrl: "./team-public.component.html",
-  styleUrls: ["./team-public.component.scss"]
+  selector: 'app-team-public',
+  templateUrl: './team-public.component.html',
+  styleUrls: ['./team-public.component.scss']
 })
 export class TeamPublicComponent implements OnInit, OnDestroy {
-  pageTitle = "Stylist Team";
+  pageTitle = 'Stylist Team';
 
   homepageSub: Subscription;
   homepage: Homepage;
@@ -22,7 +22,7 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
 
   loading: boolean;
   error: boolean;
-  query: "";
+  query: '';
 
   constructor(
     private title: Title,
