@@ -11,6 +11,7 @@ module.exports = (app, jwtCheck, adminCheck) => {
     adminCheck,
     ctrlAppointments.getAppointmentById
   );
+
   app.post("/api/appointments/new", ctrlAppointments.create);
   app.put(
     "/api/admin/appointments/update/:id",

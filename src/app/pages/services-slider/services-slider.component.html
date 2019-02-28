@@ -24,13 +24,25 @@
           <div *ngFor="let product of services">
             <div class="item card">
               <div class="blog-entry" style="padding-top: 50px;">
+
                 <div class="icon hover_effect" style="text-align: center;">
+                  <!--
                   <img
                     [src]="product.image"
                     style="margin: 0 auto; width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
                     alt=""
                   />
+                  -->
+                  <a [href]="['/consumer-services', product._id]" [routerLink]="['/consumer-services', product._id]">
+                    <img
+                      [src]="product.image"
+                      style="margin: 0 auto; width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+                      alt=""
+                    />
+                  </a>
                 </div>
+
+
 
                 <div class="text p-4">
                   <h3 style="text-align: center;">
@@ -39,6 +51,7 @@
                   <br />
                   <div class="serviceDescrip">{{ product.description }}</div>
                   <br />
+
 
                   <ul *ngFor="let feature of product.pricing">
                     <li>
@@ -49,8 +62,9 @@
                     </li>
                   </ul>
 
+
                   <p class="clearfix">
-                    <a href="#" class="float-left read">Read more</a>
+                    <a href="#" class="float-left read" [routerLink]="['/consumer-services', product._id]">Read more</a>
                     <a href="#" class="float-right meta-chat"
                       ><span class="icon-chat"></span> $</a
                     >

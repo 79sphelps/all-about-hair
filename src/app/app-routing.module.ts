@@ -18,6 +18,8 @@ import { ServicesComponent } from './admin/services/services.component';
 import { ServicesNewComponent } from './admin/services-new/services-new.component';
 import { ServicesUpdateComponent } from './admin/services-update/services-update.component';
 
+import { ConsumerServiceComponent } from './pages/consumer-service/consumer-service.component';
+
 import { GalleryPhotoComponent } from './admin/gallery-photo/gallery-photo.component';
 import { GalleryComponent } from './admin/gallery/gallery.component';
 import { GalleryNewComponent } from './admin/gallery-new/gallery-new.component';
@@ -60,6 +62,10 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent
+  },
+  {
+    path: 'consumer-services/:id',
+    component: ConsumerServiceComponent
   },
   {
     path: 'admin',

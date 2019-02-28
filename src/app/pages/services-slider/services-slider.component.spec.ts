@@ -17,7 +17,6 @@ import { UtilsService } from '../../core/utils.service';
 import { ServicesSliderComponent } from './services-slider.component';
 
 
-
 describe('ServicesSliderComponent', () => {
   let component: ServicesSliderComponent;
   let fixture: ComponentFixture<ServicesSliderComponent>;

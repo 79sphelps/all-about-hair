@@ -96,6 +96,7 @@ export class ApiService {
   }
 
   // GET an service by ID (login required)
+  /*
   getServiceDetailsById$(id: string): Observable<Service> {
     return this.http
       .get(`${ENV.BASE_API}admin/services/${id}`, {
@@ -103,6 +104,13 @@ export class ApiService {
       })
       .pipe(catchError(error => this._handleError(error)));
   }
+  */
+  getServiceDetailsById$(id: string): Observable<Service> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/services/${id}`)
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
 
   // POST new service (admin only)
   postService$(service: Service): Observable<Service> {

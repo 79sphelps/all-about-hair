@@ -75,11 +75,12 @@ import { AppointmentsNewComponent } from './admin/appointments-new/appointments-
 import { AppointmentDetailComponent } from './admin/appointment/appointment-detail/appointment-detail.component';
 // import { ServiceCarouselComponent } from './pages/service-carousel/service-carousel.component';
 
-import { ServicesSliderComponent } from './pages/_services-slider/services-slider.component';
-import { GallerySectionComponent } from './pages/_gallery-section/gallery-section.component';
-import { ThreeColSection1Component } from './pages/_three-col-section1/three-col-section1.component';
+import { ServicesSliderComponent } from './pages/services-slider/services-slider.component';
+import { GallerySectionComponent } from './pages/gallery-section/gallery-section.component';
+import { ThreeColSection1Component } from './pages/three-col-section1/three-col-section1.component';
 
 import { ClickOutsideDirective } from './header/click-outside.directive';
+import { ConsumerServiceComponent } from './pages/consumer-service/consumer-service.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { ClickOutsideDirective } from './header/click-outside.directive';
     ServicesSliderComponent,
     GallerySectionComponent,
     ThreeColSection1Component,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    ConsumerServiceComponent
   ],
   imports: [
     BrowserModule,

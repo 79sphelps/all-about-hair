@@ -17,11 +17,13 @@
       >
         <div>
           <div class="icon hover_effect text-center mb-20">
-            <img
-              [src]="service.image"
-              style="width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
-              alt=""
-            />
+            <a [href]="['/consumer-services', service._id]" [routerLink]="['/consumer-services', service._id]">
+              <img
+                [src]="service.image"
+                style="width: 100px; border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+                alt=""
+              />
+            </a>
           </div>
 
           <div class="services">

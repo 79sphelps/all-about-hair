@@ -1,0 +1,56 @@
+<!-- Start about Area -->
+
+<section class="about-area mt-30">
+  <div class="container">
+
+    <div class="row d-flex justify-content-center">
+      <img *ngIf="service && service.image"
+        [src]="service && service.image"
+        style="border-radius: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+        alt=""
+      />
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div>
+          <h1 class="consumer-service-header">
+              {{ service && service.title }}
+          </h1>
+          <p style="text-align: justify; margin: 10px;">
+              {{ service && service.description }}
+          </p>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div class="consumer-service-table">
+
+        <div *ngIf="service && service.pricing">
+          <table class="table table-bordered table-hover">
+            <thead class="custom-thead-background">
+              <tr>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let feature of service.pricing">
+                <td>{{ feature.type }}</td>
+                <td>{{ feature.price }}</td>
+                <td>{{ feature.description }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center go-home-button">
+        <button type="button" class="btn btn-primary" [routerLink]="['/']">Go to Homepage</button>
+        <!-- <a [href]="'/'" [routerLink]="'/'">Go to Homepage</a> -->
+    </div>
+
+  </div>
+</section>

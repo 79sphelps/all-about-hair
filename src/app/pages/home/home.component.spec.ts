@@ -21,9 +21,9 @@ import { LoadingComponent } from '../../core/loading.component';
 import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 
-import { GallerySectionComponent } from '../_gallery-section/gallery-section.component';
-import { ServicesSliderComponent } from '../_services-slider/services-slider.component';
-import { ThreeColSection1Component } from '../_three-col-section1/three-col-section1.component';
+import { GallerySectionComponent } from '../gallery-section/gallery-section.component';
+import { ServicesSliderComponent } from '../services-slider/services-slider.component';
+import { ThreeColSection1Component } from '../three-col-section1/three-col-section1.component';
 import { AboutComponent } from '../about/about.component';
 import { BannerComponent } from '../banner/banner.component';
 import { TeamPublicComponent } from '../team-public/team-public.component';
