@@ -42,8 +42,6 @@ module.exports.update = (req, res, next) => {
       return res.status(400).send({ message: "Homepage not found." });
     }
 
-    console.log("... homepage controller update ...");
-
     homepage.headline = req.body.headline;
     homepage.headlineSubMsg = req.body.headlineSubMsg;
     homepage.servicesHeadline = req.body.servicesHeadline;
