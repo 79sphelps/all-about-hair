@@ -669,7 +669,7 @@ describe('API HTTP Service Operations', () => {
         expect(gallery[0]).toEqual(mockUpdatedPersonel);
       });
 
-      const request = httpTestingController.expectOne('/api/admin/personel/1');
+      const request = httpTestingController.expectOne('/api/admin/personel/update/1');
       request.flush([mockUpdatedPersonel]);
       httpTestingController.verify();
     });

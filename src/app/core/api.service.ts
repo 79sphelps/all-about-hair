@@ -218,7 +218,7 @@ export class ApiService {
   // PUT existing personel (admin only)
   editPersonel$(id: string, personel: Personel): Observable<Personel> {
     return this.http
-      .put(`${ENV.BASE_API}admin/personel/${id}`, personel, {
+      .put(`${ENV.BASE_API}admin/personel/update/${id}`, personel, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(catchError(error => this._handleError(error)));

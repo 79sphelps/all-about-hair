@@ -5,6 +5,7 @@ import { UtilsService } from '../../core/utils.service';
 
 import { Service } from '../../core/models/service';
 import { ActivatedRoute } from '@angular/router';
+// import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-consumer-service',
@@ -27,7 +28,8 @@ export class ConsumerServiceComponent implements OnInit, OnDestroy {
   constructor(private title: Title,
     public utils: UtilsService,
     private api: ApiService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
@@ -53,7 +55,14 @@ export class ConsumerServiceComponent implements OnInit, OnDestroy {
     );
   }
 
-   ngOnDestroy() {
+  /* NOT BEING USED
+  changeRoute(url) {
+    this.router.navigateByUrl('/', { skipLocationChange: true });
+    setTimeout(() => this.router.navigate(url));
+  }
+  */
+
+  ngOnDestroy() {
      this.servicesSub.unsubscribe();
-   }
+  }
 }
