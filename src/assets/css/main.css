@@ -1104,7 +1104,7 @@ h6 {
 }
 
 .genric-btn.disable {
-  color: #222222, 0.3;
+  color: #222222;
   background: #f9f9ff;
   border: 1px solid transparent;
   cursor: not-allowed;
