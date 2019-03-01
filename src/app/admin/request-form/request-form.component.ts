@@ -1,22 +1,22 @@
 // src/app/pages/admin/event-form/event-form.component.ts
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import {
   FormGroup,
   FormBuilder,
   Validators,
   AbstractControl
-} from '@angular/forms';
-import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { ApiService } from './../../core/api.service';
-import { Request } from './../../core/models/request';
-import { RequestFormService } from './request-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+} from "@angular/forms";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs/Subscription";
+import { ApiService } from "./../../core/api.service";
+import { Request } from "./../../core/models/request";
+import { RequestFormService } from "./request-form.service";
+import { SubmittingComponent } from "../../core/forms/submitting.component";
 
 @Component({
-  selector: 'app-request-form',
-  templateUrl: './request-form.component.html',
-  styleUrls: ['./request-form.component.scss'],
+  selector: "app-request-form",
+  templateUrl: "./request-form.component.html",
+  styleUrls: ["./request-form.component.scss"],
   providers: [RequestFormService]
 })
 export class RequestFormComponent implements OnInit, OnDestroy {
@@ -48,7 +48,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formErrors = this.ef.formErrors;
     this.isEdit = !!this.request;
-    this.submitBtnText = this.isEdit ? 'Update Request' : 'Send';
+    this.submitBtnText = this.isEdit ? "Update Request" : "Send";
     // Set initial form data
     this.formRequest = this._setformRequest();
     // Use FormBuilder to construct the form
@@ -87,8 +87,9 @@ export class RequestFormComponent implements OnInit, OnDestroy {
         this.formRequest.email,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.emailMin),
+          Validators.maxLength(this.ef.emailMax),
+          Validators.pattern('[^ @]*@[^ @]*')
         ]
       ],
       category: [
@@ -107,7 +108,6 @@ export class RequestFormComponent implements OnInit, OnDestroy {
           Validators.maxLength(this.ef.locMax)
         ]
       ]
-
     });
 
     // Subscribe to form value changes
@@ -145,7 +145,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
         const messages = this.ef.validationMessages[field];
         for (const key in control.errors) {
           if (control.errors.hasOwnProperty(key)) {
-            errorsObj[field] += messages[key] + '<br>';
+            errorsObj[field] += messages[key] + "<br>";
           }
         }
       }
@@ -156,7 +156,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
       if (this.formErrors.hasOwnProperty(field)) {
         // Set errors for fields not inside datesGroup
         // Clear previous error message (if any)
-        this.formErrors[field] = '';
+        this.formErrors[field] = "";
         _setErrMsgs(this.requestForm.get(field), this.formErrors, field);
       }
     }
@@ -168,10 +168,10 @@ export class RequestFormComponent implements OnInit, OnDestroy {
 
     // this.galleryForm ? this.Service._id : null,
     return new Request(
-      this.requestForm.get('name').value,
-      this.requestForm.get('email').value,
-      this.requestForm.get('category').value,
-      this.requestForm.get('message').value
+      this.requestForm.get("name").value,
+      this.requestForm.get("email").value,
+      this.requestForm.get("category").value,
+      this.requestForm.get("message").value
     );
   }
 
@@ -200,12 +200,15 @@ export class RequestFormComponent implements OnInit, OnDestroy {
     this.error = false;
     // this.submitting = false;
 
-    setTimeout(function() {
-      this.submitting = false;
-    }.bind(this), 3000);
+    setTimeout(
+      function() {
+        this.submitting = false;
+      }.bind(this),
+      3000
+    );
 
     // Redirect to event detail
-    this.router.navigate(['/admin/requests', res._id]);
+    this.router.navigate(["/admin/requests", res._id]);
   }
 
   private _handleSubmitError(err) {
