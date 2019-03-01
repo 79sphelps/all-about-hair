@@ -14,7 +14,7 @@
   src: url("../fonts/ionicons/fonts/ionicons.eot?v=4.0.0-19");
   src: url("../fonts/ionicons/fonts/ionicons.eot?v=4.0.0-19#iefix")
       format("embedded-opentype"),
-    url("../fonts/ionicons/fonts/ionicons.woff2?v=4.0.0-19") format("woff2"),
+    /* url("../fonts/ionicons/fonts/ionicons.woff2?v=4.0.0-19") format("woff2"), */
     url("../fonts/ionicons/fonts/ionicons.woff?v=4.0.0-19") format("woff"),
     url("../fonts/ionicons/fonts/ionicons.ttf?v=4.0.0-19") format("truetype"),
     url("../fonts/ionicons/fonts/ionicons.svg?v=4.0.0-19#Ionicons")
