@@ -75,7 +75,7 @@ describe('BannerComponent', () => {
 
     const image = element.querySelector('img');
     expect(image).not.toBeNull('You should have a background banner image');
-    expect(image.getAttribute('src')).toBe('../../../assets/img/header-img.webp', 'The `src` attribute of the image is not correct');
+    expect(image.getAttribute('src')).toBe('../../../assets/images/header-img.webp', 'The `src` attribute of the image is not correct');
   });
 
 });

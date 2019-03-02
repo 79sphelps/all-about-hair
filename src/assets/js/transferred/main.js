@@ -30,6 +30,8 @@ AOS.init({
   };
   loader();
 
+
+  /*
   var carousel = function() {
     $(".home-slider").owlCarousel({
       loop: true,
@@ -135,6 +137,8 @@ AOS.init({
     });
   };
   carousel();
+
+  */
 
   /*
   // scroll

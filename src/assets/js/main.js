@@ -65,7 +65,7 @@ $(document).ready(function(){
         autoplay:true,
         nav:true,
         navText: ["<span class='lnr lnr-arrow-up'></span>",
-        "<span class='lnr lnr-arrow-down'></span>"],        
+        "<span class='lnr lnr-arrow-down'></span>"],
         responsive: {
             0: {
                 items: 6
@@ -92,8 +92,8 @@ $(document).ready(function(){
     .on('click',function(event) {
     // On-page links
     if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+      &&
       location.hostname == this.hostname
     ) {
       // Figure out element to scroll to
@@ -131,7 +131,7 @@ $(document).ready(function(){
         }, 1500, function () {
             //window.location.hash = href;
         });
-        
+
         return false;
     });
 
@@ -142,7 +142,7 @@ $(document).ready(function(){
         }, 1500, function () {
             //window.location.hash = href;
         });
-        
+
         return false;
     });
 
@@ -153,7 +153,6 @@ $(document).ready(function(){
         ga('send', 'pageview', location.pathname + match[0]);
         }
     });
-
 
 
     /*
@@ -171,21 +170,20 @@ $(document).ready(function(){
             }, 1500, function () {
                 window.location.hash = href;
             });
-            
+
             return false;
         });
 
         $('#mc_embed_signup').find('form').ajaxChimp();
-        
+
         $('.nav-item a').click(function(){
             if ('href' === '#home' || 'href' === '#service' || 'href' === '#gallery' || 'href' === '#team' || 'href' === '#price' || 'href' === '#contact') {
             var match = $(this).attr('href').match(/#\S+/);
             ga('send', 'pageview', location.pathname + match[0]);
             }
           });
-    });   
+    });
     */
-
 
  });
 
@@ -200,7 +198,7 @@ $('a[href^="#"]').click(function() {
     }, 500, function () {
         window.location.hash = href;
     });
-    
+
     return false;
 });
 */

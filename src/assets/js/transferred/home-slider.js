@@ -1,4 +1,3 @@
-//let jQuery = window.jQuery;
 
 (function($) {
   "use strict";
@@ -36,6 +35,7 @@
       }
     });
 
+
     $(".carousel").owlCarousel({
       center: true,
       loop: true,
@@ -59,6 +59,7 @@
         }
       }
     });
+
 
       /*
       '<span><i class="fas fa-arrow-alt-circle-left"></i></span>',
