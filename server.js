@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const cors = require("cors");
+var compression = require('compression');
 
 /* for HTTP/2 --> currently not able to get content from client side?? need more digging
 const spdy = require('spdy')
@@ -50,6 +51,8 @@ monDb.once("open", () => {
  */
 
 const app = express();
+
+app.use(compression());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
