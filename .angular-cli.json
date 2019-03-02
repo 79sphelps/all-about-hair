@@ -19,9 +19,35 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "assets/css/font-awesome.min.css",
+        "assets/css/linearicons.css",
+        "assets/css/carousel.css",
+        "assets/css/magnific-popup.css",
+        "assets/css/bootstrap.css",
+        "assets/css/ionicons.min.css",
+        "assets/css/owl.carousel.min.css",
+        "assets/css/_custom_owl_carousel_settings.css",
+        "assets/css/main.css"
       ],
       "scripts": [
+        "assets/js/jquery.min.js",
+        "assets/js/jquery-migrate-3.0.1.min.js",
+        "assets/js/vendor/popper.min.js",
+        "assets/js/jquery.easing.1.3.js",
+        "assets/js/jquery.waypoints.min.js",
+        "assets/js/jquery.stellar.min.js",
+        "assets/js/jquery.ajaxchimp.min.js",
+        "assets/js/jquery.magnific-popup.min.js",
+        "assets/js/jquery.sticky.js",
+        "assets/js/parallax.min.js",
+        "assets/js/vendor/bootstrap.min.js",
+        "assets/js/owl.carousel.min.js",
+        "assets/js/transferred/main.js",
+        "assets/js/carousel.js",
+        "assets/js/main.js"
       ],
+
+
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
