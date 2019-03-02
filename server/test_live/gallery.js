@@ -62,7 +62,7 @@ describe('Gallery', () => {
 
         it('it should POST a gallery image', (done) => {
             let image = {
-                path: "assets/img/g10.jpg",
+                path: "assets/images/g10.jpg",
                 caption: "Gallery Image 10"
             }
             chai.request(server)
@@ -106,7 +106,7 @@ describe('Gallery', () => {
     describe('/GET/:id gallery image', () => {
         it('it should GET a gallery image by the given id', (done) => {
             let image = new Gallery({
-                path: "assets/img/g10.jpg",
+                path: "assets/images/g10.jpg",
                 caption: "Gallery Image 10"
             });
             image.save((err, image) => {
@@ -142,20 +142,20 @@ describe('Gallery', () => {
     describe('/PUT/:id gallery image', () => {
         it('it should UPDATE a gallery image given the id', (done) => {
             let image = new Gallery({
-                path: "assets/img/g10.jpg",
+                path: "assets/images/g10.jpg",
                 caption: "Gallery Image 10"
             });
             image.save((err, image) => {
                 chai.request(server)
                     .put('/api/admin/gallery/update/' + image.id)
                     .send({
-                        path: "assets/img/g11.jpg",
+                        path: "assets/images/g11.jpg",
                         caption: "Gallery Image 11"
                     })
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');
-                        res.body.should.have.property('path').eql('assets/img/g11.jpg');
+                        res.body.should.have.property('path').eql('assets/images/g11.jpg');
                         res.body.should.have.property('caption').eql('Gallery Image 11');
                         //res.body.should.have.property('message').eql('Gallery image updated!');
                         //res.body.user.should.have.property('rawData').eql("{ n: 1, nModified: 1, ok: 1 }");
@@ -164,7 +164,7 @@ describe('Gallery', () => {
                             .end((err, res) => {
                                 res.should.have.status(200);
                                 res.body.should.be.a('object');
-                                res.body.should.have.property('path').eql('assets/img/g11.jpg');
+                                res.body.should.have.property('path').eql('assets/images/g11.jpg');
                                 res.body.should.have.property('caption').eql('Gallery Image 11');
 
                                 chai.request(server)
@@ -189,7 +189,7 @@ describe('Gallery', () => {
     describe('/DELETE/:id gallery image', () => {
         it('it should DELETE a gallery image given the id', (done) => {
             let image = new Gallery({
-                path: "assets/img/g11.jpg",
+                path: "assets/images/g11.jpg",
                 caption: "Gallery Image 11"
             });
             image.save((err, image) => {

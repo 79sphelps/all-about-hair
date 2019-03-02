@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 		color: $success;
 		border: 1px solid $success;
 		background: $white;
-		
+
 		&:hover {
 			color: $white;
 			background: $success;
@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6 {
 		color: $info;
 		border: 1px solid $info;
 		background: $white;
-		
+
 		&:hover {
 			color: $white;
 			background: $info;
@@ -724,7 +724,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+				background: url(../images/elements/primary-check.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
@@ -761,7 +761,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/success-check.png) no-repeat center center/cover;
+				background: url(../images/elements/success-check.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
@@ -801,7 +801,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+				background: url(../images/elements/disabled-check.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
@@ -837,7 +837,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+				background: url(../images/elements/primary-radio.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
@@ -873,7 +873,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+				background: url(../images/elements/success-radio.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
@@ -913,7 +913,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		&:checked {
 			+ label {
-				background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+				background: url(../images/elements/disabled-radio.png) no-repeat center center/cover;
 				border: none;
 			}
 		}
