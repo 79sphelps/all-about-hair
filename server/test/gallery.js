@@ -41,7 +41,7 @@ describe("Gallery", () => {
         //Test result of name, company and location for the response
         expect(res.length).to.be.not.equal(0);
         expect(res.length).to.be.equal(6);
-        expect(res[0].path).to.equal("assets/img/g1.jpg");
+        expect(res[0].path).to.equal("assets/images/g1.jpg");
         expect(res[0].caption).to.equal("Gallery Image 1");
       });
     });

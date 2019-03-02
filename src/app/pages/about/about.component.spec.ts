@@ -33,7 +33,7 @@ const homepageStub = {
         servicesSubMsg: 'Homepage Services SubMsg',
         aboutHeadline: 'Homepage About Headline',
         aboutSubMsg: 'Homepage About SubMsg',
-        aboutImage: '../../../assets/img/about-img.jpg',
+        aboutImage: '../../../assets/images/about-img.jpg',
         aboutVideoLink: 'Homepage About Video Link',
         stylistsHeadline: 'Homepage Stylists Headline',
         stylistsSubMsg: 'Homepage Stylists SugMsg',
@@ -78,7 +78,7 @@ describe('AboutComponent', () => {
       servicesSubMsg: 'Homepage Services SubMsg',
       aboutHeadline: 'Homepage About Headline',
       aboutSubMsg: 'Homepage About SubMsg',
-      aboutImage: '../../../assets/img/about-img.jpg',
+      aboutImage: '../../../assets/images/about-img.jpg',
       aboutVideoLink: 'Homepage About Video Link',
       stylistsHeadline: 'Homepage Stylists Headline',
       stylistsSubMsg: 'Homepage Stylists SugMsg',
@@ -157,7 +157,7 @@ describe('AboutComponent', () => {
 
     const image = element.querySelector('img[class="image"]');
     expect(image).not.toBeNull('You should have an About side image');
-    expect(image.getAttribute('src')).toBe('../../../assets/img/about-img.jpg', 'The `src` attribute of the image is not correct');
+    expect(image.getAttribute('src')).toBe('../../../assets/images/about-img.jpg', 'The `src` attribute of the image is not correct');
   });
 
   it('should have an About video link', () => {
@@ -172,12 +172,12 @@ describe('AboutComponent', () => {
       // now the element is loaded
       const image = element.querySelector('img[class="play"]');
       expect(image).not.toBeNull('You should have an About video link image');
-      expect(image.getAttribute('src')).toBe('assets/img/play.png', 'The `src` attribute of the image is not correct');
+      expect(image.getAttribute('src')).toBe('assets/images/play.png', 'The `src` attribute of the image is not correct');
     });
     */
     const image = element.querySelector('img[class="play"]');
     expect(image).not.toBeNull('You should have an About video link image');
-    expect(image.getAttribute('src')).toBe('assets/img/play.png', 'The `src` attribute of the image is not correct');
+    expect(image.getAttribute('src')).toBe('assets/images/play.png', 'The `src` attribute of the image is not correct');
 
     const videoLink = element.querySelector('div.overlay > a');
     expect(videoLink).not.toBeNull('You should have a video link');
