@@ -19,15 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "assets/css/font-awesome.min.css",
-        "assets/css/linearicons.css",
-        "assets/css/carousel.css",
-        "assets/css/magnific-popup.css",
-        "assets/css/bootstrap.css",
-        "assets/css/ionicons.min.css",
-        "assets/css/owl.carousel.min.css",
-        "assets/css/_custom_owl_carousel_settings.css",
-        "assets/css/main.css"
+        "assets/scss/font-awesome.min.scss",
+        "assets/scss/linearicons.scss",
+        "assets/scss/carousel.scss",
+        "assets/scss/magnific-popup.scss",
+        "assets/scss/bootstrap.scss",
+        "assets/scss/ionicons.min.scss",
+        "assets/scss/owl.carousel.min.scss",
+        "assets/scss/_custom_owl_carousel_settings.scss",
+        "assets/scss/_main.scss"
       ],
       "scripts": [
         "assets/js/jquery.min.js",

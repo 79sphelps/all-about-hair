@@ -1,0 +1,237 @@
+.owl-carousel {
+	position: relative;
+	.owl-item {
+		opacity: 0.4;
+	}
+	.owl-item.active {
+		opacity: 1;
+	}
+	.owl-nav {
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		.owl-prev {
+			position: absolute;
+			-webkit-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+			margin-top: -10px;
+			-moz-transition: all 0.7s ease;
+			-o-transition: all 0.7s ease;
+			-webkit-transition: all 0.7s ease;
+			-ms-transition: all 0.7s ease;
+			transition: all 0.7s ease;
+			opacity: 0;
+			left: 0;
+			span {
+				&:before {
+					font-size: 40px;
+				}
+			}
+		}
+		.owl-next {
+			position: absolute;
+			-webkit-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+			margin-top: -10px;
+			-moz-transition: all 0.7s ease;
+			-o-transition: all 0.7s ease;
+			-webkit-transition: all 0.7s ease;
+			-ms-transition: all 0.7s ease;
+			transition: all 0.7s ease;
+			opacity: 0;
+			right: 0;
+			span {
+				&:before {
+					font-size: 40px;
+				}
+			}
+		}
+	}
+	.owl-dots {
+		text-align: center;
+		.owl-dot {
+			width: 10px;
+			height: 10px;
+			margin: 5px;
+			border-radius: 50%;
+			background: #dadadc;
+		}
+		.owl-dot.active {
+			background: #ffb400;
+		}
+	}
+	&:hover {
+		.owl-nav {
+			.owl-prev {
+				opacity: 1;
+				left: -20px;
+			}
+			.owl-next {
+				opacity: 1;
+				right: -20px;
+			}
+		}
+	}
+}
+.owl-carousel.home-slider {
+	z-index: 0;
+	position: relative;
+	.slider-item {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: calc(100vh - 117px);
+		min-height: 700px;
+		position: relative;
+		.overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: "";
+			background: #404044;
+			opacity: 0.5;
+		}
+		.slider-text {
+			color: #fff;
+			height: calc(100vh - 117px);
+			min-height: 700px;
+			h1 {
+				font-family: "Indie Flower", cursive;
+				font-size: 72px;
+				color: #fff;
+				line-height: 1.2;
+				font-weight: 400;
+			}
+			p {
+				font-size: 20px;
+				line-height: 1.5;
+				font-weight: 300;
+				color: rgba(255, 255, 255, 0.8);
+				strong {
+					font-weight: 700;
+					a {
+						color: #fff;
+					}
+				}
+			}
+			.breadcrumbs {
+				text-transform: uppercase;
+				font-size: 13px;
+				letter-spacing: 1px;
+				margin-bottom: 30px;
+				z-index: 99;
+				span {
+					border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+					a {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+	.owl-nav {
+		.owl-prev {
+			span {
+				color: #fff;
+			}
+		}
+		.owl-next {
+			span {
+				color: #fff;
+			}
+		}
+	}
+	&:hover {
+		.owl-nav {
+			.owl-prev {
+				opacity: 1;
+				left: 20px;
+			}
+			.owl-next {
+				opacity: 1;
+				right: 20px;
+			}
+		}
+	}
+	.owl-dots {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 60px;
+		width: 100%;
+		text-align: center;
+		.owl-dot {
+			width: 18px;
+			height: 18px;
+			margin: 5px;
+			border-radius: 50%;
+			background: white;
+			background: none;
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			outline: none !important;
+			position: relative;
+			-webkit-transition: 0.3s all ease;
+			-o-transition: 0.3s all ease;
+			transition: 0.3s all ease;
+			display: inline-block;
+			span {
+				position: absolute;
+				width: 6px;
+				height: 6px;
+				background: rgba(255, 255, 255, 0.5);
+				border-radius: 50% !important;
+				left: 50%;
+				top: 50%;
+				display: block;
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+		}
+		.owl-dot.active {
+			border: 2px solid white;
+			span {
+				background: white;
+			}
+		}
+	}
+}
+.owl-custom-nav {
+	float: right;
+	position: relative;
+	z-index: 10;
+	border: 1px solid red;
+	.owl-custom-prev {
+		padding: 10px;
+		font-size: 30px;
+		background: #ccc;
+		line-height: 0;
+		width: 60px;
+		text-align: center;
+		display: inline-block;
+	}
+	.owl-custom-next {
+		padding: 10px;
+		font-size: 30px;
+		background: #ccc;
+		line-height: 0;
+		width: 60px;
+		text-align: center;
+		display: inline-block;
+	}
+}
+@media (max-width: 991.98px) {
+	.owl-carousel.home-slider {
+		.slider-item {
+			.slider-text {
+				h1 {
+					font-size: 40px;
+				}
+			}
+		}
+	}
+}
