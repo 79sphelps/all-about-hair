@@ -99,8 +99,6 @@ describe('TeamPublicComponent', () => {
     const element = fixture.nativeElement;
 
     const image = element.querySelector('div[id="teamList"] > div.thumb > img.img-fluid');
-    console.log(image);
-    console.log(image.getAttribute('src'));
 
     expect(image).not.toBeNull('You should have an img element for each team member');
     expect(image.getAttribute('src')).toContain('../../../assets/img/person_4.jpg');

@@ -15,6 +15,7 @@ import { ApiService } from '../../core/api.service';
 import { AuthService } from '../../auth/auth.service';
 import { UtilsService } from '../../core/utils.service';
 import { ServicesSliderComponent } from './services-slider.component';
+import { Service } from '../../core/models/service';
 
 
 describe('ServicesSliderComponent', () => {
@@ -142,6 +143,5 @@ describe('ServicesSliderComponent', () => {
     expect(readMore).not.toBeNull('You should have a "Read more" anchor element for each service card');
     expect(readMore.textContent).toContain('Read more');
   });
-
 
 });

@@ -57,6 +57,45 @@ describe('ThreeColSection1Component', () => {
       _id: '1'
     };
 
+    component.services = [{
+      'title': 'Haircut & Style',
+      'description': 'Custom cuts use same pricing scale. Enjoy a relaxing head, neck & shoulder massage, shampoo & style',
+      'image': 'assets/images/haircut_utensils.webp',
+      'pricing': [
+          {
+          'price': '$40-$70',
+          'type': 'Womens',
+          'description': 'description...'
+        },
+        {
+          'price': '$30-$60',
+          'type': 'Mens',
+          'description': 'description...'
+        },
+        {
+          'price': '$25-$55',
+          'type': 'Children (under 12)',
+          'description': 'description...'
+        },
+        {
+          'price': '$15',
+          'type': 'Neck Trim',
+          'description': 'description...'
+        },
+        {
+          'price': '$10',
+          'type': 'Bang Trim',
+          'description': 'description...'
+        },
+        {
+          'price': '$25-$55',
+          'type': 'Wash & Style',
+          'description': 'description...'
+        }
+      ]
+    }];
+
+
     fixture.detectChanges();
   });
 
@@ -64,7 +103,7 @@ describe('ThreeColSection1Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display an Services headline, a sub message, and a pricing button', () => {
+  it('should display an Services headline, a sub message, and a pricing details link', () => {
     const element = fixture.nativeElement;
 
     const headline = element.querySelector('h1');
@@ -77,6 +116,30 @@ describe('ThreeColSection1Component', () => {
 
     const anchor = element.querySelector('a');
     expect(anchor.textContent).toBe('Pricing Details', 'You should have an anchor tag with Pricing Details text');
+  });
+
+  it('should display all service column information', () => {
+    const element = fixture.nativeElement;
+
+    const image = element.querySelector('img');
+    expect(image).not.toBeNull('You should have an img element for each service detail card');
+    expect(image.getAttribute('src')).toContain('assets/images/haircut_utensils.webp');
+
+    const title = element.querySelector('h3');
+    expect(title).not.toBeNull('You should have a `h3` card element to display the individual service title');
+    expect(title.textContent).toContain('Haircut & Style');
+
+    const descrip = element.querySelector('div.desc > p');
+    expect(descrip).not.toBeNull('You should have a service description element to display the individual service details');
+    expect(descrip.textContent).toContain(
+      'Custom cuts use same pricing scale. Enjoy a relaxing head, neck & shoulder massage, shampoo & style'
+      );
+
+    /*
+    const pricing = element.querySelector('ul > li > strong');
+    expect(pricing).not.toBeNull('You should have specific pricing details for each service');
+    expect(pricing.textContent).toContain('Womens');
+    */
   });
 
 });

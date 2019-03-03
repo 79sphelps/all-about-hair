@@ -26,4 +26,12 @@ describe('CallbackComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have `div` element that displays the `Loading...` text', () => {
+    const element = fixture.nativeElement;
+
+    const div = element.querySelector('div');
+    expect(div).not.toBeNull('You should have `div` element to display the loading text');
+    expect(div.textContent).toBe('Loading...', 'The text content of the `div` element is not correct');
+  });
 });

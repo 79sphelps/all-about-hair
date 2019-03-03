@@ -10,6 +10,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -106,8 +107,12 @@ describe('ContactComponent', () => {
     const email = element.querySelector('p#contactEmail');
     expect(email).not.toBeNull('You should have a `p` element to display the contact email');
     expect(email.textContent).toContain('Test Email');
+  });
 
-
+  it('should use the RequestFormComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(RequestFormComponent)))
+      .not.toBeNull('You probably forgot to add RequestFormComponent to the ContactComponent template');
   });
 
 });
