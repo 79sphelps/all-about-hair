@@ -55,7 +55,7 @@
           <li class="nav-item active">
             <span *ngIf="auth.loggingIn">Logging in...</span>
             <ng-template [ngIf]="!auth.loggingIn">
-              <a
+              <a id="loggedInAnchor"
                 *ngIf="!auth.loggedIn"
                 (click)="auth.login()"
                 style="color: #fff;"
@@ -64,6 +64,7 @@
                 >Log In</a
               >
               <span
+                id="loggedInSpan"
                 *ngIf="auth.loggedIn && auth.userProfile"
                 style="color: #fff;"
               >
@@ -117,7 +118,7 @@
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin" class="nav-item active">
-            <a href="/admin/homepage" data-target=".navbar-collapse.show"
+            <a href="/admin/homepage" routerLink="/admin/homepage" data-target=".navbar-collapse.show"
               >Home
             </a>
           </li>
@@ -137,7 +138,7 @@
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
-            <a href="/admin/services" data-target=".navbar-collapse.show"
+            <a href="/admin/services" routerLink="/admin/servics" data-target=".navbar-collapse.show"
               >Services
             </a>
           </li>
@@ -157,7 +158,7 @@
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
-            <a href="/admin/gallery" data-target=".navbar-collapse.show"
+            <a href="/admin/gallery" routerLink="/admin/gallery" data-target=".navbar-collapse.show"
               >Gallery
             </a>
           </li>
@@ -177,7 +178,7 @@
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
-            <a href="/admin/personel" data-target=".navbar-collapse.show"
+            <a href="/admin/personel" routerLink="/admin/personel" data-target=".navbar-collapse.show"
               >Team
             </a>
           </li>
@@ -218,13 +219,13 @@
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
-            <a href="/admin/contact" data-target=".navbar-collapse.show"
+            <a href="/admin/contact" routerLink="/admin/contact" data-target=".navbar-collapse.show"
               >Contact
             </a>
           </li>
 
           <li *ngIf="auth.loggedIn && auth.isAdmin && !router.url.includes('/consumer-services')" class="nav-item active">
-            <a href="/admin/requests" data-target=".navbar-collapse.show"
+            <a href="/admin/requests" routerLink="/admin/requests" data-target=".navbar-collapse.show"
               >Requests
             </a>
           </li>

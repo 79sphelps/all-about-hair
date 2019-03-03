@@ -19,16 +19,15 @@ import { UtilsService } from './../../core/utils.service';
 
 import { LoadingComponent } from '../../core/loading.component';
 import { SubmittingComponent } from '../../core/forms/submitting.component';
+import { By } from '@angular/platform-browser';
 
-
-import { GallerySectionComponent } from '../gallery-section/gallery-section.component';
-import { ServicesSliderComponent } from '../services-slider/services-slider.component';
+import { BannerComponent } from '../banner/banner.component';
 import { ThreeColSection1Component } from '../three-col-section1/three-col-section1.component';
 import { AboutComponent } from '../about/about.component';
-import { BannerComponent } from '../banner/banner.component';
 import { TeamPublicComponent } from '../team-public/team-public.component';
+import { ServicesSliderComponent } from '../services-slider/services-slider.component';
+import { GallerySectionComponent } from '../gallery-section/gallery-section.component';
 import { ContactComponent } from '../contact/contact.component';
-
 import { RequestFormComponent } from '../../admin/request-form/request-form.component';
 
 import { HomeComponent } from './home.component';
@@ -73,4 +72,53 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should use the Banner component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(BannerComponent)))
+      .not.toBeNull('You probably forgot to add BannerComponent to the HomeComponent template');
+  });
+
+  it('should use the ThreeColSection component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(ThreeColSection1Component)))
+      .not.toBeNull('You probably forgot to add ThreeColSection1Component to the HomeComponent template');
+  });
+
+  it('should use the About component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(AboutComponent)))
+      .not.toBeNull('You probably forgot to add AboutComponent to the HomeComponent template');
+  });
+
+  it('should use the TeamPublicComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(TeamPublicComponent)))
+      .not.toBeNull('You probably forgot to add TeamPublicComponent to the HomeComponent template');
+  });
+
+  it('should use the ServicesSliderComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(ServicesSliderComponent)))
+      .not.toBeNull('You probably forgot to add ServicesSliderComponent to the HomeComponent template');
+  });
+
+  it('should use the GallerySectionComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(GallerySectionComponent)))
+      .not.toBeNull('You probably forgot to add GallerySectionComponent to the HomeComponent template');
+  });
+
+  it('should use the ContactComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(ContactComponent)))
+      .not.toBeNull('You probably forgot to add ContactComponent to the HomeComponent template');
+  });
+
+  it('should use the RequestFormComponent component', () => {
+    const element = fixture.debugElement;
+    expect(element.query(By.directive(RequestFormComponent)))
+      .not.toBeNull('You probably forgot to add RequestFormComponent to the HomeComponent template');
+  });
+
 });
