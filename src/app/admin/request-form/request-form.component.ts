@@ -79,8 +79,8 @@ export class RequestFormComponent implements OnInit, OnDestroy {
         this.formRequest.name,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.nameMin),
+          Validators.maxLength(this.ef.nameMax)
         ]
       ],
       email: [
@@ -96,16 +96,16 @@ export class RequestFormComponent implements OnInit, OnDestroy {
         this.formRequest.category,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.categoryMin),
+          Validators.maxLength(this.ef.categoryMax)
         ]
       ],
       message: [
         this.formRequest.message,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.messageMin),
+          Validators.maxLength(this.ef.messageMax)
         ]
       ]
     });

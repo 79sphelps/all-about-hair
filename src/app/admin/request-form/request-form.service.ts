@@ -15,34 +15,37 @@ export class RequestFormService {
   };
 
   // Min/maxlength validation
-  textMin = 3;
-  titleMax = 36;
+  nameMin = 3;
+  nameMax = 50;
   emailMin = 6;
   emailMax = 50;
-  locMax = 1000;
-  timeMax = 8;
-  descMax = 2000;
+  categoryMin = 3;
+  categoryMax = 50;
+  messageMin = 3;
+  messageMax = 50;
 
   constructor() {
     this.validationMessages = {
       name: {
         required: `Name is <strong>required</strong>.`,
-        minlength: `Name must be ${this.textMin} characters or more.`,
-        maxlength: `Name must be ${this.titleMax} characters or less.`
+        minlength: `Name must be ${this.nameMin} characters or more.`,
+        maxlength: `Name must be ${this.nameMax} characters or less.`
       },
       email: {
         required: `Email is <strong>required</strong>.`,
         minlength: `Email must be ${this.emailMin} characters or more.`,
         maxlength: `Email must be ${this.emailMax} characters or less.`,
-        pattern: `The email address must contain at least the @character.`
+        pattern: `The email address must contain at least the @ character.`
       },
       message: {
         required: `The message field cannot be empty.`,
-        maxlength: `The message must be ${this.descMax} characters or less.`
+        minlength: `Message field must be ${this.messageMin} characters or more.`,
+        maxlength: `Message field must be ${this.messageMax} characters or less.`
       },
       category: {
         required: `The category field cannot be empty.`,
-        maxlength: `Category must be ${this.descMax} characters or less.`
+        minlength: `Category must be ${this.categoryMin} characters or more.`,
+        maxlength: `Category must be ${this.categoryMax} characters or less.`
       }
     };
   }
