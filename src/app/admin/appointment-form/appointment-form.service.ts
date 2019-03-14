@@ -34,7 +34,7 @@ export class AppointmentFormService {
         required: `Email is <strong>required</strong>.`,
         minlength: `Email must be ${this.emailMin} characters or more.`,
         maxlength: `Email must be ${this.emailMax} characters or less.`,
-        pattern: `The email address must contain at least the @character.`
+        pattern: `The email address is not valid.`
       },
       message: {
         required: `The message field cannot be empty.`,
