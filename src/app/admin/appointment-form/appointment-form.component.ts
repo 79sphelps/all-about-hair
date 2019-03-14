@@ -1,22 +1,22 @@
 // src/app/pages/admin/event-form/event-form.component.ts
-import { Component, OnInit, OnDestroy, Input } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
   Validators,
   AbstractControl
-} from "@angular/forms";
-import { Router } from "@angular/router";
-import { Subscription } from "rxjs/Subscription";
-import { ApiService } from "./../../core/api.service";
-import { Appointment } from "./../../core/models/appointment";
-import { AppointmentFormService } from "./appointment-form.service";
-import { SubmittingComponent } from "../../core/forms/submitting.component";
+} from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { ApiService } from './../../core/api.service';
+import { Appointment } from './../../core/models/appointment';
+import { AppointmentFormService } from './appointment-form.service';
+import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
-  selector: "app-appointment-form",
-  templateUrl: "./appointment-form.component.html",
-  styleUrls: ["./appointment-form.component.scss"],
+  selector: 'app-appointment-form',
+  templateUrl: './appointment-form.component.html',
+  styleUrls: ['./appointment-form.component.scss'],
   providers: [AppointmentFormService]
 })
 export class AppointmentFormComponent implements OnInit, OnDestroy {
@@ -49,8 +49,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     this.formErrors = this.ef.formErrors;
     this.isEdit = !!this.appointment;
     this.submitBtnText = this.isEdit
-      ? "Update Appointment"
-      : "Request Appointment";
+      ? 'Update Appointment'
+      : 'Request Appointment';
     // Set initial form data
     this.formRequest = this._setformRequest();
     // Use FormBuilder to construct the form
@@ -91,7 +91,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
           Validators.required,
           Validators.minLength(this.ef.emailMin),
           Validators.maxLength(this.ef.emailMax),
-          Validators.pattern("[^ @]*@[^ @]*")
+          Validators.pattern('[^ @]*@[^ @]*')
         ]
       ],
       category: [
@@ -147,7 +147,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         const messages = this.ef.validationMessages[field];
         for (const key in control.errors) {
           if (control.errors.hasOwnProperty(key)) {
-            errorsObj[field] += messages[key] + "<br>";
+            errorsObj[field] += messages[key] + '<br>';
           }
         }
       }
@@ -158,7 +158,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       if (this.formErrors.hasOwnProperty(field)) {
         // Set errors for fields not inside datesGroup
         // Clear previous error message (if any)
-        this.formErrors[field] = "";
+        this.formErrors[field] = '';
         _setErrMsgs(this.appointmentForm.get(field), this.formErrors, field);
       }
     }
@@ -170,10 +170,10 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
     // this.galleryForm ? this.Service._id : null,
     return new Appointment(
-      this.appointmentForm.get("name").value,
-      this.appointmentForm.get("email").value,
-      this.appointmentForm.get("category").value,
-      this.appointmentForm.get("message").value
+      this.appointmentForm.get('name').value,
+      this.appointmentForm.get('email').value,
+      this.appointmentForm.get('category').value,
+      this.appointmentForm.get('message').value
     );
   }
 
@@ -189,7 +189,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
           err => this._handleSubmitError(err)
         );
 
-      this.router.navigate(["/calendar"]);
+      this.router.navigate(['/calendar']);
 
       this.resetForm();
     } else {
@@ -204,7 +204,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
       setTimeout(
         function() {
           // Redirect to calendar details
-          this.router.navigate(["/admin/appointments"]);
+          this.router.navigate(['/admin/appointments']);
         }.bind(this),
         2000
       );

@@ -1,17 +1,17 @@
 // src/app/pages/admin/event-form/event-form.service.ts
-import { Injectable } from "@angular/core";
-import { SubmittingComponent } from "../../core/forms/submitting.component";
+import { Injectable } from '@angular/core';
+import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Injectable()
 export class AppointmentFormService {
   validationMessages: any;
   // Set up errors object
   formErrors = {
-    name: "",
-    email: "",
-    message: "",
-    category: "",
-    date: ""
+    name: '',
+    email: '',
+    message: '',
+    category: '',
+    date: ''
   };
 
   // Min/maxlength validation
