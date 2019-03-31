@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RequestFormService {
   validationMessages: any;
+  inputLengths: any;
+
   // Set up errors object
   formErrors = {
     name: '',
@@ -25,6 +27,25 @@ export class RequestFormService {
   messageMax = 50;
 
   constructor() {
+    this.inputLengths = {
+      name: {
+        minlength: this.nameMin,
+        maxlength: this.nameMax,
+      },
+      email: {
+        minlength: this.emailMin,
+        maxlength: this.emailMax
+      },
+      category: {
+        minlength: this.categoryMin,
+        maxlength: this.categoryMax
+      },
+      message: {
+        minlength: this.messageMin,
+        maxlength: this.messageMax
+      }
+    }
+
     this.validationMessages = {
       name: {
         required: `Name is <strong>required</strong>.`,

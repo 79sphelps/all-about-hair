@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../core/api.service';
 import { Request } from './../../core/models/request';
 import { RequestFormService } from './request-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+// import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-request-form',
@@ -22,8 +22,10 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 export class RequestFormComponent implements OnInit, OnDestroy {
   @Input() request: Request;
   isEdit: boolean;
+
   // FormBuilder form
   requestForm: FormGroup;
+
   // Model storing initial form values
   formRequest: Request;
 
@@ -58,12 +60,11 @@ export class RequestFormComponent implements OnInit, OnDestroy {
   private _setformRequest() {
     if (!this.isEdit) {
       // If creating a new event, create new
-      // FormEventModel with default null data
-      // return new FormEventModel(null, null, null, null, null, null, null);
+      // Request model with default null data
       return new Request(null, null, null, null, null);
     } else {
       // If editing existing event, create new
-      // FormEventModel from existing data
+      // Request model from existing data
       return new Request(
         this.request.name,
         this.request.email,
@@ -145,7 +146,17 @@ export class RequestFormComponent implements OnInit, OnDestroy {
         const messages = this.ef.validationMessages[field];
         for (const key in control.errors) {
           if (control.errors.hasOwnProperty(key)) {
-            errorsObj[field] += messages[key] + '<br>';
+            if (key === 'minlength') {
+              errorsObj[field] += messages[key] + 'We need another '
+              + (this.ef.inputLengths[field].minlength - this.requestForm.get(field).value.length)
+              + ' characters.' + '<br>';
+            } else if (key === 'maxlength') {
+              errorsObj[field] += messages[key] + 'Please remove '
+              + (this.requestForm.get(field).value.length - this.ef.inputLengths[field].maxlength)
+              + ' characters.' + '<br>';
+            } else {
+              errorsObj[field] += messages[key] + '<br>';
+            }
           }
         }
       }
@@ -154,7 +165,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
     // Check validation and set errors
     for (const field in this.formErrors) {
       if (this.formErrors.hasOwnProperty(field)) {
-        // Set errors for fields not inside datesGroup
+        // Set errors for fields
         // Clear previous error message (if any)
         this.formErrors[field] = '';
         _setErrMsgs(this.requestForm.get(field), this.formErrors, field);
@@ -163,10 +174,6 @@ export class RequestFormComponent implements OnInit, OnDestroy {
   }
 
   private _getSubmitObj() {
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new EventModel for submission
-
-    // this.galleryForm ? this.Service._id : null,
     return new Request(
       this.requestForm.get('name').value,
       this.requestForm.get('email').value,
@@ -207,7 +214,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
       3000
     );
 
-    // Redirect to event detail
+    // Redirect to request detail
     this.router.navigate(['/admin/requests', res._id]);
   }
 
