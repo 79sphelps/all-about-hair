@@ -1,107 +1,122 @@
-<!-- src/app/pages/admin/admin.component.html -->
-
 <div class="container">
-    <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
-    <div>
-  
-      <h1 class="text-center">{{ pageTitle }}</h1>
-  
-      <app-loading *ngIf="loading"></app-loading>
-  
-      <ng-template [ngIf]="utils.isLoaded(loading)">
-        <p class="lead">Welcome, {{ auth.userProfile?.name }}! You can create and administer appointment details below.</p>
-  
-        <!-- 
-          <button class="btn btn-primary" style="margin-bottom: 10px;" type="button">New Event</button>
-        -->
-        
-        <!--
-        <p>
-          <a class="btn btn-success btn-block" routerLink="/admin/personel/new">+ Add New Team Member</a>
-        </p>
-        -->
-  
-        <!-- Events -->
-        <ng-template [ngIf]="appointmentList">
-          <ng-template [ngIf]="appointmentList.length">
-            <!-- Search events -->
-            <div class="form-group input-group">
-              <span class="input-group-addon">
-                <i class="fa fa-search"></i>
-              </span>
-              <input id="search" type="text" class="form-control" [(ngModel)]="query" (keyup)="searchAppointments()" />
-              <span class="input-group-addon">
-                <a (click)="resetQuery()">&times;</a>
-              </span>
-            </div>
-  
-            <!-- No search results -->
-            <p *ngIf="fs.noSearchResults(filteredAppointments, query)" class="alert alert-warning">
-              No appointments found for
-              <em class="text-danger">{{ query }}</em>, sorry!
-            </p>
-  
-            <!-- Events listing -->
-            <section class="list-group" [@expandCollapse]>
+  <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
+  <div>
+    <h1 class="text-center">{{ pageTitle }}</h1>
 
-              <div *ngFor="let appointment of fs.search(filteredAppointments)" class=" list-group-item list-group-item-action flex-column align-items-start ">
-  
-                <div>
-  
-                  <div style="display: inline; width: 100%; float: left;">
-                    
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <h5>Name: </h5>
-                        {{ appointment.name }}
-                      </li>
+    <app-loading *ngIf="loading"></app-loading>
 
-                      <li class="list-group-item">
-                        <h5>Email:</h5>
-                        {{ appointment.email }}
-                      </li>
+    <ng-template [ngIf]="utils.isLoaded(loading)">
+      <p class="lead">
+        Welcome, {{ auth.userProfile?.name }}! You can create and administer
+        appointment details below.
+      </p>
+      <!--
+        <button class="btn btn-primary" style="margin-bottom: 10px;" type="button">New Event</button>
+      -->
+      <!--
+      <p>
+        <a class="btn btn-success btn-block" routerLink="/admin/personel/new">+ Add New Team Member</a>
+      </p>
+      -->
 
-                      <li class="list-group-item">
-                        <h5>Category: </h5>
-                        {{ appointment.category }}
-                      </li>
-                      <!-- 
-                      <li class="list-group-item">
-                        <h5>Date: </h5>
-                        {{ appointment.date }}
-                      </li>
-                      -->
-                      <li class="list-group-item">
-                        <h5>Message: </h5>
-                        {{ appointment.message }}
-                      </li>
-                    </ul>
+      <!-- Appointments -->
+      <ng-template [ngIf]="appointmentList">
+        <ng-template [ngIf]="appointmentList.length">
+          <!-- Search appointments -->
+          <div class="form-group input-group">
+            <span class="input-group-addon">
+              <i class="fa fa-search"></i>
+            </span>
+            <input
+              id="search"
+              type="text"
+              class="form-control"
+              [(ngModel)]="query"
+              (keyup)="searchAppointments()"
+            />
+            <span class="input-group-addon" style="cursor: pointer;">
+              <a (click)="resetQuery()">&times;</a>
+            </span>
+          </div>
 
-                    <a class="btn btn-info btn-sm" [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
-                    <a class="btn btn-danger btn-sm" [routerLink]="['/admin/appointments/delete', appointment._id]" [queryParams]="{tab: 'delete'}">Delete</a>
-                  </div>
-
-                </div>
-  
-              </div>
-              
-
-            </section>
-          </ng-template>
-  
-          <!-- No events available -->
-          <p *ngIf="!appointmentList.length " class="alert alert-info ">
-            No appointments have been created yet.
+          <!-- No search results -->
+          <p
+            *ngIf="fs.noSearchResults(filteredAppointments, query)"
+            class="alert alert-warning"
+          >
+            No appointments found for
+            <em class="text-danger">{{ query }}</em
+            >, sorry!
           </p>
+
+          <!-- Appointments listing -->
+          <section class="list-group" [@expandCollapse]>
+            <div
+              *ngFor="let appointment of fs.search(filteredAppointments)"
+              class=" list-group-item list-group-item-action flex-column align-items-start "
+            >
+              <div>
+                <div style="display: inline; width: 100%; float: left;">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <h5>Name:</h5>
+                      {{ appointment.name }}
+                    </li>
+
+                    <li class="list-group-item">
+                      <h5>Email:</h5>
+                      {{ appointment.email }}
+                    </li>
+
+                    <li class="list-group-item">
+                      <h5>Category:</h5>
+                      {{ appointment.category }}
+                    </li>
+                    <!--
+                    <li class="list-group-item">
+                      <h5>Date: </h5>
+                      {{ appointment.date }}
+                    </li>
+                    -->
+                    <li class="list-group-item">
+                      <h5>Message:</h5>
+                      {{ appointment.message }}
+                    </li>
+                  </ul>
+
+                  <a
+                    class="btn btn-info btn-sm"
+                    [routerLink]="[
+                      '/admin/appointments/update',
+                      appointment._id
+                    ]"
+                    >Edit</a
+                  >
+                  <a
+                    class="btn btn-danger btn-sm"
+                    [routerLink]="[
+                      '/admin/appointments/delete',
+                      appointment._id
+                    ]"
+                    [queryParams]="{ tab: 'delete' }"
+                    >Delete</a
+                  >
+                </div>
+              </div>
+            </div>
+          </section>
         </ng-template>
-  
-        <!-- Error loading events -->
-        <p *ngIf="error " class="alert alert-danger ">
-          <strong>Oops!</strong> There was an error retrieving appointment data.
+
+        <!-- No appointments available -->
+        <p *ngIf="!appointmentList.length" class="alert alert-info ">
+          No appointments have been created yet.
         </p>
-  
       </ng-template>
-  
-  
-    </div>
+
+      <!-- Error loading appointments -->
+      <p *ngIf="error" class="alert alert-danger ">
+        <strong>Oops!</strong> There was an error retrieving appointment data.
+      </p>
+    </ng-template>
   </div>
+</div>

@@ -1,4 +1,3 @@
-// src/app/pages/event/event.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../auth/auth.service';
@@ -24,7 +23,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   loading: boolean;
   error: boolean;
   tab: string;
-  eventPast: boolean;
+  requestPast: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,7 +43,7 @@ export class RequestComponent implements OnInit, OnDestroy {
   }
 
   private _routeSubs() {
-    // Set event ID from route params and subscribe
+    // Set request ID from route params and subscribe
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this._getService();
@@ -58,13 +57,13 @@ export class RequestComponent implements OnInit, OnDestroy {
 
   private _getService() {
     this.loading = true;
-    // GET event by ID
+    // GET request by ID
     this.requestSub = this.api.getRequestById$(this.id).subscribe(
       res => {
         this.request = res;
         this._setPageTitle(this.request.name);
         this.loading = false;
-        // this.eventPast = this.utils.eventPast(this.event.endDatetime);
+        // this.requestPast = this.utils.requestPast(this.request.endDatetime);
       },
       err => {
         console.error(err);

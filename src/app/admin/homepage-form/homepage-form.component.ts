@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,

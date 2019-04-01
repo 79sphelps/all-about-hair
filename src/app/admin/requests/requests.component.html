@@ -1,15 +1,15 @@
-<!-- src/app/pages/admin/admin.component.html -->
-
 <div class="container">
   <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
   <div>
-
     <h1 class="text-center requests-title">{{ pageTitle }}</h1>
 
     <app-loading *ngIf="loading"></app-loading>
 
     <ng-template [ngIf]="utils.isLoaded(loading)">
-      <p class="lead">Welcome, {{ auth.userProfile?.name }}! You can create and administer user request info below.</p>
+      <p class="lead">
+        Welcome, {{ auth.userProfile?.name }}! You can create and administer
+        user request info below.
+      </p>
 
       <!--
         <button class="btn btn-primary" style="margin-bottom: 10px;" type="button">New Event</button>
@@ -21,46 +21,55 @@
       </p>
       -->
 
-      <!-- Events -->
+      <!-- Requests -->
       <ng-template [ngIf]="requestList">
         <ng-template [ngIf]="requestList.length">
-          <!-- Search events -->
+          <!-- Search requests -->
           <div class="form-group input-group">
             <span class="input-group-addon">
               <i class="fa fa-search"></i>
             </span>
-            <input id="search" type="text" class="form-control" [(ngModel)]="query" (keyup)="searchRequests()" />
+            <input
+              id="search"
+              type="text"
+              class="form-control"
+              [(ngModel)]="query"
+              (keyup)="searchRequests()"
+            />
             <span class="input-group-addon">
               <a (click)="resetQuery()">&times;</a>
             </span>
           </div>
 
           <!-- No search results -->
-          <p *ngIf="fs.noSearchResults(filteredRequests, query)" class="alert alert-warning">
+          <p
+            *ngIf="fs.noSearchResults(filteredRequests, query)"
+            class="alert alert-warning"
+          >
             No requests found for
-            <em class="text-danger">{{ query }}</em>, sorry!
+            <em class="text-danger">{{ query }}</em
+            >, sorry!
           </p>
 
-          <!-- Events listing -->
+          <!-- Requests listing -->
           <section class="list-group" [@expandCollapse]>
-            <div *ngFor="let request of fs.search(filteredRequests)" class=" list-group-item list-group-item-action flex-column align-items-start ">
-
+            <div
+              *ngFor="let request of fs.search(filteredRequests)"
+              class=" list-group-item list-group-item-action flex-column align-items-start "
+            >
               <div style="display: inline">
-
                 <div style="width: 100%; float: left;">
-
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <h5 [innerHTML]="request.name"></h5>
+                      <h5 [innerHTML]="request.name"></h5>
                     </li>
 
                     <li class="list-group-item">
-                        <p [innerHTML]="request.email"></p>
+                      <p [innerHTML]="request.email"></p>
                     </li>
 
-
                     <li class="list-group-item">
-                        <p [innerHTML]="request.category"></p>
+                      <p [innerHTML]="request.category"></p>
                     </li>
 
                     <!--
@@ -74,7 +83,11 @@
                     </li>
                   </ul>
 
-                  <a class="btn btn-info btn-sm" [routerLink]="['/admin/requests/update', request._id]">Edit</a>
+                  <a
+                    class="btn btn-info btn-sm"
+                    [routerLink]="['/admin/requests/update', request._id]"
+                    >Edit</a
+                  >
                   <!-- <a class="btn btn-danger btn-sm" [routerLink]="['/admin/requests/delete', request._id]" [queryParams]="{tab: 'delete'}">Delete</a> -->
                 </div>
                 <!--
@@ -83,24 +96,20 @@
                 </div>
                 -->
               </div>
-
             </div>
           </section>
         </ng-template>
 
-        <!-- No events available -->
-        <p *ngIf="!requestList.length " class="alert alert-info ">
+        <!-- No requests available -->
+        <p *ngIf="!requestList.length" class="alert alert-info ">
           No requests have been created yet.
         </p>
       </ng-template>
 
-      <!-- Error loading events -->
-      <p *ngIf="error " class="alert alert-danger ">
+      <!-- Error loading requests -->
+      <p *ngIf="error" class="alert alert-danger ">
         <strong>Oops!</strong> There was an error retrieving request data.
       </p>
-
     </ng-template>
-
-
   </div>
 </div>

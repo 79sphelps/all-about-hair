@@ -42,7 +42,7 @@ export class TeamMemberComponent implements OnInit, OnDestroy {
   }
 
   private _routeSubs() {
-    // Set event ID from route params and subscribe
+    // Set member ID from route params and subscribe
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this._getPhoto();
@@ -56,13 +56,13 @@ export class TeamMemberComponent implements OnInit, OnDestroy {
 
   private _getPhoto() {
     this.loading = true;
-    // GET event by ID
+    // GET member by ID
     this.memberSub = this.api.getPersonelById$(this.id).subscribe(
       res => {
         this.member = res;
         this._setPageTitle(this.member.name);
         this.loading = false;
-        // this.eventPast = this.utils.eventPast(this.event.endDatetime);
+        // this.memberPast = this.utils.memberPast(this.member.endDatetime);
       },
       err => {
         console.error(err);
@@ -83,5 +83,4 @@ export class TeamMemberComponent implements OnInit, OnDestroy {
     this.tabSub.unsubscribe();
     this.memberSub.unsubscribe();
   }
-
 }

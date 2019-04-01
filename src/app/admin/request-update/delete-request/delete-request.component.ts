@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/delete-event/delete-event.component.ts
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Request } from './../../../core/models/request';
 import { Subscription } from 'rxjs/Subscription';

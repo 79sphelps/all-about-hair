@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import {
   FormArray,
@@ -13,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../core/api.service';
 import { Service } from './../../core/models/service';
 import { ServicesFormService } from './services-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+// import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-services-form',
@@ -61,12 +60,11 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
   private _setFormService() {
     if (!this.isEdit) {
       // If creating a new event, create new
-      // FormEventModel with default null data
-      // return new FormEventModel(null, null, null, null, null, null, null);
+      // Service model with default null data
       return new Service(null, null, null, null, null);
     } else {
       // If editing existing event, create new
-      // FormEventModel from existing data
+      // Service model from existing data
       return new Service(
         this.service.title,
         this.service.image,
@@ -171,7 +169,7 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
 
     // If edit: mark fields dirty to trigger immediate
     // validation in case editing an event that is no
-    // longer valid (for example, an event in the past)
+    // longer valid
     if (this.isEdit) {
       const _markDirty = group => {
         for (const i in group.controls) {
@@ -217,8 +215,7 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
   }
 
   private _getSubmitObj() {
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new EventModel for submission
+    // populate a new Service model for submission
     return new Service(
       this.serviceForm.get('title').value,
       this.serviceForm.get('image').value,
@@ -226,9 +223,6 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
       this.serviceForm.get('pricing').value
     );
   }
-
-
-
 
   onSubmit() {
     this.submitting = true;
@@ -274,5 +268,4 @@ export class ServicesFormComponent implements OnInit, OnDestroy {
     }
     this.formChangeSub.unsubscribe();
   }
-
 }

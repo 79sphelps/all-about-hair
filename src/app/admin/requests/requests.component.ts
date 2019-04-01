@@ -39,7 +39,7 @@ export class RequestsComponent implements OnInit, OnDestroy {
   private _getRequestsList() {
     this.loading = true;
 
-    // Get all (admin) events
+    // Get all (admin) requests
     this.requestsSub = this.api.getRequests$().subscribe(
       res => {
         this.requestList = res;

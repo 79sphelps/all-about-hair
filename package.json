@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "ng": "ng",
+    "start3": "concurrently \"npm run start2\" \"node server.js\"",
     "start2": "ng serve",
     "start": "cross-env NODE_ENV=production node server.js",
     "build": "ng build --prod",
@@ -69,6 +70,7 @@
     "chai-http": "^4.2.1",
     "chai-spies": "^1.0.0",
     "codelyzer": "^4.0.1",
+    "concurrently": "^4.1.0",
     "enhanced-resolve": "^4.1.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",

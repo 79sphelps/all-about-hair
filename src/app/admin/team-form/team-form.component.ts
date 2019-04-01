@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,
@@ -11,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../core/api.service';
 import { Personel } from './../../core/models/personel';
 import { TeamFormService } from './team-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+// import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-team-form',
@@ -22,8 +21,10 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 export class TeamFormComponent implements OnInit, OnDestroy {
   @Input() member: Personel;
   isEdit: boolean;
+
   // FormBuilder form
   memberForm: FormGroup;
+
   // Model storing initial form values
   formMember: Personel;
 
@@ -58,12 +59,11 @@ export class TeamFormComponent implements OnInit, OnDestroy {
   private _setformMember() {
     if (!this.isEdit) {
       // If creating a new event, create new
-      // FormEventModel with default null data
-      // return new FormEventModel(null, null, null, null, null, null, null);
+      // Personel model with default null data
       return new Personel(null, null, null);
     } else {
       // If editing existing event, create new
-      // FormEventModel from existing data
+      // Personel model from existing data
       return new Personel(
         this.member.name,
         this.member.role,
@@ -116,7 +116,7 @@ export class TeamFormComponent implements OnInit, OnDestroy {
 
     // If edit: mark fields dirty to trigger immediate
     // validation in case editing an event that is no
-    // longer valid (for example, an event in the past)
+    // longer valid
     if (this.isEdit) {
       const _markDirty = group => {
         for (const i in group.controls) {
@@ -162,10 +162,7 @@ export class TeamFormComponent implements OnInit, OnDestroy {
   }
 
   private _getSubmitObj() {
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new EventModel for submission
-
-    // this.galleryForm ? this.Service._id : null,
+    // populate a new Personel model for submission
     return new Personel(
       this.memberForm.get('name').value,
       this.memberForm.get('role').value,

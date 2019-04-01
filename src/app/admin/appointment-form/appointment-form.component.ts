@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,
@@ -11,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ApiService } from './../../core/api.service';
 import { Appointment } from './../../core/models/appointment';
 import { AppointmentFormService } from './appointment-form.service';
-import { SubmittingComponent } from '../../core/forms/submitting.component';
+// import { SubmittingComponent } from '../../core/forms/submitting.component';
 
 @Component({
   selector: 'app-appointment-form',
@@ -22,8 +21,10 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 export class AppointmentFormComponent implements OnInit, OnDestroy {
   @Input() appointment: Appointment;
   isEdit: boolean;
+
   // FormBuilder form
   appointmentForm: FormGroup;
+
   // Model storing initial form values
   formRequest: Appointment;
 
@@ -59,13 +60,12 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
 
   private _setformRequest() {
     if (!this.isEdit) {
-      // If creating a new event, create new
-      // FormEventModel with default null data
-      // return new FormEventModel(null, null, null, null, null, null, null);
+      // If creating a new appt, create new
+      // Appointment model with default null data
       return new Appointment(null, null, null, null, null);
     } else {
-      // If editing existing event, create new
-      // FormEventModel from existing data
+      // If editing existing appt, create new
+      // Appointment model from existing data
       return new Appointment(
         this.appointment.name,
         this.appointment.email,
@@ -81,8 +81,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         this.formRequest.name,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.nameMin),
+          Validators.maxLength(this.ef.nameMax)
         ]
       ],
       email: [
@@ -98,16 +98,16 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         this.formRequest.category,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.categoryMin),
+          Validators.maxLength(this.ef.categoryMax)
         ]
       ],
       message: [
         this.formRequest.message,
         [
           Validators.required,
-          Validators.minLength(this.ef.textMin),
-          Validators.maxLength(this.ef.locMax)
+          Validators.minLength(this.ef.messageMin),
+          Validators.maxLength(this.ef.messageMax)
         ]
       ]
     });
@@ -118,8 +118,8 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
     );
 
     // If edit: mark fields dirty to trigger immediate
-    // validation in case editing an event that is no
-    // longer valid (for example, an event in the past)
+    // validation in case editing an appt that is no
+    // longer valid
     if (this.isEdit) {
       const _markDirty = group => {
         for (const i in group.controls) {
@@ -147,7 +147,17 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
         const messages = this.ef.validationMessages[field];
         for (const key in control.errors) {
           if (control.errors.hasOwnProperty(key)) {
-            errorsObj[field] += messages[key] + '<br>';
+            if (key === 'minlength') {
+              errorsObj[field] += messages[key] + 'We need another '
+              + (this.ef.inputLengths[field].minlength - this.appointmentForm.get(field).value.length)
+              + ' characters.' + '<br>';
+            } else if (key === 'maxlength') {
+              errorsObj[field] += messages[key] + 'Please remove '
+              + (this.appointmentForm.get(field).value.length - this.ef.inputLengths[field].maxlength)
+              + ' characters.' + '<br>';
+            } else {
+              errorsObj[field] += messages[key] + '<br>';
+            }
           }
         }
       }
@@ -165,10 +175,7 @@ export class AppointmentFormComponent implements OnInit, OnDestroy {
   }
 
   private _getSubmitObj() {
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new EventModel for submission
-
-    // this.galleryForm ? this.Service._id : null,
+    // populate a new Appointment model for submission
     return new Appointment(
       this.appointmentForm.get('name').value,
       this.appointmentForm.get('email').value,

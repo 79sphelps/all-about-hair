@@ -1,25 +1,36 @@
-<!-- src/app/pages/admin/update-event/delete-event.component/delete-event.component.html -->
 <p class="lead">
-    You are deleting the "
-    <strong [innerHTML]="service.title"></strong>" service.
-  </p>
-  
-  <p class="text-danger">
-    Deleting this service will be permanent. Please proceed with caution!
-  </p>
-  
-  <div class="form-group">
-    <label for="deleteService">Confirm service title:</label>
-    <input type="text" id="deleteService" class="form-control" [(ngModel)]="confirmDelete">
-  </div>
-  
-  <!-- Delete button -->
-  <p>
-    <button class="btn btn-danger" (click)="removeService()" [disabled]="confirmDelete !== service.title || submitting">Delete Service</button>
-    <app-submitting *ngIf="submitting"></app-submitting>
-  </p>
-  
-  <!-- Error deleting event -->
-  <p *ngIf="error" class="alert alert-danger">
-    <strong>Oops!</strong> There was an error deleting this service. Please try again.
-  </p>
+  You are deleting the "
+  <strong [innerHTML]="service.title"></strong>" service.
+</p>
+
+<p class="text-danger">
+  Deleting this service will be permanent. Please proceed with caution!
+</p>
+
+<div class="form-group">
+  <label for="deleteService">Confirm service title:</label>
+  <input
+    type="text"
+    id="deleteService"
+    class="form-control"
+    [(ngModel)]="confirmDelete"
+  />
+</div>
+
+<!-- Delete button -->
+<p>
+  <button
+    class="btn btn-danger"
+    (click)="removeService()"
+    [disabled]="confirmDelete !== service.title || submitting"
+  >
+    Delete Service
+  </button>
+  <app-submitting *ngIf="submitting"></app-submitting>
+</p>
+
+<!-- Error deleting service -->
+<p *ngIf="error" class="alert alert-danger">
+  <strong>Oops!</strong> There was an error deleting this service. Please try
+  again.
+</p>

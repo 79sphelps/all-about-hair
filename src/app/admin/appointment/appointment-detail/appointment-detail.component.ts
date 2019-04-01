@@ -1,4 +1,3 @@
-// src/app/pages/event/event-detail/event-detail.component.ts
 import { Component, Input } from '@angular/core';
 import { AuthService } from './../../../auth/auth.service';
 import { UtilsService } from './../../../core/utils.service';

@@ -32,7 +32,6 @@ export class HomepageDetailsComponent implements OnInit, OnDestroy {
 
   private _getHomepageDetails() {
     this.loading = true;
-    // Get future, public events
     this.homepageListSub = this.api.getHomepageDetails$().subscribe(
       res => {
         this.homepage = res[0];

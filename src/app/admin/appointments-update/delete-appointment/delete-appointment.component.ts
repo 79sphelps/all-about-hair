@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/delete-event/delete-event.component.ts
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Appointment } from './../../../core/models/appointment';
 import { Subscription } from 'rxjs/Subscription';
@@ -21,13 +20,13 @@ export class DeleteAppointmentComponent implements OnDestroy {
 
   removeAppointment() {
     this.submitting = true;
-    // DELETE event by ID
+    // DELETE appointment by ID
     this.deleteSub = this.api.deleteAppointment$(this.appointment._id).subscribe(
       res => {
         this.submitting = false;
         this.error = false;
         console.log(res.message);
-        // If successfully deleted event, redirect to Admin
+        // If successfully deleted appointment, redirect to Admin
         this.router.navigate(['/admin/appointments']);
       },
       err => {

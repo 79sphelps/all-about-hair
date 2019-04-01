@@ -1,116 +1,236 @@
-<!-- src/app/pages/admin/event-form/event-form.component.html -->
 <form [formGroup]="homepageForm" (ngSubmit)="onSubmit()">
   <!-- Welcome Msg -->
   <div class="form-group">
     <label for="headline">Headline Message</label>
-    <textarea id="headline" type="text" class="form-control" rows="10" formControlName="headline" [maxlength]="ef.locMax"></textarea>
-    <div *ngIf="formErrors.headline" class="small text-danger formErrors" [innerHTML]="formErrors.headline">
-    </div>
+    <textarea
+      id="headline"
+      type="text"
+      class="form-control"
+      rows="10"
+      formControlName="headline"
+      [maxlength]="ef.locMax"
+    ></textarea>
+    <div
+      *ngIf="formErrors.headline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.headline"
+    ></div>
   </div>
 
   <!-- About Msg -->
   <div class="form-group">
     <label for="headlineSubMsg">Headline Sub Message</label>
-    <textarea id="headlineSubMsg" type="text" class="form-control" rows="10" formControlName="headlineSubMsg" [maxlength]="ef.locMax"></textarea>
-    <div *ngIf="formErrors.headlineSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.headlineSubMsg">
-    </div>
+    <textarea
+      id="headlineSubMsg"
+      type="text"
+      class="form-control"
+      rows="10"
+      formControlName="headlineSubMsg"
+      [maxlength]="ef.locMax"
+    ></textarea>
+    <div
+      *ngIf="formErrors.headlineSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.headlineSubMsg"
+    ></div>
   </div>
 
   <!-- About Quote -->
   <div class="form-group">
     <label for="servicesHeadline">Services Headline</label>
-    <input id="servicesHeadline" type="text" class="form-control" formControlName="servicesHeadline" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.servicesHeadline" class="small text-danger formErrors" [innerHTML]="formErrors.servicesHeadline">
-    </div>
+    <input
+      id="servicesHeadline"
+      type="text"
+      class="form-control"
+      formControlName="servicesHeadline"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.servicesHeadline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.servicesHeadline"
+    ></div>
   </div>
 
   <!-- Person Highlight -->
   <div class="form-group">
     <label for="servicesSubMsg">Services Sub Message</label>
-    <input id="servicesSubMsg" type="text" class="form-control" formControlName="servicesSubMsg" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.servicesSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.servicesSubMsg">
-    </div>
+    <input
+      id="servicesSubMsg"
+      type="text"
+      class="form-control"
+      formControlName="servicesSubMsg"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.servicesSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.servicesSubMsg"
+    ></div>
   </div>
 
   <!-- Person Quote -->
   <div class="form-group">
     <label for="aboutHeadline">About Headline</label>
-    <input id="aboutHeadline" type="text" class="form-control" formControlName="aboutHeadline" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.aboutHeadline" class="small text-danger formErrors" [innerHTML]="formErrors.aboutHeadline">
-    </div>
+    <input
+      id="aboutHeadline"
+      type="text"
+      class="form-control"
+      formControlName="aboutHeadline"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.aboutHeadline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.aboutHeadline"
+    ></div>
   </div>
 
   <!-- Person Bio -->
   <div class="form-group">
     <label for="aboutSubMsg">About Sub Message</label>
-    <input id="aboutSubMsg" type="text" class="form-control" formControlName="aboutSubMsg" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.aboutSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.aboutSubMsg">
-    </div>
+    <input
+      id="aboutSubMsg"
+      type="text"
+      class="form-control"
+      formControlName="aboutSubMsg"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.aboutSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.aboutSubMsg"
+    ></div>
   </div>
 
   <!-- Person Thumbnail -->
   <div class="form-group">
     <label for="aboutImage">About Image</label>
-    <input id="aboutImage" type="text" class="form-control" formControlName="aboutImage" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.aboutImage" class="small text-danger formErrors" [innerHTML]="formErrors.aboutImage">
-    </div>
+    <input
+      id="aboutImage"
+      type="text"
+      class="form-control"
+      formControlName="aboutImage"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.aboutImage"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.aboutImage"
+    ></div>
   </div>
 
   <!-- Person Thumbnail Caption -->
   <div class="form-group">
     <label for="aboutVideoLink">About Video Link</label>
-    <input id="aboutVideoLink" type="text" class="form-control" formControlName="aboutVideoLink"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.aboutVideoLink" class="small text-danger formErrors" [innerHTML]="formErrors.aboutVideoLink">
-    </div>
+    <input
+      id="aboutVideoLink"
+      type="text"
+      class="form-control"
+      formControlName="aboutVideoLink"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.aboutVideoLink"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.aboutVideoLink"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="stylistsHeadline">Stylists Headline</label>
-    <input id="stylistsHeadline" type="text" class="form-control" formControlName="stylistsHeadline"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.stylistsHeadline" class="small text-danger formErrors" [innerHTML]="formErrors.stylistsHeadline">
-    </div>
+    <input
+      id="stylistsHeadline"
+      type="text"
+      class="form-control"
+      formControlName="stylistsHeadline"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.stylistsHeadline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.stylistsHeadline"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="stylistsSubMsg">Stylists Sub Message</label>
-    <input id="stylistsSubMsg" type="text" class="form-control" formControlName="stylistsSubMsg"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.stylistsSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.stylistsSubMsg">
-    </div>
+    <input
+      id="stylistsSubMsg"
+      type="text"
+      class="form-control"
+      formControlName="stylistsSubMsg"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.stylistsSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.stylistsSubMsg"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="serviceDetailsHeadline">Service Details Headline</label>
-    <input id="serviceDetailsHeadline" type="text" class="form-control" formControlName="serviceDetailsHeadline"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.serviceDetailsHeadline" class="small text-danger formErrors" [innerHTML]="formErrors.serviceDetailsHeadline">
-    </div>
+    <input
+      id="serviceDetailsHeadline"
+      type="text"
+      class="form-control"
+      formControlName="serviceDetailsHeadline"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.serviceDetailsHeadline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.serviceDetailsHeadline"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="serviceDetailsSubMsg">Service Details Sub Message</label>
-    <input id="serviceDetailsSubMsg" type="text" class="form-control" formControlName="serviceDetailsSubMsg"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.serviceDetailsSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.serviceDetailsSubMsg">
-    </div>
+    <input
+      id="serviceDetailsSubMsg"
+      type="text"
+      class="form-control"
+      formControlName="serviceDetailsSubMsg"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.serviceDetailsSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.serviceDetailsSubMsg"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="contactHeadline">Contact Headline</label>
-    <input id="contactHeadline" type="text" class="form-control" formControlName="contactHeadline"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.contactHeadline" class="small text-danger formErrors" [innerHTML]="formErrors.contactHeadline">
-    </div>
+    <input
+      id="contactHeadline"
+      type="text"
+      class="form-control"
+      formControlName="contactHeadline"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.contactHeadline"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.contactHeadline"
+    ></div>
   </div>
 
   <div class="form-group">
     <label for="contactSubMsg">Contact Headline</label>
-    <input id="contactSubMsg" type="text" class="form-control" formControlName="contactSubMsg"
-      [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.contactSubMsg" class="small text-danger formErrors" [innerHTML]="formErrors.contactSubMsg">
-    </div>
+    <input
+      id="contactSubMsg"
+      type="text"
+      class="form-control"
+      formControlName="contactSubMsg"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.contactSubMsg"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.contactSubMsg"
+    ></div>
   </div>
 
   <!-- Editable -->
@@ -134,14 +254,26 @@
 
   <!-- Submit -->
   <div class="form-group">
-    <button type="submit" class="btn btn-primary" [attr.disabled]="homepageForm.invalid || submitting ? true : null" [innerText]="submitBtnText"></button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [attr.disabled]="homepageForm.invalid || submitting ? true : null"
+      [innerText]="submitBtnText"
+    ></button>
     <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
     <app-submitting *ngIf="submitting"></app-submitting>
-    <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
+    <a
+      *ngIf="!submitting"
+      class="btn btn-link"
+      (click)="resetForm()"
+      tabindex="0"
+      >Reset Form</a
+    >
 
     <!-- API submission error -->
     <p *ngIf="error" class="mt-3 alert alert-danger">
-      <strong>Error:</strong> There was a problem submitting the homepage. Please try again.
+      <strong>Error:</strong> There was a problem submitting the homepage.
+      Please try again.
     </p>
   </div>
 </form>

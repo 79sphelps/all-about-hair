@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/update-event.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from './../../auth/auth.service';
@@ -36,7 +35,7 @@ export class ServicesUpdateComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
 
-    // Set event ID from route params and subscribe
+    // Set service ID from route params and subscribe
     this.routeSub = this.route.params.subscribe(params => {
       this._id = params['id'];
       this._getservice();
@@ -50,7 +49,7 @@ export class ServicesUpdateComponent implements OnInit, OnDestroy {
 
   private _getservice() {
     this.loading = true;
-    // GET event by ID
+    // GET service by ID
     this.serviceSub = this.api.getServiceDetailsById$(this._id).subscribe(
       res => {
         this.service = res;

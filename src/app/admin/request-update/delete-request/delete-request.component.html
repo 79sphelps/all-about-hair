@@ -1,4 +1,3 @@
-<!-- src/app/pages/admin/update-event/delete-event.component/delete-event.component.html -->
 <p class="lead">
   You are deleting the "
   <strong [innerHTML]="request.name"></strong>" request.
@@ -10,16 +9,28 @@
 
 <div class="form-group">
   <label for="deleteRequest">Confirm request name:</label>
-  <input type="text" id="deleteRequest" class="form-control" [(ngModel)]="confirmDelete">
+  <input
+    type="text"
+    id="deleteRequest"
+    class="form-control"
+    [(ngModel)]="confirmDelete"
+  />
 </div>
 
 <!-- Delete button -->
 <p>
-  <button class="btn btn-danger" (click)="removeRequest()" [disabled]="confirmDelete !== request.name || submitting">Delete Request</button>
+  <button
+    class="btn btn-danger"
+    (click)="removeRequest()"
+    [disabled]="confirmDelete !== request.name || submitting"
+  >
+    Delete Request
+  </button>
   <app-submitting *ngIf="submitting"></app-submitting>
 </p>
 
-<!-- Error deleting event -->
+<!-- Error deleting request -->
 <p *ngIf="error" class="alert alert-danger">
-  <strong>Oops!</strong> There was an error deleting this request. Please try again.
+  <strong>Oops!</strong> There was an error deleting this request. Please try
+  again.
 </p>

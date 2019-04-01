@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,
@@ -22,8 +21,10 @@ import { SubmittingComponent } from '../../core/forms/submitting.component';
 export class GalleryFormComponent implements OnInit, OnDestroy {
   @Input() gallery: Gallery;
   isEdit: boolean;
+
   // FormBuilder form
   galleryForm: FormGroup;
+
   // Model storing initial form values
   formGallery: Gallery;
 
@@ -58,12 +59,11 @@ export class GalleryFormComponent implements OnInit, OnDestroy {
   private _setformGallery() {
     if (!this.isEdit) {
       // If creating a new event, create new
-      // FormEventModel with default null data
-      // return new FormEventModel(null, null, null, null, null, null, null);
+      // Gallery model with default null data
       return new Gallery(null, null, null);
     } else {
       // If editing existing event, create new
-      // FormEventModel from existing data
+      // Gallery model from existing data
       return new Gallery(
         this.gallery.path,
         this.gallery.caption
@@ -98,7 +98,7 @@ export class GalleryFormComponent implements OnInit, OnDestroy {
 
     // If edit: mark fields dirty to trigger immediate
     // validation in case editing an event that is no
-    // longer valid (for example, an event in the past)
+    // longer valid
     if (this.isEdit) {
       const _markDirty = group => {
         for (const i in group.controls) {
@@ -144,10 +144,7 @@ export class GalleryFormComponent implements OnInit, OnDestroy {
   }
 
   private _getSubmitObj() {
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new EventModel for submission
-
-    // this.galleryForm ? this.Service._id : null,
+    // populate a new Gallery model for submission
     return new Gallery(
       this.galleryForm.get('path').value,
       this.galleryForm.get('caption').value

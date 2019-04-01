@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/delete-event/delete-event.component.ts
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Personel } from './../../../core/models/personel';
 import { Subscription } from 'rxjs/Subscription';
@@ -21,13 +20,13 @@ export class DeleteMemberComponent implements OnDestroy {
 
   removeMember() {
     this.submitting = true;
-    // DELETE event by ID
+    // DELETE member by ID
     this.deleteSub = this.api.deletePersonel$(this.member._id).subscribe(
       res => {
         this.submitting = false;
         this.error = false;
         console.log(res.message);
-        // If successfully deleted event, redirect to Admin
+        // If successfully deleted member, redirect to Admin
         this.router.navigate(['/admin/personel']);
       },
       err => {

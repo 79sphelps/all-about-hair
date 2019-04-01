@@ -1,31 +1,60 @@
-<!-- src/app/pages/admin/event-form/event-form.component.html -->
 <form [formGroup]="galleryForm" (ngSubmit)="onSubmit()">
   <!-- Title -->
   <div class="form-group">
     <label for="caption">Caption</label>
-    <input id="caption" type="text" class="form-control" formControlName="caption" [maxlength]="ef.titleMax">
-    <div *ngIf="formErrors.caption" class="small text-danger formErrors" [innerHTML]="formErrors.caption">
-    </div>
+    <input
+      id="caption"
+      type="text"
+      class="form-control"
+      formControlName="caption"
+      [maxlength]="ef.titleMax"
+    />
+    <div
+      *ngIf="formErrors.caption"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.caption"
+    ></div>
   </div>
 
   <!-- Location -->
   <div class="form-group">
     <label for="path">Image Path</label>
-    <input id="path" type="text" class="form-control" formControlName="path" [maxlength]="ef.locMax">
-    <div *ngIf="formErrors.path" class="small text-danger formErrors" [innerHTML]="formErrors.path">
-    </div>
+    <input
+      id="path"
+      type="text"
+      class="form-control"
+      formControlName="path"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.path"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.path"
+    ></div>
   </div>
 
   <!-- Submit -->
   <div class="form-group">
-    <button type="submit" class="btn btn-primary" [attr.disabled]="galleryForm.invalid || submitting ? true : null" [innerText]="submitBtnText"></button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [attr.disabled]="galleryForm.invalid || submitting ? true : null"
+      [innerText]="submitBtnText"
+    ></button>
     <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
     <app-submitting *ngIf="submitting"></app-submitting>
-    <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
+    <a
+      *ngIf="!submitting"
+      class="btn btn-link"
+      (click)="resetForm()"
+      tabindex="0"
+      >Reset Form</a
+    >
 
     <!-- API submission error -->
     <p *ngIf="error" class="mt-3 alert alert-danger">
-      <strong>Error:</strong> There was a problem submitting the image. Please try again.
+      <strong>Error:</strong> There was a problem submitting the image. Please
+      try again.
     </p>
   </div>
 </form>

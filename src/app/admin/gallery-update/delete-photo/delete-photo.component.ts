@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/delete-event/delete-event.component.ts
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Gallery } from './../../../core/models/gallery';
 import { Subscription } from 'rxjs/Subscription';
@@ -21,13 +20,13 @@ export class DeletePhotoComponent implements OnDestroy {
 
   removePhoto() {
     this.submitting = true;
-    // DELETE event by ID
+    // DELETE photo by ID
     this.deleteSub = this.api.deleteGalleryPhoto$(this.photo._id).subscribe(
       res => {
         this.submitting = false;
         this.error = false;
         console.log(res.message);
-        // If successfully deleted event, redirect to Admin
+        // If successfully deleted photo, redirect to Admin
         this.router.navigate(['/admin/gallery']);
       },
       err => {

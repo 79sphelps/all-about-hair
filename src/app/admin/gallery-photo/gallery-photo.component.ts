@@ -83,5 +83,4 @@ export class GalleryPhotoComponent implements OnInit, OnDestroy {
     this.tabSub.unsubscribe();
     this.photoSub.unsubscribe();
   }
-
 }

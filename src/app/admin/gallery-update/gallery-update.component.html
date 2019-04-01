@@ -1,38 +1,49 @@
 <div class="container">
   <!-- <div class="row" style="margin-left: 0px; margin-right: 0px;"> -->
   <div>
-
-
-    <!-- src/app/pages/admin/update-event/update-event.component.html -->
     <h1 class="text-center">{{ pageTitle }}</h1>
 
     <app-loading *ngIf="loading"></app-loading>
 
     <ng-template [ngIf]="utils.isLoaded(loading)">
-
       <div *ngIf="gallery" class="card">
-
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="[]" [queryParams]="{ tab: 'edit' }" [ngClass]="{ 'active': utils.tabIs(tab, 'edit') }">Edit</a>
+              <a
+                class="nav-link"
+                [routerLink]="[]"
+                [queryParams]="{ tab: 'edit' }"
+                [ngClass]="{ active: utils.tabIs(tab, 'edit') }"
+                >Edit</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="[]" [queryParams]="{ tab: 'delete' }" [ngClass]="{ 'active': utils.tabIs(tab, 'delete') }">Delete</a>
+              <a
+                class="nav-link"
+                [routerLink]="[]"
+                [queryParams]="{ tab: 'delete' }"
+                [ngClass]="{ active: utils.tabIs(tab, 'delete') }"
+                >Delete</a
+              >
             </li>
           </ul>
         </div>
 
         <div class="card-body" style="padding: 10px;">
           <!-- Edit event form -->
-          <app-gallery-form *ngIf="utils.tabIs(tab, 'edit')" [gallery]="gallery"></app-gallery-form>
+          <app-gallery-form
+            *ngIf="utils.tabIs(tab, 'edit')"
+            [gallery]="gallery"
+          ></app-gallery-form>
 
           <!-- Delete event -->
-          <app-delete-photo *ngIf="utils.tabIs(tab, 'delete')" [photo]="gallery"></app-delete-photo>
+          <app-delete-photo
+            *ngIf="utils.tabIs(tab, 'delete')"
+            [photo]="gallery"
+          ></app-delete-photo>
         </div>
-
       </div>
-
 
       <!-- Error loading event -->
       <p *ngIf="error" class="alert alert-danger">
@@ -40,6 +51,5 @@
         <a routerLink="/admin/gallery" class="alert-link">Admin gallery</a>.
       </p>
     </ng-template>
-
   </div>
 </div>

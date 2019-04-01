@@ -1,32 +1,30 @@
-<!-- src/app/pages/event/event-detail/event-detail.component.html -->
-
 <div class="card-body" style="padding: 10px;">
-    <h2 class="card-title text-center mb-0">Appointment Details</h2>
-  </div>
-  
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <strong>User Name:</strong> {{ appointment.name }}
-    </li>
-  
-    <li class="list-group-item">
-      <strong>User Email:</strong> {{ appointment.email }}
-    </li>
-  
-    <li class="list-group-item">
-      <strong>Category:</strong> {{ appointment.category }}
-    </li>
-  
-    <li class="list-group-item">
-      <strong>Message:</strong> {{ appointment.message }}
-    </li>
-    <!--
-    <li class="list-group-item">
-      <strong>Date:</strong> {{ appointment.date }}
-    </li>
-    -->
-  </ul>
-  
-  <div *ngIf="auth.isAdmin" class="card-footer text-right small">
-    <a [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
-  </div>
+  <h2 class="card-title text-center mb-0">Appointment Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>User Name:</strong> {{ appointment.name }}
+  </li>
+
+  <li class="list-group-item">
+    <strong>User Email:</strong> {{ appointment.email }}
+  </li>
+
+  <li class="list-group-item">
+    <strong>Category:</strong> {{ appointment.category }}
+  </li>
+
+  <li class="list-group-item">
+    <strong>Message:</strong> {{ appointment.message }}
+  </li>
+  <!--
+  <li class="list-group-item">
+    <strong>Date:</strong> {{ appointment.date }}
+  </li>
+  -->
+</ul>
+
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/admin/appointments/update', appointment._id]">Edit</a>
+</div>

@@ -1,48 +1,94 @@
-<!-- src/app/pages/admin/event-form/event-form.component.html -->
 <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
-    <!-- Title -->
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input id="name" type="text" class="form-control" formControlName="name" [maxlength]="ef.titleMax">
-      <div *ngIf="formErrors.name" class="small text-danger formErrors" [innerHTML]="formErrors.name">
-      </div>
-    </div>
-  
-    <!-- Location -->
-    <div class="form-group">
-      <label for="role">Role</label>
-      <input id="role" type="text" class="form-control" formControlName="role" [maxlength]="ef.locMax">
-      <div *ngIf="formErrors.role" class="small text-danger formErrors" [innerHTML]="formErrors.role">
-      </div>
-    </div>
-  
-    <!-- Location -->
-    <div class="form-group">
-      <label for="bio">Bio</label>
-      <input id="bio" type="text" class="form-control" formControlName="bio" [maxlength]="ef.locMax">
-      <div *ngIf="formErrors.bio" class="small text-danger formErrors" [innerHTML]="formErrors.bio">
-      </div>
-    </div>
-          
+  <!-- Title -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      class="form-control"
+      formControlName="name"
+      [maxlength]="ef.titleMax"
+    />
+    <div
+      *ngIf="formErrors.name"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.name"
+    ></div>
+  </div>
 
-    <!-- Location -->
-    <div class="form-group">
-      <label for="photo">Photo</label>
-      <input id="photo" type="text" class="form-control" formControlName="photo" [maxlength]="ef.locMax">
-      <div *ngIf="formErrors.photo" class="small text-danger formErrors" [innerHTML]="formErrors.photo">
-      </div>
-    </div>
-  
-    <!-- Submit -->
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary" [attr.disabled]="memberForm.invalid || submitting ? true : null" [innerText]="submitBtnText"></button>
-      <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
-      <app-submitting *ngIf="submitting"></app-submitting>
-      <a *ngIf="!submitting" class="btn btn-link" (click)="resetForm()" tabindex="0">Reset Form</a>
-  
-      <!-- API submission error -->
-      <p *ngIf="error" class="mt-3 alert alert-danger">
-        <strong>Error:</strong> There was a problem submitting the team member. Please try again.
-      </p>
-    </div>
-  </form>
+  <!-- Location -->
+  <div class="form-group">
+    <label for="role">Role</label>
+    <input
+      id="role"
+      type="text"
+      class="form-control"
+      formControlName="role"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.role"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.role"
+    ></div>
+  </div>
+
+  <!-- Location -->
+  <div class="form-group">
+    <label for="bio">Bio</label>
+    <input
+      id="bio"
+      type="text"
+      class="form-control"
+      formControlName="bio"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.bio"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.bio"
+    ></div>
+  </div>
+
+  <!-- Location -->
+  <div class="form-group">
+    <label for="photo">Photo</label>
+    <input
+      id="photo"
+      type="text"
+      class="form-control"
+      formControlName="photo"
+      [maxlength]="ef.locMax"
+    />
+    <div
+      *ngIf="formErrors.photo"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.photo"
+    ></div>
+  </div>
+
+  <!-- Submit -->
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [attr.disabled]="memberForm.invalid || submitting ? true : null"
+      [innerText]="submitBtnText"
+    ></button>
+    <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
+    <app-submitting *ngIf="submitting"></app-submitting>
+    <a
+      *ngIf="!submitting"
+      class="btn btn-link"
+      (click)="resetForm()"
+      tabindex="0"
+      >Reset Form</a
+    >
+
+    <!-- API submission error -->
+    <p *ngIf="error" class="mt-3 alert alert-danger">
+      <strong>Error:</strong> There was a problem submitting the team member.
+      Please try again.
+    </p>
+  </div>
+</form>

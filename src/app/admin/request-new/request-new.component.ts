@@ -7,7 +7,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./request-new.component.scss']
 })
 export class RequestNewComponent implements OnInit {
-
   pageTitle = 'Add New Request';
 
   constructor(private title: Title) {}
@@ -15,5 +14,4 @@ export class RequestNewComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
   }
-
 }

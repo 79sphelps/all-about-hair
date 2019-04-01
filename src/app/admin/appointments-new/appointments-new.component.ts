@@ -7,7 +7,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./appointments-new.component.scss']
 })
 export class AppointmentsNewComponent implements OnInit {
-
   pageTitle = 'Request New Appointment';
 
   constructor(private title: Title) {}
@@ -15,5 +14,4 @@ export class AppointmentsNewComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
   }
-
 }

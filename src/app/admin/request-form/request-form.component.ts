@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.component.ts
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import {
   FormGroup,
@@ -118,7 +117,7 @@ export class RequestFormComponent implements OnInit, OnDestroy {
 
     // If edit: mark fields dirty to trigger immediate
     // validation in case editing an event that is no
-    // longer valid (for example, an event in the past)
+    // longer valid
     if (this.isEdit) {
       const _markDirty = group => {
         for (const i in group.controls) {

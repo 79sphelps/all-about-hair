@@ -1,4 +1,3 @@
-// src/app/pages/admin/event-form/event-form.service.ts
 import { Injectable } from '@angular/core';
 // import { SubmittingComponent } from '../../core/forms/submitting.component';
 
@@ -12,8 +11,7 @@ export class RequestFormService {
     name: '',
     email: '',
     message: '',
-    category: '',
-    date: ''
+    category: ''
   };
 
   // Min/maxlength validation
@@ -44,7 +42,7 @@ export class RequestFormService {
         minlength: this.messageMin,
         maxlength: this.messageMax
       }
-    }
+    };
 
     this.validationMessages = {
       name: {

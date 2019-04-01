@@ -1,4 +1,3 @@
-// src/app/pages/admin/admin.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from './../../auth/auth.service';
@@ -41,7 +40,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
   private _getServiceList() {
     this.loading = true;
 
-    // Get all (admin) events
+    // Get all (admin) appointments
     this.photosSub = this.api.getGallery$().subscribe(
       res => {
         this.photoList = res;

@@ -7,7 +7,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./team-new.component.scss']
 })
 export class TeamNewComponent implements OnInit {
-
   pageTitle = 'Add Team Member';
 
   constructor(private title: Title) {}
@@ -15,5 +14,4 @@ export class TeamNewComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
   }
-
 }

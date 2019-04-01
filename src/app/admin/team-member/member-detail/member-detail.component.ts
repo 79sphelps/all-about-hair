@@ -9,9 +9,7 @@ import { Personel } from './../../../core/models/personel';
   styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent {
-
   @Input() member: Personel;
 
   constructor(public utils: UtilsService, public auth: AuthService) {}
-
 }

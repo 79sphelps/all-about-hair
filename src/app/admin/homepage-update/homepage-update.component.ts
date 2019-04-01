@@ -1,4 +1,3 @@
-// src/app/pages/admin/update-event/update-event.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../auth/auth.service';
@@ -36,7 +35,7 @@ export class HomepageUpdateComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
 
-    // Set event ID from route params and subscribe
+    // Set homepage ID from route params and subscribe
     this.routeSub = this.route.params.subscribe(params => {
       this._id = params['id'];
       this._getHomepageDetails();
@@ -49,12 +48,8 @@ export class HomepageUpdateComponent implements OnInit, OnDestroy {
   }
 
   private _getHomepageDetails() {
-
-    console.log('... inside ...');
-    console.log('id: ', this._id);
-
     this.loading = true;
-    // GET event by ID
+    // GET homepage by ID
     this.homepageSub = this.api.getHomepageDetailsById$(this._id).subscribe(
       res => {
         this.homepage = res;

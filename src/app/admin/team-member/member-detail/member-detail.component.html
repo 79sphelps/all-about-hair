@@ -1,33 +1,27 @@
-<!-- src/app/pages/event/event-detail/event-detail.component.html -->
-
 <div class="card-body" style="padding: 10px;">
-    <h2 class="card-title text-center mb-0">Team Member Details</h2>
-  </div>
-  
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <strong>Name:</strong>{{ member.name }}
-    </li>
-  
-    <li class="list-group-item">
-      <strong>Role:</strong>{{ member.role }}
-    </li>
-  
-    <li class="list-group-item" style="margin: auto auto;">
-      <img [src]="member.photo" />
-    </li>
-  </ul>
-  
-  <textarea>
+  <h2 class="card-title text-center mb-0">Team Member Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong>Name:</strong>{{ member.name }}</li>
+
+  <li class="list-group-item"><strong>Role:</strong>{{ member.role }}</li>
+
+  <li class="list-group-item" style="margin: auto auto;">
+    <img [src]="member.photo" />
+  </li>
+</ul>
+
+<textarea>
       <strong>Bio:</strong> {{ member.bio }}
-  </textarea>
+  </textarea
+>
 
-
-  <!-- 
+<!--
   <div class="card-body" *ngIf="service.description" style="padding: 10px;">
     <p class="card-text lead" [innerHTML]="service.description"></p>
   </div>
   -->
-  <div *ngIf="auth.isAdmin" class="card-footer text-right small">
-    <a [routerLink]="['/admin/personel/update', member._id]">Edit</a>
-  </div>
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/admin/personel/update', member._id]">Edit</a>
+</div>

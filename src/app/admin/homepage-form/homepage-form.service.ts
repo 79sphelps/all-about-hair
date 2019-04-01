@@ -1,10 +1,10 @@
-// src/app/pages/admin/event-form/event-form.service.ts
 import { Injectable } from '@angular/core';
 // import { SubmittingComponent } from "../../core/forms/submitting.component";
 
 @Injectable()
 export class HomepageFormService {
   validationMessages: any;
+
   // Set up errors object
   formErrors = {
     headline: '',
