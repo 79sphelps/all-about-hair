@@ -6,7 +6,7 @@
       type="text"
       class="form-control"
       formControlName="name"
-      [maxlength]="ef.titleMax"
+      [maxlength]="ef.nameMax"
     />
     <div
       *ngIf="formErrors.name"
@@ -22,7 +22,7 @@
       type="text"
       class="form-control"
       formControlName="email"
-      [maxlength]="ef.locMax"
+      [maxlength]="ef.emailMax"
     />
     <div
       *ngIf="formErrors.email"
@@ -38,7 +38,7 @@
       type="text"
       class="form-control"
       formControlName="category"
-      [maxlength]="ef.locMax"
+      [maxlength]="ef.categoryMax"
     />
     <div
       *ngIf="formErrors.category"
@@ -54,7 +54,7 @@
       type="text"
       class="form-control"
       formControlName="message"
-      [maxlength]="ef.locMax"
+      [maxlength]="ef.messageMax"
     />
     <div
       *ngIf="formErrors.message"
