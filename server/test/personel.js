@@ -48,7 +48,7 @@ describe("Personel", () => {
         expect(res[1].bio).to.equal(
           "Ethel has been in the hair & beauty industry professionally since 2009 and has been and Aveda stylist since 2011. His range of ability is very wide, from needs of fine hair to the complexities of dense curly hair. He's passionate about continuing education & loves to create soft blended layers, short textured pixie cuts, multidimensional color, beautiful blondes, and hair painting techniques such as balayage."
         );
-        expect(res[1].photo).to.equal("assets/img/img_5.jpg");
+        expect(res[1].photo).to.equal("assets/images/img_5.jpg");
       });
     });
   });

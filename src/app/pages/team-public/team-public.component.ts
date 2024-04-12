@@ -34,6 +34,8 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getPersonelList();
+
+
   }
 
   private _getHomepageDetails() {
@@ -59,6 +61,7 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
       res => {
         this.personelList = res;
         this.loading = false;
+        console.log(this.personelList)
       },
       err => {
         console.error(err);

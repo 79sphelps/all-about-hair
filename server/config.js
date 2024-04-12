@@ -6,6 +6,7 @@ module.exports = {
   AUTH0_API_AUDIENCE: "http://localhost:8081/api/",
   MONGO_URI:
     process.env.MONGO_URI ||
-    "mongodb://sphelps:sphelps1@ds119052.mlab.com:19052/all-about-hair",
+    // "mongodb://sphelps:sphelps1@ds119052.mlab.com:19052/all-about-hair",
+    "mongodb://localhost:27017/all-about-hair",
   NAMESPACE: "http://myapp.com/roles" // from Auth0.com rules specification
 };

@@ -56,7 +56,7 @@ describe('TeamPublicComponent', () => {
       servicesSubMsg: 'Homepage Services SubMsg',
       aboutHeadline: 'Homepage About Headline',
       aboutSubMsg: 'Homepage About SubMsg',
-      aboutImage: '../../../assets/img/about-img.jpg',
+      aboutImage: '../../../assets/images/about-img.jpg',
       aboutVideoLink: 'Homepage About Video Link',
       stylistsHeadline: 'Homepage Stylists Headline',
       stylistsSubMsg: 'Homepage Stylists SugMsg',
@@ -71,7 +71,7 @@ describe('TeamPublicComponent', () => {
       name: 'Test Personel Name',
       role: 'Test Personel Role',
       bio: 'Test Personel Bio',
-      photo: '../../../assets/img/person_4.jpg',
+      photo: '../../../assets/images/person_4.jpg',
       _id: '1'
     }];
 
@@ -101,7 +101,7 @@ describe('TeamPublicComponent', () => {
     const image = element.querySelector('div[id="teamList"] > div.thumb > img.img-fluid');
 
     expect(image).not.toBeNull('You should have an img element for each team member');
-    expect(image.getAttribute('src')).toContain('../../../assets/img/person_4.jpg');
+    expect(image.getAttribute('src')).toContain('../../../assets/images/person_4.jpg');
   });
 
 

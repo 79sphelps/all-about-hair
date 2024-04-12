@@ -55,7 +55,7 @@ describe('ContactComponent', () => {
       servicesSubMsg: 'Homepage Services SubMsg',
       aboutHeadline: 'Homepage About Headline',
       aboutSubMsg: 'Homepage About SubMsg',
-      aboutImage: '../../../assets/img/about-img.jpg',
+      aboutImage: '../../../assets/images/about-img.jpg',
       aboutVideoLink: 'Homepage About Video Link',
       stylistsHeadline: 'Homepage Stylists Headline',
       stylistsSubMsg: 'Homepage Stylists SugMsg',
