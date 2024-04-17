@@ -2,7 +2,12 @@
 
 const config = require("../config");
 const mongoose = require("mongoose");
-mongoose.connect(config.MONGO_URI);
+mongoose.connect(
+  config.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 const Gallery = require("../models/Gallery");
 
 module.exports.getGallery = function(req, res, next) {

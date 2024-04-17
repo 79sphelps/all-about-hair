@@ -52,7 +52,7 @@ export class ContactComponent implements OnInit, OnDestroy {
       }
     );
   }
-
+  
   private _getContactDetails() {
     this.loading = true;
     // Get future, public events

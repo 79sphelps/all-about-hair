@@ -2,7 +2,12 @@
 
 const config = require("../config");
 const mongoose = require("mongoose");
-mongoose.connect(config.MONGO_URI);
+mongoose.connect(
+  config.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 const Personel = require("../models/Personel");
 
 module.exports.getPersonel = function(req, res, next) {
@@ -11,7 +16,6 @@ module.exports.getPersonel = function(req, res, next) {
     if (err) {
       return res.status(500).send({ message: err.message });
     }
-
     if (data) {
       data.forEach(item => {
         dataArr.push(item);

@@ -12,5 +12,6 @@ const GallerySchema = mongoose.Schema({
   }
 });
 
+// const Gallery = mongoose.model("gallery2", GallerySchema);
 const Gallery = mongoose.model("gallery2", GallerySchema);
 module.exports = Gallery;

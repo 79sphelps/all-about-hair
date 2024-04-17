@@ -8,5 +8,6 @@ const FooterAboutMsgSchema = mongoose.Schema({
   }
 });
 
-const FooterAboutMsg = mongoose.model("FooterAboutMsg", FooterAboutMsgSchema);
+// const FooterAboutMsg = mongoose.model("FooterAboutMsg", FooterAboutMsgSchema);
+const FooterAboutMsg = mongoose.model("footerAbout3", FooterAboutMsgSchema);
 module.exports = FooterAboutMsg;

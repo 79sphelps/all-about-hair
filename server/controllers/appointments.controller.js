@@ -2,7 +2,12 @@
 
 const config = require("../config");
 const mongoose = require("mongoose");
-mongoose.connect(config.MONGO_URI);
+mongoose.connect(
+  config.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
+);
 const Appointments = require("../models/Appointments");
 
 module.exports.getAppointments = function(req, res, next) {

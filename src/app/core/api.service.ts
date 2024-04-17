@@ -62,6 +62,14 @@ export class ApiService {
   }
 
   // ---------------------------------------------------------------------
+  // GET list of footer details
+  getFooterInfo$(): Observable<Contact> {
+    return this.http
+      .get(`${ENV.BASE_API}admin/footerAbout`)
+      .pipe(catchError(error => this._handleError(error)));
+  }
+
+  // ---------------------------------------------------------------------
   // GET list of public contact details
   getContactInfo$(): Observable<Contact> {
     return this.http

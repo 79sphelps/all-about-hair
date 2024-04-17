@@ -77,4 +77,10 @@ module.exports = (app, config) => {
     jwtCheck,
     adminCheck
   );
+
+  require(appRoot + "/server/routes/footer.router")(
+    app,
+    jwtCheck,
+    adminCheck
+  );
 };

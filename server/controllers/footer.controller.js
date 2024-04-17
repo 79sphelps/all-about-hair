@@ -8,14 +8,15 @@ mongoose.connect(
     useUnifiedTopology: true
   }
 );
-const Contact = require(appRoot + "/server/models/Contact");
+const Footer = require(appRoot + "/server/models/Footer");
 
-module.exports.getContactInfo = function(req, res, next) {
-  Contact.find({}, (err, data) => {
+module.exports.getFooterInfo = function(req, res, next) {
+  Footer.find({}, (err, data) => {
     let dataArr = [];
     if (err) {
       return res.status(500).send({ message: err.message });
     }
+
     if (data) {
       data.forEach(item => {
         dataArr.push(item);
@@ -25,20 +26,20 @@ module.exports.getContactInfo = function(req, res, next) {
   });
 };
 
-module.exports.getContactInfoById = function(req, res, next) {
-  Contact.findById(req.params.id, (err, info) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!info) {
-      return res.status(400).send({ message: "Info not found." });
-    }
-    res.send(info);
-  });
-};
+// module.exports.getFooterInfoById = function(req, res, next) {
+//     Footer.findById(req.params.id, (err, info) => {
+//     if (err) {
+//       return res.status(500).send({ message: err.message });
+//     }
+//     if (!info) {
+//       return res.status(400).send({ message: "Info not found." });
+//     }
+//     res.send(info);
+//   });
+// };
 
 module.exports.update = (req, res, next) => {
-  Contact.findById(req.params.id, (err, info) => {
+    Footer.findById(req.params.id, (err, info) => {
     if (err) {
       return res.status(500).send({ message: err.message });
     }
@@ -46,10 +47,11 @@ module.exports.update = (req, res, next) => {
       return res.status(400).send({ message: "Info not found." });
     }
 
-    info.location = req.body.location;
-    info.phone = req.body.phone;
-    info.email = req.body.email;
-    info.hours = req.body.hours;
+    // info.location = req.body.location;
+    // info.phone = req.body.phone;
+    // info.email = req.body.email;
+    // info.hours = req.body.hours;
+    info.aboutMsg = req.body.aboutMsg;
 
     info.save(err => {
       if (err) {
