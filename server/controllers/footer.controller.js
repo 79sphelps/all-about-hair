@@ -11,19 +11,30 @@ mongoose.connect(
 const Footer = require(appRoot + "/server/models/Footer");
 
 module.exports.getFooterInfo = function(req, res, next) {
-  Footer.find({}, (err, data) => {
-    let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
+  // Footer.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
 
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Footer.find({})
+  .then(data => {
+    let dataArr = [];
+      if (data) {
+        data.forEach(item => {
+          dataArr.push(item);
+        });
+      }
+      res.send(dataArr);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 // module.exports.getFooterInfoById = function(req, res, next) {

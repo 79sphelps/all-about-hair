@@ -11,30 +11,46 @@ mongoose.connect(
 const Personel = require("../models/Personel");
 
 module.exports.getPersonel = function(req, res, next) {
-  Personel.find({}, (err, data) => {
+  // Personel.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Personel.find({})
+  .then(data => {
     let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+      if (data) {
+        data.forEach(item => {
+          dataArr.push(item);
+        });
+      }
+      res.send(dataArr);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.getPersonelById = function(req, res, next) {
-  Personel.findById(req.params.id, (err, personel) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!personel) {
-      return res.status(400).send({ message: "Personel not found." });
-    }
-    res.send(personel);
-  });
+  // Personel.findById(req.params.id, (err, personel) => {
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (!personel) {
+  //     return res.status(400).send({ message: "Personel not found." });
+  //   }
+  //   res.send(personel);
+  // });
+  Personel.findById(req.params.id)
+  .then(service => {
+    res.send(service);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.create = function(req, res, next) {

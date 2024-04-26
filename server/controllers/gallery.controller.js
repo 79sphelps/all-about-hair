@@ -11,31 +11,47 @@ mongoose.connect(
 const Gallery = require("../models/Gallery");
 
 module.exports.getGallery = function(req, res, next) {
-  Gallery.find({}, (err, data) => {
-    let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
+  // Gallery.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
 
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Gallery.find({})
+    .then(data => {
+      let dataArr = [];
+        if (data) {
+          data.forEach(item => {
+            dataArr.push(item);
+          });
+        }
+        res.send(dataArr);
+    })
+    .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.getGalleryPhotoById = function(req, res, next) {
-  Gallery.findById(req.params.id, (err, photo) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!photo) {
-      return res.status(400).send({ message: "Photo not found." });
-    }
-    res.send(photo);
-  });
+  // Gallery.findById(req.params.id, (err, photo) => {
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (!photo) {
+  //     return res.status(400).send({ message: "Photo not found." });
+  //   }
+  //   res.send(photo);
+  // });
+  Gallery.findById(req.params.id)
+  .then(service => {
+    res.send(service);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.create = function(req, res, next) {

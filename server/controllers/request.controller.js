@@ -11,31 +11,47 @@ mongoose.connect(
 const Request = require("../models/Request");
 
 module.exports.getRequests = function(req, res, next) {
-  Request.find({}, (err, data) => {
-    let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
+  // Request.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
 
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Request.find({})
+  .then(data => {
+    let dataArr = [];
+      if (data) {
+        data.forEach(item => {
+          dataArr.push(item);
+        });
+      }
+      res.send(dataArr);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.getRequestById = function(req, res, next) {
-  Request.findById(req.params.id, (err, request) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!request) {
-      return res.status(400).send({ message: "Request not found." });
-    }
-    res.send(request);
-  });
+  // Request.findById(req.params.id, (err, request) => {
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (!request) {
+  //     return res.status(400).send({ message: "Request not found." });
+  //   }
+  //   res.send(request);
+  // });
+  Request.findById(req.params.id)
+  .then(service => {
+    res.send(service);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.create = function(req, res, next) {

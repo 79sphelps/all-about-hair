@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ApiService } from '../../core/api.service';
 import { UtilsService } from '../../core/utils.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { Homepage } from '../../core/models/homepage';
 
 @Component({

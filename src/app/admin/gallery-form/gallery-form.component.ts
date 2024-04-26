@@ -6,7 +6,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { ApiService } from './../../core/api.service';
 import { Gallery } from './../../core/models/gallery';
 import { GalleryFormService } from './gallery-form.service';

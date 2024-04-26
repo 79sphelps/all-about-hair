@@ -6,9 +6,9 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
+// import 'rxjs/add/observable/throw';
 import { ENV } from './env.config';
 
 import { Homepage } from './models/homepage';
@@ -32,7 +32,8 @@ export class ApiService {
     if (err.message && err.message.indexOf('No JWT present') > -1) {
       this.auth.login();
     }
-    return Observable.throw(errorMsg);
+    // return Observable.throw(errorMsg);
+    return throwError(errorMsg)
   }
 
   // ---------------------------------------------------------------------

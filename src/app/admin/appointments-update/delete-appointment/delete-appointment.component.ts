@@ -1,6 +1,6 @@
 import { Component, OnDestroy, Input } from '@angular/core';
 import { Appointment } from './../../../core/models/appointment';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { ApiService } from './../../../core/api.service';
 import { Router } from '@angular/router';
 

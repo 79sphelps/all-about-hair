@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   declarations: []
 })
 export class AuthModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<AuthModule> {
     return {
       ngModule: AuthModule,
       providers: [AuthService]

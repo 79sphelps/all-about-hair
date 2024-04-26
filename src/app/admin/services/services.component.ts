@@ -4,7 +4,7 @@ import { AuthService } from './../../auth/auth.service';
 import { ApiService } from './../../core/api.service';
 import { UtilsService } from './../../core/utils.service';
 import { FilterSortService } from './../../core/filter-sort.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { Service } from './../../core/models/service';
 
 import { expandCollapse } from './../../core/expand-collapse.animation';

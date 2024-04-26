@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../auth/auth.service';
 import { ApiService } from '../../core/api.service';
 import { UtilsService } from '../../core/utils.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { Homepage } from '../../core/models/homepage';
 
 @Component({

@@ -6,7 +6,7 @@ import {
   AbstractControl
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { ApiService } from './../../core/api.service';
 import { Personel } from './../../core/models/personel';
 import { TeamFormService } from './team-form.service';

@@ -11,31 +11,47 @@ mongoose.connect(
 const Appointments = require("../models/Appointments");
 
 module.exports.getAppointments = function(req, res, next) {
-  Appointments.find({}, (err, data) => {
-    let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
+  // Appointments.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
 
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Appointments.find({})
+  .then(data => {
+    let dataArr = [];
+      if (data) {
+        data.forEach(item => {
+          dataArr.push(item);
+        });
+      }
+      res.send(dataArr);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.getAppointmentById = function(req, res, next) {
-  Appointments.findById(req.params.id, (err, appt) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!appt) {
-      return res.status(400).send({ message: "Appointment not found." });
-    }
-    res.send(appt);
-  });
+  // Appointments.findById(req.params.id, (err, appt) => {
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (!appt) {
+  //     return res.status(400).send({ message: "Appointment not found." });
+  //   }
+  //   res.send(appt);
+  // });
+  Appointments.findById(req.params.id)
+  .then(service => {
+    res.send(service);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.create = function(req, res, next) {

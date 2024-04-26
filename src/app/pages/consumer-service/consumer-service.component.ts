@@ -6,7 +6,7 @@ import { UtilsService } from '../../core/utils.service';
 import { Service } from '../../core/models/service';
 import { ActivatedRoute } from '@angular/router';
 // import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 @Component({
   selector: 'app-consumer-service',
   templateUrl: './consumer-service.component.html',

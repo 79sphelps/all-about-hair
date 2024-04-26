@@ -11,31 +11,47 @@ mongoose.connect(
 const Homepage = require("../models/Homepage");
 
 module.exports.getHomepage = function(req, res, next) {
-  Homepage.find({}, (err, data) => {
-    let dataArr = [];
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
+  // Homepage.find({}, (err, data) => {
+  //   let dataArr = [];
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
 
-    if (data) {
-      data.forEach(item => {
-        dataArr.push(item);
-      });
-    }
-    res.send(dataArr);
-  });
+  //   if (data) {
+  //     data.forEach(item => {
+  //       dataArr.push(item);
+  //     });
+  //   }
+  //   res.send(dataArr);
+  // });
+  Homepage.find({})
+  .then(data => {
+    let dataArr = [];
+      if (data) {
+        data.forEach(item => {
+          dataArr.push(item);
+        });
+      }
+      res.send(dataArr);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.getHomepageById = function(req, res, next) {
-  Homepage.findById(req.params.id, (err, homepage) => {
-    if (err) {
-      return res.status(500).send({ message: err.message });
-    }
-    if (!homepage) {
-      return res.status(400).send({ message: "Homepage not found." });
-    }
-    res.send(homepage);
-  });
+  // Homepage.findById(req.params.id, (err, homepage) => {
+  //   if (err) {
+  //     return res.status(500).send({ message: err.message });
+  //   }
+  //   if (!homepage) {
+  //     return res.status(400).send({ message: "Homepage not found." });
+  //   }
+  //   res.send(homepage);
+  // });
+  Homepage.findById(req.params.id)
+  .then(service => {
+    res.send(service);
+  })
+  .catch(err => { return res.status(500).send({ message: err.message })})
 };
 
 module.exports.update = (req, res, next) => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs'
 import { Footer } from '../../core/models/footer';
 import { ApiService } from '../../core/api.service';
 
