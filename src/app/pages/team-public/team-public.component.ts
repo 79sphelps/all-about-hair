@@ -9,7 +9,7 @@ import { Personel } from '../../core/models/personel';
 @Component({
   selector: 'app-team-public',
   templateUrl: './team-public.component.html',
-  styleUrls: ['./team-public.component.scss']
+  styleUrls: ['./team-public.component.scss', '../../../assets/scss/carousel.scss'],
 })
 export class TeamPublicComponent implements OnInit, OnDestroy {
   pageTitle = 'Stylist Team';
@@ -34,8 +34,6 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
     this.title.setTitle(this.pageTitle);
     this._getHomepageDetails();
     this._getPersonelList();
-
-
   }
 
   private _getHomepageDetails() {
@@ -61,7 +59,6 @@ export class TeamPublicComponent implements OnInit, OnDestroy {
       res => {
         this.personelList = res;
         this.loading = false;
-        console.log(this.personelList)
       },
       err => {
         console.error(err);

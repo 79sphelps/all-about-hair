@@ -5,3 +5,5 @@ interface NodeModule {
 }
 
 declare var Swiper: any;
+declare var $: any;
+declare var jQuery: any;
