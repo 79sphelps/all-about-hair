@@ -33,6 +33,13 @@ var urlJoin = createCommonjsModule(function(module) {
     };
   }, module.exports ? module.exports = definition() : context.urljoin = definition();
 });
+var esErrors = Error;
+var _eval = EvalError;
+var range = RangeError;
+var ref = ReferenceError;
+var syntax = SyntaxError;
+var type = TypeError;
+var uri = URIError;
 var origSymbol = "undefined" != typeof Symbol && Symbol;
 var test = { foo: {} };
 var $Object = Object;
@@ -75,10 +82,10 @@ var functionBind = Function.prototype.bind || function(that) {
   }
   return bound;
 };
-var src = functionBind.call(Function.call, Object.prototype.hasOwnProperty);
-var $SyntaxError = SyntaxError;
+var call = Function.prototype.call;
+var $hasOwn = Object.prototype.hasOwnProperty;
+var hasown = functionBind.call(call, $hasOwn);
 var $Function = Function;
-var $TypeError = TypeError;
 var getEvalledConstructor = function(expressionSyntax) {
   try {
     return $Function('"use strict"; return (' + expressionSyntax + ").constructor;")();
@@ -93,7 +100,7 @@ if ($gOPD)
     $gOPD = null;
   }
 var throwTypeError = function() {
-  throw new $TypeError();
+  throw new type();
 };
 var ThrowTypeError = $gOPD ? function() {
   try {
@@ -142,7 +149,7 @@ var getProto = Object.getPrototypeOf || (hasProto$1 ? function(x2) {
 } : null);
 var needsEval = {};
 var TypedArray = "undefined" != typeof Uint8Array && getProto ? getProto(Uint8Array) : void 0;
-var INTRINSICS = { "%AggregateError%": "undefined" == typeof AggregateError ? void 0 : AggregateError, "%Array%": Array, "%ArrayBuffer%": "undefined" == typeof ArrayBuffer ? void 0 : ArrayBuffer, "%ArrayIteratorPrototype%": hasSymbols$1 && getProto ? getProto([][Symbol.iterator]()) : void 0, "%AsyncFromSyncIteratorPrototype%": void 0, "%AsyncFunction%": needsEval, "%AsyncGenerator%": needsEval, "%AsyncGeneratorFunction%": needsEval, "%AsyncIteratorPrototype%": needsEval, "%Atomics%": "undefined" == typeof Atomics ? void 0 : Atomics, "%BigInt%": "undefined" == typeof BigInt ? void 0 : BigInt, "%BigInt64Array%": "undefined" == typeof BigInt64Array ? void 0 : BigInt64Array, "%BigUint64Array%": "undefined" == typeof BigUint64Array ? void 0 : BigUint64Array, "%Boolean%": Boolean, "%DataView%": "undefined" == typeof DataView ? void 0 : DataView, "%Date%": Date, "%decodeURI%": decodeURI, "%decodeURIComponent%": decodeURIComponent, "%encodeURI%": encodeURI, "%encodeURIComponent%": encodeURIComponent, "%Error%": Error, "%eval%": eval, "%EvalError%": EvalError, "%Float32Array%": "undefined" == typeof Float32Array ? void 0 : Float32Array, "%Float64Array%": "undefined" == typeof Float64Array ? void 0 : Float64Array, "%FinalizationRegistry%": "undefined" == typeof FinalizationRegistry ? void 0 : FinalizationRegistry, "%Function%": $Function, "%GeneratorFunction%": needsEval, "%Int8Array%": "undefined" == typeof Int8Array ? void 0 : Int8Array, "%Int16Array%": "undefined" == typeof Int16Array ? void 0 : Int16Array, "%Int32Array%": "undefined" == typeof Int32Array ? void 0 : Int32Array, "%isFinite%": isFinite, "%isNaN%": isNaN, "%IteratorPrototype%": hasSymbols$1 && getProto ? getProto(getProto([][Symbol.iterator]())) : void 0, "%JSON%": "object" == typeof JSON ? JSON : void 0, "%Map%": "undefined" == typeof Map ? void 0 : Map, "%MapIteratorPrototype%": "undefined" != typeof Map && hasSymbols$1 && getProto ? getProto((/* @__PURE__ */ new Map())[Symbol.iterator]()) : void 0, "%Math%": Math, "%Number%": Number, "%Object%": Object, "%parseFloat%": parseFloat, "%parseInt%": parseInt, "%Promise%": "undefined" == typeof Promise ? void 0 : Promise, "%Proxy%": "undefined" == typeof Proxy ? void 0 : Proxy, "%RangeError%": RangeError, "%ReferenceError%": ReferenceError, "%Reflect%": "undefined" == typeof Reflect ? void 0 : Reflect, "%RegExp%": RegExp, "%Set%": "undefined" == typeof Set ? void 0 : Set, "%SetIteratorPrototype%": "undefined" != typeof Set && hasSymbols$1 && getProto ? getProto((/* @__PURE__ */ new Set())[Symbol.iterator]()) : void 0, "%SharedArrayBuffer%": "undefined" == typeof SharedArrayBuffer ? void 0 : SharedArrayBuffer, "%String%": String, "%StringIteratorPrototype%": hasSymbols$1 && getProto ? getProto(""[Symbol.iterator]()) : void 0, "%Symbol%": hasSymbols$1 ? Symbol : void 0, "%SyntaxError%": $SyntaxError, "%ThrowTypeError%": ThrowTypeError, "%TypedArray%": TypedArray, "%TypeError%": $TypeError, "%Uint8Array%": "undefined" == typeof Uint8Array ? void 0 : Uint8Array, "%Uint8ClampedArray%": "undefined" == typeof Uint8ClampedArray ? void 0 : Uint8ClampedArray, "%Uint16Array%": "undefined" == typeof Uint16Array ? void 0 : Uint16Array, "%Uint32Array%": "undefined" == typeof Uint32Array ? void 0 : Uint32Array, "%URIError%": URIError, "%WeakMap%": "undefined" == typeof WeakMap ? void 0 : WeakMap, "%WeakRef%": "undefined" == typeof WeakRef ? void 0 : WeakRef, "%WeakSet%": "undefined" == typeof WeakSet ? void 0 : WeakSet };
+var INTRINSICS = { __proto__: null, "%AggregateError%": "undefined" == typeof AggregateError ? void 0 : AggregateError, "%Array%": Array, "%ArrayBuffer%": "undefined" == typeof ArrayBuffer ? void 0 : ArrayBuffer, "%ArrayIteratorPrototype%": hasSymbols$1 && getProto ? getProto([][Symbol.iterator]()) : void 0, "%AsyncFromSyncIteratorPrototype%": void 0, "%AsyncFunction%": needsEval, "%AsyncGenerator%": needsEval, "%AsyncGeneratorFunction%": needsEval, "%AsyncIteratorPrototype%": needsEval, "%Atomics%": "undefined" == typeof Atomics ? void 0 : Atomics, "%BigInt%": "undefined" == typeof BigInt ? void 0 : BigInt, "%BigInt64Array%": "undefined" == typeof BigInt64Array ? void 0 : BigInt64Array, "%BigUint64Array%": "undefined" == typeof BigUint64Array ? void 0 : BigUint64Array, "%Boolean%": Boolean, "%DataView%": "undefined" == typeof DataView ? void 0 : DataView, "%Date%": Date, "%decodeURI%": decodeURI, "%decodeURIComponent%": decodeURIComponent, "%encodeURI%": encodeURI, "%encodeURIComponent%": encodeURIComponent, "%Error%": esErrors, "%eval%": eval, "%EvalError%": _eval, "%Float32Array%": "undefined" == typeof Float32Array ? void 0 : Float32Array, "%Float64Array%": "undefined" == typeof Float64Array ? void 0 : Float64Array, "%FinalizationRegistry%": "undefined" == typeof FinalizationRegistry ? void 0 : FinalizationRegistry, "%Function%": $Function, "%GeneratorFunction%": needsEval, "%Int8Array%": "undefined" == typeof Int8Array ? void 0 : Int8Array, "%Int16Array%": "undefined" == typeof Int16Array ? void 0 : Int16Array, "%Int32Array%": "undefined" == typeof Int32Array ? void 0 : Int32Array, "%isFinite%": isFinite, "%isNaN%": isNaN, "%IteratorPrototype%": hasSymbols$1 && getProto ? getProto(getProto([][Symbol.iterator]())) : void 0, "%JSON%": "object" == typeof JSON ? JSON : void 0, "%Map%": "undefined" == typeof Map ? void 0 : Map, "%MapIteratorPrototype%": "undefined" != typeof Map && hasSymbols$1 && getProto ? getProto((/* @__PURE__ */ new Map())[Symbol.iterator]()) : void 0, "%Math%": Math, "%Number%": Number, "%Object%": Object, "%parseFloat%": parseFloat, "%parseInt%": parseInt, "%Promise%": "undefined" == typeof Promise ? void 0 : Promise, "%Proxy%": "undefined" == typeof Proxy ? void 0 : Proxy, "%RangeError%": range, "%ReferenceError%": ref, "%Reflect%": "undefined" == typeof Reflect ? void 0 : Reflect, "%RegExp%": RegExp, "%Set%": "undefined" == typeof Set ? void 0 : Set, "%SetIteratorPrototype%": "undefined" != typeof Set && hasSymbols$1 && getProto ? getProto((/* @__PURE__ */ new Set())[Symbol.iterator]()) : void 0, "%SharedArrayBuffer%": "undefined" == typeof SharedArrayBuffer ? void 0 : SharedArrayBuffer, "%String%": String, "%StringIteratorPrototype%": hasSymbols$1 && getProto ? getProto(""[Symbol.iterator]()) : void 0, "%Symbol%": hasSymbols$1 ? Symbol : void 0, "%SyntaxError%": syntax, "%ThrowTypeError%": ThrowTypeError, "%TypedArray%": TypedArray, "%TypeError%": type, "%Uint8Array%": "undefined" == typeof Uint8Array ? void 0 : Uint8Array, "%Uint8ClampedArray%": "undefined" == typeof Uint8ClampedArray ? void 0 : Uint8ClampedArray, "%Uint16Array%": "undefined" == typeof Uint16Array ? void 0 : Uint16Array, "%Uint32Array%": "undefined" == typeof Uint32Array ? void 0 : Uint32Array, "%URIError%": uri, "%WeakMap%": "undefined" == typeof WeakMap ? void 0 : WeakMap, "%WeakRef%": "undefined" == typeof WeakRef ? void 0 : WeakRef, "%WeakSet%": "undefined" == typeof WeakSet ? void 0 : WeakSet };
 if (getProto)
   try {
     null.error;
@@ -151,7 +158,7 @@ if (getProto)
     INTRINSICS["%Error.prototype%"] = errorProto;
   }
 var errorProto;
-var LEGACY_ALIASES = { "%ArrayBufferPrototype%": ["ArrayBuffer", "prototype"], "%ArrayPrototype%": ["Array", "prototype"], "%ArrayProto_entries%": ["Array", "prototype", "entries"], "%ArrayProto_forEach%": ["Array", "prototype", "forEach"], "%ArrayProto_keys%": ["Array", "prototype", "keys"], "%ArrayProto_values%": ["Array", "prototype", "values"], "%AsyncFunctionPrototype%": ["AsyncFunction", "prototype"], "%AsyncGenerator%": ["AsyncGeneratorFunction", "prototype"], "%AsyncGeneratorPrototype%": ["AsyncGeneratorFunction", "prototype", "prototype"], "%BooleanPrototype%": ["Boolean", "prototype"], "%DataViewPrototype%": ["DataView", "prototype"], "%DatePrototype%": ["Date", "prototype"], "%ErrorPrototype%": ["Error", "prototype"], "%EvalErrorPrototype%": ["EvalError", "prototype"], "%Float32ArrayPrototype%": ["Float32Array", "prototype"], "%Float64ArrayPrototype%": ["Float64Array", "prototype"], "%FunctionPrototype%": ["Function", "prototype"], "%Generator%": ["GeneratorFunction", "prototype"], "%GeneratorPrototype%": ["GeneratorFunction", "prototype", "prototype"], "%Int8ArrayPrototype%": ["Int8Array", "prototype"], "%Int16ArrayPrototype%": ["Int16Array", "prototype"], "%Int32ArrayPrototype%": ["Int32Array", "prototype"], "%JSONParse%": ["JSON", "parse"], "%JSONStringify%": ["JSON", "stringify"], "%MapPrototype%": ["Map", "prototype"], "%NumberPrototype%": ["Number", "prototype"], "%ObjectPrototype%": ["Object", "prototype"], "%ObjProto_toString%": ["Object", "prototype", "toString"], "%ObjProto_valueOf%": ["Object", "prototype", "valueOf"], "%PromisePrototype%": ["Promise", "prototype"], "%PromiseProto_then%": ["Promise", "prototype", "then"], "%Promise_all%": ["Promise", "all"], "%Promise_reject%": ["Promise", "reject"], "%Promise_resolve%": ["Promise", "resolve"], "%RangeErrorPrototype%": ["RangeError", "prototype"], "%ReferenceErrorPrototype%": ["ReferenceError", "prototype"], "%RegExpPrototype%": ["RegExp", "prototype"], "%SetPrototype%": ["Set", "prototype"], "%SharedArrayBufferPrototype%": ["SharedArrayBuffer", "prototype"], "%StringPrototype%": ["String", "prototype"], "%SymbolPrototype%": ["Symbol", "prototype"], "%SyntaxErrorPrototype%": ["SyntaxError", "prototype"], "%TypedArrayPrototype%": ["TypedArray", "prototype"], "%TypeErrorPrototype%": ["TypeError", "prototype"], "%Uint8ArrayPrototype%": ["Uint8Array", "prototype"], "%Uint8ClampedArrayPrototype%": ["Uint8ClampedArray", "prototype"], "%Uint16ArrayPrototype%": ["Uint16Array", "prototype"], "%Uint32ArrayPrototype%": ["Uint32Array", "prototype"], "%URIErrorPrototype%": ["URIError", "prototype"], "%WeakMapPrototype%": ["WeakMap", "prototype"], "%WeakSetPrototype%": ["WeakSet", "prototype"] };
+var LEGACY_ALIASES = { __proto__: null, "%ArrayBufferPrototype%": ["ArrayBuffer", "prototype"], "%ArrayPrototype%": ["Array", "prototype"], "%ArrayProto_entries%": ["Array", "prototype", "entries"], "%ArrayProto_forEach%": ["Array", "prototype", "forEach"], "%ArrayProto_keys%": ["Array", "prototype", "keys"], "%ArrayProto_values%": ["Array", "prototype", "values"], "%AsyncFunctionPrototype%": ["AsyncFunction", "prototype"], "%AsyncGenerator%": ["AsyncGeneratorFunction", "prototype"], "%AsyncGeneratorPrototype%": ["AsyncGeneratorFunction", "prototype", "prototype"], "%BooleanPrototype%": ["Boolean", "prototype"], "%DataViewPrototype%": ["DataView", "prototype"], "%DatePrototype%": ["Date", "prototype"], "%ErrorPrototype%": ["Error", "prototype"], "%EvalErrorPrototype%": ["EvalError", "prototype"], "%Float32ArrayPrototype%": ["Float32Array", "prototype"], "%Float64ArrayPrototype%": ["Float64Array", "prototype"], "%FunctionPrototype%": ["Function", "prototype"], "%Generator%": ["GeneratorFunction", "prototype"], "%GeneratorPrototype%": ["GeneratorFunction", "prototype", "prototype"], "%Int8ArrayPrototype%": ["Int8Array", "prototype"], "%Int16ArrayPrototype%": ["Int16Array", "prototype"], "%Int32ArrayPrototype%": ["Int32Array", "prototype"], "%JSONParse%": ["JSON", "parse"], "%JSONStringify%": ["JSON", "stringify"], "%MapPrototype%": ["Map", "prototype"], "%NumberPrototype%": ["Number", "prototype"], "%ObjectPrototype%": ["Object", "prototype"], "%ObjProto_toString%": ["Object", "prototype", "toString"], "%ObjProto_valueOf%": ["Object", "prototype", "valueOf"], "%PromisePrototype%": ["Promise", "prototype"], "%PromiseProto_then%": ["Promise", "prototype", "then"], "%Promise_all%": ["Promise", "all"], "%Promise_reject%": ["Promise", "reject"], "%Promise_resolve%": ["Promise", "resolve"], "%RangeErrorPrototype%": ["RangeError", "prototype"], "%ReferenceErrorPrototype%": ["ReferenceError", "prototype"], "%RegExpPrototype%": ["RegExp", "prototype"], "%SetPrototype%": ["Set", "prototype"], "%SharedArrayBufferPrototype%": ["SharedArrayBuffer", "prototype"], "%StringPrototype%": ["String", "prototype"], "%SymbolPrototype%": ["Symbol", "prototype"], "%SyntaxErrorPrototype%": ["SyntaxError", "prototype"], "%TypedArrayPrototype%": ["TypedArray", "prototype"], "%TypeErrorPrototype%": ["TypeError", "prototype"], "%Uint8ArrayPrototype%": ["Uint8Array", "prototype"], "%Uint8ClampedArrayPrototype%": ["Uint8ClampedArray", "prototype"], "%Uint16ArrayPrototype%": ["Uint16Array", "prototype"], "%Uint32ArrayPrototype%": ["Uint32Array", "prototype"], "%URIErrorPrototype%": ["URIError", "prototype"], "%WeakMapPrototype%": ["WeakMap", "prototype"], "%WeakSetPrototype%": ["WeakSet", "prototype"] };
 var $concat = functionBind.call(Function.call, Array.prototype.concat);
 var $spliceApply = functionBind.call(Function.apply, Array.prototype.splice);
 var $replace = functionBind.call(Function.call, String.prototype.replace);
@@ -162,9 +169,9 @@ var reEscapeChar = /\\(\\)?/g;
 var stringToPath = function(string) {
   var first = $strSlice(string, 0, 1), last = $strSlice(string, -1);
   if ("%" === first && "%" !== last)
-    throw new $SyntaxError("invalid intrinsic syntax, expected closing `%`");
+    throw new syntax("invalid intrinsic syntax, expected closing `%`");
   if ("%" === last && "%" !== first)
-    throw new $SyntaxError("invalid intrinsic syntax, expected opening `%`");
+    throw new syntax("invalid intrinsic syntax, expected opening `%`");
   var result = [];
   return $replace(string, rePropName, function(match, number, quote2, subString) {
     result[result.length] = quote2 ? $replace(subString, reEscapeChar, "$1") : number || match;
@@ -172,7 +179,7 @@ var stringToPath = function(string) {
 };
 var getBaseIntrinsic = function(name, allowMissing) {
   var alias, intrinsicName = name;
-  if (src(LEGACY_ALIASES, intrinsicName) && (intrinsicName = "%" + (alias = LEGACY_ALIASES[intrinsicName])[0] + "%"), src(INTRINSICS, intrinsicName)) {
+  if (hasown(LEGACY_ALIASES, intrinsicName) && (intrinsicName = "%" + (alias = LEGACY_ALIASES[intrinsicName])[0] + "%"), hasown(INTRINSICS, intrinsicName)) {
     var value2 = INTRINSICS[intrinsicName];
     if (value2 === needsEval && (value2 = function doEval(name2) {
       var value3;
@@ -191,62 +198,118 @@ var getBaseIntrinsic = function(name, allowMissing) {
       }
       return INTRINSICS[name2] = value3, value3;
     }(intrinsicName)), void 0 === value2 && !allowMissing)
-      throw new $TypeError("intrinsic " + name + " exists, but is not available. Please file an issue!");
+      throw new type("intrinsic " + name + " exists, but is not available. Please file an issue!");
     return { alias, name: intrinsicName, value: value2 };
   }
-  throw new $SyntaxError("intrinsic " + name + " does not exist!");
+  throw new syntax("intrinsic " + name + " does not exist!");
 };
 var getIntrinsic = function(name, allowMissing) {
   if ("string" != typeof name || 0 === name.length)
-    throw new $TypeError("intrinsic name must be a non-empty string");
+    throw new type("intrinsic name must be a non-empty string");
   if (arguments.length > 1 && "boolean" != typeof allowMissing)
-    throw new $TypeError('"allowMissing" argument must be a boolean');
+    throw new type('"allowMissing" argument must be a boolean');
   if (null === $exec(/^%?[^%]*%?$/, name))
-    throw new $SyntaxError("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
+    throw new syntax("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
   var parts = stringToPath(name), intrinsicBaseName = parts.length > 0 ? parts[0] : "", intrinsic = getBaseIntrinsic("%" + intrinsicBaseName + "%", allowMissing), intrinsicRealName = intrinsic.name, value2 = intrinsic.value, skipFurtherCaching = false, alias = intrinsic.alias;
   alias && (intrinsicBaseName = alias[0], $spliceApply(parts, $concat([0, 1], alias)));
   for (var i = 1, isOwn = true; i < parts.length; i += 1) {
     var part = parts[i], first = $strSlice(part, 0, 1), last = $strSlice(part, -1);
     if (('"' === first || "'" === first || "`" === first || '"' === last || "'" === last || "`" === last) && first !== last)
-      throw new $SyntaxError("property names with quotes must have matching quotes");
-    if ("constructor" !== part && isOwn || (skipFurtherCaching = true), src(INTRINSICS, intrinsicRealName = "%" + (intrinsicBaseName += "." + part) + "%"))
+      throw new syntax("property names with quotes must have matching quotes");
+    if ("constructor" !== part && isOwn || (skipFurtherCaching = true), hasown(INTRINSICS, intrinsicRealName = "%" + (intrinsicBaseName += "." + part) + "%"))
       value2 = INTRINSICS[intrinsicRealName];
     else if (null != value2) {
       if (!(part in value2)) {
         if (!allowMissing)
-          throw new $TypeError("base intrinsic for " + name + " exists, but the property is not available.");
+          throw new type("base intrinsic for " + name + " exists, but the property is not available.");
         return;
       }
       if ($gOPD && i + 1 >= parts.length) {
         var desc = $gOPD(value2, part);
         value2 = (isOwn = !!desc) && "get" in desc && !("originalValue" in desc.get) ? desc.get : value2[part];
       } else
-        isOwn = src(value2, part), value2 = value2[part];
+        isOwn = hasown(value2, part), value2 = value2[part];
       isOwn && !skipFurtherCaching && (INTRINSICS[intrinsicRealName] = value2);
     }
   }
   return value2;
 };
+var $defineProperty = getIntrinsic("%Object.defineProperty%", true) || false;
+if ($defineProperty)
+  try {
+    $defineProperty({}, "a", { value: 1 });
+  } catch (e2) {
+    $defineProperty = false;
+  }
+var esDefineProperty = $defineProperty;
+var $gOPD$1 = getIntrinsic("%Object.getOwnPropertyDescriptor%", true);
+if ($gOPD$1)
+  try {
+    $gOPD$1([], "length");
+  } catch (e2) {
+    $gOPD$1 = null;
+  }
+var gopd = $gOPD$1;
+var defineDataProperty = function(obj, property, value2) {
+  if (!obj || "object" != typeof obj && "function" != typeof obj)
+    throw new type("`obj` must be an object or a function`");
+  if ("string" != typeof property && "symbol" != typeof property)
+    throw new type("`property` must be a string or a symbol`");
+  if (arguments.length > 3 && "boolean" != typeof arguments[3] && null !== arguments[3])
+    throw new type("`nonEnumerable`, if provided, must be a boolean or null");
+  if (arguments.length > 4 && "boolean" != typeof arguments[4] && null !== arguments[4])
+    throw new type("`nonWritable`, if provided, must be a boolean or null");
+  if (arguments.length > 5 && "boolean" != typeof arguments[5] && null !== arguments[5])
+    throw new type("`nonConfigurable`, if provided, must be a boolean or null");
+  if (arguments.length > 6 && "boolean" != typeof arguments[6])
+    throw new type("`loose`, if provided, must be a boolean");
+  var nonEnumerable = arguments.length > 3 ? arguments[3] : null, nonWritable = arguments.length > 4 ? arguments[4] : null, nonConfigurable = arguments.length > 5 ? arguments[5] : null, loose = arguments.length > 6 && arguments[6], desc = !!gopd && gopd(obj, property);
+  if (esDefineProperty)
+    esDefineProperty(obj, property, { configurable: null === nonConfigurable && desc ? desc.configurable : !nonConfigurable, enumerable: null === nonEnumerable && desc ? desc.enumerable : !nonEnumerable, value: value2, writable: null === nonWritable && desc ? desc.writable : !nonWritable });
+  else {
+    if (!loose && (nonEnumerable || nonWritable || nonConfigurable))
+      throw new syntax("This environment does not support defining a property as non-configurable, non-writable, or non-enumerable.");
+    obj[property] = value2;
+  }
+};
+var hasPropertyDescriptors = function() {
+  return !!esDefineProperty;
+};
+hasPropertyDescriptors.hasArrayLengthDefineBug = function() {
+  if (!esDefineProperty)
+    return null;
+  try {
+    return 1 !== esDefineProperty([], "length", { value: 1 }).length;
+  } catch (e2) {
+    return true;
+  }
+};
+var hasDescriptors = hasPropertyDescriptors();
+var $floor = getIntrinsic("%Math.floor%");
+var setFunctionLength = function(fn, length) {
+  if ("function" != typeof fn)
+    throw new type("`fn` is not a function");
+  if ("number" != typeof length || length < 0 || length > 4294967295 || $floor(length) !== length)
+    throw new type("`length` must be a positive 32-bit integer");
+  var loose = arguments.length > 2 && !!arguments[2], functionLengthIsConfigurable = true, functionLengthIsWritable = true;
+  if ("length" in fn && gopd) {
+    var desc = gopd(fn, "length");
+    desc && !desc.configurable && (functionLengthIsConfigurable = false), desc && !desc.writable && (functionLengthIsWritable = false);
+  }
+  return (functionLengthIsConfigurable || functionLengthIsWritable || !loose) && (hasDescriptors ? defineDataProperty(fn, "length", length, true, true) : defineDataProperty(fn, "length", length)), fn;
+};
 var callBind = createCommonjsModule(function(module) {
-  var $apply = getIntrinsic("%Function.prototype.apply%"), $call = getIntrinsic("%Function.prototype.call%"), $reflectApply = getIntrinsic("%Reflect.apply%", true) || functionBind.call($call, $apply), $gOPD2 = getIntrinsic("%Object.getOwnPropertyDescriptor%", true), $defineProperty = getIntrinsic("%Object.defineProperty%", true), $max = getIntrinsic("%Math.max%");
-  if ($defineProperty)
-    try {
-      $defineProperty({}, "a", { value: 1 });
-    } catch (e2) {
-      $defineProperty = null;
-    }
+  var $apply = getIntrinsic("%Function.prototype.apply%"), $call = getIntrinsic("%Function.prototype.call%"), $reflectApply = getIntrinsic("%Reflect.apply%", true) || functionBind.call($call, $apply), $max = getIntrinsic("%Math.max%");
   module.exports = function(originalFunction) {
+    if ("function" != typeof originalFunction)
+      throw new type("a function is required");
     var func = $reflectApply(functionBind, $call, arguments);
-    if ($gOPD2 && $defineProperty) {
-      var desc = $gOPD2(func, "length");
-      desc.configurable && $defineProperty(func, "length", { value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) });
-    }
-    return func;
+    return setFunctionLength(func, 1 + $max(0, originalFunction.length - (arguments.length - 1)), true);
   };
   var applyBind = function() {
     return $reflectApply(functionBind, $apply, arguments);
   };
-  $defineProperty ? $defineProperty(module.exports, "apply", { value: applyBind }) : module.exports.apply = applyBind;
+  esDefineProperty ? esDefineProperty(module.exports, "apply", { value: applyBind }) : module.exports.apply = applyBind;
 });
 var $indexOf = (callBind.apply, callBind(getIntrinsic("String.prototype.indexOf")));
 var callBound = function(name, allowMissing) {
@@ -279,7 +342,7 @@ var $test = RegExp.prototype.test;
 var $concat$1 = Array.prototype.concat;
 var $join = Array.prototype.join;
 var $arrSlice = Array.prototype.slice;
-var $floor = Math.floor;
+var $floor$1 = Math.floor;
 var bigIntValueOf = "function" == typeof BigInt ? BigInt.prototype.valueOf : null;
 var gOPS = Object.getOwnPropertySymbols;
 var symToString = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? Symbol.prototype.toString : null;
@@ -294,7 +357,7 @@ function addNumericSeparator(num, str) {
     return str;
   var sepRegex = /[0-9](?=(?:[0-9]{3})+(?![0-9]))/g;
   if ("number" == typeof num) {
-    var int = num < 0 ? -$floor(-num) : $floor(num);
+    var int = num < 0 ? -$floor$1(-num) : $floor$1(num);
     if (int !== num) {
       var intStr = String(int), dec = $slice.call(str, intStr.length + 1);
       return $replace$1.call(intStr, sepRegex, "$&_") + "." + $replace$1.call($replace$1.call(dec, /([0-9]{3})/g, "$&_"), /_$/, "");
@@ -520,6 +583,10 @@ var objectInspect = function inspect_(obj, options, depth, seen) {
     return !("[object String]" !== toStr$1(obj2) || toStringTag && "object" == typeof obj2 && toStringTag in obj2);
   }(obj))
     return markBoxed(inspect(String(obj)));
+  if ("undefined" != typeof window && obj === window)
+    return "{ [object Window] }";
+  if (obj === commonjsGlobal)
+    return "{ [object globalThis] }";
   if (!function(obj2) {
     return !("[object Date]" !== toStr$1(obj2) || toStringTag && "object" == typeof obj2 && toStringTag in obj2);
   }(obj) && !isRegExp(obj)) {
@@ -578,11 +645,11 @@ function lowbyte(c2) {
 function markBoxed(str) {
   return "Object(" + str + ")";
 }
-function weakCollectionOf(type) {
-  return type + " { ? }";
+function weakCollectionOf(type2) {
+  return type2 + " { ? }";
 }
-function collectionOf(type, size, entries, indent) {
-  return type + " (" + size + ") {" + (indent ? indentedJoin(entries, indent) : $join.call(entries, ", ")) + "}";
+function collectionOf(type2, size, entries, indent) {
+  return type2 + " (" + size + ") {" + (indent ? indentedJoin(entries, indent) : $join.call(entries, ", ")) + "}";
 }
 function indentedJoin(xs, indent) {
   if (0 === xs.length)
@@ -610,7 +677,6 @@ function arrObjKeys(obj, inspect) {
       isEnumerable.call(obj, syms[j]) && xs.push("[" + inspect(syms[j]) + "]: " + inspect(obj[syms[j]], obj));
   return xs;
 }
-var $TypeError$1 = getIntrinsic("%TypeError%");
 var $WeakMap = getIntrinsic("%WeakMap%", true);
 var $Map = getIntrinsic("%Map%", true);
 var $weakMapGet = callBound("WeakMap.prototype.get", true);
@@ -627,7 +693,7 @@ var listGetNode = function(list, key) {
 var sideChannel = function() {
   var $wm, $m, $o, channel = { assert: function(key) {
     if (!channel.has(key))
-      throw new $TypeError$1("Side channel does not contain " + objectInspect(key));
+      throw new type("Side channel does not contain " + objectInspect(key));
   }, get: function(key) {
     if ($WeakMap && key && ("object" == typeof key || "function" == typeof key)) {
       if ($wm)
@@ -719,9 +785,12 @@ var utils = { arrayToObject, assign: function(target, source) {
     return escape(string).replace(/%u[0-9a-f]{4}/gi, function($0) {
       return "%26%23" + parseInt($0.slice(2), 16) + "%3B";
     });
-  for (var out = "", i = 0; i < string.length; ++i) {
-    var c2 = string.charCodeAt(i);
-    45 === c2 || 46 === c2 || 95 === c2 || 126 === c2 || c2 >= 48 && c2 <= 57 || c2 >= 65 && c2 <= 90 || c2 >= 97 && c2 <= 122 || format === formats.RFC1738 && (40 === c2 || 41 === c2) ? out += string.charAt(i) : c2 < 128 ? out += hexTable[c2] : c2 < 2048 ? out += hexTable[192 | c2 >> 6] + hexTable[128 | 63 & c2] : c2 < 55296 || c2 >= 57344 ? out += hexTable[224 | c2 >> 12] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | 63 & c2] : (i += 1, c2 = 65536 + ((1023 & c2) << 10 | 1023 & string.charCodeAt(i)), out += hexTable[240 | c2 >> 18] + hexTable[128 | c2 >> 12 & 63] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | 63 & c2]);
+  for (var out = "", j = 0; j < string.length; j += 1024) {
+    for (var segment = string.length >= 1024 ? string.slice(j, j + 1024) : string, arr2 = [], i = 0; i < segment.length; ++i) {
+      var c2 = segment.charCodeAt(i);
+      45 === c2 || 46 === c2 || 95 === c2 || 126 === c2 || c2 >= 48 && c2 <= 57 || c2 >= 65 && c2 <= 90 || c2 >= 97 && c2 <= 122 || format === formats.RFC1738 && (40 === c2 || 41 === c2) ? arr2[arr2.length] = segment.charAt(i) : c2 < 128 ? arr2[arr2.length] = hexTable[c2] : c2 < 2048 ? arr2[arr2.length] = hexTable[192 | c2 >> 6] + hexTable[128 | 63 & c2] : c2 < 55296 || c2 >= 57344 ? arr2[arr2.length] = hexTable[224 | c2 >> 12] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | 63 & c2] : (i += 1, c2 = 65536 + ((1023 & c2) << 10 | 1023 & segment.charCodeAt(i)), arr2[arr2.length] = hexTable[240 | c2 >> 18] + hexTable[128 | c2 >> 12 & 63] + hexTable[128 | c2 >> 6 & 63] + hexTable[128 | 63 & c2]);
+    }
+    out += arr2.join("");
   }
   return out;
 }, isBuffer: function(obj) {
@@ -777,11 +846,11 @@ var pushToArray = function(arr2, valueOrArray) {
 };
 var toISO = Date.prototype.toISOString;
 var defaultFormat = formats.default;
-var defaults = { addQueryPrefix: false, allowDots: false, charset: "utf-8", charsetSentinel: false, delimiter: "&", encode: true, encoder: utils.encode, encodeValuesOnly: false, format: defaultFormat, formatter: formats.formatters[defaultFormat], indices: false, serializeDate: function(date) {
+var defaults = { addQueryPrefix: false, allowDots: false, allowEmptyArrays: false, arrayFormat: "indices", charset: "utf-8", charsetSentinel: false, delimiter: "&", encode: true, encodeDotInKeys: false, encoder: utils.encode, encodeValuesOnly: false, format: defaultFormat, formatter: formats.formatters[defaultFormat], indices: false, serializeDate: function(date) {
   return toISO.call(date);
 }, skipNulls: false, strictNullHandling: false };
 var sentinel = {};
-var stringify = function stringify2(object, prefix, generateArrayPrefix, commaRoundTrip, strictNullHandling, skipNulls, encoder, filter, sort, allowDots, serializeDate, format, formatter, encodeValuesOnly, charset, sideChannel$1) {
+var stringify = function stringify2(object, prefix, generateArrayPrefix, commaRoundTrip, allowEmptyArrays, strictNullHandling, skipNulls, encodeDotInKeys, encoder, filter, sort, allowDots, serializeDate, format, formatter, encodeValuesOnly, charset, sideChannel$1) {
   for (var obj = object, tmpSc = sideChannel$1, step = 0, findFlag = false; void 0 !== (tmpSc = tmpSc.get(sentinel)) && !findFlag; ) {
     var pos = tmpSc.get(object);
     if (step += 1, void 0 !== pos) {
@@ -813,20 +882,23 @@ var stringify = function stringify2(object, prefix, generateArrayPrefix, commaRo
     var keys = Object.keys(obj);
     objKeys = sort ? keys.sort(sort) : keys;
   }
-  for (var adjustedPrefix = commaRoundTrip && isArray$2(obj) && 1 === obj.length ? prefix + "[]" : prefix, j = 0; j < objKeys.length; ++j) {
+  var encodedPrefix = encodeDotInKeys ? prefix.replace(/\./g, "%2E") : prefix, adjustedPrefix = commaRoundTrip && isArray$2(obj) && 1 === obj.length ? encodedPrefix + "[]" : encodedPrefix;
+  if (allowEmptyArrays && isArray$2(obj) && 0 === obj.length)
+    return adjustedPrefix + "[]";
+  for (var j = 0; j < objKeys.length; ++j) {
     var key = objKeys[j], value2 = "object" == typeof key && void 0 !== key.value ? key.value : obj[key];
     if (!skipNulls || null !== value2) {
-      var keyPrefix = isArray$2(obj) ? "function" == typeof generateArrayPrefix ? generateArrayPrefix(adjustedPrefix, key) : adjustedPrefix : adjustedPrefix + (allowDots ? "." + key : "[" + key + "]");
+      var encodedKey = allowDots && encodeDotInKeys ? key.replace(/\./g, "%2E") : key, keyPrefix = isArray$2(obj) ? "function" == typeof generateArrayPrefix ? generateArrayPrefix(adjustedPrefix, encodedKey) : adjustedPrefix : adjustedPrefix + (allowDots ? "." + encodedKey : "[" + encodedKey + "]");
       sideChannel$1.set(object, step);
       var valueSideChannel = sideChannel();
-      valueSideChannel.set(sentinel, sideChannel$1), pushToArray(values, stringify2(value2, keyPrefix, generateArrayPrefix, commaRoundTrip, strictNullHandling, skipNulls, "comma" === generateArrayPrefix && encodeValuesOnly && isArray$2(obj) ? null : encoder, filter, sort, allowDots, serializeDate, format, formatter, encodeValuesOnly, charset, valueSideChannel));
+      valueSideChannel.set(sentinel, sideChannel$1), pushToArray(values, stringify2(value2, keyPrefix, generateArrayPrefix, commaRoundTrip, allowEmptyArrays, strictNullHandling, skipNulls, encodeDotInKeys, "comma" === generateArrayPrefix && encodeValuesOnly && isArray$2(obj) ? null : encoder, filter, sort, allowDots, serializeDate, format, formatter, encodeValuesOnly, charset, valueSideChannel));
     }
   }
   return values;
 };
 var has$3 = Object.prototype.hasOwnProperty;
 var isArray$3 = Array.isArray;
-var defaults$1 = { allowDots: false, allowPrototypes: false, allowSparse: false, arrayLimit: 20, charset: "utf-8", charsetSentinel: false, comma: false, decoder: utils.decode, delimiter: "&", depth: 5, ignoreQueryPrefix: false, interpretNumericEntities: false, parameterLimit: 1e3, parseArrays: true, plainObjects: false, strictNullHandling: false };
+var defaults$1 = { allowDots: false, allowEmptyArrays: false, allowPrototypes: false, allowSparse: false, arrayLimit: 20, charset: "utf-8", charsetSentinel: false, comma: false, decodeDotInKeys: false, decoder: utils.decode, delimiter: "&", depth: 5, duplicates: "combine", ignoreQueryPrefix: false, interpretNumericEntities: false, parameterLimit: 1e3, parseArrays: true, plainObjects: false, strictNullHandling: false };
 var interpretNumericEntities = function(str) {
   return str.replace(/&#(\d+);/g, function($0, numberStr) {
     return String.fromCharCode(parseInt(numberStr, 10));
@@ -852,11 +924,11 @@ var parseKeys = function(givenKey, val, options, valuesParsed) {
       for (var leaf = valuesParsed2 ? val2 : parseArrayValue(val2, options2), i2 = chain.length - 1; i2 >= 0; --i2) {
         var obj, root = chain[i2];
         if ("[]" === root && options2.parseArrays)
-          obj = [].concat(leaf);
+          obj = options2.allowEmptyArrays && "" === leaf ? [] : [].concat(leaf);
         else {
           obj = options2.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
-          var cleanRoot = "[" === root.charAt(0) && "]" === root.charAt(root.length - 1) ? root.slice(1, -1) : root, index2 = parseInt(cleanRoot, 10);
-          options2.parseArrays || "" !== cleanRoot ? !isNaN(index2) && root !== cleanRoot && String(index2) === cleanRoot && index2 >= 0 && options2.parseArrays && index2 <= options2.arrayLimit ? (obj = [])[index2] = leaf : "__proto__" !== cleanRoot && (obj[cleanRoot] = leaf) : obj = { 0: leaf };
+          var cleanRoot = "[" === root.charAt(0) && "]" === root.charAt(root.length - 1) ? root.slice(1, -1) : root, decodedRoot = options2.decodeDotInKeys ? cleanRoot.replace(/%2E/g, ".") : cleanRoot, index2 = parseInt(decodedRoot, 10);
+          options2.parseArrays || "" !== decodedRoot ? !isNaN(index2) && root !== decodedRoot && String(index2) === decodedRoot && index2 >= 0 && options2.parseArrays && index2 <= options2.arrayLimit ? (obj = [])[index2] = leaf : "__proto__" !== decodedRoot && (obj[decodedRoot] = leaf) : obj = { 0: leaf };
         }
         leaf = obj;
       }
@@ -868,12 +940,18 @@ var lib = { formats, parse: function(str, opts) {
   var options = function(opts2) {
     if (!opts2)
       return defaults$1;
+    if (void 0 !== opts2.allowEmptyArrays && "boolean" != typeof opts2.allowEmptyArrays)
+      throw new TypeError("`allowEmptyArrays` option can only be `true` or `false`, when provided");
+    if (void 0 !== opts2.decodeDotInKeys && "boolean" != typeof opts2.decodeDotInKeys)
+      throw new TypeError("`decodeDotInKeys` option can only be `true` or `false`, when provided");
     if (null !== opts2.decoder && void 0 !== opts2.decoder && "function" != typeof opts2.decoder)
       throw new TypeError("Decoder has to be a function.");
     if (void 0 !== opts2.charset && "utf-8" !== opts2.charset && "iso-8859-1" !== opts2.charset)
       throw new TypeError("The charset option must be either utf-8, iso-8859-1, or undefined");
-    var charset = void 0 === opts2.charset ? defaults$1.charset : opts2.charset;
-    return { allowDots: void 0 === opts2.allowDots ? defaults$1.allowDots : !!opts2.allowDots, allowPrototypes: "boolean" == typeof opts2.allowPrototypes ? opts2.allowPrototypes : defaults$1.allowPrototypes, allowSparse: "boolean" == typeof opts2.allowSparse ? opts2.allowSparse : defaults$1.allowSparse, arrayLimit: "number" == typeof opts2.arrayLimit ? opts2.arrayLimit : defaults$1.arrayLimit, charset, charsetSentinel: "boolean" == typeof opts2.charsetSentinel ? opts2.charsetSentinel : defaults$1.charsetSentinel, comma: "boolean" == typeof opts2.comma ? opts2.comma : defaults$1.comma, decoder: "function" == typeof opts2.decoder ? opts2.decoder : defaults$1.decoder, delimiter: "string" == typeof opts2.delimiter || utils.isRegExp(opts2.delimiter) ? opts2.delimiter : defaults$1.delimiter, depth: "number" == typeof opts2.depth || false === opts2.depth ? +opts2.depth : defaults$1.depth, ignoreQueryPrefix: true === opts2.ignoreQueryPrefix, interpretNumericEntities: "boolean" == typeof opts2.interpretNumericEntities ? opts2.interpretNumericEntities : defaults$1.interpretNumericEntities, parameterLimit: "number" == typeof opts2.parameterLimit ? opts2.parameterLimit : defaults$1.parameterLimit, parseArrays: false !== opts2.parseArrays, plainObjects: "boolean" == typeof opts2.plainObjects ? opts2.plainObjects : defaults$1.plainObjects, strictNullHandling: "boolean" == typeof opts2.strictNullHandling ? opts2.strictNullHandling : defaults$1.strictNullHandling };
+    var charset = void 0 === opts2.charset ? defaults$1.charset : opts2.charset, duplicates = void 0 === opts2.duplicates ? defaults$1.duplicates : opts2.duplicates;
+    if ("combine" !== duplicates && "first" !== duplicates && "last" !== duplicates)
+      throw new TypeError("The duplicates option must be either combine, first, or last");
+    return { allowDots: void 0 === opts2.allowDots ? true === opts2.decodeDotInKeys || defaults$1.allowDots : !!opts2.allowDots, allowEmptyArrays: "boolean" == typeof opts2.allowEmptyArrays ? !!opts2.allowEmptyArrays : defaults$1.allowEmptyArrays, allowPrototypes: "boolean" == typeof opts2.allowPrototypes ? opts2.allowPrototypes : defaults$1.allowPrototypes, allowSparse: "boolean" == typeof opts2.allowSparse ? opts2.allowSparse : defaults$1.allowSparse, arrayLimit: "number" == typeof opts2.arrayLimit ? opts2.arrayLimit : defaults$1.arrayLimit, charset, charsetSentinel: "boolean" == typeof opts2.charsetSentinel ? opts2.charsetSentinel : defaults$1.charsetSentinel, comma: "boolean" == typeof opts2.comma ? opts2.comma : defaults$1.comma, decodeDotInKeys: "boolean" == typeof opts2.decodeDotInKeys ? opts2.decodeDotInKeys : defaults$1.decodeDotInKeys, decoder: "function" == typeof opts2.decoder ? opts2.decoder : defaults$1.decoder, delimiter: "string" == typeof opts2.delimiter || utils.isRegExp(opts2.delimiter) ? opts2.delimiter : defaults$1.delimiter, depth: "number" == typeof opts2.depth || false === opts2.depth ? +opts2.depth : defaults$1.depth, duplicates, ignoreQueryPrefix: true === opts2.ignoreQueryPrefix, interpretNumericEntities: "boolean" == typeof opts2.interpretNumericEntities ? opts2.interpretNumericEntities : defaults$1.interpretNumericEntities, parameterLimit: "number" == typeof opts2.parameterLimit ? opts2.parameterLimit : defaults$1.parameterLimit, parseArrays: false !== opts2.parseArrays, plainObjects: "boolean" == typeof opts2.plainObjects ? opts2.plainObjects : defaults$1.plainObjects, strictNullHandling: "boolean" == typeof opts2.strictNullHandling ? opts2.strictNullHandling : defaults$1.strictNullHandling };
   }(opts);
   if ("" === str || null == str)
     return options.plainObjects ? /* @__PURE__ */ Object.create(null) : {};
@@ -887,7 +965,9 @@ var lib = { formats, parse: function(str, opts) {
         var key2, val, part = parts[i2], bracketEqualsPos = part.indexOf("]="), pos = -1 === bracketEqualsPos ? part.indexOf("=") : bracketEqualsPos + 1;
         -1 === pos ? (key2 = options2.decoder(part, defaults$1.decoder, charset, "key"), val = options2.strictNullHandling ? null : "") : (key2 = options2.decoder(part.slice(0, pos), defaults$1.decoder, charset, "key"), val = utils.maybeMap(parseArrayValue(part.slice(pos + 1), options2), function(encodedVal) {
           return options2.decoder(encodedVal, defaults$1.decoder, charset, "value");
-        })), val && options2.interpretNumericEntities && "iso-8859-1" === charset && (val = interpretNumericEntities(val)), part.indexOf("[]=") > -1 && (val = isArray$3(val) ? [val] : val), has$3.call(obj2, key2) ? obj2[key2] = utils.combine(obj2[key2], val) : obj2[key2] = val;
+        })), val && options2.interpretNumericEntities && "iso-8859-1" === charset && (val = interpretNumericEntities(val)), part.indexOf("[]=") > -1 && (val = isArray$3(val) ? [val] : val);
+        var existing = has$3.call(obj2, key2);
+        existing && "combine" === options2.duplicates ? obj2[key2] = utils.combine(obj2[key2], val) : existing && "last" !== options2.duplicates || (obj2[key2] = val);
       }
     return obj2;
   }(str, options) : str, obj = options.plainObjects ? /* @__PURE__ */ Object.create(null) : {}, keys = Object.keys(tempObj), i = 0; i < keys.length; ++i) {
@@ -899,6 +979,10 @@ var lib = { formats, parse: function(str, opts) {
   var objKeys, obj = object, options = function(opts2) {
     if (!opts2)
       return defaults;
+    if (void 0 !== opts2.allowEmptyArrays && "boolean" != typeof opts2.allowEmptyArrays)
+      throw new TypeError("`allowEmptyArrays` option can only be `true` or `false`, when provided");
+    if (void 0 !== opts2.encodeDotInKeys && "boolean" != typeof opts2.encodeDotInKeys)
+      throw new TypeError("`encodeDotInKeys` option can only be `true` or `false`, when provided");
     if (null !== opts2.encoder && void 0 !== opts2.encoder && "function" != typeof opts2.encoder)
       throw new TypeError("Encoder has to be a function.");
     var charset = opts2.charset || defaults.charset;
@@ -910,22 +994,21 @@ var lib = { formats, parse: function(str, opts) {
         throw new TypeError("Unknown format option provided.");
       format = opts2.format;
     }
-    var formatter = formats.formatters[format], filter = defaults.filter;
-    return ("function" == typeof opts2.filter || isArray$2(opts2.filter)) && (filter = opts2.filter), { addQueryPrefix: "boolean" == typeof opts2.addQueryPrefix ? opts2.addQueryPrefix : defaults.addQueryPrefix, allowDots: void 0 === opts2.allowDots ? defaults.allowDots : !!opts2.allowDots, charset, charsetSentinel: "boolean" == typeof opts2.charsetSentinel ? opts2.charsetSentinel : defaults.charsetSentinel, delimiter: void 0 === opts2.delimiter ? defaults.delimiter : opts2.delimiter, encode: "boolean" == typeof opts2.encode ? opts2.encode : defaults.encode, encoder: "function" == typeof opts2.encoder ? opts2.encoder : defaults.encoder, encodeValuesOnly: "boolean" == typeof opts2.encodeValuesOnly ? opts2.encodeValuesOnly : defaults.encodeValuesOnly, filter, format, formatter, serializeDate: "function" == typeof opts2.serializeDate ? opts2.serializeDate : defaults.serializeDate, skipNulls: "boolean" == typeof opts2.skipNulls ? opts2.skipNulls : defaults.skipNulls, sort: "function" == typeof opts2.sort ? opts2.sort : null, strictNullHandling: "boolean" == typeof opts2.strictNullHandling ? opts2.strictNullHandling : defaults.strictNullHandling };
+    var arrayFormat, formatter = formats.formatters[format], filter = defaults.filter;
+    if (("function" == typeof opts2.filter || isArray$2(opts2.filter)) && (filter = opts2.filter), arrayFormat = opts2.arrayFormat in arrayPrefixGenerators ? opts2.arrayFormat : "indices" in opts2 ? opts2.indices ? "indices" : "repeat" : defaults.arrayFormat, "commaRoundTrip" in opts2 && "boolean" != typeof opts2.commaRoundTrip)
+      throw new TypeError("`commaRoundTrip` must be a boolean, or absent");
+    var allowDots = void 0 === opts2.allowDots ? true === opts2.encodeDotInKeys || defaults.allowDots : !!opts2.allowDots;
+    return { addQueryPrefix: "boolean" == typeof opts2.addQueryPrefix ? opts2.addQueryPrefix : defaults.addQueryPrefix, allowDots, allowEmptyArrays: "boolean" == typeof opts2.allowEmptyArrays ? !!opts2.allowEmptyArrays : defaults.allowEmptyArrays, arrayFormat, charset, charsetSentinel: "boolean" == typeof opts2.charsetSentinel ? opts2.charsetSentinel : defaults.charsetSentinel, commaRoundTrip: opts2.commaRoundTrip, delimiter: void 0 === opts2.delimiter ? defaults.delimiter : opts2.delimiter, encode: "boolean" == typeof opts2.encode ? opts2.encode : defaults.encode, encodeDotInKeys: "boolean" == typeof opts2.encodeDotInKeys ? opts2.encodeDotInKeys : defaults.encodeDotInKeys, encoder: "function" == typeof opts2.encoder ? opts2.encoder : defaults.encoder, encodeValuesOnly: "boolean" == typeof opts2.encodeValuesOnly ? opts2.encodeValuesOnly : defaults.encodeValuesOnly, filter, format, formatter, serializeDate: "function" == typeof opts2.serializeDate ? opts2.serializeDate : defaults.serializeDate, skipNulls: "boolean" == typeof opts2.skipNulls ? opts2.skipNulls : defaults.skipNulls, sort: "function" == typeof opts2.sort ? opts2.sort : null, strictNullHandling: "boolean" == typeof opts2.strictNullHandling ? opts2.strictNullHandling : defaults.strictNullHandling };
   }(opts);
   "function" == typeof options.filter ? obj = (0, options.filter)("", obj) : isArray$2(options.filter) && (objKeys = options.filter);
-  var arrayFormat, keys = [];
+  var keys = [];
   if ("object" != typeof obj || null === obj)
     return "";
-  arrayFormat = opts && opts.arrayFormat in arrayPrefixGenerators ? opts.arrayFormat : opts && "indices" in opts ? opts.indices ? "indices" : "repeat" : "indices";
-  var generateArrayPrefix = arrayPrefixGenerators[arrayFormat];
-  if (opts && "commaRoundTrip" in opts && "boolean" != typeof opts.commaRoundTrip)
-    throw new TypeError("`commaRoundTrip` must be a boolean, or absent");
-  var commaRoundTrip = "comma" === generateArrayPrefix && opts && opts.commaRoundTrip;
+  var generateArrayPrefix = arrayPrefixGenerators[options.arrayFormat], commaRoundTrip = "comma" === generateArrayPrefix && options.commaRoundTrip;
   objKeys || (objKeys = Object.keys(obj)), options.sort && objKeys.sort(options.sort);
   for (var sideChannel$1 = sideChannel(), i = 0; i < objKeys.length; ++i) {
     var key = objKeys[i];
-    options.skipNulls && null === obj[key] || pushToArray(keys, stringify(obj[key], key, generateArrayPrefix, commaRoundTrip, options.strictNullHandling, options.skipNulls, options.encode ? options.encoder : null, options.filter, options.sort, options.allowDots, options.serializeDate, options.format, options.formatter, options.encodeValuesOnly, options.charset, sideChannel$1));
+    options.skipNulls && null === obj[key] || pushToArray(keys, stringify(obj[key], key, generateArrayPrefix, commaRoundTrip, options.allowEmptyArrays, options.strictNullHandling, options.skipNulls, options.encodeDotInKeys, options.encode ? options.encoder : null, options.filter, options.sort, options.allowDots, options.serializeDate, options.format, options.formatter, options.encodeValuesOnly, options.charset, sideChannel$1));
   }
   var joined = keys.join(options.delimiter), prefix = true === options.addQueryPrefix ? "?" : "";
   return options.charsetSentinel && ("iso-8859-1" === options.charset ? prefix += "utf8=%26%2310003%3B&" : prefix += "utf8=%E2%9C%93&"), joined.length > 0 ? prefix + joined : "";
@@ -1347,7 +1430,7 @@ RequestBase.prototype._shouldRetry = function(error2, res) {
 }, RequestBase.prototype.toJSON = function() {
   return { method: this.method, url: this.url, data: this._data, headers: this._header };
 }, RequestBase.prototype.send = function(data) {
-  var isObject_ = isObject(data), type = this._header["content-type"];
+  var isObject_ = isObject(data), type2 = this._header["content-type"];
   if (this._formData)
     throw new Error(".send() can't be used if .attach() or .field() is used. Please use only .send() or only .field() & .attach()");
   if (isObject_ && !this._data)
@@ -1358,8 +1441,8 @@ RequestBase.prototype._shouldRetry = function(error2, res) {
     for (var key in data)
       hasOwn$1(data, key) && (this._data[key] = data[key]);
   else
-    "string" == typeof data ? (type || this.type("form"), (type = this._header["content-type"]) && (type = type.toLowerCase().trim()), this._data = "application/x-www-form-urlencoded" === type ? this._data ? "".concat(this._data, "&").concat(data) : data : (this._data || "") + data) : this._data = data;
-  return !isObject_ || this._isHost(data) || type || this.type("json"), this;
+    "string" == typeof data ? (type2 || this.type("form"), (type2 = this._header["content-type"]) && (type2 = type2.toLowerCase().trim()), this._data = "application/x-www-form-urlencoded" === type2 ? this._data ? "".concat(this._data, "&").concat(data) : data : (this._data || "") + data) : this._data = data;
+  return !isObject_ || this._isHost(data) || type2 || this.type("json"), this;
 }, RequestBase.prototype.sortQuery = function(sort) {
   return this._sort = void 0 === sort || sort, this;
 }, RequestBase.prototype._finalizeQueryString = function() {
@@ -1431,8 +1514,8 @@ ResponseBase.prototype.get = function(field) {
   } catch (_unused) {
   }
 }, ResponseBase.prototype._setStatusProperties = function(status) {
-  var type = Math.trunc(status / 100);
-  this.statusCode = status, this.status = this.statusCode, this.statusType = type, this.info = 1 === type, this.ok = 2 === type, this.redirect = 3 === type, this.clientError = 4 === type, this.serverError = 5 === type, this.error = (4 === type || 5 === type) && this.toError(), this.created = 201 === status, this.accepted = 202 === status, this.noContent = 204 === status, this.badRequest = 400 === status, this.unauthorized = 401 === status, this.notAcceptable = 406 === status, this.forbidden = 403 === status, this.notFound = 404 === status, this.unprocessableEntity = 422 === status;
+  var type2 = Math.trunc(status / 100);
+  this.statusCode = status, this.status = this.statusCode, this.statusType = type2, this.info = 1 === type2, this.ok = 2 === type2, this.redirect = 3 === type2, this.clientError = 4 === type2, this.serverError = 5 === type2, this.error = (4 === type2 || 5 === type2) && this.toError(), this.created = 201 === status, this.accepted = 202 === status, this.noContent = 204 === status, this.badRequest = 400 === status, this.unauthorized = 401 === status, this.notAcceptable = 406 === status, this.forbidden = 403 === status, this.notFound = 404 === status, this.unprocessableEntity = 422 === status;
 };
 for (_loop = function() {
   var fn = _arr[_i];
@@ -1653,10 +1736,10 @@ for (agentBase = Agent, client = createCommonjsModule(function(module, exports) 
   }, Response.prototype.toError = function() {
     var req = this.req, method = req.method, url = req.url, message = "cannot ".concat(method, " ").concat(url, " (").concat(this.status, ")"), error2 = new Error(message);
     return error2.status = this.status, error2.method = method, error2.url = url, error2;
-  }, request.Response = Response, componentEmitter(Request.prototype), mixin(Request.prototype, requestBase.prototype), Request.prototype.type = function(type) {
-    return this.set("Content-Type", request.types[type] || type), this;
-  }, Request.prototype.accept = function(type) {
-    return this.set("Accept", request.types[type] || type), this;
+  }, request.Response = Response, componentEmitter(Request.prototype), mixin(Request.prototype, requestBase.prototype), Request.prototype.type = function(type2) {
+    return this.set("Content-Type", request.types[type2] || type2), this;
+  }, Request.prototype.accept = function(type2) {
+    return this.set("Accept", request.types[type2] || type2), this;
   }, Request.prototype.auth = function(user, pass, options) {
     1 === arguments.length && (pass = ""), "object" === _typeof2(pass) && null !== pass && (options = pass, pass = ""), options || (options = { type: "function" == typeof btoa ? "basic" : "auto" });
     var encoder = options.encoder ? options.encoder : function(string) {
@@ -1835,14 +1918,14 @@ var base64Url = { encode: function(str) {
     return result;
   }(base64Js.toByteArray(str));
 } };
-var version = { raw: "9.25.0" };
+var version = { raw: "9.26.1" };
 var toString = Object.prototype.toString;
-function attribute(o2, attr, type, text) {
-  if (type = "array" === type ? "object" : type, o2 && typeof o2[attr] !== type)
+function attribute(o2, attr, type2, text) {
+  if (type2 = "array" === type2 ? "object" : type2, o2 && typeof o2[attr] !== type2)
     throw new Error(text);
 }
-function variable(o2, type, text) {
-  if (typeof o2 !== type)
+function variable(o2, type2, text) {
+  if (typeof o2 !== type2)
     throw new Error(text);
 }
 function value(o2, values, text) {
@@ -3998,6 +4081,7 @@ PopupHandler.prototype.calculatePosition = function(options) {
 var noop = function() {
 };
 var captchaSolved = noop;
+var Flow = { DEFAULT: "default", PASSWORDLESS: "passwordless", PASSWORD_RESET: "password_reset" };
 var defaults$2 = { lang: "en", templates: { auth0: function(challenge) {
   var message = "code" === challenge.type ? "Enter the code shown above" : "Solve the formula shown above";
   return '<div class="captcha-challenge">\n  <img src="' + challenge.image + '" />\n  <button type="button" class="captcha-reload">↺</button>\n</div>\n<input type="text" name="captcha"\n  class="form-control captcha-control"\n  placeholder="' + message + '" />';
@@ -4016,11 +4100,6 @@ var defaults$2 = { lang: "en", templates: { auth0: function(challenge) {
 }, error: function() {
   return '<div class="error" style="color: red;">Error getting the bot detection challenge. Please contact the system administrator.</div>';
 } } };
-function handleAuth0Provider(element, options, challenge, load) {
-  element.innerHTML = options.templates[challenge.provider](challenge), element.querySelector(".captcha-reload").addEventListener("click", function(e2) {
-    e2.preventDefault(), load();
-  });
-}
 function globalForCaptchaProvider(provider) {
   switch (provider) {
     case "recaptcha_v2":
@@ -4050,7 +4129,7 @@ function removeScript(url) {
     script.remove();
   });
 }
-function injectCaptchaScript(element, opts, callback, setValue) {
+function injectCaptchaScript(opts, callback, setValue, done) {
   var callbackName = opts.provider + "Callback_" + Math.floor(1000001 * Math.random()), attributes = { async: true, defer: true }, scriptSrc = function(provider, lang, callback2, clientSubdomain, siteKey) {
     switch (provider) {
       case "recaptcha_v2":
@@ -4074,7 +4153,7 @@ function injectCaptchaScript(element, opts, callback, setValue) {
     attributes["data-callback"] = callbackName, attributes.onerror = function() {
       if (retryCount < 3)
         return removeScript(scriptSrc), loadScript(scriptSrc, attributes), void retryCount++;
-      removeScript(scriptSrc), setValue("BYPASS_CAPTCHA");
+      removeScript(scriptSrc), done(new Error(opts.provider + " failed to load")), setValue("BYPASS_CAPTCHA");
     }, window[callbackName] = function(arkose) {
       window.arkose = arkose, callback(arkose);
     };
@@ -4084,91 +4163,84 @@ function injectCaptchaScript(element, opts, callback, setValue) {
     }, "friendly_captcha" === opts.provider && (attributes.onload = window[callbackName]);
   loadScript(scriptSrc, attributes);
 }
-function handleCaptchaProvider(element, options, challenge) {
-  var captchaClass, widgetId = element.hasAttribute("data-wid") && element.getAttribute("data-wid");
-  function setValue(value2) {
-    element.querySelector('input[name="captcha"]').value = value2 || "";
-  }
-  if ("friendly_captcha" === challenge.provider && window.auth0FCInstance)
-    return setValue(), void window.auth0FCInstance.reset();
-  if ("arkose" === challenge.provider && globalForCaptchaProvider(challenge.provider))
-    return setValue(), void globalForCaptchaProvider(challenge.provider).reset();
-  if (widgetId)
-    return setValue(), void globalForCaptchaProvider(challenge.provider).reset(widgetId);
-  switch (element.innerHTML = options.templates[challenge.provider](challenge), challenge.provider) {
-    case "recaptcha_enterprise":
-    case "recaptcha_v2":
-      captchaClass = ".recaptcha";
-      break;
-    case "hcaptcha":
-      captchaClass = ".hcaptcha";
-      break;
-    case "friendly_captcha":
-      captchaClass = ".friendly-captcha";
-      break;
-    case "arkose":
-      captchaClass = ".arkose";
-      break;
-    case "auth0_v2":
-      captchaClass = ".auth0_v2";
-  }
-  var captchaDiv = element.querySelector(captchaClass);
-  injectCaptchaScript(0, { lang: options.lang, provider: challenge.provider, clientSubdomain: challenge.clientSubdomain, siteKey: challenge.siteKey }, function(arkose) {
-    var global2 = globalForCaptchaProvider(challenge.provider);
-    if ("arkose" === challenge.provider) {
-      var retryCount = 0;
-      arkose.setConfig({ onCompleted: function(response) {
-        setValue(response.token), captchaSolved();
-      }, onError: function() {
-        retryCount < 3 ? (setValue(), arkose.reset(), setTimeout(function() {
-          arkose.run();
-        }, 500), retryCount++) : setValue("BYPASS_CAPTCHA");
-      } });
-    } else if ("friendly_captcha" === challenge.provider)
-      window.auth0FCInstance = new global2.WidgetInstance(captchaDiv, { sitekey: challenge.siteKey, language: options.lang, doneCallback: function(solution) {
-        setValue(solution);
-      }, errorCallback: function() {
-        setValue();
-      } });
-    else {
-      var renderParams = { callback: setValue, "expired-callback": function() {
-        setValue();
-      }, "error-callback": function() {
-        setValue();
-      }, sitekey: challenge.siteKey };
-      "auth0_v2" === challenge.provider && (retryCount = 0, renderParams.language = options.lang, renderParams.theme = "light", renderParams.retry = "never", renderParams["response-field"] = false, renderParams["error-callback"] = function() {
-        return retryCount < 3 ? (setValue(), globalForCaptchaProvider(challenge.provider).reset(widgetId), retryCount++) : setValue("BYPASS_CAPTCHA"), true;
-      }), widgetId = global2.render(captchaDiv, renderParams), element.setAttribute("data-wid", widgetId);
+var captcha = { render: function(auth0Client, flow, element, options, callback) {
+  function load(done) {
+    function challengeCallback(err, challenge) {
+      return err ? (element.innerHTML = options.templates.error(err), done(err)) : challenge.required ? (element.style.display = "", void ("auth0" === challenge.provider ? (!function(element2, options2, challenge2, load2) {
+        element2.innerHTML = options2.templates[challenge2.provider](challenge2), element2.querySelector(".captcha-reload").addEventListener("click", function(e2) {
+          e2.preventDefault(), load2();
+        });
+      }(element, options, challenge, load), done()) : "recaptcha_v2" !== challenge.provider && "recaptcha_enterprise" !== challenge.provider && "hcaptcha" !== challenge.provider && "friendly_captcha" !== challenge.provider && "arkose" !== challenge.provider && "auth0_v2" !== challenge.provider || function(element2, options2, challenge2, done2) {
+        var captchaClass, widgetId = element2.hasAttribute("data-wid") && element2.getAttribute("data-wid");
+        function setValue(value2) {
+          element2.querySelector('input[name="captcha"]').value = value2 || "";
+        }
+        if ("friendly_captcha" === challenge2.provider && window.auth0FCInstance)
+          return setValue(), void window.auth0FCInstance.reset();
+        if ("arkose" === challenge2.provider && globalForCaptchaProvider(challenge2.provider))
+          return setValue(), void globalForCaptchaProvider(challenge2.provider).reset();
+        if (widgetId)
+          return setValue(), void globalForCaptchaProvider(challenge2.provider).reset(widgetId);
+        switch (element2.innerHTML = options2.templates[challenge2.provider](challenge2), challenge2.provider) {
+          case "recaptcha_enterprise":
+          case "recaptcha_v2":
+            captchaClass = ".recaptcha";
+            break;
+          case "hcaptcha":
+            captchaClass = ".hcaptcha";
+            break;
+          case "friendly_captcha":
+            captchaClass = ".friendly-captcha";
+            break;
+          case "arkose":
+            captchaClass = ".arkose";
+            break;
+          case "auth0_v2":
+            captchaClass = ".auth0_v2";
+        }
+        var captchaDiv = element2.querySelector(captchaClass);
+        injectCaptchaScript({ lang: options2.lang, provider: challenge2.provider, clientSubdomain: challenge2.clientSubdomain, siteKey: challenge2.siteKey }, function(arkose) {
+          var global2 = globalForCaptchaProvider(challenge2.provider);
+          if ("arkose" === challenge2.provider) {
+            var retryCount = 0, arkoseLoaded = false;
+            arkose.setConfig({ onReady: function() {
+              arkoseLoaded || (done2(null, { triggerCaptcha: function(solvedCallback) {
+                arkose.run(), captchaSolved = solvedCallback;
+              } }), arkoseLoaded = true);
+            }, onCompleted: function(response) {
+              setValue(response.token), captchaSolved();
+            }, onError: function(response) {
+              retryCount < 3 ? (setValue(), arkose.reset(), setTimeout(function() {
+                arkose.run();
+              }, 500), retryCount++) : (arkoseLoaded || (done2(new Error(response.error.error)), arkoseLoaded = true), setValue("BYPASS_CAPTCHA"));
+            } });
+          } else if ("friendly_captcha" === challenge2.provider)
+            window.auth0FCInstance = new global2.WidgetInstance(captchaDiv, { sitekey: challenge2.siteKey, language: options2.lang, doneCallback: function(solution) {
+              setValue(solution);
+            }, errorCallback: function() {
+              setValue();
+            } }), done2();
+          else {
+            var renderParams = { callback: setValue, "expired-callback": function() {
+              setValue();
+            }, "error-callback": function() {
+              setValue();
+            }, sitekey: challenge2.siteKey };
+            "auth0_v2" === challenge2.provider && (retryCount = 0, renderParams.language = options2.lang, renderParams.theme = "light", renderParams.retry = "never", renderParams["response-field"] = false, renderParams["error-callback"] = function() {
+              return retryCount < 3 ? (setValue(), globalForCaptchaProvider(challenge2.provider).reset(widgetId), retryCount++) : setValue("BYPASS_CAPTCHA"), true;
+            }), widgetId = global2.render(captchaDiv, renderParams), element2.setAttribute("data-wid", widgetId), done2();
+          }
+        }, setValue, done2);
+      }(element, options, challenge, done))) : (element.style.display = "none", void (element.innerHTML = ""));
     }
-  }, setValue);
-}
-var captcha = { render: function(auth0Client, element, options, callback) {
-  function load(done) {
-    done = done || noop, auth0Client.getChallenge(function(err, challenge) {
-      return err ? (element.innerHTML = options.templates.error(err), done(err)) : challenge.required ? (element.style.display = "", "auth0" === challenge.provider ? handleAuth0Provider(element, options, challenge, load) : "recaptcha_v2" !== challenge.provider && "recaptcha_enterprise" !== challenge.provider && "hcaptcha" !== challenge.provider && "friendly_captcha" !== challenge.provider && "arkose" !== challenge.provider && "auth0_v2" !== challenge.provider || handleCaptchaProvider(element, options, challenge), void ("arkose" === challenge.provider ? done(null, { triggerCaptcha: function(solvedCallback) {
-        globalForCaptchaProvider(challenge.provider).run(), captchaSolved = solvedCallback;
-      } }) : done())) : (element.style.display = "none", void (element.innerHTML = ""));
-    });
+    done = done || noop, flow === Flow.PASSWORDLESS ? auth0Client.passwordless.getChallenge(challengeCallback) : flow === Flow.PASSWORD_RESET ? auth0Client.dbConnection.getPasswordResetChallenge(challengeCallback) : auth0Client.getChallenge(challengeCallback);
   }
   return options = objectHelper.merge(defaults$2).with(options || {}), load(callback), { reload: load, getValue: function() {
     var captchaInput = element.querySelector('input[name="captcha"]');
     if (captchaInput)
       return captchaInput.value;
   } };
-}, renderPasswordless: function(auth0Client, element, options, callback) {
-  function load(done) {
-    done = done || noop, auth0Client.passwordless.getChallenge(function(err, challenge) {
-      return err ? (element.innerHTML = options.templates.error(err), done(err)) : challenge.required ? (element.style.display = "", "auth0" === challenge.provider ? handleAuth0Provider(element, options, challenge, load) : "recaptcha_v2" !== challenge.provider && "recaptcha_enterprise" !== challenge.provider && "hcaptcha" !== challenge.provider && "friendly_captcha" !== challenge.provider && "arkose" !== challenge.provider && "auth0_v2" !== challenge.provider || handleCaptchaProvider(element, options, challenge), void ("arkose" === challenge.provider ? done(null, { triggerCaptcha: function(solvedCallback) {
-        globalForCaptchaProvider(challenge.provider).run(), captchaSolved = solvedCallback;
-      } }) : done())) : (element.style.display = "none", void (element.innerHTML = ""));
-    });
-  }
-  return options = objectHelper.merge(defaults$2).with(options || {}), load(callback), { reload: load, getValue: function() {
-    var captchaInput = element.querySelector('input[name="captcha"]');
-    if (captchaInput)
-      return captchaInput.value;
-  } };
-} };
+}, Flow };
 function defaultClock() {
   return /* @__PURE__ */ new Date();
 }
@@ -4309,9 +4381,11 @@ WebAuth.prototype.parseHash = function(options, cb) {
     doAuth();
   });
 }, WebAuth.prototype.renderCaptcha = function(element, options, callback) {
-  return captcha.render(this.client, element, options, callback);
+  return captcha.render(this.client, captcha.Flow.DEFAULT, element, options, callback);
 }, WebAuth.prototype.renderPasswordlessCaptcha = function(element, options, callback) {
-  return captcha.renderPasswordless(this.client, element, options, callback);
+  return captcha.render(this.client, captcha.Flow.PASSWORDLESS, element, options, callback);
+}, WebAuth.prototype.renderPasswordResetCaptcha = function(element, options, callback) {
+  return captcha.render(this.client, captcha.Flow.PASSWORD_RESET, element, options, callback);
 }, PasswordlessAuthentication.prototype.buildVerifyUrl = function(options) {
   var params, qString;
   return assert.check(options, { type: "object", message: "options parameter is not valid" }, { connection: { type: "string", message: "connection option is required" }, verificationCode: { type: "string", message: "verificationCode option is required" }, phoneNumber: { optional: false, type: "string", message: "phoneNumber option is required", condition: function(o2) {
@@ -4348,10 +4422,10 @@ WebAuth.prototype.parseHash = function(options, cb) {
 }, DBConnection.prototype.changePassword = function(options, cb) {
   var url, body;
   return assert.check(options, { type: "object", message: "options parameter is not valid" }, { connection: { type: "string", message: "connection option is required" }, email: { type: "string", message: "email option is required" } }), assert.check(cb, { type: "function", message: "cb parameter is not valid" }), url = urlJoin(this.baseOptions.rootUrl, "dbconnections", "change_password"), body = objectHelper.merge(this.baseOptions, ["clientID", "state"]).with(options, ["email", "connection", "captcha"]), body = objectHelper.toSnakeCase(body, ["auth0Client"]), this.request.post(url).send(body).end(wrapCallback(cb));
-}, DBConnection.prototype.getChallenge = function(cb) {
+}, DBConnection.prototype.getPasswordResetChallenge = function(cb) {
   if (assert.check(cb, { type: "function", message: "cb parameter is not valid" }), !this.baseOptions.state)
     return cb();
-  var url = urlJoin(this.baseOptions.rootUrl, "dbconnections", "challenge");
+  var url = urlJoin(this.baseOptions.rootUrl, "dbconnections", "change_password", "challenge");
   return this.request.post(url).send({ state: this.baseOptions.state }).end(wrapCallback(cb, { ignoreCasing: true }));
 }, Authentication.prototype.buildAuthorizeUrl = function(options) {
   var params, qString;

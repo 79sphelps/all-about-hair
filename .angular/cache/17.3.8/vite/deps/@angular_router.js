@@ -1,7 +1,7 @@
 import {
   Title
-} from "./chunk-DMYCK7FY.js";
-import "./chunk-PPYEMQR5.js";
+} from "./chunk-4YZRWYL2.js";
+import "./chunk-2PS2PKZG.js";
 import {
   DOCUMENT,
   HashLocationStrategy,
@@ -10,7 +10,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
   ViewportScroller
-} from "./chunk-BIMBYK3Y.js";
+} from "./chunk-PWP7MF3D.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_INITIALIZER,
@@ -78,7 +78,7 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-QMZKVUQX.js";
+} from "./chunk-B3FPXQV3.js";
 import {
   defer,
   isObservable
@@ -118,6 +118,7 @@ import {
   throwError
 } from "./chunk-PQ7O3X3G.js";
 import {
+  __async,
   __spreadProps,
   __spreadValues
 } from "./chunk-J4B6MK7R.js";
@@ -3375,7 +3376,7 @@ function createViewTransition(injector, from2, to) {
   return injector.get(NgZone).runOutsideAngular(() => {
     if (!document.startViewTransition || transitionOptions.skipNextTransition) {
       transitionOptions.skipNextTransition = false;
-      return Promise.resolve();
+      return new Promise((resolve) => setTimeout(resolve));
     }
     let resolveViewTransitionStarted;
     const viewTransitionStarted = new Promise((resolve) => {
@@ -5035,6 +5036,7 @@ var _RouterScroller = class _RouterScroller {
     this.lastSource = "imperative";
     this.restoredId = 0;
     this.store = {};
+    this.environmentInjector = inject(EnvironmentInjector);
     options.scrollPositionRestoration ||= "disabled";
     options.anchorScrolling ||= "disabled";
   }
@@ -5081,13 +5083,21 @@ var _RouterScroller = class _RouterScroller {
     });
   }
   scheduleScrollEvent(routerEvent, anchor) {
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.zone.run(() => {
-          this.transitions.events.next(new Scroll(routerEvent, this.lastSource === "popstate" ? this.store[this.restoredId] : null, anchor));
+    this.zone.runOutsideAngular(() => __async(this, null, function* () {
+      yield new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
         });
-      }, 0);
-    });
+        afterNextRender(() => {
+          resolve();
+        }, {
+          injector: this.environmentInjector
+        });
+      });
+      this.zone.run(() => {
+        this.transitions.events.next(new Scroll(routerEvent, this.lastSource === "popstate" ? this.store[this.restoredId] : null, anchor));
+      });
+    }));
   }
   /** @nodoc */
   ngOnDestroy() {
@@ -5523,7 +5533,7 @@ function mapToCanDeactivate(providers) {
 function mapToResolve(provider) {
   return (...params) => inject(provider).resolve(...params);
 }
-var VERSION = new Version("17.3.6");
+var VERSION = new Version("17.3.10");
 export {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -5606,7 +5616,7 @@ export {
 
 @angular/router/fesm2022/router.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)

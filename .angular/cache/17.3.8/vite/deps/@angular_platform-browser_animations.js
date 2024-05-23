@@ -6,15 +6,15 @@ import {
   sequence,
   style,
   ɵPRE_STYLE
-} from "./chunk-IAXZ4KMY.js";
+} from "./chunk-YP2GGSRW.js";
 import {
   BrowserModule,
   DomRendererFactory2
-} from "./chunk-DMYCK7FY.js";
-import "./chunk-PPYEMQR5.js";
+} from "./chunk-4YZRWYL2.js";
+import "./chunk-2PS2PKZG.js";
 import {
   DOCUMENT
-} from "./chunk-BIMBYK3Y.js";
+} from "./chunk-PWP7MF3D.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionScheduler,
@@ -31,7 +31,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-QMZKVUQX.js";
+} from "./chunk-B3FPXQV3.js";
 import "./chunk-SG3BCSKH.js";
 import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
@@ -4151,14 +4151,14 @@ export {
 
 @angular/animations/fesm2022/browser.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 
 @angular/platform-browser/fesm2022/animations.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)

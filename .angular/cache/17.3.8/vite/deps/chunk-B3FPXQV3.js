@@ -9811,7 +9811,7 @@ function createRootComponent(componentView, rootComponentDef, rootDirectives, ho
 }
 function setRootNodeAttributes(hostRenderer, componentDef, hostRNode, rootSelectorOrNode) {
   if (rootSelectorOrNode) {
-    setUpAttributes(hostRenderer, hostRNode, ["ng-version", "17.3.6"]);
+    setUpAttributes(hostRenderer, hostRNode, ["ng-version", "17.3.10"]);
   } else {
     const { attrs, classes } = extractAttrsAndClassesFromSelector(componentDef.selectors[0]);
     if (attrs) {
@@ -12083,20 +12083,24 @@ function scheduleDelayedTrigger(scheduleFn) {
   const lView = getLView();
   const tNode = getCurrentTNode();
   renderPlaceholder(lView, tNode);
-  const cleanupFn = scheduleFn(() => triggerDeferBlock(lView, tNode), lView);
-  const lDetails = getLDeferBlockDetails(lView, tNode);
-  storeTriggerCleanupFn(0, lDetails, cleanupFn);
+  if (isPlatformBrowser(lView[INJECTOR])) {
+    const cleanupFn = scheduleFn(() => triggerDeferBlock(lView, tNode), lView);
+    const lDetails = getLDeferBlockDetails(lView, tNode);
+    storeTriggerCleanupFn(0, lDetails, cleanupFn);
+  }
 }
 function scheduleDelayedPrefetching(scheduleFn) {
   const lView = getLView();
-  const tNode = getCurrentTNode();
-  const tView = lView[TVIEW];
-  const tDetails = getTDeferBlockDetails(tView, tNode);
-  if (tDetails.loadingState === DeferDependenciesLoadingState.NOT_STARTED) {
-    const lDetails = getLDeferBlockDetails(lView, tNode);
-    const prefetch = () => triggerPrefetching(tDetails, lView, tNode);
-    const cleanupFn = scheduleFn(prefetch, lView);
-    storeTriggerCleanupFn(1, lDetails, cleanupFn);
+  if (isPlatformBrowser(lView[INJECTOR])) {
+    const tNode = getCurrentTNode();
+    const tView = lView[TVIEW];
+    const tDetails = getTDeferBlockDetails(tView, tNode);
+    if (tDetails.loadingState === DeferDependenciesLoadingState.NOT_STARTED) {
+      const lDetails = getLDeferBlockDetails(lView, tNode);
+      const prefetch = () => triggerPrefetching(tDetails, lView, tNode);
+      const cleanupFn = scheduleFn(prefetch, lView);
+      storeTriggerCleanupFn(1, lDetails, cleanupFn);
+    }
   }
 }
 function renderDeferBlockState(newState, tNode, lContainer, skipTimerScheduling = false) {
@@ -17147,7 +17151,7 @@ var Version = class {
     this.patch = parts.slice(2).join(".");
   }
 };
-var VERSION = new Version("17.3.6");
+var VERSION = new Version("17.3.10");
 var _Console = class _Console {
   log(message) {
     console.log(message);
@@ -17585,7 +17589,9 @@ var _published = false;
 function publishDefaultGlobalUtils$1() {
   if (!_published) {
     _published = true;
-    setupFrameworkInjectorProfiler();
+    if (typeof window !== "undefined") {
+      setupFrameworkInjectorProfiler();
+    }
     for (const [methodName, method] of Object.entries(globalUtilsFunctions)) {
       publishGlobalUtil(methodName, method);
     }
@@ -21569,14 +21575,14 @@ export {
 
 @angular/core/fesm2022/primitives/signals.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
 
 @angular/core/fesm2022/core.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
@@ -21608,4 +21614,4 @@ export {
    * found in the LICENSE file at https://angular.io/license
    *)
 */
-//# sourceMappingURL=chunk-QMZKVUQX.js.map
+//# sourceMappingURL=chunk-B3FPXQV3.js.map

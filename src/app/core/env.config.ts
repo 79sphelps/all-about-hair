@@ -5,8 +5,8 @@ const getHost = () => {
   const host = window.location.host;
   return `${protocol}//${host}`;
 };
-// const apiURI = _isDev ? 'http://localhost:8081/api/' : `/api/`;
-const apiURI = "https://all-about-hair-backend.onrender.com/"
+const apiURI = _isDev ? 'http://localhost:8081/api/' : `/api/`;
+// const apiURI = "https://all-about-hair-backend.onrender.com/"
 
 export const ENV = {
   BASE_URI: getHost(),

@@ -1,6 +1,6 @@
 import {
   getDOM
-} from "./chunk-BIMBYK3Y.js";
+} from "./chunk-PWP7MF3D.js";
 import {
   ChangeDetectorRef,
   Directive,
@@ -39,7 +39,7 @@ import {
   ɵɵdirectiveInject,
   ɵɵgetInheritedFactory,
   ɵɵlistener
-} from "./chunk-QMZKVUQX.js";
+} from "./chunk-B3FPXQV3.js";
 import {
   forkJoin
 } from "./chunk-SG3BCSKH.js";
@@ -6241,7 +6241,7 @@ var UntypedFormBuilder = _UntypedFormBuilder;
     }]
   }], null, null);
 })();
-var VERSION = new Version("17.3.6");
+var VERSION = new Version("17.3.10");
 var _FormsModule = class _FormsModule {
   /**
    * @description
@@ -6389,7 +6389,7 @@ export {
 
 @angular/forms/fesm2022/forms.mjs:
   (**
-   * @license Angular v17.3.6
+   * @license Angular v17.3.10
    * (c) 2010-2024 Google LLC. https://angular.io/
    * License: MIT
    *)
