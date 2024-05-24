@@ -49,7 +49,8 @@ const routes: Routes = [
   },
   {
     path: 'callback',
-    component: CallbackComponent
+    // component: CallbackComponent
+    component: HomeComponent
   },
   {
     path: 'requests/new',
