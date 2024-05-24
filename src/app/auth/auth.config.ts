@@ -15,8 +15,7 @@ export const AUTH_CONFIG: AuthConfig = {
   CLIENT_DOMAIN: 'sphelps.auth0.com', // e.g., you.auth0.com
   AUDIENCE: 'http://localhost:8081/api/', // e.g., http://localhost:8080/api/
   // AUDIENCE: `${ENV.BASE_URI}/api`,
-  // REDIRECT: `${ENV.BASE_URI}/callback`,
-  REDIRECT: `${ENV.BASE_URI}`,
+  REDIRECT: `${ENV.BASE_URI}/callback`,
   SCOPE: 'openid profile',
   NAMESPACE: 'http://myapp.com/roles'
 };
