@@ -75,7 +75,6 @@ export class AuthService {
   }
 
   handleAuth() {
-    console.log('---- here in handleAuth ----')
     // When Auth0 hash parsed, get profile
     this._auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {

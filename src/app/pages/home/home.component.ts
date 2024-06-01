@@ -36,8 +36,6 @@ export class HomeComponent implements OnInit {
     this.footerSub = this.api.getFooterInfo$().subscribe(
       res => {
         this.footer = res[0];
-        console.log('----- footer ----')
-        console.log(this.footer)
         this.loading = false;
         this.footerInfoLoaded = Promise.resolve(true);
       },

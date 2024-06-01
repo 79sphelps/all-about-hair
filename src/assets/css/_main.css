@@ -2072,6 +2072,15 @@
     color: #fff;
     font-size: 12px;
   }
+
+  .single-footer-widget h6 {
+    color: #fff;
+  }
+
+  .single-footer-widget p {
+    color: #fff;
+  }
+
   .single-footer-widget .info.valid {
     color: green;
   }
