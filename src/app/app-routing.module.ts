@@ -77,11 +77,6 @@ const routes: Routes = [
         component: AdminComponent
       },
       {
-        path: 'callback',
-        component: CallbackComponent
-        // component: HomeComponent
-      },
-      {
         path: 'homepage',
         component: HomepageDetailsComponent
       },
